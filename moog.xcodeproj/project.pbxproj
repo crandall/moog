@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
+		E7347E1B2AE8AC9B00FB729B /* VocalTract.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */; };
+		E7347E1D2AE8AD5000FB729B /* InputDeviceDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */; };
+		E7347E1F2AE8AE9300FB729B /* VocalTractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */; };
+		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
+		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
+		E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */; };
+		E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78B9AEE2AE0AEF000788C07 /* Main.storyboard */; };
+		E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78B9AF12AE0AEF100788C07 /* Assets.xcassets */; };
+		E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */; };
+		E78B9AFE2AE0AF8300788C07 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9AFD2AE0AF8300788C07 /* AudioKit */; };
+		E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */; };
+		E78B9B032AE0AFF300788C07 /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B022AE0AFF300788C07 /* AudioKitEX */; };
+		E78B9B062AE0B00600788C07 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B052AE0B00600788C07 /* AudioKitUI */; };
+		E78B9B092AE0B02700788C07 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B082AE0B02700788C07 /* Keyboard */; };
+		E78B9B0C2AE0B05400788C07 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */; };
+		E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC1882AE1F66600BB26EC /* OscillatorView.swift */; };
+		E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */; };
+		E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */; };
+		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
+		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
+		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
+		E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C702AE0B7650064EB8E /* StageViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
+		E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocalTract.swift; sourceTree = "<group>"; };
+		E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDeviceDemo.swift; sourceTree = "<group>"; };
+		E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocalTractOperation.swift; sourceTree = "<group>"; };
+		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E78B9AEF2AE0AEF000788C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E78B9AF12AE0AEF100788C07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E78B9AF42AE0AEF100788C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E78B9AF62AE0AEF100788C07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
+		E78EC1882AE1F66600BB26EC /* OscillatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorView.swift; sourceTree = "<group>"; };
+		E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OscillatorView.xib; sourceTree = "<group>"; };
+		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
+		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
+		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
+		E7FB6C702AE0B7650064EB8E /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E78B9AE22AE0AEF000788C07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78B9AFE2AE0AF8300788C07 /* AudioKit in Frameworks */,
+				E78B9B0C2AE0B05400788C07 /* SoundpipeAudioKit in Frameworks */,
+				E78B9B092AE0B02700788C07 /* Keyboard in Frameworks */,
+				E78B9B062AE0B00600788C07 /* AudioKitUI in Frameworks */,
+				E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */,
+				E78B9B032AE0AFF300788C07 /* AudioKitEX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E78B9ADC2AE0AEEF00788C07 = {
+			isa = PBXGroup;
+			children = (
+				E78B9AE72AE0AEF000788C07 /* moog */,
+				E78B9AE62AE0AEF000788C07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E78B9AE62AE0AEF000788C07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E78B9AE52AE0AEF000788C07 /* moog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E78B9AE72AE0AEF000788C07 /* moog */ = {
+			isa = PBXGroup;
+			children = (
+				E7FB6C592AE0B2530064EB8E /* Cookbook */,
+				E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */,
+				E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */,
+				E78B9AEE2AE0AEF000788C07 /* Main.storyboard */,
+				E78B9AF12AE0AEF100788C07 /* Assets.xcassets */,
+				E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */,
+				E78B9AF62AE0AEF100788C07 /* Info.plist */,
+				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
+				E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */,
+				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
+				E78EC1882AE1F66600BB26EC /* OscillatorView.swift */,
+				E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */,
+				E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */,
+				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
+				E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */,
+				E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */,
+			);
+			path = moog;
+			sourceTree = "<group>";
+		};
+		E7FB6C592AE0B2530064EB8E /* Cookbook */ = {
+			isa = PBXGroup;
+			children = (
+				E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */,
+				E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */,
+				E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */,
+			);
+			path = Cookbook;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E78B9AE42AE0AEF000788C07 /* moog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78B9AF92AE0AEF100788C07 /* Build configuration list for PBXNativeTarget "moog" */;
+			buildPhases = (
+				E78B9AE12AE0AEF000788C07 /* Sources */,
+				E78B9AE22AE0AEF000788C07 /* Frameworks */,
+				E78B9AE32AE0AEF000788C07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = moog;
+			packageProductDependencies = (
+				E78B9AFD2AE0AF8300788C07 /* AudioKit */,
+				E78B9B022AE0AFF300788C07 /* AudioKitEX */,
+				E78B9B052AE0B00600788C07 /* AudioKitUI */,
+				E78B9B082AE0B02700788C07 /* Keyboard */,
+				E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */,
+				E7347E212AE8AED100FB729B /* SporthAudioKit */,
+			);
+			productName = moog;
+			productReference = E78B9AE52AE0AEF000788C07 /* moog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E78B9ADD2AE0AEEF00788C07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E78B9AE42AE0AEF000788C07 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = E78B9AE02AE0AEEF00788C07 /* Build configuration list for PBXProject "moog" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E78B9ADC2AE0AEEF00788C07;
+			packageReferences = (
+				E78B9AFC2AE0AF8300788C07 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				E78B9B012AE0AFF300788C07 /* XCRemoteSwiftPackageReference "AudioKitEX" */,
+				E78B9B042AE0B00600788C07 /* XCRemoteSwiftPackageReference "AudioKitUI" */,
+				E78B9B072AE0B02700788C07 /* XCRemoteSwiftPackageReference "Keyboard" */,
+				E78B9B0A2AE0B05300788C07 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+				E7347E202AE8AED100FB729B /* XCRemoteSwiftPackageReference "SporthAudioKit" */,
+			);
+			productRefGroup = E78B9AE62AE0AEF000788C07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E78B9AE42AE0AEF000788C07 /* moog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E78B9AE32AE0AEF000788C07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
+				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
+				E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */,
+				E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E78B9AE12AE0AEF000788C07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
+				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
+				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
+				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
+				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
+				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,
+				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
+				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
+				E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */,
+				E7347E1F2AE8AE9300FB729B /* VocalTractOperation.swift in Sources */,
+				E7347E1D2AE8AD5000FB729B /* InputDeviceDemo.swift in Sources */,
+				E7347E1B2AE8AC9B00FB729B /* VocalTract.swift in Sources */,
+				E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E78B9AEE2AE0AEF000788C07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78B9AEF2AE0AEF000788C07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78B9AF42AE0AEF100788C07 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E78B9AF72AE0AEF100788C07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E78B9AF82AE0AEF100788C07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E78B9AFA2AE0AEF100788C07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8485ZB8GUD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eyebrowman.moog.moog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E78B9AFB2AE0AEF100788C07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8485ZB8GUD;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eyebrowman.moog.moog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E78B9AE02AE0AEEF00788C07 /* Build configuration list for PBXProject "moog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78B9AF72AE0AEF100788C07 /* Debug */,
+				E78B9AF82AE0AEF100788C07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78B9AF92AE0AEF100788C07 /* Build configuration list for PBXNativeTarget "moog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78B9AFA2AE0AEF100788C07 /* Debug */,
+				E78B9AFB2AE0AEF100788C07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7347E202AE8AED100FB729B /* XCRemoteSwiftPackageReference "SporthAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SporthAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.5.1;
+			};
+		};
+		E78B9AFC2AE0AF8300788C07 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		E78B9B012AE0AFF300788C07 /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitEX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		E78B9B042AE0B00600788C07 /* XCRemoteSwiftPackageReference "AudioKitUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.5;
+			};
+		};
+		E78B9B072AE0B02700788C07 /* XCRemoteSwiftPackageReference "Keyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/Keyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.6;
+			};
+		};
+		E78B9B0A2AE0B05300788C07 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7347E212AE8AED100FB729B /* SporthAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7347E202AE8AED100FB729B /* XCRemoteSwiftPackageReference "SporthAudioKit" */;
+			productName = SporthAudioKit;
+		};
+		E78B9AFD2AE0AF8300788C07 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78B9AFC2AE0AF8300788C07 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		E78B9B022AE0AFF300788C07 /* AudioKitEX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78B9B012AE0AFF300788C07 /* XCRemoteSwiftPackageReference "AudioKitEX" */;
+			productName = AudioKitEX;
+		};
+		E78B9B052AE0B00600788C07 /* AudioKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78B9B042AE0B00600788C07 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
+			productName = AudioKitUI;
+		};
+		E78B9B082AE0B02700788C07 /* Keyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78B9B072AE0B02700788C07 /* XCRemoteSwiftPackageReference "Keyboard" */;
+			productName = Keyboard;
+		};
+		E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78B9B0A2AE0B05300788C07 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E78B9ADD2AE0AEEF00788C07 /* Project object */;
+}
