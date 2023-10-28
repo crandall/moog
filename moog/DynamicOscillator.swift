@@ -34,32 +34,45 @@ class DynamicOscillatorConductor: ObservableObject, HasAudioEngine {
 struct DynamicOscillatorView: View {
     @StateObject var conductor = DynamicOscillatorConductor()
     @Environment(\.colorScheme) var colorScheme
-
+    @State private var selectedWaveform: String? = nil
+    
     var body: some View {
         VStack {
             Text(conductor.isPlaying ? "STOP" : "START")
                 .foregroundColor(.blue)
                 .onTapGesture {
-                conductor.isPlaying.toggle()
-            }
+                    conductor.isPlaying.toggle()
+                }
             Spacer()
             HStack {
                 Spacer()
-                Text("Sine").onTapGesture {
-                    conductor.osc.setWaveform(Table(.sine))
-                }
+                Text("Sine")
+                    .foregroundColor(selectedWaveform == "sine" ? .blue : .black)
+                    .onTapGesture {
+                        conductor.osc.setWaveform(Table(.sine))
+                        selectedWaveform = "sine"
+                    }
                 Spacer()
-                Text("Square").onTapGesture {
-                    conductor.osc.setWaveform(Table(.square))
-                }
+                Text("Square")
+                    .foregroundColor(selectedWaveform == "square" ? .blue : .black)
+                    .onTapGesture {
+                        conductor.osc.setWaveform(Table(.square))
+                        selectedWaveform = "square"
+                    }
                 Spacer()
-                Text("Triangle").onTapGesture {
-                    conductor.osc.setWaveform(Table(.triangle))
-                }
+                Text("Triangle")
+                    .foregroundColor(selectedWaveform == "triangle" ? .blue : .black)
+                    .onTapGesture {
+                        conductor.osc.setWaveform(Table(.triangle))
+                        selectedWaveform = "triangle"
+                    }
                 Spacer()
-                Text("Sawtooth").onTapGesture {
-                    conductor.osc.setWaveform(Table(.sawtooth))
-                }
+                Text("Sawtooth")
+                    .foregroundColor(selectedWaveform == "sawtooth" ? .blue : .black)
+                    .onTapGesture {
+                        conductor.osc.setWaveform(Table(.sawtooth))
+                        selectedWaveform = "sawtooth"
+                    }
                 Spacer()
             }
             Spacer()
@@ -68,10 +81,9 @@ struct DynamicOscillatorView: View {
                     ParameterRow(param: $0)
                 }
             }
-            NodeOutputView(conductor.osc)
-            CookbookKeyboard(noteOn: conductor.noteOn,
-                             noteOff: conductor.noteOff)
-
+            NodeOutputView(conductor.osc, color: .green, backgroundColor: .orange, bufferSize: 1024)
+//            NodeOutputView(conductor.osc)
+            CookbookKeyboard(noteOn: conductor.noteOn, noteOff: conductor.noteOff)
         }.cookbookNavBarTitle("Dynamic Oscillator")
             .onAppear {
                 conductor.start()
@@ -79,7 +91,60 @@ struct DynamicOscillatorView: View {
             .onDisappear {
                 conductor.stop()
             }
-            .background(colorScheme == .dark ?
-                         Color.clear : Color(red: 0.9, green: 0.9, blue: 0.9))
+            .background(colorScheme == .dark ? Color.clear : Color(red: 0.9, green: 0.9, blue: 0.9))
     }
 }
+
+
+//struct DynamicOscillatorView: View {
+//    @StateObject var conductor = DynamicOscillatorConductor()
+//    @Environment(\.colorScheme) var colorScheme
+//
+//    var body: some View {
+//        VStack {
+//            Text(conductor.isPlaying ? "STOP" : "START")
+//                .foregroundColor(.blue)
+//                .onTapGesture {
+//                conductor.isPlaying.toggle()
+//            }
+//            Spacer()
+//            HStack {
+//                Spacer()
+//                Text("Sine").onTapGesture {
+//                    conductor.osc.setWaveform(Table(.sine))
+//                }
+//                Spacer()
+//                Text("Square").onTapGesture {
+//                    conductor.osc.setWaveform(Table(.square))
+//                }
+//                Spacer()
+//                Text("Triangle").onTapGesture {
+//                    conductor.osc.setWaveform(Table(.triangle))
+//                }
+//                Spacer()
+//                Text("Sawtooth").onTapGesture {
+//                    conductor.osc.setWaveform(Table(.sawtooth))
+//                }
+//                Spacer()
+//            }
+//            Spacer()
+//            HStack {
+//                ForEach(conductor.osc.parameters) {
+//                    ParameterRow(param: $0)
+//                }
+//            }
+//            NodeOutputView(conductor.osc)
+//            CookbookKeyboard(noteOn: conductor.noteOn,
+//                             noteOff: conductor.noteOff)
+//
+//        }.cookbookNavBarTitle("Dynamic Oscillator")
+//            .onAppear {
+//                conductor.start()
+//            }
+//            .onDisappear {
+//                conductor.stop()
+//            }
+//            .background(colorScheme == .dark ?
+//                         Color.clear : Color(red: 0.9, green: 0.9, blue: 0.9))
+//    }
+//}
