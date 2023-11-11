@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOOG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1th-om-Mz3">
-                                <rect key="frame" x="465" y="102" width="94.5" height="36"/>
+                                <rect key="frame" x="765" y="102" width="94.5" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
-                                <rect key="frame" x="439" y="238" width="146" height="50"/>
+                                <rect key="frame" x="739" y="238" width="146" height="50"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Oscillator">
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-s8-fCq">
-                                <rect key="frame" x="378.5" y="368" width="267" height="50"/>
+                                <rect key="frame" x="678.5" y="368" width="267" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dynamic Oscillator">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                <rect key="frame" x="429" y="498" width="166" height="50"/>
+                                <rect key="frame" x="729" y="498" width="166" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Vocal Tract">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjv-4r-9AC">
-                                <rect key="frame" x="419.5" y="628" width="185" height="50"/>
+                                <rect key="frame" x="719.5" y="628" width="185" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Input Device">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -67,23 +67,43 @@
                                     <action selector="onInputDeviceDemo" destination="C5f-Hc-w1x" eventType="touchUpInside" id="mrU-8v-bdf"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bobMoogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="49O-pB-D4o">
+                                <rect key="frame" x="262" y="439" width="300" height="259"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="hA6-Hg-eFJ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundSchoolLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQO-Vg-VSj">
+                                <rect key="frame" x="262" y="706" width="300" height="259"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1th-om-Mz3" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="1oX-ZP-1RR"/>
+                            <constraint firstItem="1th-om-Mz3" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="300" id="1oX-ZP-1RR"/>
+                            <constraint firstItem="Mjv-4r-9AC" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="3aP-C8-V6M"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="80" id="95E-h2-qdz"/>
-                            <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="Nqp-F0-QFx"/>
+                            <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
+                            <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
                             <constraint firstItem="1th-om-Mz3" firstAttribute="top" secondItem="mNS-nd-imI" secondAttribute="top" constant="32" id="SFs-XO-fM7"/>
+                            <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
                             <constraint firstItem="Mjv-4r-9AC" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="80" id="TyS-wo-Cp9"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="UWw-su-jeM"/>
-                            <constraint firstItem="Mjv-4r-9AC" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="Xof-Da-uJm"/>
-                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="Y7y-xQ-bj2"/>
+                            <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="aU8-gN-O0i"/>
+                            <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
+                            <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="80" id="hVY-4R-oDj"/>
+                            <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="1th-om-Mz3" secondAttribute="bottom" constant="100" id="q2u-yX-Fwo"/>
+                            <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="tMU-HM-QT8"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="ykZ-e4-Vlw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>
+                    <connections>
+                        <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
+                        <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNm-o8-g9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,6 +173,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bobMoogLogo" width="817" height="410"/>
+        <image name="soundSchoolLogo" width="480" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

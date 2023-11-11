@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var foundationLogoIV : UIImageView!
+    @IBOutlet weak var schoolLogoIV : UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
