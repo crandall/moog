@@ -35,7 +35,8 @@ struct DynamicOscillatorView: View {
     @StateObject var conductor = DynamicOscillatorConductor()
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedWaveform: String? = nil
-    
+    @State private var nodeOutputColor: Color = Color(red: 66/255, green: 110/255, blue: 244/255, opacity: 1.0)
+
     var body: some View {
         VStack {
             Text(conductor.isPlaying ? "STOP" : "START")
@@ -81,8 +82,9 @@ struct DynamicOscillatorView: View {
                     ParameterRow(param: $0)
                 }
             }
-            NodeOutputView(conductor.osc, color: .green, backgroundColor: .orange, bufferSize: 1024)
-//            NodeOutputView(conductor.osc)
+            
+
+            NodeOutputView(conductor.osc, color: nodeOutputColor, backgroundColor: .black, bufferSize: 1024)
             CookbookKeyboard(noteOn: conductor.noteOn, noteOff: conductor.noteOff)
         }.cookbookNavBarTitle("Dynamic Oscillator")
             .onAppear {

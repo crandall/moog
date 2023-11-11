@@ -79,31 +79,31 @@ import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
 
-import AudioKit
-import AudioKitEX
-import AudioKitUI
-import SwiftUI
-
-import AudioKit
-import AudioKitEX
-import AudioKitUI
-import SwiftUI
 
 class OscillatorConductor: ObservableObject, HasAudioEngine {
     let engine = AudioEngine()
     var mic: AudioEngine.InputNode?
-    var osc = Oscillator()
+    var osc = DynamicOscillator()
     
+//    var osc = DynamicOscillator()
+    
+//    init() {
+//        osc.amplitude = 0.2
+//        engine.output = osc
+//    }
+
     init() {
         mic = engine.input
-        osc.amplitude = 0.2
-        
-        if let micNode = mic {
-            let mixer = Mixer(osc, micNode)
-            engine.output = mixer
-        } else {
-            engine.output = osc
-        }
+//        osc.amplitude = 0.2
+        osc.amplitude = 1.0
+        engine.output = osc
+
+//        if let micNode = mic {
+//            let mixer = Mixer(osc, micNode)
+//            engine.output = mixer
+//        } else {
+//            engine.output = osc
+//        }
     }
     
     func start() {
@@ -131,7 +131,8 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
 
 struct OscillatorView1: View {
     @StateObject var conductor = OscillatorConductor()
-    
+    @State private var nodeOutputColor: Color = Color(red: 66/255, green: 110/255, blue: 244/255, opacity: 1.0)
+
     var body: some View {
         VStack {
             Text(conductor.isPlaying ? "STOP" : "START")
@@ -139,7 +140,8 @@ struct OscillatorView1: View {
                 .onTapGesture {
                     conductor.isPlaying.toggle()
                 }
-            NodeOutputView(conductor.osc)
+            NodeOutputView(conductor.osc, color: nodeOutputColor, backgroundColor: .black, bufferSize: 1024)
+//            NodeOutputView(conductor.osc)
         }
         .onAppear {
             conductor.start()
