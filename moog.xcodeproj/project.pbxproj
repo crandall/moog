@@ -28,6 +28,7 @@
 		E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */; };
 		E79FC8E42B06C69700C9495E /* Oscillator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E32B06C69700C9495E /* Oscillator2.swift */; };
 		E79FC8E62B06D03800C9495E /* OscillatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E52B06D03800C9495E /* OscillatorViewController.swift */; };
+		E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E72B06EEA800C9495E /* Tuner.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -52,6 +53,7 @@
 		E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OscillatorView.xib; sourceTree = "<group>"; };
 		E79FC8E32B06C69700C9495E /* Oscillator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator2.swift; sourceTree = "<group>"; };
 		E79FC8E52B06D03800C9495E /* OscillatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorViewController.swift; sourceTree = "<group>"; };
+		E79FC8E72B06EEA800C9495E /* Tuner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -94,6 +96,7 @@
 		E78B9AE72AE0AEF000788C07 /* moog */ = {
 			isa = PBXGroup;
 			children = (
+				E79FC8E72B06EEA800C9495E /* Tuner.swift */,
 				E7FB6C592AE0B2530064EB8E /* Cookbook */,
 				E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */,
 				E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */,
@@ -218,6 +221,7 @@
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
+				E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */,
 				E79FC8E62B06D03800C9495E /* OscillatorViewController.swift in Sources */,
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
 				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,

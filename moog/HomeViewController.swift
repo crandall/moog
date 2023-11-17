@@ -47,16 +47,16 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onVocalTract(){
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-//            vc.demoType = .vocalTract
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "OscillatorViewController") as? OscillatorViewController {
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .tuner
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "OscillatorViewController") as? OscillatorViewController {
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
 
     }
 

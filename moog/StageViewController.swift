@@ -16,6 +16,7 @@ enum DemoType {
     case dynamicOscillator
     case vocalTract
     case inputDevice
+    case tuner
 }
 
 class StageViewController: UIViewController {
@@ -41,6 +42,8 @@ class StageViewController: UIViewController {
             audioKitView = AnyView(VocalTractView())
         case .inputDevice:
             audioKitView = AnyView(InputDeviceDemoView())
+        case .tuner:
+            audioKitView = AnyView(TunerView())
         case .none:
             print("none")
         }
