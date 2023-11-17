@@ -26,6 +26,8 @@
 		E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC1882AE1F66600BB26EC /* OscillatorView.swift */; };
 		E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */; };
 		E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */; };
+		E79FC8E42B06C69700C9495E /* Oscillator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E32B06C69700C9495E /* Oscillator2.swift */; };
+		E79FC8E62B06D03800C9495E /* OscillatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E52B06D03800C9495E /* OscillatorViewController.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -48,6 +50,8 @@
 		E78EC1882AE1F66600BB26EC /* OscillatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorView.swift; sourceTree = "<group>"; };
 		E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OscillatorView.xib; sourceTree = "<group>"; };
+		E79FC8E32B06C69700C9495E /* Oscillator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator2.swift; sourceTree = "<group>"; };
+		E79FC8E52B06D03800C9495E /* OscillatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorViewController.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -106,6 +110,8 @@
 				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
 				E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */,
 				E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */,
+				E79FC8E32B06C69700C9495E /* Oscillator2.swift */,
+				E79FC8E52B06D03800C9495E /* OscillatorViewController.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -212,12 +218,14 @@
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
+				E79FC8E62B06D03800C9495E /* OscillatorViewController.swift in Sources */,
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
 				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
 				E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */,
 				E7347E1F2AE8AE9300FB729B /* VocalTractOperation.swift in Sources */,
+				E79FC8E42B06C69700C9495E /* Oscillator2.swift in Sources */,
 				E7347E1D2AE8AD5000FB729B /* InputDeviceDemo.swift in Sources */,
 				E7347E1B2AE8AC9B00FB729B /* VocalTract.swift in Sources */,
 				E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */,

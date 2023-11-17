@@ -25,7 +25,18 @@ class HomeViewController: UIViewController {
             vc.demoType = .oscillator
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+
     }
+    
+    @IBAction func onOscillator2(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .oscillator2
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
     
     @IBAction func onDynamic(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,11 +47,17 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onVocalTract(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .vocalTract
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .vocalTract
+        if let vc = storyboard.instantiateViewController(withIdentifier: "OscillatorViewController") as? OscillatorViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
+
     }
 
     @IBAction func onInputDeviceDemo(){

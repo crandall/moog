@@ -10,6 +10,7 @@ import Tonic
 class DynamicOscillatorConductor: ObservableObject, HasAudioEngine {
     let engine = AudioEngine()
 
+
     func noteOn(pitch: Pitch, point _: CGPoint) {
         isPlaying = true
         osc.frequency = AUValue(pitch.midiNoteNumber).midiNoteToFrequency()
