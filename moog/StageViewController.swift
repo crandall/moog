@@ -33,7 +33,7 @@ class StageViewController: UIViewController {
         // Create a SwiftUI view and embed it in a UIHostingController
         switch demoType {
         case .oscillator:
-            audioKitView = AnyView(OscillatorView1())
+            audioKitView = AnyView(Oscillator1View())
         case .oscillator2:
             audioKitView = AnyView(OscillatorView2())
         case .dynamicOscillator:
@@ -43,7 +43,8 @@ class StageViewController: UIViewController {
         case .inputDevice:
             audioKitView = AnyView(InputDeviceDemoView())
         case .tuner:
-            audioKitView = AnyView(TunerView())
+            break
+//            audioKitView = AnyView(TunerView())
         case .none:
             print("none")
         }

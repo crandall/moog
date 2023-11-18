@@ -5,103 +5,154 @@
 //  Created by Mike Crandall on 10/18/23.
 //
 
-
 import AudioKit
 import AudioKitEX
 import AudioKitUI
 import AudioToolbox
-import Keyboard
 import SoundpipeAudioKit
 import SwiftUI
-import Tonic
-import AVFoundation
 
-import AudioKit
-import SoundpipeAudioKit
+struct OscillatorData {
+    var pitch: Float = 0.0
+    var amplitude: Float = 0.0
+    var noteNameWithSharps = "-"
+    var noteNameWithFlats = "-"
+}
 
-class OscillatorConductor1: ObservableObject, HasAudioEngine {
-    let engine = AudioEngine()
-    var mic: AudioEngine.InputNode?
-    var tracker: PitchTap?
-    var osc = Oscillator()
+class OscillatorConductor: ObservableObject, HasAudioEngine {
+    @Published var data = OscillatorData()
     
-    @Published var isPlaying: Bool = false {
-        didSet { isPlaying ? startOsc() : osc.stop() }
-    }
+    let engine = AudioEngine()
+    let initialDevice: Device
+    
+    let mic: AudioEngine.InputNode
+    let tappableNodeA: Fader
+    let tappableNodeB: Fader
+    let tappableNodeC: Fader
+    let silence: Fader
+    
+    var tracker: PitchTap!
+    
+    let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
+    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     
     init() {
-        // Initialize the microphone
-        mic = engine.input
+        guard let input = engine.input else { fatalError() }
         
-        // Initialize the PitchTap to analyze the microphone input
-        if let mic = engine.input {
-            tracker = PitchTap(mic, handler: { pitch, amplitude in
-                print("pitchTap")
-            })
-//            tracker = PitchTap(mic) { pitch, amplitude in
-//                DispatchQueue.main.async {
-//                    // Use pitch and amplitude data to control the oscillator
-//                    // This is a basic example, you'll need to adjust it to your needs
-//                    self.osc.frequency = AUValue(pitch[0])
-//                    self.osc.amplitude = AUValue(amplitude[0])
-//                }
-//                print("yo")
-//            }
-        } else {
-            print("error")
+        guard let device = engine.inputDevice else { fatalError() }
+        
+        initialDevice = device
+        
+        mic = input
+        tappableNodeA = Fader(mic)
+        tappableNodeB = Fader(tappableNodeA)
+        tappableNodeC = Fader(tappableNodeB)
+        silence = Fader(tappableNodeC, gain: 0)
+        engine.output = silence
+        
+        tracker = PitchTap(mic) { pitch, amp in
+            DispatchQueue.main.async {
+                self.update(pitch[0], amp[0])
+            }
+        }
+        tracker.start()
+    }
+    
+    func update(_ pitch: AUValue, _ amp: AUValue) {
+        // Reduces sensitivity to background noise to prevent random / fluctuating data.
+        guard amp > 0.1 else { return }
+        
+        data.pitch = pitch
+        data.amplitude = amp
+        
+        var frequency = pitch
+        while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
+            frequency /= 2.0
+        }
+        while frequency < Float(noteFrequencies[0]) {
+            frequency *= 2.0
         }
         
-        // Setting the oscillator as the audio output
-        engine.output = osc
-    }
-    
-    func startOsc(){
-        osc.start()
-        tracker?.start()
-    }
-    
-    func start() {
-        do {
-            // Start the engine and the pitch tracker
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setActive(true)
-            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: [.defaultToSpeaker, .mixWithOthers])
-            try engine.start()
-//            osc.start()
-//            tracker.start()
-        } catch {
-            print("AudioEngine did not start. Error: \(error)")
+        var minDistance: Float = 10000.0
+        var index = 0
+        
+        for possibleIndex in 0 ..< noteFrequencies.count {
+            let distance = fabsf(Float(noteFrequencies[possibleIndex]) - frequency)
+            if distance < minDistance {
+                index = possibleIndex
+                minDistance = distance
+            }
         }
-    }
-    
-    func stop() {
-        // Stop the oscillator, the pitch tracker, and the engine
-        osc.stop()
-        tracker?.stop()
-        engine.stop()
+        let octave = Int(log2f(pitch / frequency))
+        data.noteNameWithSharps = "\(noteNamesWithSharps[index])\(octave)"
+        data.noteNameWithFlats = "\(noteNamesWithFlats[index])\(octave)"
     }
 }
 
-struct OscillatorView1: View {
-    @StateObject var conductor = OscillatorConductor1()
-    @Environment(\.colorScheme) var colorScheme
+struct Oscillator1View: View {
+    @StateObject var conductor = OscillatorConductor()
     
     var body: some View {
         VStack {
-            Text(conductor.isPlaying ? "STOP" : "START")
-                .foregroundColor(.blue)
-                .onTapGesture {
-                    conductor.isPlaying.toggle()
-                }
+            HStack {
+                Text("Frequency")
+                Spacer()
+                Text("\(conductor.data.pitch, specifier: "%0.1f")")
+            }.padding()
             
-            // Any additional UI components can go here
-            NodeOutputView(conductor.osc)
-
-        }.onAppear {
+            HStack {
+                Text("Amplitude")
+                Spacer()
+                Text("\(conductor.data.amplitude, specifier: "%0.1f")")
+            }.padding()
+            
+            HStack {
+                Text("Note Name")
+                Spacer()
+                Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
+            }.padding()
+            
+            InputDevicePicker(device: conductor.initialDevice)
+            
+            NodeRollingView(conductor.tappableNodeA).clipped()
+            
+            NodeOutputView(conductor.tappableNodeB).clipped()
+            
+            NodeFFTView(conductor.tappableNodeC).clipped()
+        }
+        .cookbookNavBarTitle("Tuner")
+        .onAppear {
             conductor.start()
-        }.onDisappear {
+        }
+        .onDisappear {
             conductor.stop()
-        }.background(colorScheme == .dark ? Color.clear : Color(red: 0.9, green: 0.9, blue: 0.9))
+        }
     }
 }
 
+struct InputDevicePicker: View {
+    @State var device: Device
+    
+    var body: some View {
+        Picker("Input: \(device.deviceID)", selection: $device) {
+            ForEach(getDevices(), id: \.self) {
+                Text($0.deviceID)
+            }
+        }
+        .pickerStyle(MenuPickerStyle())
+        .onChange(of: device, perform: setInputDevice)
+    }
+    
+    func getDevices() -> [Device] {
+        AudioEngine.inputDevices.compactMap { $0 }
+    }
+    
+    func setInputDevice(to device: Device) {
+        do {
+            try AudioEngine.setInputDevice(device)
+        } catch let err {
+            print(err)
+        }
+    }
+}

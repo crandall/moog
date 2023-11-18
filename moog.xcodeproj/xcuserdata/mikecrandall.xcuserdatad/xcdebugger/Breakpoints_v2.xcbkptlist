@@ -7,212 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0C399A07-42C1-4E05-BB0B-50A32D69F600"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/Oscillator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "init()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A475B42F-9908-4A2A-B652-ECE1344BFB84"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/Oscillator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "start()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A475B42F-9908-4A2A-B652-ECE1344BFB84 - ebafd6cd32e92a5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.start() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "512">
-               </Location>
-               <Location
-                  uuid = "A475B42F-9908-4A2A-B652-ECE1344BFB84 - ebafd6cd32e92a5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.start() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "A475B42F-9908-4A2A-B652-ECE1344BFB84 - ebafd6cd32e92a5d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.start() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F99DC16-EECC-40F4-8B8B-3F9CCCD9A88B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/Oscillator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "startOsc()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5F99DC16-EECC-40F4-8B8B-3F9CCCD9A88B - ebafd6cd32e92a3a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.start() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "5F99DC16-EECC-40F4-8B8B-3F9CCCD9A88B - 20ee154a6ffa193e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.startOsc() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  uuid = "5F99DC16-EECC-40F4-8B8B-3F9CCCD9A88B - 20ee154a6ffa193e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.startOsc() -&gt; ()"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "45D709D9-91E8-4B72-8C88-31ABBC3AB32F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/Oscillator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "stop()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F4FC655E-5F87-4CB6-AA19-D66F2BDBEC79"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/Oscillator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "init()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F4FC655E-5F87-4CB6-AA19-D66F2BDBEC79 - 9fb555c61d7e6988"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.OscillatorConductor1.init() -&gt; moog.OscillatorConductor1"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "728">
-               </Location>
-               <Location
-                  uuid = "F4FC655E-5F87-4CB6-AA19-D66F2BDBEC79 - 22b916594b96d2de"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;Swift.Float&gt;, Swift.Array&lt;Swift.Float&gt;) -&gt; () in moog.OscillatorConductor1.init() -&gt; moog.OscillatorConductor1"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7870F6DC-F27F-4730-98AA-E7A288BE0476"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -223,22 +17,6 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "init(_:bufferSize:handler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CC45DC33-48B5-4B70-9E2F-A77620F16A47"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../Library/Developer/Xcode/DerivedData/moog-ftwabimkkmysyvdqioyxvgeusxlg/SourcePackages/checkouts/SoundpipeAudioKit/Sources/SoundpipeAudioKit/PitchTap.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "doHandleTapBlock(buffer:at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -429,6 +207,54 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "update(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8584B3A1-608A-4A8E-8739-97FE92958341"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/OscillatorView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init?(coder:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F58CE62-A471-45D1-81C3-C1D5238B1EF9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/OscillatorView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "init(frame:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C54A054C-4C83-418F-A6FD-016D4E040764"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/OscillatorView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "commonInit()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
