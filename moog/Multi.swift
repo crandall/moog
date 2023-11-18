@@ -26,9 +26,13 @@ class MultiConductor: ObservableObject, HasAudioEngine {
     let initialDevice: Device
     
     let mic: AudioEngine.InputNode
-    let tappableNodeA: Fader
-    let tappableNodeB: Fader
+    let rawOutputNode: Fader
+    let rawOutputScaledNode: Fader
     let tappableNodeC: Fader
+    let amplitudeNode: Fader
+    let dryWetNode: Fader
+    let spectrogramNode: Fader
+
     let silence: Fader
     
     var tracker: PitchTap!
@@ -45,9 +49,15 @@ class MultiConductor: ObservableObject, HasAudioEngine {
         initialDevice = device
         
         mic = input
-        tappableNodeA = Fader(mic)
-        tappableNodeB = Fader(tappableNodeA)
-        tappableNodeC = Fader(tappableNodeB)
+        rawOutputNode = Fader(mic)
+        rawOutputScaledNode = Fader(rawOutputNode)
+        amplitudeNode = Fader(rawOutputScaledNode)
+        dryWetNode = Fader(amplitudeNode)
+        spectrogramNode = Fader(dryWetNode)
+
+
+        tappableNodeC = Fader(spectrogramNode)
+        
         silence = Fader(tappableNodeC, gain: 0)
         engine.output = silence
         
@@ -95,46 +105,65 @@ struct MultiView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Frequency")
-                Spacer()
-                Text("\(conductor.data.pitch, specifier: "%0.1f")")
-            }.padding()
-            
-            HStack {
-                Text("Amplitude")
-                Spacer()
-                Text("\(conductor.data.amplitude, specifier: "%0.1f")")
-            }.padding()
-            
-            HStack {
-                Text("Note Name")
-                Spacer()
-                Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
-            }.padding()
-            
+
             OscillatorDevicePicker(device: conductor.initialDevice)
-            
-            RawOutputView(conductor.tappableNodeA, strokeColor: .green)
-                .clipped()
-                .background(Color.black)
-            
-            RawOutputView(conductor.tappableNodeB,
-                          //                          bufferSize: 1024,
-                          strokeColor: .red,
-                          isNormalized: false,
-                          scaleFactor: 10.0) // Set your scale factor here
-            .clipped()
-            .background(Color.black)
-            
-            //            RawOutputView(conductor.tappableNodeA, strokeColor: .red)
-            //                .clipped()
-            //                .background(Color.black)
-            //            NodeRollingView(conductor.tappableNodeA).clipped()
-            
-            //            NodeOutputView(conductor.tappableNodeB).clipped()
-            
-            NodeFFTView(conductor.tappableNodeC).clipped()
+
+            HStack {
+                VStack{
+                    Text("RawOutputView")
+                        .font(.headline)
+                        .padding(.top)
+                    
+                    RawOutputView(conductor.rawOutputNode, strokeColor: .green)
+                        .clipped()
+                        .background(Color.black)
+                }
+                
+                VStack{
+                    Text("RawOutputView scale * 10.0")
+                        .font(.headline)
+                        .padding(.top)
+                    RawOutputView(conductor.rawOutputScaledNode,
+                                  //                          bufferSize: 1024,
+                                  strokeColor: .red,
+                                  isNormalized: false,
+                                  scaleFactor: 10.0) // Set your scale factor here
+                    .clipped()
+                    .background(Color.black)
+                }
+                
+                VStack{
+                    Text("AmplitudeView")
+                        .font(.headline)
+                        .padding(.top)
+                    AmplitudeView(conductor.amplitudeNode)
+                    .clipped()
+                    .background(Color.black)
+                }
+
+            }
+            HStack{
+                VStack{
+                    Text("NodeFFTView scale * 10.0")
+                        .font(.headline)
+                        .padding(.top)
+                    NodeFFTView(conductor.tappableNodeC).clipped()
+                }
+                VStack{
+                    Text("DryWetMixView")
+                        .font(.headline)
+                        .padding(.top)
+                    DryWetMixView(dry: conductor.dryWetNode, wet: conductor.dryWetNode, mix: conductor.dryWetNode)
+                }
+                VStack{
+                    Text("Spectrogram")
+                        .font(.headline)
+                        .padding(.top)
+                    SpectrogramView(node: conductor.spectrogramNode)
+                }
+
+            }
+
         }
         .cookbookNavBarTitle("Tuner")
         .onAppear {

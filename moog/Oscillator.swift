@@ -115,9 +115,14 @@ struct OscillatorView: View {
             
             OscillatorDevicePicker(device: conductor.initialDevice)
             
+//            RawOutputView(conductor.tappableNodeA).clipped()
             RawOutputView(conductor.tappableNodeA, strokeColor: .green)
                 .clipped()
                 .background(Color.black)
+
+//            RawOutputView(conductor.tappableNodeB, strokeColor: .red)
+//                .clipped()
+//                .background(Color.black)
 
             RawOutputView(conductor.tappableNodeB,
 //                          bufferSize: 1024,
@@ -134,7 +139,7 @@ struct OscillatorView: View {
             
 //            NodeOutputView(conductor.tappableNodeB).clipped()
             
-            NodeFFTView(conductor.tappableNodeC).clipped()
+//            NodeFFTView(conductor.tappableNodeC).clipped()
         }
         .cookbookNavBarTitle("Tuner")
         .onAppear {
