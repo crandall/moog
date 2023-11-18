@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72D0FD92B095C560081B5EE /* Multi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D0FD82B095C560081B5EE /* Multi.swift */; };
 		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
 		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72D0FD82B095C560081B5EE /* Multi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi.swift; sourceTree = "<group>"; };
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
 		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
 				E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */,
 				E79FC8E72B06EEA800C9495E /* Tuner.swift */,
+				E72D0FD82B095C560081B5EE /* Multi.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
+				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,

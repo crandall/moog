@@ -1,8 +1,8 @@
 //
-//  Oscillator.swift
+//  Multi.swift
 //  moog
 //
-//  Created by Mike Crandall on 10/18/23.
+//  Created by Mike Crandall on 11/18/23.
 //
 
 import AudioKit
@@ -12,15 +12,15 @@ import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
 
-struct OscillatorData {
+struct MultiData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
     var noteNameWithSharps = "-"
     var noteNameWithFlats = "-"
 }
 
-class OscillatorConductor: ObservableObject, HasAudioEngine {
-    @Published var data = OscillatorData()
+class MultiConductor: ObservableObject, HasAudioEngine {
+    @Published var data = MultiData()
     
     let engine = AudioEngine()
     let initialDevice: Device
@@ -90,8 +90,8 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
     }
 }
 
-struct OscillatorView: View {
-    @StateObject var conductor = OscillatorConductor()
+struct MultiView: View {
+    @StateObject var conductor = MultiConductor()
     
     var body: some View {
         VStack {
@@ -118,21 +118,21 @@ struct OscillatorView: View {
             RawOutputView(conductor.tappableNodeA, strokeColor: .green)
                 .clipped()
                 .background(Color.black)
-
+            
             RawOutputView(conductor.tappableNodeB,
-//                          bufferSize: 1024,
+                          //                          bufferSize: 1024,
                           strokeColor: .red,
                           isNormalized: false,
                           scaleFactor: 10.0) // Set your scale factor here
             .clipped()
             .background(Color.black)
             
-//            RawOutputView(conductor.tappableNodeA, strokeColor: .red)
-//                .clipped()
-//                .background(Color.black)
-//            NodeRollingView(conductor.tappableNodeA).clipped()
+            //            RawOutputView(conductor.tappableNodeA, strokeColor: .red)
+            //                .clipped()
+            //                .background(Color.black)
+            //            NodeRollingView(conductor.tappableNodeA).clipped()
             
-//            NodeOutputView(conductor.tappableNodeB).clipped()
+            //            NodeOutputView(conductor.tappableNodeB).clipped()
             
             NodeFFTView(conductor.tappableNodeC).clipped()
         }
@@ -146,7 +146,7 @@ struct OscillatorView: View {
     }
 }
 
-struct OscillatorDevicePicker: View {
+struct MultiDevicePicker: View {
     @State var device: Device
     
     var body: some View {

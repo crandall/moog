@@ -56,6 +56,17 @@
                                     <action selector="onTuner" destination="C5f-Hc-w1x" eventType="touchUpInside" id="xTX-Aa-ghH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-bX-nKI">
+                                <rect key="frame" x="736.5" y="628" width="151" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="MultiView">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onMultiView" destination="C5f-Hc-w1x" eventType="touchUpInside" id="7Q4-y7-0cF"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bobMoogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="49O-pB-D4o">
                                 <rect key="frame" x="262" y="439" width="300" height="259"/>
                                 <constraints>
@@ -72,6 +83,7 @@
                             <constraint firstItem="1th-om-Mz3" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="300" id="1oX-ZP-1RR"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="80" id="95E-h2-qdz"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
+                            <constraint firstItem="FCV-bX-nKI" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="80" id="Dn8-jS-i0H"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
                             <constraint firstItem="1th-om-Mz3" firstAttribute="top" secondItem="mNS-nd-imI" secondAttribute="top" constant="32" id="SFs-XO-fM7"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
@@ -80,6 +92,7 @@
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="80" id="hVY-4R-oDj"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
+                            <constraint firstItem="FCV-bX-nKI" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="iNy-db-kgH"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="1th-om-Mz3" secondAttribute="bottom" constant="100" id="q2u-yX-Fwo"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="tMU-HM-QT8"/>

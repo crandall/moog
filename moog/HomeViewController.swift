@@ -43,6 +43,14 @@ class HomeViewController: UIViewController {
         }
     }
 
+    @IBAction func onMultiView(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .multiview
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
 
 
 }
