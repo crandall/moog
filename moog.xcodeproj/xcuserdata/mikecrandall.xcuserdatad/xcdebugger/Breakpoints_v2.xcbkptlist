@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3FDC324F-6BDE-43E8-9A14-2456EDB6748F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "onVocalTract()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0A6D0833-8DA8-4E03-A0A5-7F1748809C61"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -255,6 +239,521 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "commonInit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "934B8FE7-B8C4-4665-9D0D-B3A23D128C35"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/OscillatorViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "235AF038-1FBD-4B87-AEE2-83A2239F0B49"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/StageViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71EFCAAD-1887-4F98-861A-62B13678A61D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Tuner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "TunerData"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "71EFCAAD-1887-4F98-861A-62B13678A61D - 457899729da425fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerData.init() -&gt; moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "71EFCAAD-1887-4F98-861A-62B13678A61D - 6e5fce5eef9d6784"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of moog.TunerData.init(pitch: Swift.Float, amplitude: Swift.Float, noteNameWithSharps: Swift.String, noteNameWithFlats: Swift.String) -&gt; moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Tuner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "TunerConductor"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - b2296a15326ff88e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of moog.TunerConductor.data : moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 8c5cc9fa1978eab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.data.getter : moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 9aff3737da1be088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.data.setter : moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 2bb6a555f2dda99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.data.modify : moog.TunerData"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - c53a4d8300bffcd5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.data.modify : moog.TunerData with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 3e8ec3d5387b29e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.$data.getter : Combine.Published&lt;moog.TunerData&gt;.Publisher"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - a79bf93e4a1d198a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.$data.setter : Combine.Published&lt;moog.TunerData&gt;.Publisher"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 37098497345c66b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.$data.modify : Combine.Published&lt;moog.TunerData&gt;.Publisher"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "5E242C04-0F4C-44BD-A85C-4154BAA5D424 - 53b095dcb7bd9534"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.TunerConductor.$data.modify : Combine.Published&lt;moog.TunerData&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Tuner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "InputDevicePicker"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - 65bcfba6b91ba95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of moog.InputDevicePicker.device : AudioKit.Device"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - 197edae3154338bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.device.getter : AudioKit.Device"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - e2b4ad73e66e1d4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.device.setter : AudioKit.Device"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - 8c792d1eb004c43c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.device.modify : AudioKit.Device"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - 292d1bf1aec46fa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.device.modify : AudioKit.Device with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "2FC69A2C-4CCD-4717-BCAE-041DAB4D015B - d5f2c3a800376287"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.$device.getter : SwiftUI.Binding&lt;AudioKit.Device&gt;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66982164-D79C-4933-8224-8F902636F336"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Tuner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "getDevices()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "66982164-D79C-4933-8224-8F902636F336 - da390a5c5b052d81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.InputDevicePicker.getDevices() -&gt; Swift.Array&lt;AudioKit.Device&gt;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "66982164-D79C-4933-8224-8F902636F336 - 2362aec987fe35e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AudioKit.Device) -&gt; Swift.Optional&lt;AudioKit.Device&gt; in moog.InputDevicePicker.getDevices() -&gt; Swift.Array&lt;AudioKit.Device&gt;"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Tuner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3AF0CC3-B7F6-4572-85BE-089D51A56F4A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Tuner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "setInputDevice(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A4399DF-1862-44A3-8C86-BA45321B7A05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/StageViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B528D99E-D666-48E2-8A39-CA86B2FEFFDE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Oscillator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "Oscillator1View"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B528D99E-D666-48E2-8A39-CA86B2FEFFDE - c49b146cfb27477e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of moog.Oscillator1View.conductor : moog.OscillatorConductor"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "B528D99E-D666-48E2-8A39-CA86B2FEFFDE - bb27812aaf4f08bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.Oscillator1View.conductor.getter : moog.OscillatorConductor"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "B528D99E-D666-48E2-8A39-CA86B2FEFFDE - 90eff0c978544f81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "moog.Oscillator1View.$conductor.getter : SwiftUI.ObservedObject&lt;moog.OscillatorConductor&gt;.Wrapper"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "B528D99E-D666-48E2-8A39-CA86B2FEFFDE - 9f1176212889dde6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of moog.Oscillator1View.init(conductor: @autoclosure () -&gt; moog.OscillatorConductor) -&gt; moog.Oscillator1View"
+                  moduleName = "moog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Oscillator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F08940FF-7A88-4E3A-AECE-EE740D1E7FE2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/Oscillator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

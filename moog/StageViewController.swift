@@ -12,10 +12,7 @@ import SwiftUI
 
 enum DemoType {
     case oscillator
-    case oscillator2
     case dynamicOscillator
-    case vocalTract
-    case inputDevice
     case tuner
 }
 
@@ -34,17 +31,10 @@ class StageViewController: UIViewController {
         switch demoType {
         case .oscillator:
             audioKitView = AnyView(Oscillator1View())
-        case .oscillator2:
-            audioKitView = AnyView(OscillatorView2())
         case .dynamicOscillator:
             audioKitView = AnyView(DynamicOscillatorView())
-        case .vocalTract:
-            audioKitView = AnyView(VocalTractView())
-        case .inputDevice:
-            audioKitView = AnyView(InputDeviceDemoView())
         case .tuner:
-            break
-//            audioKitView = AnyView(TunerView())
+            audioKitView = AnyView(TunerView())
         case .none:
             print("none")
         }

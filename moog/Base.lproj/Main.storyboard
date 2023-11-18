@@ -46,36 +46,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                <rect key="frame" x="729" y="498" width="166" height="50"/>
+                                <rect key="frame" x="764" y="498" width="96.5" height="50"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Vocal Tract">
+                                <buttonConfiguration key="configuration" style="plain" title="Tuner">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onVocalTract" destination="C5f-Hc-w1x" eventType="touchUpInside" id="IbT-8b-GQh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjv-4r-9AC">
-                                <rect key="frame" x="719.5" y="628" width="185" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Input Device">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onInputDeviceDemo" destination="C5f-Hc-w1x" eventType="touchUpInside" id="mrU-8v-bdf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwd-6j-v4g">
-                                <rect key="frame" x="729" y="758" width="166.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Oscillator2">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onOscillator2" destination="C5f-Hc-w1x" eventType="touchUpInside" id="lB3-9N-cg8"/>
+                                    <action selector="onTuner" destination="C5f-Hc-w1x" eventType="touchUpInside" id="xTX-Aa-ghH"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bobMoogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="49O-pB-D4o">
@@ -91,16 +69,12 @@
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qwd-6j-v4g" firstAttribute="top" secondItem="Mjv-4r-9AC" secondAttribute="bottom" constant="80" id="07R-x8-oDc"/>
                             <constraint firstItem="1th-om-Mz3" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="300" id="1oX-ZP-1RR"/>
-                            <constraint firstItem="Mjv-4r-9AC" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="3aP-C8-V6M"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="80" id="95E-h2-qdz"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
-                            <constraint firstItem="qwd-6j-v4g" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="Lr8-0i-PGz"/>
                             <constraint firstItem="1th-om-Mz3" firstAttribute="top" secondItem="mNS-nd-imI" secondAttribute="top" constant="32" id="SFs-XO-fM7"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
-                            <constraint firstItem="Mjv-4r-9AC" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="80" id="TyS-wo-Cp9"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="aU8-gN-O0i"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
@@ -109,7 +83,6 @@
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="1th-om-Mz3" secondAttribute="bottom" constant="100" id="q2u-yX-Fwo"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="tMU-HM-QT8"/>
-                            <constraint firstItem="qwd-6j-v4g" firstAttribute="leading" secondItem="1th-om-Mz3" secondAttribute="trailing" constant="-130.5" id="xok-vE-PnW"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="1th-om-Mz3" secondAttribute="centerX" id="ykZ-e4-Vlw"/>
                         </constraints>
                     </view>

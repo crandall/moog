@@ -113,7 +113,7 @@ struct Oscillator1View: View {
                 Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
             }.padding()
             
-            InputDevicePicker(device: conductor.initialDevice)
+            OscillatorDevicePicker(device: conductor.initialDevice)
             
             NodeRollingView(conductor.tappableNodeA).clipped()
             
@@ -131,7 +131,7 @@ struct Oscillator1View: View {
     }
 }
 
-struct InputDevicePicker: View {
+struct OscillatorDevicePicker: View {
     @State var device: Device
     
     var body: some View {
