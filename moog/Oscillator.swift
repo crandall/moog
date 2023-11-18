@@ -90,7 +90,7 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
     }
 }
 
-struct Oscillator1View: View {
+struct OscillatorView: View {
     @StateObject var conductor = OscillatorConductor()
     
     var body: some View {
@@ -115,11 +115,31 @@ struct Oscillator1View: View {
             
             OscillatorDevicePicker(device: conductor.initialDevice)
             
-            NodeRollingView(conductor.tappableNodeA).clipped()
+//            RawOutputView(conductor.tappableNodeA).clipped()
+            RawOutputView(conductor.tappableNodeA, strokeColor: .green)
+                .clipped()
+                .background(Color.black)
+
+//            RawOutputView(conductor.tappableNodeB, strokeColor: .red)
+//                .clipped()
+//                .background(Color.black)
+
+            RawOutputView(conductor.tappableNodeB,
+//                          bufferSize: 1024,
+                          strokeColor: .red,
+                          isNormalized: false,
+                          scaleFactor: 10.0) // Set your scale factor here
+            .clipped()
+            .background(Color.black)
             
-            NodeOutputView(conductor.tappableNodeB).clipped()
+//            RawOutputView(conductor.tappableNodeA, strokeColor: .red)
+//                .clipped()
+//                .background(Color.black)
+//            NodeRollingView(conductor.tappableNodeA).clipped()
             
-            NodeFFTView(conductor.tappableNodeC).clipped()
+//            NodeOutputView(conductor.tappableNodeB).clipped()
+            
+//            NodeFFTView(conductor.tappableNodeC).clipped()
         }
         .cookbookNavBarTitle("Tuner")
         .onAppear {

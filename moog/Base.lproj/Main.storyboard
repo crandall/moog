@@ -96,33 +96,6 @@
             </objects>
             <point key="canvasLocation" x="602.9296875" y="17.569546120058565"/>
         </scene>
-        <!--Oscillator View Controller-->
-        <scene sceneID="c1A-v3-F8h">
-            <objects>
-                <viewController storyboardIdentifier="OscillatorViewController" id="6Ws-DP-c8w" customClass="OscillatorViewController" customModule="moog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HVy-0x-ioQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OscillatorViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rJ-NU-RdI">
-                                <rect key="frame" x="306" y="94" width="412" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="pj1-WJ-sSD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="5rJ-NU-RdI" firstAttribute="centerX" secondItem="pj1-WJ-sSD" secondAttribute="centerX" id="7ZR-CY-QzP"/>
-                            <constraint firstItem="5rJ-NU-RdI" firstAttribute="top" secondItem="pj1-WJ-sSD" secondAttribute="top" constant="74" id="VpP-kA-q5T"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1DY-j9-vZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="595" y="697"/>
-        </scene>
         <!--Stage View Controller-->
         <scene sceneID="n7r-Am-qwi">
             <objects>
