@@ -363,6 +363,7 @@
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Moog;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -392,6 +393,7 @@
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Moog;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

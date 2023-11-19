@@ -15,13 +15,12 @@ import SwiftUI
 struct OscillatorData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
-    var noteNameWithSharps = "-"
-    var noteNameWithFlats = "-"
 }
 
 class OscillatorConductor: ObservableObject, HasAudioEngine {
     @Published var data = OscillatorData()
-    
+    @Published var gain: AUValue = 1.0
+
     let engine = AudioEngine()
     let initialDevice: Device
     
@@ -32,10 +31,6 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
     let silence: Fader
     
     var tracker: PitchTap!
-    
-    let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
-    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     
     init() {
         guard let input = engine.input else { fatalError() }
@@ -66,27 +61,8 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
         data.pitch = pitch
         data.amplitude = amp
         
-        var frequency = pitch
-        while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
-            frequency /= 2.0
-        }
-        while frequency < Float(noteFrequencies[0]) {
-            frequency *= 2.0
-        }
-        
-        var minDistance: Float = 10000.0
-        var index = 0
-        
-        for possibleIndex in 0 ..< noteFrequencies.count {
-            let distance = fabsf(Float(noteFrequencies[possibleIndex]) - frequency)
-            if distance < minDistance {
-                index = possibleIndex
-                minDistance = distance
-            }
-        }
-        let octave = Int(log2f(pitch / frequency))
-        data.noteNameWithSharps = "\(noteNamesWithSharps[index])\(octave)"
-        data.noteNameWithFlats = "\(noteNamesWithFlats[index])\(octave)"
+        tappableNodeA.gain = gain
+
     }
 }
 
@@ -95,6 +71,24 @@ struct OscillatorView: View {
     
     var body: some View {
         VStack {
+
+            Spacer()
+            Text("Oscillator")
+            RawOutputView(conductor.tappableNodeA,
+                          strokeColor: .green)
+            .clipped()
+            .background(Color.black)
+
+            Text("Oscillator * 5.0")
+            RawOutputView(conductor.tappableNodeB,
+                          //                          bufferSize: 1024,
+                          strokeColor: .green,
+                          isNormalized: false,
+                          scaleFactor: 10.0) // Set your scale factor here
+            .clipped()
+            .background(Color.black)
+
+            
             HStack {
                 Text("Frequency")
                 Spacer()
@@ -107,39 +101,23 @@ struct OscillatorView: View {
                 Text("\(conductor.data.amplitude, specifier: "%0.1f")")
             }.padding()
             
-            HStack {
-                Text("Note Name")
-                Spacer()
-                Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
-            }.padding()
+            VStack {
+
+                VStack {
+                    Text("Adjust the gain")
+                        .font(.subheadline)
+                    
+                    Slider(value: $conductor.gain, in: 0.0...1.0)
+                }
+//                ParameterSlider(text: "Gain",
+//                                parameter: $conductor.gain,
+//                                range: 0.0...1.0,
+//                                units: "Units")
+            }
             
             OscillatorDevicePicker(device: conductor.initialDevice)
             
-//            RawOutputView(conductor.tappableNodeA).clipped()
-            RawOutputView(conductor.tappableNodeA, strokeColor: .green)
-                .clipped()
-                .background(Color.black)
-
-//            RawOutputView(conductor.tappableNodeB, strokeColor: .red)
-//                .clipped()
-//                .background(Color.black)
-
-            RawOutputView(conductor.tappableNodeB,
-//                          bufferSize: 1024,
-                          strokeColor: .red,
-                          isNormalized: false,
-                          scaleFactor: 10.0) // Set your scale factor here
-            .clipped()
-            .background(Color.black)
             
-//            RawOutputView(conductor.tappableNodeA, strokeColor: .red)
-//                .clipped()
-//                .background(Color.black)
-//            NodeRollingView(conductor.tappableNodeA).clipped()
-            
-//            NodeOutputView(conductor.tappableNodeB).clipped()
-            
-//            NodeFFTView(conductor.tappableNodeC).clipped()
         }
         .cookbookNavBarTitle("Tuner")
         .onAppear {
@@ -149,6 +127,7 @@ struct OscillatorView: View {
             conductor.stop()
         }
     }
+
 }
 
 struct OscillatorDevicePicker: View {

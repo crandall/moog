@@ -120,41 +120,51 @@ struct MultiView: View {
                 }
                 
                 VStack{
-                    Text("RawOutputView scale * 10.0")
+                    Text("RawOutputView scale * 5.0")
                         .font(.headline)
                         .padding(.top)
                     RawOutputView(conductor.rawOutputScaledNode,
                                   //                          bufferSize: 1024,
-                                  strokeColor: .red,
+                                  strokeColor: .green,
                                   isNormalized: false,
-                                  scaleFactor: 10.0) // Set your scale factor here
+                                  scaleFactor: 5.0) // Set your scale factor here
                     .clipped()
                     .background(Color.black)
                 }
                 
-                VStack{
-                    Text("AmplitudeView")
-                        .font(.headline)
-                        .padding(.top)
-                    AmplitudeView(conductor.amplitudeNode)
-                    .clipped()
-                    .background(Color.black)
-                }
+//                VStack{
+//                    Text("AmplitudeView")
+//                        .font(.headline)
+//                        .padding(.top)
+//                    AmplitudeView(conductor.amplitudeNode)
+//                    .clipped()
+//                    .background(Color.black)
+//                }
 
             }
             HStack{
                 VStack{
-                    Text("NodeFFTView scale * 10.0")
+                    Text("NodeFFTView")
                         .font(.headline)
                         .padding(.top)
                     NodeFFTView(conductor.tappableNodeC).clipped()
                 }
                 VStack{
-                    Text("DryWetMixView")
+                    Text("AmplitudeView")
                         .font(.headline)
                         .padding(.top)
-                    DryWetMixView(dry: conductor.dryWetNode, wet: conductor.dryWetNode, mix: conductor.dryWetNode)
+                    AmplitudeView(conductor.amplitudeNode)
+                        .clipped()
+                        .background(Color.black)
                 }
+
+//                VStack{
+//                    Text("DryWetMixView")
+//                        .font(.headline)
+//                        .padding(.top)
+//                    DryWetMixView(dry: conductor.dryWetNode, wet: conductor.dryWetNode, mix: conductor.dryWetNode)
+//                }
+                
                 VStack{
                     Text("Spectrogram")
                         .font(.headline)
