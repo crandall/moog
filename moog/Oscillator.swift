@@ -15,6 +15,7 @@ import SwiftUI
 struct OscillatorData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
+    var scale: CGFloat = 1.0
 }
 
 class OscillatorConductor: ObservableObject, HasAudioEngine {
@@ -84,7 +85,7 @@ struct OscillatorView: View {
                           //                          bufferSize: 1024,
                           strokeColor: .green,
                           isNormalized: false,
-                          scaleFactor: 10.0) // Set your scale factor here
+                          scaleFactor: conductor.data.scale) // Set your scale factor here
             .clipped()
             .background(Color.black)
 
@@ -101,20 +102,14 @@ struct OscillatorView: View {
                 Text("\(conductor.data.amplitude, specifier: "%0.1f")")
             }.padding()
             
-            VStack {
 
-                VStack {
-                    Text("Adjust the gain")
-                        .font(.subheadline)
-                    
-                    Slider(value: $conductor.gain, in: 0.0...1.0)
-                }
-//                ParameterSlider(text: "Gain",
-//                                parameter: $conductor.gain,
-//                                range: 0.0...1.0,
-//                                units: "Units")
-            }
-            
+            HStack {
+                Text("Adjust the scale \(conductor.data.scale, specifier: "%0.1f")")
+                    .font(.subheadline)
+                
+                Slider(value: $conductor.data.scale, in: 0.0...10.0)
+            }.padding()
+
             OscillatorDevicePicker(device: conductor.initialDevice)
             
             
