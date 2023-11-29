@@ -14,9 +14,6 @@ enum DemoType {
     case thereScope
     case waveform
     case multiview
-//    case dynamicOscillator
-//    case tuner
-//    case multiview
 }
 
 class StageViewController: UIViewController {

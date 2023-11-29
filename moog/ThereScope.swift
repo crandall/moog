@@ -74,13 +74,37 @@ struct ThereScopeView: View {
         VStack {
             
             Spacer()
-//            Text("Oscillator")
-            RawOutputView(conductor.tappableNodeA,
-                          strokeColor: Color.plotColor)
-            .clipped()
-            .background(Color.black)
+
+            HStack(alignment: .top, spacing: 0) {
+                // First column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Frequency")
+                    Text("Amplitude")
+                }
+                
+                Spacer()
+                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                
+                // Second column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("\(conductor.data.pitch, specifier: "%0.1f")")
+                    Text("\(conductor.data.amplitude, specifier: "%0.1f")")
+                }
+                
+                Spacer() // Additional spacer to push everything to the left
+                
+
+            }
+            .padding()
             
-            Text("ThereScope * 5.0")
+            HStack {
+                Text("Adjust the scale \(conductor.data.scale, specifier: "%0.1f")")
+                    .font(.subheadline)
+                
+                Slider(value: $conductor.data.scale, in: 0.0...10.0)
+            }.padding()
+
+            
             RawOutputView(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
                           strokeColor: Color.plotColor,
@@ -89,26 +113,6 @@ struct ThereScopeView: View {
             .clipped()
             .background(Color.black)
             
-            
-            HStack {
-                Text("Frequency")
-                Spacer()
-                Text("\(conductor.data.pitch, specifier: "%0.1f")")
-            }.padding()
-            
-            HStack {
-                Text("Amplitude")
-                Spacer()
-                Text("\(conductor.data.amplitude, specifier: "%0.1f")")
-            }.padding()
-            
-            
-            HStack {
-                Text("Adjust the scale \(conductor.data.scale, specifier: "%0.1f")")
-                    .font(.subheadline)
-                
-                Slider(value: $conductor.data.scale, in: 0.0...10.0)
-            }.padding()
             
             ThereScopeDevicePicker(device: conductor.initialDevice)
             
