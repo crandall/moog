@@ -71,10 +71,9 @@ struct ThereScopeView: View {
     @StateObject var conductor = ThereScopeConductor()
     
     var body: some View {
+        
         VStack {
             
-            Text("ThereScope").bold()
-
             HStack(alignment: .top, spacing: 0) {
                 // First column
                 VStack(alignment: .leading, spacing: 8) {
@@ -99,8 +98,6 @@ struct ThereScopeView: View {
             .padding()
             
 
-
-            
             RawOutputView(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
                           strokeColor: Color.plotColor,

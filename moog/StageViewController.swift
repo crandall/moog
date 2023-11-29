@@ -24,6 +24,8 @@ class StageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationItem.title = "ThereScope"
         
         var audioKitView: AnyView?
         
