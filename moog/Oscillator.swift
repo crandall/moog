@@ -76,14 +76,14 @@ struct OscillatorView: View {
             Spacer()
             Text("Oscillator")
             RawOutputView(conductor.tappableNodeA,
-                          strokeColor: .green)
+                          strokeColor: Color.plotColor)
             .clipped()
             .background(Color.black)
 
             Text("Oscillator * 5.0")
             RawOutputView(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
-                          strokeColor: .green,
+                          strokeColor: Color.plotColor,
                           isNormalized: false,
                           scaleFactor: conductor.data.scale) // Set your scale factor here
             .clipped()
