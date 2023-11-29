@@ -15,7 +15,7 @@ import SwiftUI
 struct ThereScopeData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
-    var scale: CGFloat = 1.0
+    var scale: CGFloat = 3.0
 }
 
 class ThereScopeConductor: ObservableObject, HasAudioEngine {
@@ -73,13 +73,14 @@ struct ThereScopeView: View {
     var body: some View {
         VStack {
             
-            Spacer()
+            Text("ThereScope").bold()
 
             HStack(alignment: .top, spacing: 0) {
                 // First column
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Frequency")
-                    Text("Amplitude")
+                    Text("Frequency:")
+                    Text("Amplitude:")
+                    Text("Scale:")
                 }
                 
                 Spacer()
@@ -89,20 +90,15 @@ struct ThereScopeView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("\(conductor.data.pitch, specifier: "%0.1f")")
                     Text("\(conductor.data.amplitude, specifier: "%0.1f")")
+                    Text("\(conductor.data.scale, specifier: "%0.1f")")
                 }
                 
                 Spacer() // Additional spacer to push everything to the left
-                
 
             }
             .padding()
             
-            HStack {
-                Text("Adjust the scale \(conductor.data.scale, specifier: "%0.1f")")
-                    .font(.subheadline)
-                
-                Slider(value: $conductor.data.scale, in: 0.0...10.0)
-            }.padding()
+
 
             
             RawOutputView(conductor.tappableNodeB,
@@ -113,12 +109,33 @@ struct ThereScopeView: View {
             .clipped()
             .background(Color.black)
             
+            HStack() {
+                // First column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Scale:")
+                }
+                
+                Spacer()
+                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                
+                // Second column
+                Text("\(conductor.data.scale, specifier: "%0.1f")")
+                
+                // third column
+                Spacer()
+                    .frame(width:40)
+                Slider(value: $conductor.data.scale, in: 0.0...10.0).frame(width: 300)
+                
+                Spacer() // Additional spacer to push everything to the left
+                
+            }
+            .padding()
+
             
             ThereScopeDevicePicker(device: conductor.initialDevice)
             
             
         }
-        .cookbookNavBarTitle("Tuner")
         .onAppear {
             conductor.start()
         }
