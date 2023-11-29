@@ -153,6 +153,7 @@ struct ThereScopeDevicePicker: View {
             }
         }
         .pickerStyle(MenuPickerStyle())
+        .foregroundColor(.black)
         .onChange(of: device, perform: setInputDevice)
     }
     
