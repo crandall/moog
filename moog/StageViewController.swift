@@ -11,7 +11,7 @@ import UIKit
 import SwiftUI
 
 enum DemoType {
-    case oscillator
+    case thereScope
     case waveform
     case multiview
 //    case dynamicOscillator
@@ -32,18 +32,14 @@ class StageViewController: UIViewController {
         
         // Create a SwiftUI view and embed it in a UIHostingController
         switch demoType {
-        case .oscillator:
-            audioKitView = AnyView(OscillatorView())
+        case .thereScope:
+            audioKitView = AnyView(ThereScopeView())
         case .waveform:
             audioKitView = AnyView(WaveformView())
-//        case .dynamicOscillator:
-//            audioKitView = AnyView(DynamicOscillatorView())
-//        case .tuner:
-//            audioKitView = AnyView(TunerView())
         case .multiview:
             audioKitView = AnyView(MultiView())
-        case .none:
-            print("none")
+        default:
+            break
         }
 
         let hostingController = UIHostingController(rootView: audioKitView)

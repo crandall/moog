@@ -43,7 +43,7 @@ struct WaveformView: View {
     @StateObject var conductor = WaveformConductor()
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedWaveform: String? = nil
-    @State private var nodeOutputColor: Color = Color(red: 66/255, green: 110/255, blue: 244/255, opacity: 1.0)
+    @State private var nodeOutputColor: Color = Color.plotColor
     
     var body: some View {
         VStack {

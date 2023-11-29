@@ -18,9 +18,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.configureViews()
     }
-    
+
+    private
     func configureViews(){
         thereScopeButton.setTitle("ThereScope", for: .normal)
         waveformButton.setTitle("Waveform", for: .normal)
@@ -33,16 +34,14 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onThereScope(){
-        print("onThereScope")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .oscillator
+            vc.demoType = .thereScope
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
     @IBAction func onWaveform(){
-        print("onWaveform")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .waveform
@@ -51,7 +50,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onMultiview(){
-        print("onMultiview")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .multiview
