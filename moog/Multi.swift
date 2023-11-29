@@ -114,7 +114,7 @@ struct MultiView: View {
                         .font(.headline)
                         .padding(.top)
                     
-                    RawOutputView(conductor.rawOutputNode, strokeColor: .green)
+                    RawOutputView(conductor.rawOutputNode, strokeColor: Color.plotColor)
                         .clipped()
                         .background(Color.black)
                 }
@@ -125,22 +125,13 @@ struct MultiView: View {
                         .padding(.top)
                     RawOutputView(conductor.rawOutputScaledNode,
                                   //                          bufferSize: 1024,
-                                  strokeColor: .green,
+                                  strokeColor: Color.plotColor,
                                   isNormalized: false,
                                   scaleFactor: 5.0) // Set your scale factor here
                     .clipped()
                     .background(Color.black)
                 }
                 
-//                VStack{
-//                    Text("AmplitudeView")
-//                        .font(.headline)
-//                        .padding(.top)
-//                    AmplitudeView(conductor.amplitudeNode)
-//                    .clipped()
-//                    .background(Color.black)
-//                }
-
             }
             HStack{
                 VStack{

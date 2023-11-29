@@ -17,39 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
-                                <rect key="frame" x="739" y="563" width="146" height="50"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Oscillator">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-s8-fCq">
-                                <rect key="frame" x="735" y="693" width="154.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Waveform">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onWaveform" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xt8-N8-Tea"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                <rect key="frame" x="676.5" y="823" width="271.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Multi View Sampler">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onMultiview" destination="C5f-Hc-w1x" eventType="touchUpInside" id="2Fn-yK-uGs"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bobMoogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="49O-pB-D4o">
                                 <rect key="frame" x="262" y="439" width="300" height="259"/>
                                 <constraints>
@@ -59,23 +26,56 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundSchoolLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQO-Vg-VSj">
                                 <rect key="frame" x="262" y="706" width="300" height="259"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
+                                <rect key="frame" x="742.5" y="543.5" width="181.5" height="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ThereScope">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
+                                <rect key="frame" x="697.5" y="653.5" width="271.5" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Multi View Sampler">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onMultiview" destination="C5f-Hc-w1x" eventType="touchUpInside" id="2Fn-yK-uGs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-s8-fCq">
+                                <rect key="frame" x="756" y="763.5" width="154.5" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Waveform">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onWaveform" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xt8-N8-Tea"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ABt-s8-fCq" firstAttribute="centerY" secondItem="mNS-nd-imI" secondAttribute="centerY" id="4E6-0Q-NHB"/>
-                            <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="80" id="95E-h2-qdz"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="60" id="IQd-hF-FaN"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
-                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="MmX-B9-rg9"/>
-                            <constraint firstItem="mNS-nd-imI" firstAttribute="trailing" secondItem="d1q-5o-2wA" secondAttribute="trailing" constant="139" id="Pun-WH-Acd"/>
+                            <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="60" id="Q2F-65-E3n"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
-                            <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="80" id="hVY-4R-oDj"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
-                            <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="jif-lt-fxb"/>
+                            <constraint firstItem="mNS-nd-imI" firstAttribute="trailing" secondItem="d1q-5o-2wA" secondAttribute="trailing" constant="100" id="kd5-G8-hZC"/>
+                            <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="rYF-ih-i22"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="teI-0B-Zwo"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="ukX-n1-8tW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>

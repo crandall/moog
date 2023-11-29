@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var waveformButton: UIButton!
     @IBOutlet weak var multiviewButton: UIButton!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +31,8 @@ class HomeViewController: UIViewController {
         thereScopeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        
+//        waveformButton.isHidden = true
 
     }
     
