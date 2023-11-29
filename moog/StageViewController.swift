@@ -5,14 +5,15 @@
 //  Created by Mike Crandall on 10/18/23.
 //
 
+// https://audiokitpro.com/audiovisualizertutorial/
+
 import UIKit
 import SwiftUI
 
 enum DemoType {
-    case oscillator
-    case dynamicOscillator
-    case vocalTract
-    case inputDevice
+    case thereScope
+    case waveform
+    case multiview
 }
 
 class StageViewController: UIViewController {
@@ -23,22 +24,28 @@ class StageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.navigationController?.navigationBar.tintColor = .black
+
+        var navbarTitle = ""
         var audioKitView: AnyView?
         
         // Create a SwiftUI view and embed it in a UIHostingController
         switch demoType {
-        case .oscillator:
-            audioKitView = AnyView(OscillatorView1())
-        case .dynamicOscillator:
-            audioKitView = AnyView(DynamicOscillatorView())
-        case .vocalTract:
-            audioKitView = AnyView(VocalTractView())
-        case .inputDevice:
-            audioKitView = AnyView(InputDeviceDemoView())
-        case .none:
-            print("none")
+        case .thereScope:
+            navbarTitle = "ThereScope"
+            audioKitView = AnyView(ThereScopeView())
+        case .waveform:
+            navbarTitle = "Waveforms"
+            audioKitView = AnyView(WaveformView())
+        case .multiview:
+            navbarTitle = "Multi View Demo"
+            audioKitView = AnyView(MultiView())
+        default:
+            break
         }
+
+        self.navigationItem.title = navbarTitle
 
         let hostingController = UIHostingController(rootView: audioKitView)
 

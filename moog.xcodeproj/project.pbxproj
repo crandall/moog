@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72D0FD92B095C560081B5EE /* Multi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D0FD82B095C560081B5EE /* Multi.swift */; };
 		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
-		E7347E1B2AE8AC9B00FB729B /* VocalTract.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */; };
-		E7347E1D2AE8AD5000FB729B /* InputDeviceDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */; };
-		E7347E1F2AE8AE9300FB729B /* VocalTractOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */; };
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
 		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
 		E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */; };
@@ -23,9 +21,11 @@
 		E78B9B062AE0B00600788C07 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B052AE0B00600788C07 /* AudioKitUI */; };
 		E78B9B092AE0B02700788C07 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B082AE0B02700788C07 /* Keyboard */; };
 		E78B9B0C2AE0B05400788C07 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */; };
-		E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC1882AE1F66600BB26EC /* OscillatorView.swift */; };
 		E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */; };
-		E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */; };
+		E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E72B06EEA800C9495E /* Tuner.swift */; };
+		E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA752B179B41006D8344 /* Waveform.swift */; };
+		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
+		E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA792B17A106006D8344 /* ThereScope.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -33,10 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72D0FD82B095C560081B5EE /* Multi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi.swift; sourceTree = "<group>"; };
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
-		E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocalTract.swift; sourceTree = "<group>"; };
-		E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDeviceDemo.swift; sourceTree = "<group>"; };
-		E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocalTractOperation.swift; sourceTree = "<group>"; };
 		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,9 +43,11 @@
 		E78B9AF42AE0AEF100788C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E78B9AF62AE0AEF100788C07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
-		E78EC1882AE1F66600BB26EC /* OscillatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorView.swift; sourceTree = "<group>"; };
 		E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OscillatorView.xib; sourceTree = "<group>"; };
+		E79FC8E72B06EEA800C9495E /* Tuner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
+		E7A1CA752B179B41006D8344 /* Waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
+		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E7A1CA792B17A106006D8344 /* ThereScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereScope.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -97,15 +97,15 @@
 				E78B9AF12AE0AEF100788C07 /* Assets.xcassets */,
 				E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */,
 				E78B9AF62AE0AEF100788C07 /* Info.plist */,
+				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
+				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
+				E7A1CA792B17A106006D8344 /* ThereScope.swift */,
+				E7A1CA752B179B41006D8344 /* Waveform.swift */,
+				E72D0FD82B095C560081B5EE /* Multi.swift */,
+				E7A1CA772B179F6A006D8344 /* Extensions.swift */,
 				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
 				E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */,
-				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
-				E78EC1882AE1F66600BB26EC /* OscillatorView.swift */,
-				E7347E1A2AE8AC9B00FB729B /* VocalTract.swift */,
-				E7347E1C2AE8AD5000FB729B /* InputDeviceDemo.swift */,
-				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
-				E7347E1E2AE8AE9300FB729B /* VocalTractOperation.swift */,
-				E78EC1922AE1FD5900BB26EC /* OscillatorView.xib */,
+				E79FC8E72B06EEA800C9495E /* Tuner.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -196,7 +196,6 @@
 			files = (
 				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
 				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
-				E78EC1932AE1FD5900BB26EC /* OscillatorView.xib in Resources */,
 				E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,17 +208,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
+				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
+				E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */,
+				E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */,
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
 				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,
+				E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */,
+				E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
-				E78EC1892AE1F66600BB26EC /* OscillatorView.swift in Sources */,
-				E7347E1F2AE8AE9300FB729B /* VocalTractOperation.swift in Sources */,
-				E7347E1D2AE8AD5000FB729B /* InputDeviceDemo.swift in Sources */,
-				E7347E1B2AE8AC9B00FB729B /* VocalTract.swift in Sources */,
 				E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +375,7 @@
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Moog;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -404,6 +405,7 @@
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Moog;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
