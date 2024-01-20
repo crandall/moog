@@ -12,16 +12,16 @@ import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
 
-struct OscillatorData {
+struct ThereScopeData1 {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
-    var scale: CGFloat = 1.0
+    var scale: CGFloat = 3.0
 }
 
-class OscillatorConductor: ObservableObject, HasAudioEngine {
-    @Published var data = OscillatorData()
+class ThereScopeConductor1: ObservableObject, HasAudioEngine {
+    @Published var data = ThereScopeData1()
     @Published var gain: AUValue = 1.0
-
+    
     let engine = AudioEngine()
     let initialDevice: Device
     
@@ -63,24 +63,41 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
         data.amplitude = amp
         
         tappableNodeA.gain = gain
-
+        
     }
 }
 
-struct OscillatorView: View {
-    @StateObject var conductor = OscillatorConductor()
+struct ThereScopeView1: View {
+    @StateObject var conductor = ThereScopeConductor1()
     
     var body: some View {
+        
         VStack {
-
-            Spacer()
-            Text("Oscillator")
-            RawOutputView(conductor.tappableNodeA,
-                          strokeColor: Color.plotColor)
-            .clipped()
-            .background(Color.black)
-
-            Text("Oscillator * 5.0")
+            
+            HStack(alignment: .top, spacing: 0) {
+                // First column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Frequency:")
+                    Text("Amplitude:")
+                    Text("Scale:")
+                }
+                
+                Spacer()
+                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                
+                // Second column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("\(conductor.data.pitch, specifier: "%0.1f")")
+                    Text("\(conductor.data.amplitude, specifier: "%0.1f")")
+                    Text("\(conductor.data.scale, specifier: "%0.1f")")
+                }
+                
+                Spacer() // Additional spacer to push everything to the left
+                
+            }
+            .padding()
+            
+            
             RawOutputView(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
                           strokeColor: Color.plotColor,
@@ -88,33 +105,34 @@ struct OscillatorView: View {
                           scaleFactor: conductor.data.scale) // Set your scale factor here
             .clipped()
             .background(Color.black)
-
             
-            HStack {
-                Text("Frequency")
-                Spacer()
-                Text("\(conductor.data.pitch, specifier: "%0.1f")")
-            }.padding()
-            
-            HStack {
-                Text("Amplitude")
-                Spacer()
-                Text("\(conductor.data.amplitude, specifier: "%0.1f")")
-            }.padding()
-            
-
-            HStack {
-                Text("Adjust the scale \(conductor.data.scale, specifier: "%0.1f")")
-                    .font(.subheadline)
+            HStack() {
+                // First column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Scale:")
+                }
                 
-                Slider(value: $conductor.data.scale, in: 0.0...10.0)
-            }.padding()
-
-            OscillatorDevicePicker(device: conductor.initialDevice)
+                Spacer()
+                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                
+                // Second column
+                Text("\(conductor.data.scale, specifier: "%0.1f")")
+                
+                // third column
+                Spacer()
+                    .frame(width:40)
+                Slider(value: $conductor.data.scale, in: 0.0...10.0).frame(width: 300)
+                
+                Spacer() // Additional spacer to push everything to the left
+                
+            }
+            .padding()
+            
+            
+            ThereScopeDevicePicker1(device: conductor.initialDevice)
             
             
         }
-        .cookbookNavBarTitle("Tuner")
         .onAppear {
             conductor.start()
         }
@@ -122,10 +140,10 @@ struct OscillatorView: View {
             conductor.stop()
         }
     }
-
+    
 }
 
-struct OscillatorDevicePicker: View {
+struct ThereScopeDevicePicker1: View {
     @State var device: Device
     
     var body: some View {
@@ -135,6 +153,7 @@ struct OscillatorDevicePicker: View {
             }
         }
         .pickerStyle(MenuPickerStyle())
+        .foregroundColor(.black)
         .onChange(of: device, perform: setInputDevice)
     }
     

@@ -61,14 +61,14 @@ class HomeViewController: UIViewController {
     }
 
 
-//    @IBAction func onOscillator(){
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-//            vc.demoType = .oscillator
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-//    
+    @IBAction func onOscillator(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .oscillator
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 //    @IBAction func onDynamic(){
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {

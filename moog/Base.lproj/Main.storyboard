@@ -59,6 +59,19 @@
                                     <action selector="onWaveform" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xt8-N8-Tea"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilQ-MC-bmu">
+                                <rect key="frame" x="733.5" y="904" width="200" height="60"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0uv-w4-VIG"/>
+                                    <constraint firstAttribute="width" constant="200" id="ize-yU-aqV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="onOscillator" destination="C5f-Hc-w1x" eventType="touchUpInside" id="3Qx-72-C3s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,10 +81,12 @@
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="60" id="Q2F-65-E3n"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
+                            <constraint firstItem="ilQ-MC-bmu" firstAttribute="centerX" secondItem="ABt-s8-fCq" secondAttribute="centerX" id="frx-QH-sKa"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="trailing" secondItem="d1q-5o-2wA" secondAttribute="trailing" constant="100" id="kd5-G8-hZC"/>
+                            <constraint firstItem="ilQ-MC-bmu" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="90.5" id="mHS-AE-7Ll"/>
                             <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="rYF-ih-i22"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="teI-0B-Zwo"/>
@@ -159,6 +174,9 @@
         <image name="soundSchoolLogo" width="480" height="480"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

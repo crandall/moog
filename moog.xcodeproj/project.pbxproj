@@ -26,6 +26,7 @@
 		E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA752B179B41006D8344 /* Waveform.swift */; };
 		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
 		E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA792B17A106006D8344 /* ThereScope.swift */; };
+		E7AB8AC22B5C78B4006FD647 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB8AC12B5C78B4006FD647 /* Test.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -48,6 +49,7 @@
 		E7A1CA752B179B41006D8344 /* Waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
 		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7A1CA792B17A106006D8344 /* ThereScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereScope.swift; sourceTree = "<group>"; };
+		E7AB8AC12B5C78B4006FD647 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -106,6 +108,7 @@
 				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
 				E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */,
 				E79FC8E72B06EEA800C9495E /* Tuner.swift */,
+				E7AB8AC12B5C78B4006FD647 /* Test.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
 				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
+				E7AB8AC22B5C78B4006FD647 /* Test.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
