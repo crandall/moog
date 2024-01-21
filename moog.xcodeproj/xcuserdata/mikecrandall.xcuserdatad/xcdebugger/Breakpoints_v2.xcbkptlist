@@ -7,127 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D10815C4-47D5-4BB6-8472-3052711CB006"
+            uuid = "25D12B87-8F5D-46DD-A9EC-890087ED3D21"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moog/Multi.swift"
+            filePath = "moog/RawOutputView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "D10815C4-47D5-4BB6-8472-3052711CB006 - 402b08a3f125adf7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.MultiDevicePicker.body.getter : some"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Multi.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "772">
-               </Location>
-               <Location
-                  uuid = "D10815C4-47D5-4BB6-8472-3052711CB006 - 55604c6a9b80a1c8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;AudioKit.Device&gt;, AudioKit.Device, SwiftUI.Text&gt; in moog.MultiDevicePicker.body.getter : some"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/Multi.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "168">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EA222AAC-AC6E-4534-A015-6E36A8B139E2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/ThereScope.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "getDevices()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EA222AAC-AC6E-4534-A015-6E36A8B139E2 - b10382ed463a8f2d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "moog.ThereScopeDevicePicker.getDevices() -&gt; Swift.Array&lt;AudioKit.Device&gt;"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/ThereScope.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "EA222AAC-AC6E-4534-A015-6E36A8B139E2 - 4385a76eaca6cc24"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (AudioKit.Device) -&gt; Swift.Optional&lt;AudioKit.Device&gt; in moog.ThereScopeDevicePicker.getDevices() -&gt; Swift.Array&lt;AudioKit.Device&gt;"
-                  moduleName = "moog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikecrandall/eyebrowman/MoogApp/moog3/moog/moog/ThereScope.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9C7603E7-530F-4DD0-A353-25614CAF319E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "moog/ThereScope.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "setInputDevice(to:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "path(in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BB751214-1174-4753-B1B1-052B5ABFE3D1"
+            uuid = "ADAC7A00-FE13-4CCF-9E7B-39893B8DAC46"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "moog/ThereScope.swift"
+            filePath = "moog/RawOutputView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "init(_:bufferSize:strokeColor:isNormalized:scaleFactor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CCFE460-6AC2-4931-B42B-26318792B839"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moog/RawOutputView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>

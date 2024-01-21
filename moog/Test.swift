@@ -98,7 +98,7 @@ struct ThereScopeView1: View {
             .padding()
             
             
-            RawOutputView(conductor.tappableNodeB,
+            RawOutputView1(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
                           strokeColor: Color.plotColor,
                           isNormalized: false,
