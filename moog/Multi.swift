@@ -114,7 +114,7 @@ struct MultiView: View {
                         .font(.headline)
                         .padding(.top)
                     
-                    RawOutputView(conductor.rawOutputNode, strokeColor: Color.plotColor)
+                    RawOutputView1(conductor.rawOutputNode, strokeColor: Color.plotColor)
                         .clipped()
                         .background(Color.black)
                 }
@@ -123,7 +123,7 @@ struct MultiView: View {
                     Text("RawOutputView scale * 5.0")
                         .font(.headline)
                         .padding(.top)
-                    RawOutputView(conductor.rawOutputScaledNode,
+                    RawOutputView1(conductor.rawOutputScaledNode,
                                   //                          bufferSize: 1024,
                                   strokeColor: Color.plotColor,
                                   isNormalized: false,

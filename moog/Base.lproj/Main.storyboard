@@ -98,6 +98,7 @@
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
                         <outlet property="multiviewButton" destination="hrf-LC-yKP" id="Z8D-Ci-0vh"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
+                        <outlet property="testButton" destination="ilQ-MC-bmu" id="lhH-ec-APs"/>
                         <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
                         <outlet property="waveformButton" destination="ABt-s8-fCq" id="b44-0h-t8I"/>
                     </connections>
