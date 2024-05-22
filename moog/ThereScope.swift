@@ -36,7 +36,9 @@ class ThereScopeConductor: ObservableObject, HasAudioEngine {
     init() {
         guard let input = engine.input else { fatalError() }
         
-        guard let device = engine.inputDevice else { fatalError() }
+        guard let device = engine.inputDevice else {
+            fatalError()
+        }
         
         initialDevice = device
         

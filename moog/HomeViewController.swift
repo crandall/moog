@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         
         waveformButton.isHidden = false
-        testButton.isHidden = true
+//        testButton.isHidden = true
 
     }
     
