@@ -16,6 +16,7 @@ enum DemoType {
     case multiview
     case oscillator
     case test
+    case tuner
 }
 
 class StageViewController: UIViewController {
@@ -49,6 +50,9 @@ class StageViewController: UIViewController {
         case .test:
             navbarTitle = "Test"
             audioKitView = AnyView(ThereScopeView2())
+        case .tuner:
+            navbarTitle = "InputDeviceDemo"
+            audioKitView = AnyView(InputDeviceDemoView())
         default:
             break
         }
