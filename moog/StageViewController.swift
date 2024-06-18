@@ -15,6 +15,7 @@ enum DemoType {
     case waveform
     case multiview
     case oscillator
+    case test
 }
 
 class StageViewController: UIViewController {
@@ -42,9 +43,12 @@ class StageViewController: UIViewController {
         case .multiview:
             navbarTitle = "Multi View Demo"
             audioKitView = AnyView(MultiView())
-        case .oscillator:
-            navbarTitle = "Oscillator"
-            audioKitView = AnyView(ThereScopeView1())
+//        case .oscillator:
+//            navbarTitle = "Oscillator"
+//            audioKitView = AnyView(ThereScopeView1())
+        case .test:
+            navbarTitle = "Test"
+            audioKitView = AnyView(ThereScopeView2())
         default:
             break
         }

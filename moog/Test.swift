@@ -11,15 +11,16 @@ import AudioKitUI
 import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
+import AVFoundation
 
-struct ThereScopeData1 {
+struct ThereScopeData2 {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
     var scale: CGFloat = 3.0
 }
 
-class ThereScopeConductor1: ObservableObject, HasAudioEngine {
-    @Published var data = ThereScopeData1()
+class ThereScopeConductor2: ObservableObject, HasAudioEngine {
+    @Published var data = ThereScopeData2()
     @Published var gain: AUValue = 1.0
     
     let engine = AudioEngine()
@@ -34,9 +35,8 @@ class ThereScopeConductor1: ObservableObject, HasAudioEngine {
     var tracker: PitchTap!
     
     init() {
-        guard let input = engine.input else { fatalError() }
-        
-        guard let device = engine.inputDevice else { fatalError() }
+        guard let input = engine.input else { fatalError("Failed to get engine input") }
+        guard let device = engine.inputDevice else { fatalError("Failed to get input device") }
         
         initialDevice = device
         
@@ -53,85 +53,98 @@ class ThereScopeConductor1: ObservableObject, HasAudioEngine {
             }
         }
         tracker.start()
+        
+        setExternalMicrophoneAsInput()
+    }
+    
+    func setExternalMicrophoneAsInput() {
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playAndRecord, options: .defaultToSpeaker)
+            try session.setActive(true)
+            
+            let availableInputs = session.availableInputs
+            print("yo")
+            if let externalMic = availableInputs?.first(where: { $0.portType == .lineIn }) {
+//            if let externalMic = availableInputs?.first(where: { $0.portType == .microphoneBuiltIn }) {
+                try session.setPreferredInput(externalMic)
+            }
+        } catch {
+            print("Error setting external microphone as input: \(error)")
+        }
     }
     
     func update(_ pitch: AUValue, _ amp: AUValue) {
-        // Reduces sensitivity to background noise to prevent random / fluctuating data.
         guard amp > 0.1 else { return }
         
         data.pitch = pitch
         data.amplitude = amp
         
         tappableNodeA.gain = gain
-        
+    }
+    
+    func start() {
+        do {
+            try engine.start()
+        } catch {
+            print("Failed to start engine: \(error)")
+        }
+    }
+    
+    func stop() {
+        engine.stop()
     }
 }
 
-struct ThereScopeView1: View {
-    @StateObject var conductor = ThereScopeConductor1()
+struct ThereScopeView2: View {
+    @StateObject var conductor = ThereScopeConductor2()
     
     var body: some View {
-        
         VStack {
-            
             HStack(alignment: .top, spacing: 0) {
-                // First column
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Frequency:")
                     Text("Amplitude:")
                     Text("Scale:")
                 }
                 
-                Spacer()
-                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                Spacer().frame(width: 40)
                 
-                // Second column
                 VStack(alignment: .leading, spacing: 8) {
                     Text("\(conductor.data.pitch, specifier: "%0.1f")")
                     Text("\(conductor.data.amplitude, specifier: "%0.1f")")
                     Text("\(conductor.data.scale, specifier: "%0.1f")")
                 }
                 
-                Spacer() // Additional spacer to push everything to the left
-                
+                Spacer()
             }
             .padding()
             
-            
             RawOutputView1(conductor.tappableNodeB,
-                          //                          bufferSize: 1024,
-                          strokeColor: Color.plotColor,
-                          isNormalized: false,
-                          scaleFactor: conductor.data.scale) // Set your scale factor here
+                           strokeColor: Color.plotColor,
+                           isNormalized: false,
+                           scaleFactor: conductor.data.scale)
             .clipped()
             .background(Color.black)
             
-            HStack() {
-                // First column
+            HStack {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Scale:")
                 }
                 
-                Spacer()
-                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                Spacer().frame(width: 40)
                 
-                // Second column
                 Text("\(conductor.data.scale, specifier: "%0.1f")")
                 
-                // third column
-                Spacer()
-                    .frame(width:40)
+                Spacer().frame(width: 40)
+                
                 Slider(value: $conductor.data.scale, in: 0.0...10.0).frame(width: 300)
                 
-                Spacer() // Additional spacer to push everything to the left
-                
+                Spacer()
             }
             .padding()
             
-            
-            ThereScopeDevicePicker1(device: conductor.initialDevice)
-            
-            
+            ThereScopeDevicePicker2(device: conductor.initialDevice)
         }
         .onAppear {
             conductor.start()
@@ -140,10 +153,9 @@ struct ThereScopeView1: View {
             conductor.stop()
         }
     }
-    
 }
 
-struct ThereScopeDevicePicker1: View {
+struct ThereScopeDevicePicker2: View {
     @State var device: Device
     
     var body: some View {
@@ -164,8 +176,8 @@ struct ThereScopeDevicePicker1: View {
     func setInputDevice(to device: Device) {
         do {
             try AudioEngine.setInputDevice(device)
-        } catch let err {
-            print(err)
+        } catch {
+            print(error)
         }
     }
 }

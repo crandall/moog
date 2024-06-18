@@ -27,7 +27,7 @@
                                 <rect key="frame" x="262" y="706" width="300" height="259"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-yV-sbi">
-                                <rect key="frame" x="674" y="543" width="300" height="350"/>
+                                <rect key="frame" x="674" y="493" width="300" height="450"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
                                         <rect key="frame" x="59.5" y="50" width="181.5" height="50"/>
@@ -62,17 +62,30 @@
                                             <action selector="onWaveform" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xt8-N8-Tea"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-0r-Yyt">
+                                        <rect key="frame" x="111.5" y="350" width="77.5" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Test">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onTest" destination="C5f-Hc-w1x" eventType="touchUpInside" id="D1j-8X-0sT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="0UG-ud-xGJ"/>
+                                    <constraint firstItem="1R6-0r-Yyt" firstAttribute="centerX" secondItem="ABt-s8-fCq" secondAttribute="centerX" id="1Ox-wu-GED"/>
                                     <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="JNe-yV-sbi" secondAttribute="top" constant="50" id="1r0-Py-o9F"/>
                                     <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="50" id="IfY-zH-GHr"/>
                                     <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="Nus-Kc-5xC"/>
                                     <constraint firstAttribute="width" constant="300" id="UJe-Ck-e9Y"/>
                                     <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="Ugs-QI-nj0"/>
+                                    <constraint firstAttribute="bottom" secondItem="1R6-0r-Yyt" secondAttribute="bottom" constant="50" id="iqE-2Z-uCW"/>
+                                    <constraint firstItem="1R6-0r-Yyt" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="50" id="raF-ga-L4F"/>
                                     <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="50" id="wnF-bN-6Fo"/>
-                                    <constraint firstAttribute="bottom" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="50" id="xKM-Xz-9gR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -95,6 +108,7 @@
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
                         <outlet property="multiviewButton" destination="hrf-LC-yKP" id="Z8D-Ci-0vh"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
+                        <outlet property="testButton" destination="1R6-0r-Yyt" id="UYw-5s-aWh"/>
                         <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
                         <outlet property="waveformButton" destination="ABt-s8-fCq" id="b44-0h-t8I"/>
                     </connections>

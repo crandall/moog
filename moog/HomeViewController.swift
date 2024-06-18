@@ -61,6 +61,15 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func onTest(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .test
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
 
 
     @IBAction func onOscillator(){
