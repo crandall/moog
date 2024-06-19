@@ -1,0 +1,76 @@
+### macOS ###
+# General macOS exclusions
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Swift ###
+# Xcode project files
+*.xcworkspace
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+DerivedData/
+.idea/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# User-specific Xcode data
+Pods/Pods.xcodeproj/xcuserdata/
+Verses\ Gamma.xcodeproj/xcuserdata/
+*.xcuserdata
+
+# Ignore Xcode breakpoint lists
+"Verses\ Gamma.xcworkspace/xcuserdata/*/xcdebugger/Breakpoints_v2.xcbkptlist"
+
+# Build generated
+build/
+DerivedData/
+
+# Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+!*.xcscheme
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+
+# Code Injection
+iOSInjectionProject/
