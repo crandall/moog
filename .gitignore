@@ -35,11 +35,11 @@ DerivedData/
 
 # User-specific Xcode data
 Pods/Pods.xcodeproj/xcuserdata/
-Verses\ Gamma.xcodeproj/xcuserdata/
+moog.xcodeproj/xcuserdata/
 *.xcuserdata
 
 # Ignore Xcode breakpoint lists
-"Verses\ Gamma.xcworkspace/xcuserdata/*/xcdebugger/Breakpoints_v2.xcbkptlist"
+moog.xcworkspace/xcuserdata/*/xcdebugger/Breakpoints_v2.xcbkptlist
 
 # Build generated
 build/
