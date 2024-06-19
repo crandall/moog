@@ -36,7 +36,9 @@ class ThereScopeConductor: ObservableObject, HasAudioEngine {
     init() {
         guard let input = engine.input else { fatalError() }
         
-        guard let device = engine.inputDevice else { fatalError() }
+        guard let device = engine.inputDevice else {
+            fatalError()
+        }
         
         initialDevice = device
         
@@ -98,7 +100,7 @@ struct ThereScopeView: View {
             .padding()
             
 
-            RawOutputView(conductor.tappableNodeB,
+            RawOutputView1(conductor.tappableNodeB,
                           //                          bufferSize: 1024,
                           strokeColor: Color.plotColor,
                           isNormalized: false,

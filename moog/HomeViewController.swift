@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var waveformButton: UIButton!
     @IBOutlet weak var multiviewButton: UIButton!
+    @IBOutlet weak var testButton: UIButton!
 
     
     override func viewDidLoad() {
@@ -32,7 +33,8 @@ class HomeViewController: UIViewController {
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         
-//        waveformButton.isHidden = true
+        waveformButton.isHidden = false
+//        testButton.isHidden = true
 
     }
     
@@ -59,16 +61,25 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func onTest(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .test
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
 
-//    @IBAction func onOscillator(){
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-//            vc.demoType = .oscillator
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-//    
+
+    @IBAction func onOscillator(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .oscillator
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 //    @IBAction func onDynamic(){
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {

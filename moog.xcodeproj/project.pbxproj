@@ -10,6 +10,7 @@
 		E72D0FD92B095C560081B5EE /* Multi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D0FD82B095C560081B5EE /* Multi.swift */; };
 		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
+		E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */; };
 		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
 		E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */; };
 		E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78B9AEE2AE0AEF000788C07 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA752B179B41006D8344 /* Waveform.swift */; };
 		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
 		E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA792B17A106006D8344 /* ThereScope.swift */; };
+		E7AB8AC22B5C78B4006FD647 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB8AC12B5C78B4006FD647 /* Test.swift */; };
+		E7B1C2222C2244530003EAB5 /* InputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C2212C2244530003EAB5 /* InputDevice.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -35,6 +38,7 @@
 /* Begin PBXFileReference section */
 		E72D0FD82B095C560081B5EE /* Multi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi.swift; sourceTree = "<group>"; };
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
+		E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawOutputView.swift; sourceTree = "<group>"; };
 		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		E7A1CA752B179B41006D8344 /* Waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
 		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7A1CA792B17A106006D8344 /* ThereScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereScope.swift; sourceTree = "<group>"; };
+		E7AB8AC12B5C78B4006FD647 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		E7B1C2212C2244530003EAB5 /* InputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDevice.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -106,6 +112,9 @@
 				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
 				E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */,
 				E79FC8E72B06EEA800C9495E /* Tuner.swift */,
+				E7AB8AC12B5C78B4006FD647 /* Test.swift */,
+				E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */,
+				E7B1C2212C2244530003EAB5 /* InputDevice.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -209,7 +218,9 @@
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
 				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
+				E7AB8AC22B5C78B4006FD647 /* Test.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
+				E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
 				E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */,
@@ -221,6 +232,7 @@
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
 				E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */,
+				E7B1C2222C2244530003EAB5 /* InputDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -355,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -371,19 +383,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 104;
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Moog;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to your microphone to capture audio.\"";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"Use microphone debug?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,19 +415,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 104;
 				DEVELOPMENT_TEAM = 8485ZB8GUD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Moog;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"We need access to your microphone to capture audio.\"";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"Use Microphone release?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
