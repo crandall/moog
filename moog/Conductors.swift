@@ -73,56 +73,6 @@ class ThereScopeConductor3: ObservableObject, HasAudioEngine {
     }
 }
 
-// Conductor for Processing Microphone Input into a Square Wave (No Sound Output)
-class SquareWaveMicConductor1: ObservableObject, HasAudioEngine {
-    let engine = AudioEngine()
-    let mic: AudioEngine.InputNode
-
-    @Published var squareWaveBuffer: [Float] = []
-    
-    init() {
-        guard let input = engine.input else {
-            fatalError("Microphone input not available")
-        }
-        
-        mic = input
-        engine.output = nil // No output to the speakers
-    }
-    
-    func processAudio(buffer: AVAudioPCMBuffer) {
-        guard let channelData = buffer.floatChannelData?[0] else { return }
-        let frameLength = Int(buffer.frameLength)
-        
-        var squareWaveData: [Float] = []
-        
-        for i in 0..<frameLength {
-            let sample = channelData[i]
-            let squareSample: Float = sample > 0 ? 1.0 : -1.0
-            squareWaveData.append(squareSample)
-        }
-        
-        DispatchQueue.main.async {
-            self.squareWaveBuffer = squareWaveData
-        }
-    }
-    
-    func start() {
-        do {
-            try engine.start()
-            mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: nil) { buffer, _ in
-                self.processAudio(buffer: buffer)
-            }
-        } catch {
-            print("Error starting audio engine: \(error)")
-        }
-    }
-    
-    func stop() {
-        mic.avAudioNode.removeTap(onBus: 0)
-        engine.stop()
-    }
-}
-
 
 // Conductor for Processing Microphone Input into a Square Wave
 class SquareWaveMicConductor: ObservableObject, HasAudioEngine {
@@ -143,8 +93,6 @@ class SquareWaveMicConductor: ObservableObject, HasAudioEngine {
         silence = Fader(tappableNode, gain: 0)
         engine.output = silence
 
-        
-//        engine.output = tappableNode
     }
     
     func processAudio(buffer: AVAudioPCMBuffer) {
