@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         thereScopeButton.isHidden = false
         waveformButton.isHidden = false
         multiviewButton.isHidden = false
-        testButton.isHidden = false
+        testButton.isHidden = true
 
     }
     
