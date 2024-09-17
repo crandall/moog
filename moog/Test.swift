@@ -44,7 +44,7 @@ class ThereScopeConductor2: ObservableObject, HasAudioEngine {
         silence = Fader(tappableNodeC, gain: 0)
         engine.output = silence
         
-//        initialDevice = setExternalMicrophoneAsInput()
+        initialDevice = setExternalMicrophoneAsInput()
         
         tracker = PitchTap(mic) { [weak self] pitch, amp in
             DispatchQueue.main.async {
@@ -57,6 +57,9 @@ class ThereScopeConductor2: ObservableObject, HasAudioEngine {
     func setExternalMicrophoneAsInput() -> Device? {
         let session = AVAudioSession.sharedInstance()
         do {
+            
+//            try session.setCategory(.record)
+
             try session.setCategory(.playAndRecord, options: .defaultToSpeaker)
 //            try session.setCategory(.playback)
             try session.setActive(true)
