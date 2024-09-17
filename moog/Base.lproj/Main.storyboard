@@ -26,6 +26,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundSchoolLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQO-Vg-VSj">
                                 <rect key="frame" x="262" y="706" width="300" height="259"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
+                                <rect key="frame" x="391" y="993" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-yV-sbi">
                                 <rect key="frame" x="674" y="493" width="300" height="450"/>
                                 <subviews>
@@ -98,13 +104,16 @@
                             <constraint firstItem="mNS-nd-imI" firstAttribute="trailing" secondItem="JNe-yV-sbi" secondAttribute="trailing" constant="50" id="YSY-TV-V8P"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
+                            <constraint firstItem="mNS-nd-imI" firstAttribute="bottom" secondItem="edz-iN-HUA" secondAttribute="bottom" constant="20" id="hve-ao-Hug"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
+                            <constraint firstItem="edz-iN-HUA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="mip-pA-Jlw"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
                             <constraint firstItem="JNe-yV-sbi" firstAttribute="centerY" secondItem="mNS-nd-imI" secondAttribute="centerY" id="txR-8A-Z9h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>
                     <connections>
+                        <outlet property="buildLabel" destination="edz-iN-HUA" id="fb9-HS-MbP"/>
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
                         <outlet property="multiviewButton" destination="hrf-LC-yKP" id="Z8D-Ci-0vh"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
