@@ -58,6 +58,9 @@ class StageViewController: UIViewController {
         }
 
         self.navigationItem.title = navbarTitle
+//        self.navigationController?.navigationBar.tintColor = .blue
+        self.view.backgroundColor = UIColor.clear
+
 
         let hostingController = UIHostingController(rootView: audioKitView)
 
