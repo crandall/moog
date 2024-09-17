@@ -49,7 +49,7 @@ class StageViewController: UIViewController {
 //            audioKitView = AnyView(ThereScopeView1())
         case .test:
             navbarTitle = "Test"
-            audioKitView = AnyView(ThereScopeView2())
+            audioKitView = AnyView(ThereScopeView3())
         case .tuner:
             navbarTitle = "InputDeviceDemo"
             audioKitView = AnyView(InputDeviceDemoView())
@@ -58,6 +58,9 @@ class StageViewController: UIViewController {
         }
 
         self.navigationItem.title = navbarTitle
+//        self.navigationController?.navigationBar.tintColor = .blue
+        self.view.backgroundColor = UIColor.clear
+
 
         let hostingController = UIHostingController(rootView: audioKitView)
 

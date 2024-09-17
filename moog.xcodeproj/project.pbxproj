@@ -10,6 +10,8 @@
 		E72D0FD92B095C560081B5EE /* Multi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D0FD82B095C560081B5EE /* Multi.swift */; };
 		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
+		E75455202C9A19B700EF4616 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E754551F2C9A19B700EF4616 /* Test2.swift */; };
+		E75455222C9A247E00EF4616 /* Conductors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75455212C9A247E00EF4616 /* Conductors.swift */; };
 		E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */; };
 		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
 		E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		E72D0FD82B095C560081B5EE /* Multi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi.swift; sourceTree = "<group>"; };
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
+		E754551F2C9A19B700EF4616 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
+		E75455212C9A247E00EF4616 /* Conductors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conductors.swift; sourceTree = "<group>"; };
 		E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawOutputView.swift; sourceTree = "<group>"; };
 		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				E7AB8AC12B5C78B4006FD647 /* Test.swift */,
 				E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */,
 				E7B1C2212C2244530003EAB5 /* InputDevice.swift */,
+				E754551F2C9A19B700EF4616 /* Test2.swift */,
+				E75455212C9A247E00EF4616 /* Conductors.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
+				E75455222C9A247E00EF4616 /* Conductors.swift in Sources */,
 				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
 				E7AB8AC22B5C78B4006FD647 /* Test.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
@@ -228,6 +235,7 @@
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
 				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,
 				E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */,
+				E75455202C9A19B700EF4616 /* Test2.swift in Sources */,
 				E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,

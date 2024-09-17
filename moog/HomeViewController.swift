@@ -32,9 +32,11 @@ class HomeViewController: UIViewController {
         thereScopeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        
+
+        thereScopeButton.isHidden = false
         waveformButton.isHidden = false
-//        testButton.isHidden = true
+        multiviewButton.isHidden = false
+        testButton.isHidden = true
 
     }
     
