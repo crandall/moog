@@ -27,8 +27,8 @@ class HomeViewController: UIViewController {
     private
     func configureViews(){
         thereScopeButton.setTitle("ThereScope", for: .normal)
-        waveformButton.setTitle("Waveform Demo Only", for: .normal)
-        multiviewButton.setTitle("MultiView Demo only", for: .normal)
+        waveformButton.setTitle("Waveform (demo only)", for: .normal)
+        multiviewButton.setTitle("MultiView (demo only)", for: .normal)
 
         thereScopeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
