@@ -89,14 +89,15 @@ struct ThereScopeView: View {
                 RawOutputView1(noiseConductor.tappableNodeB,
                                strokeColor: Color.plotColor,
                                isNormalized: false,
-                               scaleFactor: 1.0) // Set your scale factor here
-                .clipped()
+                               scaleFactor: 2.0) // Set your scale factor here
+                .padding(.top, 20)   // Padding between the buttons and the plot
+                .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
             }else{
                 WavePlot(
                     waveData: waveConductor.waveData,
                     amplitudeScale: 2.0,  // Adjust as needed
-                    widthScale: 0.5,      // Adjust as needed
+                    widthScale: 0.25,      // Adjust as needed
                     minAmplitudeThreshold: 0.01,
                     minAmplitudeScale: 0.1,
                     minWidthScale: 0.5
@@ -299,9 +300,9 @@ struct WavePlot: View {
     var waveData: [Float]  // Triangle wave data to plot
     var amplitudeScale: CGFloat    // Dynamically adjust height based on volume
     var widthScale: CGFloat        // Dynamically adjust width based on pitch
-    var minAmplitudeThreshold: CGFloat = 0.01 // Threshold to flatten wave at low volume
-    var minAmplitudeScale: CGFloat = 0.1      // Minimum wave height
-    var minWidthScale: CGFloat = 0.5          // Minimum wave width
+    var minAmplitudeThreshold: CGFloat = 0.00 // Threshold to flatten wave at low volume
+    var minAmplitudeScale: CGFloat = 0.0      // Minimum wave height
+    var minWidthScale: CGFloat = 0.0      // Minimum wave width
     
     var body: some View {
         GeometryReader { geometry in
@@ -325,7 +326,7 @@ struct WavePlot: View {
                     path.addLine(to: CGPoint(x: x, y: y))
                 }
             }
-            .stroke(Color.red, lineWidth: 2)  // Use a distinctive color
+            .stroke(Color.plotColor, lineWidth: 5)
         }
     }
 }
