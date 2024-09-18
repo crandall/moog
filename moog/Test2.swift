@@ -23,7 +23,7 @@ struct ThereScopeData3 {
 struct ThereScopeView3: View {
     @State private var selectedWave: WaveConductor.WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
-    @StateObject private var noiseConductor = NoiseConductor()
+    @StateObject private var noiseConductor = NoiseConductor1()
 
     var body: some View {
         VStack {
@@ -283,7 +283,7 @@ struct WavePlot1: View {
     }
 }
 
-class NoiseConductor: ObservableObject, HasAudioEngine {
+class NoiseConductor1: ObservableObject, HasAudioEngine {
     @Published var data = ThereScopeData()
     @Published var gain: AUValue = 1.0
     

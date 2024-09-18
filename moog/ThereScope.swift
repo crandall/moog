@@ -21,7 +21,8 @@ struct ThereScopeData {
 struct ThereScopeView: View {
     @State private var selectedWave: WaveConductor.WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
-    
+    @StateObject private var noiseConductor = NoiseConductor()
+
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
@@ -73,7 +74,6 @@ struct ThereScopeView: View {
                 }
                 Button(action: {
                     selectedWave = .noise
-//                    waveConductor.setupOscillator(waveform: .noise)
                 }) {
                     Text("Noise")
                         .padding()
@@ -86,7 +86,12 @@ struct ThereScopeView: View {
             
             // Display the waveform plot
             if selectedWave == .noise {
-                // do nothing
+                RawOutputView1(noiseConductor.tappableNodeB,
+                               strokeColor: Color.plotColor,
+                               isNormalized: false,
+                               scaleFactor: 1.0) // Set your scale factor here
+                .clipped()
+                .background(Color.black)
             }else{
                 WavePlot(
                     waveData: waveConductor.waveData,
@@ -126,9 +131,11 @@ struct ThereScopeView: View {
         }
         .onAppear {
             waveConductor.start()
+            noiseConductor.start()
         }
         .onDisappear {
             waveConductor.stop()
+            noiseConductor.stop()
         }
     }
 }
@@ -187,7 +194,7 @@ class WaveConductor: ObservableObject {
             selectedWaveform = AudioKit.Table(.triangle)
         case .sawtooth:
             selectedWaveform = AudioKit.Table(.sawtooth)
-        case .noise:
+        default:
             selectedWaveform = AudioKit.Table(.sine)
         }
         
@@ -234,6 +241,57 @@ class WaveConductor: ObservableObject {
     func stop() {
         engine.stop()
         oscillator.stop()
+    }
+}
+
+class NoiseConductor: ObservableObject, HasAudioEngine {
+    @Published var data = ThereScopeData()
+    @Published var gain: AUValue = 1.0
+    
+    let engine = AudioEngine()
+    let initialDevice: Device
+    
+    let mic: AudioEngine.InputNode
+    let tappableNodeA: Fader
+    let tappableNodeB: Fader
+    let tappableNodeC: Fader
+    let silence: Fader
+    
+    var tracker: PitchTap!
+    
+    init() {
+        guard let input = engine.input else { fatalError() }
+        
+        guard let device = engine.inputDevice else {
+            fatalError()
+        }
+        
+        initialDevice = device
+        
+        mic = input
+        tappableNodeA = Fader(mic)
+        tappableNodeB = Fader(tappableNodeA)
+        tappableNodeC = Fader(tappableNodeB)
+        silence = Fader(tappableNodeC, gain: 0)
+        engine.output = silence
+        
+        tracker = PitchTap(mic) { pitch, amp in
+            DispatchQueue.main.async {
+                self.update(pitch[0], amp[0])
+            }
+        }
+        tracker.start()
+    }
+    
+    func update(_ pitch: AUValue, _ amp: AUValue) {
+        // Reduces sensitivity to background noise to prevent random / fluctuating data.
+        guard amp > 0.1 else { return }
+        
+        data.pitch = pitch
+        data.amplitude = amp
+        
+        tappableNodeA.gain = gain
+        
     }
 }
 
