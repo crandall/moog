@@ -89,7 +89,10 @@ struct ThereScopeView: View {
                 RawOutputView1(noiseConductor.tappableNodeB,
                                strokeColor: Color.plotColor,
                                isNormalized: false,
-                               scaleFactor: 2.0) // Set your scale factor here
+                               scaleFactor: 10.0)
+                
+                
+                
                 .padding(.top, 20)   // Padding between the buttons and the plot
                 .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
