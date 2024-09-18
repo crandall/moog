@@ -74,7 +74,7 @@ struct ThereScopeView3: View {
                         .cornerRadius(8)
                 }
             }
-            .padding(.bottom, 20)  // Hardcoded space between buttons and the plot
+            .padding(.bottom, 20)  // Space between buttons and plot
             
             // Display the waveform plot
             WavePlot(
@@ -85,9 +85,11 @@ struct ThereScopeView3: View {
                 minAmplitudeScale: 0.1,
                 minWidthScale: 0.5
             )
-            .frame(height: 300)
-            .padding(.top, 10)  // Hardcoded space between the buttons and the plot
+            .padding(.top, 20)   // Padding between the buttons and the plot
+            .padding(.bottom, 20)   // Padding between the buttons and the plot
             .background(Color.black)
+            
+            Spacer()  // Spacer between the plot and text to push text to bottom
             
             // Text output showing frequency, amplitude, and scale
             HStack(alignment: .top, spacing: 0) {
@@ -97,20 +99,18 @@ struct ThereScopeView3: View {
                     Text("Amplitude:")
                 }
                 
-                Spacer()
-                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                Spacer().frame(width: 40) // Fixed width of 40 pixels for the spacer
                 
                 // Second column - Direct access to values without Binding or unnecessary wrappers
                 VStack(alignment: .leading, spacing: 8) {
                     Text("\(waveConductor.pitch, specifier: "%.1f") Hz")  // Display the detected pitch
                     Text("\(waveConductor.amplitude, specifier: "%.2f")") // Display the detected amplitude
                 }
+                
                 Spacer() // Additional spacer to push everything to the left
             }
-            .padding(.top, 10)  // Padding between the plot and the text
             .padding(.horizontal, 20)  // Optional padding for horizontal alignment
-            
-            Spacer()  // Pushes everything upwards and keeps space at the bottom
+            .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
             waveConductor.start()
