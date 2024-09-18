@@ -136,20 +136,12 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
-            if selectedWave == .noise {
-                waveConductor.stop()
-                noiseConductor.start()
-            }else{
-                noiseConductor.stop()
-                waveConductor.start()
-            }
+            waveConductor.start()
+            noiseConductor.start()
         }
         .onDisappear {
-            if selectedWave == .noise {
-                noiseConductor.stop()
-            }else{
-                waveConductor.stop()
-            }
+            waveConductor.stop()
+            noiseConductor.stop()
         }
     }
 }
