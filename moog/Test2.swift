@@ -18,14 +18,17 @@ import AVFAudio
 struct ThereScopeData3 {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
-    var scale: CGFloat = 3.0
 }
+
 struct ThereScopeView3: View {
     @State private var selectedWave: WaveConductor.WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     
     var body: some View {
         VStack {
+            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
+            
+            // HStack for the buttons, with padding just below the navigation bar
             HStack {
                 Button(action: {
                     selectedWave = .sine
@@ -71,19 +74,43 @@ struct ThereScopeView3: View {
                         .cornerRadius(8)
                 }
             }
-            .padding()
+            .padding(.bottom, 20)  // Hardcoded space between buttons and the plot
             
-            // Display the selected waveform
+            // Display the waveform plot
             WavePlot(
                 waveData: waveConductor.waveData,
-                amplitudeScale: 1.0,  // Adjust as needed
-                widthScale: 1.0,      // Adjust as needed
+                amplitudeScale: 2.0,  // Adjust as needed
+                widthScale: 0.5,      // Adjust as needed
                 minAmplitudeThreshold: 0.01,
                 minAmplitudeScale: 0.1,
                 minWidthScale: 0.5
             )
             .frame(height: 300)
+            .padding(.top, 10)  // Hardcoded space between the buttons and the plot
             .background(Color.black)
+            
+            // Text output showing frequency, amplitude, and scale
+            HStack(alignment: .top, spacing: 0) {
+                // First column
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Frequency/Pitch:")
+                    Text("Amplitude:")
+                }
+                
+                Spacer()
+                    .frame(width: 40) // Fixed width of 40 pixels for the spacer
+                
+                // Second column - Direct access to values without Binding or unnecessary wrappers
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("\(waveConductor.pitch, specifier: "%.1f") Hz")  // Display the detected pitch
+                    Text("\(waveConductor.amplitude, specifier: "%.2f")") // Display the detected amplitude
+                }
+                Spacer() // Additional spacer to push everything to the left
+            }
+            .padding(.top, 10)  // Padding between the plot and the text
+            .padding(.horizontal, 20)  // Optional padding for horizontal alignment
+            
+            Spacer()  // Pushes everything upwards and keeps space at the bottom
         }
         .onAppear {
             waveConductor.start()
@@ -93,10 +120,6 @@ struct ThereScopeView3: View {
         }
     }
 }
-
-import AudioKit
-import AudioKitEX
-import AVFoundation
 
 class WaveConductor: ObservableObject {
     let engine = AudioEngine()
