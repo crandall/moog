@@ -84,6 +84,42 @@ public struct RawOutputView1: View {
     }
 }
 
+struct RawAudioPlotscaled: Shape {
+    var data: [CGFloat]
+    var isNormalized: Bool
+    var scaleFactor: CGFloat = 1.0
+    var xScaleFactor: CGFloat = 0.25  // New x-axis scaling factor
+    
+    func path(in rect: CGRect) -> Path {
+        var coordinates: [CGPoint] = []
+        
+        var rangeValue: CGFloat = 1.0
+        if isNormalized {
+            if let max = data.max() {
+                if let min = data.min() {
+                    rangeValue = abs(min) > max ? abs(min) : max
+                }
+            }
+        } else {
+            rangeValue = rangeValue / scaleFactor
+        }
+        
+        // Apply the xScaleFactor to compress the waveform horizontally
+        let scaledRectWidth = rect.width * xScaleFactor
+        
+        for index in 0 ..< data.count {
+            let x = index.mapped(from: 0 ... data.count, to: rect.minX ... (rect.minX + scaledRectWidth))
+            let y = data[index].mappedInverted(from: -rangeValue ... rangeValue, to: rect.minY ... rect.maxY)
+            
+            coordinates.append(CGPoint(x: x, y: y))
+        }
+        
+        return Path { path in
+            path.addLines(coordinates)
+        }
+    }
+}
+
 struct RawAudioPlot1: Shape {
     var data: [CGFloat]
     var isNormalized: Bool
