@@ -23,7 +23,8 @@ struct ThereScopeData3 {
 struct ThereScopeView3: View {
     @State private var selectedWave: WaveConductor.WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
-    
+    @StateObject private var noiseConductor = NoiseConductor()
+
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
@@ -73,21 +74,43 @@ struct ThereScopeView3: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
+
+                Button(action: {
+                    selectedWave = .noise
+//                    waveConductor.setupOscillator(waveform: .sawtooth)
+                }) {
+                    Text("Noise")
+                        .padding()
+                        .background(selectedWave == .noise ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
             .padding(.bottom, 20)  // Space between buttons and plot
             
-            // Display the waveform plot
-            WavePlot1(
-                waveData: waveConductor.waveData,
-                amplitudeScale: 2.0,  // Adjust as needed
-                widthScale: 0.5,      // Adjust as needed
-                minAmplitudeThreshold: 0.01,
-                minAmplitudeScale: 0.1,
-                minWidthScale: 0.5
-            )
-            .padding(.top, 20)   // Padding between the buttons and the plot
-            .padding(.bottom, 20)   // Padding between the buttons and the plot
-            .background(Color.black)
+            if selectedWave == .noise {
+                // Display the waveform plot
+                RawOutputView1(noiseConductor.tappableNodeB,
+                               //                          bufferSize: 1024,
+                               strokeColor: Color.plotColor,
+                               isNormalized: false,
+                               scaleFactor: 1.0) // Set your scale factor here
+                .clipped()
+                .background(Color.black)
+
+            }else{
+                WavePlot1(
+                    waveData: waveConductor.waveData,
+                    amplitudeScale: 2.0,  // Adjust as needed
+                    widthScale: 0.5,      // Adjust as needed
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5
+                )
+                .padding(.top, 20)   // Padding between the buttons and the plot
+                .padding(.bottom, 20)   // Padding between the buttons and the plot
+                .background(Color.black)
+            }
             
             Spacer()  // Spacer between the plot and text to push text to bottom
             
@@ -113,10 +136,20 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
-            waveConductor.start()
+            if selectedWave == .noise {
+                waveConductor.stop()
+                noiseConductor.start()
+            }else{
+                noiseConductor.stop()
+                waveConductor.start()
+            }
         }
         .onDisappear {
-            waveConductor.stop()
+            if selectedWave == .noise {
+                noiseConductor.stop()
+            }else{
+                waveConductor.stop()
+            }
         }
     }
 }
@@ -257,3 +290,55 @@ struct WavePlot1: View {
         }
     }
 }
+
+class NoiseConductor: ObservableObject, HasAudioEngine {
+    @Published var data = ThereScopeData()
+    @Published var gain: AUValue = 1.0
+    
+    let engine = AudioEngine()
+    let initialDevice: Device
+    
+    let mic: AudioEngine.InputNode
+    let tappableNodeA: Fader
+    let tappableNodeB: Fader
+    let tappableNodeC: Fader
+    let silence: Fader
+    
+    var tracker: PitchTap!
+    
+    init() {
+        guard let input = engine.input else { fatalError() }
+        
+        guard let device = engine.inputDevice else {
+            fatalError()
+        }
+        
+        initialDevice = device
+        
+        mic = input
+        tappableNodeA = Fader(mic)
+        tappableNodeB = Fader(tappableNodeA)
+        tappableNodeC = Fader(tappableNodeB)
+        silence = Fader(tappableNodeC, gain: 0)
+        engine.output = silence
+        
+        tracker = PitchTap(mic) { pitch, amp in
+            DispatchQueue.main.async {
+                self.update(pitch[0], amp[0])
+            }
+        }
+        tracker.start()
+    }
+    
+    func update(_ pitch: AUValue, _ amp: AUValue) {
+        // Reduces sensitivity to background noise to prevent random / fluctuating data.
+        guard amp > 0.1 else { return }
+        
+        data.pitch = pitch
+        data.amplitude = amp
+        
+        tappableNodeA.gain = gain
+        
+    }
+}
+

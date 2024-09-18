@@ -71,21 +71,35 @@ struct ThereScopeView: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
+                Button(action: {
+                    selectedWave = .noise
+//                    waveConductor.setupOscillator(waveform: .noise)
+                }) {
+                    Text("Noise")
+                        .padding()
+                        .background(selectedWave == .noise ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
             .padding(.bottom, 20)  // Space between buttons and plot
             
             // Display the waveform plot
-            WavePlot(
-                waveData: waveConductor.waveData,
-                amplitudeScale: 2.0,  // Adjust as needed
-                widthScale: 0.5,      // Adjust as needed
-                minAmplitudeThreshold: 0.01,
-                minAmplitudeScale: 0.1,
-                minWidthScale: 0.5
-            )
-            .padding(.top, 20)   // Padding between the buttons and the plot
-            .padding(.bottom, 20)   // Padding between the buttons and the plot
-            .background(Color.black)
+            if selectedWave == .noise {
+                // do nothing
+            }else{
+                WavePlot(
+                    waveData: waveConductor.waveData,
+                    amplitudeScale: 2.0,  // Adjust as needed
+                    widthScale: 0.5,      // Adjust as needed
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5
+                )
+                .padding(.top, 20)   // Padding between the buttons and the plot
+                .padding(.bottom, 20)   // Padding between the buttons and the plot
+                .background(Color.black)
+            }
             
             Spacer()  // Spacer between the plot and text to push text to bottom
             
@@ -131,7 +145,7 @@ class WaveConductor: ObservableObject {
     @Published var waveData: [Float] = []  // Wave data for plotting
     
     enum WaveType {
-        case sine, square, triangle, sawtooth
+        case sine, square, triangle, sawtooth, noise
     }
     
     init() {
@@ -173,6 +187,8 @@ class WaveConductor: ObservableObject {
             selectedWaveform = AudioKit.Table(.triangle)
         case .sawtooth:
             selectedWaveform = AudioKit.Table(.sawtooth)
+        case .noise:
+            selectedWaveform = AudioKit.Table(.sine)
         }
         
         // Create a new oscillator with the selected waveform
