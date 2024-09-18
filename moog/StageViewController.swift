@@ -49,8 +49,8 @@ class StageViewController: UIViewController {
 //            audioKitView = AnyView(ThereScopeView1())
         case .test:
             navbarTitle = "Test"
-//            audioKitView = AnyView(ThereScopeView3())
-            audioKitView = AnyView(TriangleWavePlotView())
+            audioKitView = AnyView(ThereScopeView3())
+//            audioKitView = AnyView(TriangleWavePlotView())
         case .tuner:
             navbarTitle = "InputDeviceDemo"
             audioKitView = AnyView(InputDeviceDemoView())
