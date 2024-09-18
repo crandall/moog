@@ -107,7 +107,7 @@ struct SquareWavePlot: View {
                     path.addLine(to: CGPoint(x: x, y: y))
                 }
             }
-            .stroke(Color.green, lineWidth: 2)
+            .stroke(Color.blue, lineWidth: 2)
         }
     }
 }

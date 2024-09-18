@@ -23,8 +23,8 @@ struct ThereScopeData3 {
 
 struct ThereScopeView3: View {
     // Initialize the conductor you want to use here:
-    @StateObject var conductor = SineWaveMicConductor() // <-- Change this line to switch conductors
-    //    @StateObject var conductor = SquareWaveMicConductor() // <-- Uncomment this line for Square Wave Conductor
+//    @StateObject var conductor = SineWaveMicConductor() // <-- Change this line to switch conductors
+    @StateObject var conductor = SquareWaveMicConductor() // <-- Uncomment this line for Square Wave Conductor
     
     var body: some View {
         VStack {
