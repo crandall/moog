@@ -81,8 +81,10 @@ struct SquareWavePlot: View {
     var amplitudeScale: CGFloat   // Dynamically adjust height based on volume
     var widthScale: CGFloat       // Dynamically adjust width based on pitch
     var minAmplitudeThreshold: CGFloat = 0.01 // Threshold to flatten wave at low volume
-    var minAmplitudeScale: CGFloat = 0.1  // Minimum wave height
-    var minWidthScale: CGFloat = 0.5      // Minimum wave width
+    var minAmplitudeScale: CGFloat = 0.1      // Minimum wave height
+    var minWidthScale: CGFloat = 0.5          // Minimum wave width
+    var amplitudeMultiplier: CGFloat = 10.0   // Increase height scaling for minimal sound
+    var widthMultiplier: CGFloat = 5.0        // Increase width scaling for minimal sound
     
     var body: some View {
         GeometryReader { geometry in
@@ -91,10 +93,10 @@ struct SquareWavePlot: View {
                 let width = geometry.size.width
                 
                 // Adjust step size based on frequency (pitch)
-                let step = max((width / CGFloat(max(1, squareWaveData.count))) * widthScale, minWidthScale)
+                let step = max((width / CGFloat(max(1, squareWaveData.count))) * widthScale * widthMultiplier, minWidthScale)
                 
                 // Check if amplitude is below the threshold and flatten the wave if so
-                let effectiveAmplitudeScale = amplitudeScale < minAmplitudeThreshold ? 0 : max(amplitudeScale, minAmplitudeScale)
+                let effectiveAmplitudeScale = amplitudeScale < minAmplitudeThreshold ? 0 : max(amplitudeScale * amplitudeMultiplier, minAmplitudeScale)
                 
                 // Start drawing from the middle of the view
                 path.move(to: CGPoint(x: 0, y: height / 2))

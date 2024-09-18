@@ -21,6 +21,122 @@ struct ThereScopeData3 {
 }
 
 struct ThereScopeView3: View {
+    @State private var selectedWave: WaveType = .square
+    
+    enum WaveType {
+        case sine
+        case square
+        case triangle
+    }
+    
+    @StateObject private var sineWaveConductor = SineWaveMicConductor()
+    @StateObject private var squareWaveConductor = SquareWaveMicConductor()
+    @StateObject private var triangleWaveConductor = TriangleWaveMicConductor()
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: {
+                    selectedWave = .sine
+                    stopAllConductors()
+                    sineWaveConductor.start()
+                }) {
+                    Text("Sine")
+                        .padding()
+                        .background(selectedWave == .sine ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                
+                Button(action: {
+                    selectedWave = .square
+                    stopAllConductors()
+                    squareWaveConductor.start()
+                }) {
+                    Text("Square")
+                        .padding()
+                        .background(selectedWave == .square ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                
+                Button(action: {
+                    selectedWave = .triangle
+                    stopAllConductors()
+                    triangleWaveConductor.start()
+                }) {
+                    Text("Triangle")
+                        .padding()
+                        .background(selectedWave == .triangle ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+            }
+            .padding()
+            
+            if selectedWave == .sine {
+                SineWavePlot(
+                    sineWaveData: sineWaveConductor.sineWaveBuffer,
+                    amplitudeScale: CGFloat(sineWaveConductor.amplitude),
+                    widthScale: CGFloat(sineWaveConductor.amplitude),
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5,
+                    amplitudeMultiplier: 20.0,
+                    widthMultiplier: 10.0
+                )
+                .frame(height: 300)
+                .background(Color.black)
+            } else if selectedWave == .square {
+                SquareWavePlot(
+                    squareWaveData: squareWaveConductor.squareWaveBuffer,
+                    amplitudeScale: CGFloat(squareWaveConductor.amplitude),
+                    widthScale: CGFloat(squareWaveConductor.amplitude),
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5,
+                    amplitudeMultiplier: 10.0,
+                    widthMultiplier: 5.0
+                )
+                .frame(height: 300)
+                .background(Color.black)
+            } else if selectedWave == .triangle {
+                TriangleWavePlot(
+                    triangleWaveData: triangleWaveConductor.triangleWaveBuffer,
+                    amplitudeScale: CGFloat(triangleWaveConductor.amplitude),
+                    widthScale: CGFloat(triangleWaveConductor.amplitude),
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5,
+                    amplitudeMultiplier: 20.0,
+                    widthMultiplier: 10.0
+                )
+                .frame(height: 300)
+                .background(Color.black)
+            }
+        }
+        .onAppear {
+            if selectedWave == .sine {
+                sineWaveConductor.start()
+            } else if selectedWave == .square {
+                squareWaveConductor.start()
+            } else {
+                triangleWaveConductor.start()
+            }
+        }
+        .onDisappear {
+            stopAllConductors()
+        }
+    }
+    
+    func stopAllConductors() {
+        sineWaveConductor.stop()
+        squareWaveConductor.stop()
+        triangleWaveConductor.stop()
+    }
+}
+
+struct ThereScopeViewx: View {
     // State to track the selected wave type
     @State private var selectedWave: WaveType = .square  // Default to square wave
     
@@ -115,62 +231,3 @@ struct ThereScopeView3: View {
 }
 
 
-//struct ThereScopeView3: View {
-//    // Initialize the conductor you want to use here:
-////    @StateObject var conductor = SineWaveMicConductor() // <-- Change this line to switch conductors
-//    @StateObject var conductor = SquareWaveMicConductor() // <-- Uncomment this line for Square Wave Conductor
-//    
-//    var body: some View {
-//        VStack {
-//            HStack(alignment: .top, spacing: 0) {
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Text("Frequency:")
-//                    Text("Amplitude:")
-//                    Text("Scale:")
-//                }
-//                Spacer().frame(width: 40)
-//            }
-//            .padding()
-//            
-//            // Display the output depending on the conductor
-//            if let sineWaveConductor = conductor as? SineWaveMicConductor {
-//                SineWavePlot(
-//                    sineWaveData: sineWaveConductor.sineWaveBuffer,  // Ensure passing array of [Float]
-//                    amplitudeScale: CGFloat(sineWaveConductor.amplitude), // Dynamically adjust height based on amplitude
-//                    widthScale: CGFloat(sineWaveConductor.amplitude),     // Dynamically adjust width based on pitch
-//                    minAmplitudeThreshold: 0.01,                 // Threshold for flattening the wave
-//                    minAmplitudeScale: 0.1,                      // Minimum height to prevent collapse
-//                    minWidthScale: 0.5                           // Minimum width to prevent collapse
-//                )
-//                .frame(height: 300)
-//                .background(Color.black)
-//                
-//            } else if let squareWaveConductor = conductor as? SquareWaveMicConductor {
-//                SquareWavePlot(
-//                    squareWaveData: squareWaveConductor.squareWaveBuffer,  // Ensure passing array of [Float]
-//                    amplitudeScale: CGFloat(squareWaveConductor.amplitude), // Dynamically adjust height based on amplitude
-//                    widthScale: CGFloat(squareWaveConductor.amplitude),     // Dynamically adjust width based on pitch
-//                    minAmplitudeThreshold: 0.01,                 // Threshold for flattening the wave
-//                    minAmplitudeScale: 0.1,                      // Minimum height to prevent collapse
-//                    minWidthScale: 0.5                           // Minimum width to prevent collapse
-//                )
-//                .frame(height: 300)
-//                .background(Color.black)
-//            }
-//            
-//            HStack {
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Text("Scale:")
-//                }
-//                Spacer().frame(width: 40)
-//            }
-//            .padding()
-//        }
-//        .onAppear {
-//            conductor.start()
-//        }
-//        .onDisappear {
-//            conductor.stop()
-//        }
-//    }
-//}
