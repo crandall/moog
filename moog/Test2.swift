@@ -73,6 +73,17 @@ struct ThereScopeView3: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
+                
+                Button(action: {
+                    selectedWave = .noise
+                    waveConductor.setupOscillator(waveform: .noise)
+                }) {
+                    Text("Noise")
+                        .padding()
+                        .background(selectedWave == .noise ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
             .padding(.bottom, 20)  // Space between buttons and plot
             
@@ -86,7 +97,7 @@ struct ThereScopeView3: View {
                 minWidthScale: 0.5
             )
             .padding(.top, 20)   // Padding between the buttons and the plot
-            .padding(.bottom, 20)   // Padding between the buttons and the plot
+            .padding(.bottom, 20)   // Padding between the plot and the text
             .background(Color.black)
             
             Spacer()  // Spacer between the plot and text to push text to bottom
@@ -133,7 +144,7 @@ class WaveConductor: ObservableObject {
     @Published var waveData: [Float] = []  // Wave data for plotting
     
     enum WaveType {
-        case sine, square, triangle, sawtooth
+        case sine, square, triangle, sawtooth, noise
     }
     
     init() {
@@ -156,62 +167,93 @@ class WaveConductor: ObservableObject {
         tracker.start()
     }
     
-    // Function to configure and replace the oscillator
+    // Function to configure and replace the oscillator or handle noise
     func setupOscillator(waveform: WaveType) {
+        // Remove any existing tap on the mic
+        mic.avAudioNode.removeTap(onBus: 0)
+        
         // Stop the current oscillator if it exists
         if oscillator != nil {
             oscillator.stop()
             oscillator.avAudioNode.removeTap(onBus: 0)
         }
         
-        // Choose the waveform based on the selected type
-        var selectedWaveform: AudioKit.Table
-        switch waveform {
-        case .sine:
-            selectedWaveform = AudioKit.Table(.sine)
-        case .square:
-            selectedWaveform = AudioKit.Table(.square)
-        case .triangle:
-            selectedWaveform = AudioKit.Table(.triangle)
-        case .sawtooth:
-            selectedWaveform = AudioKit.Table(.sawtooth)
-        }
-        
-        // Create a new oscillator with the selected waveform
-        oscillator = Oscillator(waveform: selectedWaveform)
-        oscillator.amplitude = 0.5  // Default amplitude
-        
-        // Recreate the silent node to mute output
-        silentNode = Fader(oscillator, gain: 0.0)
-        engine.output = silentNode
-        
-        // Attach a tap to capture the waveform data for visualization
-        oscillator.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: nil) { buffer, _ in
-            let channelData = buffer.floatChannelData![0]
-            let frameLength = Int(buffer.frameLength)
-            var data: [Float] = []
+        // Handle noise waveform using mic raw input
+        if waveform == .noise {
+            // Use the mic input directly as the data source for noise
+            silentNode = Fader(mic, gain: 0.0)  // Mute the output, but visualize the input
             
-            for i in 0..<frameLength {
-                data.append(channelData[i])
+            // Attach a tap to capture the microphone raw data for visualization
+            mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: nil) { buffer, _ in
+                let channelData = buffer.floatChannelData![0]
+                let frameLength = Int(buffer.frameLength)
+                var data: [Float] = []
+                
+                for i in 0..<frameLength {
+                    data.append(channelData[i])  // Raw data from the microphone
+                }
+                
+                DispatchQueue.main.async {
+                    self.waveData = data  // Update the wave data for noise
+                }
             }
             
-            DispatchQueue.main.async {
-                self.waveData = data  // Update the waveform data
+            engine.output = silentNode
+            
+        } else {
+            // Choose the waveform based on the selected type
+            var selectedWaveform: AudioKit.Table
+            switch waveform {
+            case .sine:
+                selectedWaveform = AudioKit.Table(.sine)
+            case .square:
+                selectedWaveform = AudioKit.Table(.square)
+            case .triangle:
+                selectedWaveform = AudioKit.Table(.triangle)
+            case .sawtooth:
+                selectedWaveform = AudioKit.Table(.sawtooth)
+            default:
+                selectedWaveform = AudioKit.Table(.sine)
             }
+            
+            // Create a new oscillator with the selected waveform
+            oscillator = Oscillator(waveform: selectedWaveform)
+            oscillator.amplitude = 0.5  // Default amplitude
+            
+            // Recreate the silent node to mute output
+            silentNode = Fader(oscillator, gain: 0.0)
+            engine.output = silentNode
+            
+            // Attach a tap to capture the waveform data for visualization
+            oscillator.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: nil) { buffer, _ in
+                let channelData = buffer.floatChannelData![0]
+                let frameLength = Int(buffer.frameLength)
+                var data: [Float] = []
+                
+                for i in 0..<frameLength {
+                    data.append(channelData[i])
+                }
+                
+                DispatchQueue.main.async {
+                    self.waveData = data  // Update the waveform data
+                }
+            }
+            
+            oscillator.start()
         }
-        
-        oscillator.start()
     }
     
     func updateWave() {
-        oscillator.frequency = self.pitch
-        oscillator.amplitude = self.amplitude
+        if let oscillator = oscillator {
+            oscillator.frequency = self.pitch
+            oscillator.amplitude = self.amplitude
+        }
     }
     
     func start() {
         do {
             try engine.start()
-            oscillator.start()
+            oscillator?.start()
         } catch {
             print("Error starting the audio engine: \(error)")
         }
@@ -219,7 +261,7 @@ class WaveConductor: ObservableObject {
     
     func stop() {
         engine.stop()
-        oscillator.stop()
+        oscillator?.stop()
     }
 }
 
