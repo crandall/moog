@@ -77,7 +77,7 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // Space between buttons and plot
             
             // Display the waveform plot
-            WavePlot(
+            WavePlot1(
                 waveData: waveConductor.waveData,
                 amplitudeScale: 2.0,  // Adjust as needed
                 widthScale: 0.5,      // Adjust as needed
@@ -121,7 +121,7 @@ struct ThereScopeView3: View {
     }
 }
 
-class WaveConductor: ObservableObject {
+class WaveConductor1: ObservableObject {
     let engine = AudioEngine()
     let mic: AudioEngine.InputNode
     var tracker: PitchTap!
@@ -223,7 +223,7 @@ class WaveConductor: ObservableObject {
     }
 }
 
-struct WavePlot: View {
+struct WavePlot1: View {
     var waveData: [Float]  // Triangle wave data to plot
     var amplitudeScale: CGFloat    // Dynamically adjust height based on volume
     var widthScale: CGFloat        // Dynamically adjust width based on pitch
