@@ -22,7 +22,7 @@ struct ThereScopeData3 {
 
 struct ThereScopeView3: View {
     @State private var selectedWave: WaveConductor.WaveType = .sine
-    @StateObject private var waveConductor = WaveConductor()
+    @StateObject private var waveConductor = WaveConductor1()
     @StateObject private var noiseConductor = NoiseConductor1()
 
     var body: some View {
@@ -162,9 +162,18 @@ class WaveConductor1: ObservableObject {
     }
     
     init() {
+        // Audio Session Setup
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting up audio session: \(error)")
+        }
+        
         guard let input = engine.input else {
             fatalError("Microphone input not available")
         }
+        
         mic = input
         
         // Set default waveform as sine and configure oscillator
@@ -184,13 +193,15 @@ class WaveConductor1: ObservableObject {
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
         // Stop the current oscillator if it exists
-        if oscillator != nil {
-            oscillator.stop()
-            oscillator.avAudioNode.removeTap(onBus: 0)
+        if let osc = oscillator {
+            if engine.avEngine.isRunning {
+                osc.avAudioNode.removeTap(onBus: 0)  // Ensure engine is running before removing taps
+            }
+            osc.stop()
         }
         
         // Choose the waveform based on the selected type
-        var selectedWaveform: AudioKit.Table
+        let selectedWaveform: AudioKit.Table
         switch waveform {
         case .sine:
             selectedWaveform = AudioKit.Table(.sine)
@@ -208,6 +219,8 @@ class WaveConductor1: ObservableObject {
         
         // Recreate the silent node to mute output
         silentNode = Fader(oscillator, gain: 0.0)
+        
+        // Set silentNode as the engine's output directly
         engine.output = silentNode
         
         // Attach a tap to capture the waveform data for visualization
@@ -224,7 +237,7 @@ class WaveConductor1: ObservableObject {
                 self.waveData = data  // Update the waveform data
             }
         }
-        
+
         oscillator.start()
     }
     
@@ -232,9 +245,75 @@ class WaveConductor1: ObservableObject {
         oscillator.frequency = self.pitch
         oscillator.amplitude = self.amplitude
     }
+
+    func startx() {
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            // Set the category and activate the session
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+            try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+            try audioSession.setActive(true)
+            
+            print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+            
+            // Check input node availability
+            guard let inputNode = engine.input else {
+                print("Error: Microphone input not available.")
+                return
+            }
+            
+            // Get input format
+            let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+            print("Input Format: \(inputFormat)")
+            
+            // Check if output node is available
+            if let outputNode = engine.output {
+                let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+                print("Output Format: \(outputFormat)")
+                
+                // Check for sample rate mismatch
+                if inputFormat.sampleRate != outputFormat.sampleRate {
+                    print("Sample rate mismatch. Adjusting output sample rate.")
+                    
+                    // Set preferred output sample rate to match the input format
+                    try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+                    try audioSession.setActive(true)
+                    
+                    // Log the preferred output format
+                    print("Adjusted hardware output format to: \(outputFormat)")
+                } else {
+                    print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                }
+            } else {
+                print("Error: Output node not available.")
+            }
+            
+            // Check if the engine is already running
+            if engine.avEngine.isRunning {
+                print("Warning: Audio engine is already running.")
+            }
+            
+            // Attempt to start the engine after checks
+            try engine.start()
+            print("Audio engine started successfully.")
+            
+            oscillator.start()
+            print("Oscillator started successfully.")
+            
+        } catch {
+            print("Error starting the audio engine: \(error)")
+        }
+    }
+
+
     
     func start() {
         do {
+            // insert some test things here:
+            //
+            
+            
             try engine.start()
             oscillator.start()
         } catch {
