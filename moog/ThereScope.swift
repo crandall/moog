@@ -41,7 +41,6 @@ struct ThereScopeView: View {
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            ThereScopeDevicePicker(device: waveConductor.initialDevice)
 
             // HStack for the buttons, with padding just below the navigation bar
             HStack {
@@ -128,26 +127,31 @@ struct ThereScopeView: View {
             
             Spacer()  // Spacer between the plot and text to push text to bottom
             
-            // Text output showing frequency, amplitude, and scale
-            HStack(alignment: .top, spacing: 0) {
-                // First column
+            // Text output showing frequency, amplitude, and centered device picker
+            HStack(alignment: .top) {
+                // Fixed width column for Frequency and Amplitude values to prevent layout shift
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Frequency/Pitch:")
                     Text("Amplitude:")
                 }
+                .frame(width: 150, alignment: .leading)  // Fixed width to prevent shifting
                 
-                Spacer().frame(width: 40) // Fixed width of 40 pixels for the spacer
-                
-                // Second column - Direct access to values without Binding or unnecessary wrappers
                 VStack(alignment: .leading, spacing: 8) {
                     Text("\(waveConductor.pitch, specifier: "%.1f") Hz")  // Display the detected pitch
                     Text("\(waveConductor.amplitude, specifier: "%.2f")") // Display the detected amplitude
                 }
+                .frame(width: 100, alignment: .leading)  // Fixed width to prevent shifting
                 
-                Spacer() // Additional spacer to push everything to the left
+                // Spacer to create flexible space between text and centered picker
+                Spacer()
+                
+                // Centered Device Picker
+                ThereScopeDevicePicker(device: waveConductor.initialDevice)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding(.horizontal, 20)  // Optional padding for horizontal alignment
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
+            
         }
         .onAppear {
             waveConductor.start()
@@ -443,6 +447,7 @@ struct ThereScopeDevicePicker: View {
         }
         .pickerStyle(MenuPickerStyle())
         .foregroundColor(.black)
+        .accentColor(.black)
         .onChange(of: device, perform: setInputDevice)
     }
     
