@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
+    <false/>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We need access to the microphone for recording audio</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

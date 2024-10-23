@@ -28,7 +28,7 @@ struct ThereScopeView3: View {
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            
+
             // HStack for the buttons, with padding just below the navigation bar
             HStack {
                 Button(action: {
@@ -137,7 +137,7 @@ struct ThereScopeView3: View {
         }
         .onAppear {
             waveConductor.start()
-            noiseConductor.start()
+//            noiseConductor.start()
         }
         .onDisappear {
             waveConductor.stop()
@@ -235,6 +235,10 @@ class WaveConductor1: ObservableObject {
             
             DispatchQueue.main.async {
                 self.waveData = data  // Update the waveform data
+                
+                if let d1 = self.waveData[0] as Float?{
+                    print("tap:\(d1)")
+                }
             }
         }
 
@@ -246,7 +250,7 @@ class WaveConductor1: ObservableObject {
         oscillator.amplitude = self.amplitude
     }
 
-    func startx() {
+    func start1() {
         do {
             let audioSession = AVAudioSession.sharedInstance()
             
@@ -340,6 +344,8 @@ struct WavePlot1: View {
             Path { path in
                 let height = geometry.size.height
                 let width = geometry.size.width
+                
+                print("\(width):\(height)")
                 
                 // Calculate step size based on widthScale
                 let step = max((width / CGFloat(max(1, waveData.count))) * widthScale, minWidthScale)
