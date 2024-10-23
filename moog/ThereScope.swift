@@ -12,21 +12,37 @@ import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
 
+import AVFoundation
+//import AudioKit
+//import AudioKitEX
+//import AudioKitUI
+//import AudioToolbox
+//import SoundpipeAudioKit
+//import SwiftUI
+import AVFAudio
+
+
 // Data Model for Scope
 struct ThereScopeData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
 }
 
+enum WaveType {
+    case sine, square, triangle, sawtooth, noise
+}
+
+
 struct ThereScopeView: View {
-    @State private var selectedWave: WaveConductor.WaveType = .sine
+    @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
 
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            
+            ThereScopeDevicePicker(device: waveConductor.initialDevice)
+
             // HStack for the buttons, with padding just below the navigation bar
             HStack {
                 Button(action: {
@@ -150,23 +166,77 @@ class WaveConductor: ObservableObject {
     var tracker: PitchTap!
     var oscillator: Oscillator!
     var silentNode: Fader!
+    var audioConverter: AVAudioConverter?  // AVAudioConverter for sample rate conversion
+    let initialDevice: Device
+
     
     @Published var pitch: AUValue = 0.0  // Detected pitch
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
     @Published var waveData: [Float] = []  // Wave data for plotting
     
     enum WaveType {
-        case sine, square, triangle, sawtooth, noise
+        case sine, square, triangle, sawtooth
     }
     
+    
     init() {
+        // Audio Session Setup
         guard let input = engine.input else {
             fatalError("Microphone input not available")
         }
+        
+        guard let device = engine.inputDevice else { fatalError() }
+        initialDevice = device
+        
         mic = input
         
         // Set default waveform as sine and configure oscillator
         setupOscillator(waveform: .sine)
+        
+        
+        if #available(iOS 17, *) {
+            print("ios17")
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                
+                // Set the category and activate the session
+                try audioSession.setCategory(.playAndRecord, mode: .default)
+                try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+                try audioSession.setActive(true)
+                
+                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+                
+                // Safely unwrap the input format
+                if let inputFormat = mic.avAudioNode.inputFormat(forBus: 0) as AVAudioFormat?,
+                   let outputFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: inputFormat.channelCount) as AVAudioFormat?
+                {
+                    // Set up AVAudioConverter for sample rate conversion
+                    audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
+                    mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
+                        guard let strongSelf = self else { return }
+                        strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
+                    }
+                    
+                } else {
+                    print("Failed to get valid input audio format")
+                }
+                
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        } else {
+            print("ios16")
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        }
+        
+        guard let input = engine.input else {
+            fatalError("Microphone input not available")
+        }
         
         // Start pitch detection
         tracker = PitchTap(mic) { pitch, amp in
@@ -179,16 +249,40 @@ class WaveConductor: ObservableObject {
         tracker.start()
     }
     
+    // This method is called every time a new audio buffer is captured from the microphone
+    func processAudioBuffer(buffer: AVAudioPCMBuffer, inputFormat: AVAudioFormat, outputFormat: AVAudioFormat) {
+        guard let converter = audioConverter else { return }
+        
+        let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: buffer.frameCapacity)!
+        
+        var error: NSError? = nil
+        converter.convert(to: outputBuffer, error: &error) { inNumPackets, outStatus in
+            // Provide input audio data to the converter
+            outStatus.pointee = .haveData
+            return buffer
+        }
+        
+        if let error = error {
+            print("Error during audio conversion: \(error)")
+        } else {
+            // Successfully converted the buffer, you can now use `outputBuffer`
+            print("Successfully converted audio buffer")
+            // Handle outputBuffer (e.g., send it to audio output, save to file, etc.)
+        }
+    }
+    
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
         // Stop the current oscillator if it exists
-        if oscillator != nil {
-            oscillator.stop()
-            oscillator.avAudioNode.removeTap(onBus: 0)
+        if let osc = oscillator {
+            if engine.avEngine.isRunning {
+                osc.avAudioNode.removeTap(onBus: 0)  // Ensure engine is running before removing taps
+            }
+            osc.stop()
         }
         
         // Choose the waveform based on the selected type
-        var selectedWaveform: AudioKit.Table
+        let selectedWaveform: AudioKit.Table
         switch waveform {
         case .sine:
             selectedWaveform = AudioKit.Table(.sine)
@@ -198,8 +292,6 @@ class WaveConductor: ObservableObject {
             selectedWaveform = AudioKit.Table(.triangle)
         case .sawtooth:
             selectedWaveform = AudioKit.Table(.sawtooth)
-        default:
-            selectedWaveform = AudioKit.Table(.sine)
         }
         
         // Create a new oscillator with the selected waveform
@@ -208,6 +300,8 @@ class WaveConductor: ObservableObject {
         
         // Recreate the silent node to mute output
         silentNode = Fader(oscillator, gain: 0.0)
+        
+        // Set silentNode as the engine's output directly
         engine.output = silentNode
         
         // Attach a tap to capture the waveform data for visualization
@@ -222,6 +316,10 @@ class WaveConductor: ObservableObject {
             
             DispatchQueue.main.async {
                 self.waveData = data  // Update the waveform data
+                
+                if let d1 = self.waveData[0] as Float?{
+                    print("tap:\(d1)")
+                }
             }
         }
         

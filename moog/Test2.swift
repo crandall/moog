@@ -21,7 +21,7 @@ struct ThereScopeData3 {
 }
 
 struct ThereScopeView3: View {
-    @State private var selectedWave: WaveConductor.WaveType = .sine
+    @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor1()
     @StateObject private var noiseConductor = NoiseConductor1()
 
@@ -356,18 +356,6 @@ class WaveConductor1: ObservableObject {
             } else {
                 print("Error: Output node not available.")
             }
-            
-            // Check if the engine is already running
-//            if engine.avEngine.isRunning {
-//                print("Warning: Audio engine is already running.")
-//            }
-//            
-//            // Attempt to start the engine after checks
-//            try engine.start()
-//            print("Audio engine started successfully.")
-//            
-//            oscillator.start()
-//            print("Oscillator started successfully.")
             
         } catch {
             print("Error starting the audio engine: \(error)")
