@@ -136,13 +136,14 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
-            if #available(iOS 17, *) {
-                waveConductor.start1()
-            } else {
-                waveConductor.start()
-            }
+//            if #available(iOS 17, *) {
+//                waveConductor.start1()
+//            } else {
+//                waveConductor.start()
+//            }
 
-            // do this for both:
+            waveConductor.gatherData()
+            waveConductor.start()
             noiseConductor.start()
         }
         .onDisappear {
@@ -167,15 +168,88 @@ class WaveConductor1: ObservableObject {
         case sine, square, triangle, sawtooth
     }
     
+//    func initOld() {
+//        // Audio Session Setup
+//        guard let input = engine.input else {
+//            fatalError("Microphone input not available")
+//        }
+//        
+//        mic = input
+//        
+//        // Set default waveform as sine and configure oscillator
+//        setupOscillator(waveform: .sine)
+//        
+//        
+//        if #available(iOS 17, *) {
+//            print("ios17")
+//            do {
+//                let audioSession = AVAudioSession.sharedInstance()
+//                
+//                // Set the category and activate the session
+//                try audioSession.setCategory(.playAndRecord, mode: .default)
+//                try audioSession.setPreferredSampleRate(44100.0)  // Set input sample rate
+//                try audioSession.setActive(true)
+//                
+//                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+//                
+//                // Check input node availability
+//                guard let inputNode = engine.input else {
+//                    print("Error: Microphone input not available.")
+//                    return
+//                }
+//                
+//                // Get input format
+//                let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+//                print("Input Format: \(inputFormat)")
+//                
+//                // Check if output node is available
+//                if let outputNode = engine.output {
+//                    let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+//                    print("Output Format: \(outputFormat)")
+//                    
+//                    // Check for sample rate mismatch
+//                    if inputFormat.sampleRate != outputFormat.sampleRate {
+//                        print("Sample rate mismatch. Adjusting output sample rate.")
+//                        
+//                        // Set preferred output sample rate to match the input format
+//                        try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+//                        try audioSession.setActive(true)
+//                        
+//                        // Log the preferred output format
+//                        print("Adjusted hardware output format to: \(outputFormat)")
+//                    } else {
+//                        print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+//                    }
+//                } else {
+//                    print("Error: Output node not available.")
+//                }
+//                
+//            } catch {
+//                print("Error setting up audio session: \(error)")
+//            }
+//        } else {
+//            print("ios16")
+//            do {
+//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+//                try AVAudioSession.sharedInstance().setActive(true)
+//            } catch {
+//                print("Error setting up audio session: \(error)")
+//            }
+//        }
+//        
+//        // Start pitch detection
+//        tracker = PitchTap(mic) { pitch, amp in
+//            DispatchQueue.main.async {
+//                self.pitch = pitch[0]  // Detected pitch (frequency)
+//                self.amplitude = amp[0]  // Detected amplitude
+//                self.updateWave()
+//            }
+//        }
+//        tracker.start()
+//    }
+
     init() {
         // Audio Session Setup
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Error setting up audio session: \(error)")
-        }
-        
         guard let input = engine.input else {
             fatalError("Microphone input not available")
         }
@@ -184,7 +258,66 @@ class WaveConductor1: ObservableObject {
         
         // Set default waveform as sine and configure oscillator
         setupOscillator(waveform: .sine)
-        
+
+
+        if #available(iOS 17, *) {
+            print("ios17")
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                
+                // Set the category and activate the session
+                try audioSession.setCategory(.playAndRecord, mode: .default)
+                try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+                try audioSession.setActive(true)
+                
+                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+                
+                // Check input node availability
+                guard let inputNode = engine.input else {
+                    print("Error: Microphone input not available.")
+                    return
+                }
+                
+                // Get input format
+                let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+                print("Input Format: \(inputFormat)")
+                
+                // Check if output node is available
+                if let outputNode = engine.output {
+                    let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+                    print("Output Format: \(outputFormat)")
+                    
+                    // Check for sample rate mismatch
+                    if inputFormat.sampleRate != outputFormat.sampleRate {
+                        print("Sample rate mismatch. Adjusting output sample rate.")
+                        
+                        // Set preferred output sample rate to match the input format
+                        try audioSession.setActive(false)
+                        try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+                        try audioSession.setActive(true)
+                        
+                        // Log the preferred output format
+                        print("Adjusted hardware output format to: \(outputFormat)")
+                    } else {
+                        print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                    }
+                } else {
+                    print("Error: Output node not available.")
+                }
+                
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        } else {
+            print("ios16")
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        }
+
         // Start pitch detection
         tracker = PitchTap(mic) { pitch, amp in
             DispatchQueue.main.async {
@@ -195,6 +328,7 @@ class WaveConductor1: ObservableObject {
         }
         tracker.start()
     }
+    
     
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
@@ -254,6 +388,67 @@ class WaveConductor1: ObservableObject {
     func updateWave() {
         oscillator.frequency = self.pitch
         oscillator.amplitude = self.amplitude
+    }
+    
+    func gatherData(){
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            // Set the category and activate the session
+//            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+//            try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+//            try audioSession.setActive(true)
+            
+            print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+            
+            // Check input node availability
+            guard let inputNode = engine.input else {
+                print("Error: Microphone input not available.")
+                return
+            }
+            
+            // Get input format
+            let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+            print("Input Format: \(inputFormat)")
+            
+            // Check if output node is available
+            if let outputNode = engine.output {
+                let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+                print("Output Format: \(outputFormat)")
+                
+                // Check for sample rate mismatch
+                if inputFormat.sampleRate != outputFormat.sampleRate {
+                    print("Sample rate mismatch. Adjusting output sample rate.")
+                    
+                    // Set preferred output sample rate to match the input format
+//                    try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+//                    try audioSession.setActive(true)
+                    
+                    // Log the preferred output format
+                    print("Adjusted hardware output format to: \(outputFormat)")
+                } else {
+                    print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                }
+            } else {
+                print("Error: Output node not available.")
+            }
+            
+            // Check if the engine is already running
+//            if engine.avEngine.isRunning {
+//                print("Warning: Audio engine is already running.")
+//            }
+//            
+//            // Attempt to start the engine after checks
+//            try engine.start()
+//            print("Audio engine started successfully.")
+//            
+//            oscillator.start()
+//            print("Oscillator started successfully.")
+            
+        } catch {
+            print("Error starting the audio engine: \(error)")
+        }
+
     }
 
     func start1() {
