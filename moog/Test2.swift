@@ -77,7 +77,7 @@ struct ThereScopeView3: View {
 
                 Button(action: {
                     selectedWave = .noise
-//                    waveConductor.setupOscillator(waveform: .sawtooth)
+                    waveConductor.setupOscillator(waveform: .sawtooth)
                 }) {
                     Text("Noise")
                         .padding()
@@ -136,8 +136,14 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
-            waveConductor.start()
-//            noiseConductor.start()
+            if #available(iOS 17, *) {
+                waveConductor.start1()
+            } else {
+                waveConductor.start()
+            }
+
+            // do this for both:
+            noiseConductor.start()
         }
         .onDisappear {
             waveConductor.stop()
@@ -309,15 +315,9 @@ class WaveConductor1: ObservableObject {
             print("Error starting the audio engine: \(error)")
         }
     }
-
-
     
     func start() {
         do {
-            // insert some test things here:
-            //
-            
-            
             try engine.start()
             oscillator.start()
         } catch {
