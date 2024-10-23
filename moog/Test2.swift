@@ -136,12 +136,6 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
-//            if #available(iOS 17, *) {
-//                waveConductor.start1()
-//            } else {
-//                waveConductor.start()
-//            }
-
             waveConductor.gatherData()
             waveConductor.start()
             noiseConductor.start()
@@ -159,6 +153,8 @@ class WaveConductor1: ObservableObject {
     var tracker: PitchTap!
     var oscillator: Oscillator!
     var silentNode: Fader!
+    var audioConverter: AVAudioConverter?  // AVAudioConverter for sample rate conversion
+
     
     @Published var pitch: AUValue = 0.0  // Detected pitch
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
@@ -168,85 +164,6 @@ class WaveConductor1: ObservableObject {
         case sine, square, triangle, sawtooth
     }
     
-//    func initOld() {
-//        // Audio Session Setup
-//        guard let input = engine.input else {
-//            fatalError("Microphone input not available")
-//        }
-//        
-//        mic = input
-//        
-//        // Set default waveform as sine and configure oscillator
-//        setupOscillator(waveform: .sine)
-//        
-//        
-//        if #available(iOS 17, *) {
-//            print("ios17")
-//            do {
-//                let audioSession = AVAudioSession.sharedInstance()
-//                
-//                // Set the category and activate the session
-//                try audioSession.setCategory(.playAndRecord, mode: .default)
-//                try audioSession.setPreferredSampleRate(44100.0)  // Set input sample rate
-//                try audioSession.setActive(true)
-//                
-//                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
-//                
-//                // Check input node availability
-//                guard let inputNode = engine.input else {
-//                    print("Error: Microphone input not available.")
-//                    return
-//                }
-//                
-//                // Get input format
-//                let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
-//                print("Input Format: \(inputFormat)")
-//                
-//                // Check if output node is available
-//                if let outputNode = engine.output {
-//                    let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
-//                    print("Output Format: \(outputFormat)")
-//                    
-//                    // Check for sample rate mismatch
-//                    if inputFormat.sampleRate != outputFormat.sampleRate {
-//                        print("Sample rate mismatch. Adjusting output sample rate.")
-//                        
-//                        // Set preferred output sample rate to match the input format
-//                        try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
-//                        try audioSession.setActive(true)
-//                        
-//                        // Log the preferred output format
-//                        print("Adjusted hardware output format to: \(outputFormat)")
-//                    } else {
-//                        print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
-//                    }
-//                } else {
-//                    print("Error: Output node not available.")
-//                }
-//                
-//            } catch {
-//                print("Error setting up audio session: \(error)")
-//            }
-//        } else {
-//            print("ios16")
-//            do {
-//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
-//                try AVAudioSession.sharedInstance().setActive(true)
-//            } catch {
-//                print("Error setting up audio session: \(error)")
-//            }
-//        }
-//        
-//        // Start pitch detection
-//        tracker = PitchTap(mic) { pitch, amp in
-//            DispatchQueue.main.async {
-//                self.pitch = pitch[0]  // Detected pitch (frequency)
-//                self.amplitude = amp[0]  // Detected amplitude
-//                self.updateWave()
-//            }
-//        }
-//        tracker.start()
-//    }
 
     init() {
         // Audio Session Setup
@@ -272,37 +189,23 @@ class WaveConductor1: ObservableObject {
                 
                 print("Audio Session Sample Rate: \(audioSession.sampleRate)")
                 
-                // Check input node availability
-                guard let inputNode = engine.input else {
-                    print("Error: Microphone input not available.")
-                    return
-                }
-                
-                // Get input format
-                let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
-                print("Input Format: \(inputFormat)")
-                
-                // Check if output node is available
-                if let outputNode = engine.output {
-                    let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
-                    print("Output Format: \(outputFormat)")
+                // Safely unwrap the input format
+                if let inputFormat = mic.avAudioNode.inputFormat(forBus: 0) as AVAudioFormat?,
+                   let outputFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: inputFormat.channelCount) as AVAudioFormat?
+                {
+                    // Set up AVAudioConverter for sample rate conversion
+                    audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
                     
-                    // Check for sample rate mismatch
-                    if inputFormat.sampleRate != outputFormat.sampleRate {
-                        print("Sample rate mismatch. Adjusting output sample rate.")
-                        
-                        // Set preferred output sample rate to match the input format
-                        try audioSession.setActive(false)
-                        try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
-                        try audioSession.setActive(true)
-                        
-                        // Log the preferred output format
-                        print("Adjusted hardware output format to: \(outputFormat)")
-                    } else {
-                        print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                    // Process the audio buffer through the converter
+//                    convertAudioBuffer(inputFormat: inputFormat, outputFormat: outputFormat)
+                    
+                    mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
+                        guard let strongSelf = self else { return }
+                        strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
                     }
+                    
                 } else {
-                    print("Error: Output node not available.")
+                    print("Failed to get valid input audio format")
                 }
                 
             } catch {
@@ -317,6 +220,16 @@ class WaveConductor1: ObservableObject {
                 print("Error setting up audio session: \(error)")
             }
         }
+        
+        guard let input = engine.input else {
+            fatalError("Microphone input not available")
+        }
+        
+//        mic = input
+//        
+//        // Set default waveform as sine and configure oscillator
+//        setupOscillator(waveform: .sine)
+
 
         // Start pitch detection
         tracker = PitchTap(mic) { pitch, amp in
@@ -329,6 +242,47 @@ class WaveConductor1: ObservableObject {
         tracker.start()
     }
     
+    // This method is called every time a new audio buffer is captured from the microphone
+    func processAudioBuffer(buffer: AVAudioPCMBuffer, inputFormat: AVAudioFormat, outputFormat: AVAudioFormat) {
+        guard let converter = audioConverter else { return }
+        
+        let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: buffer.frameCapacity)!
+        
+        var error: NSError? = nil
+        converter.convert(to: outputBuffer, error: &error) { inNumPackets, outStatus in
+            // Provide input audio data to the converter
+            outStatus.pointee = .haveData
+            return buffer
+        }
+        
+        if let error = error {
+            print("Error during audio conversion: \(error)")
+        } else {
+            // Successfully converted the buffer, you can now use `outputBuffer`
+            print("Successfully converted audio buffer")
+            // Handle outputBuffer (e.g., send it to audio output, save to file, etc.)
+        }
+    }
+//    func convertAudioBuffer(inputFormat: AVAudioFormat, outputFormat: AVAudioFormat) {
+//        guard let converter = audioConverter else { return }
+//        
+//        // Example: processing buffers (replace with real buffers in a real application)
+//        let inputBuffer = AVAudioPCMBuffer(pcmFormat: inputFormat, frameCapacity: 1024)!
+//        let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: 1024)!
+//        
+//        var error: NSError? = nil
+//        converter.convert(to: outputBuffer, error: &error) { inNumPackets, outStatus in
+//            // Provide input audio data to the converter
+//            outStatus.pointee = .haveData
+//            return inputBuffer
+//        }
+//        
+//        if let error = error {
+//            print("Error during audio conversion: \(error)")
+//        } else {
+//            print("Successfully converted audio buffer")
+//        }
+//    }
     
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
