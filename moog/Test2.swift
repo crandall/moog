@@ -195,10 +195,6 @@ class WaveConductor1: ObservableObject {
                 {
                     // Set up AVAudioConverter for sample rate conversion
                     audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
-                    
-                    // Process the audio buffer through the converter
-//                    convertAudioBuffer(inputFormat: inputFormat, outputFormat: outputFormat)
-                    
                     mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
                         guard let strongSelf = self else { return }
                         strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
@@ -225,12 +221,6 @@ class WaveConductor1: ObservableObject {
             fatalError("Microphone input not available")
         }
         
-//        mic = input
-//        
-//        // Set default waveform as sine and configure oscillator
-//        setupOscillator(waveform: .sine)
-
-
         // Start pitch detection
         tracker = PitchTap(mic) { pitch, amp in
             DispatchQueue.main.async {
@@ -263,26 +253,6 @@ class WaveConductor1: ObservableObject {
             // Handle outputBuffer (e.g., send it to audio output, save to file, etc.)
         }
     }
-//    func convertAudioBuffer(inputFormat: AVAudioFormat, outputFormat: AVAudioFormat) {
-//        guard let converter = audioConverter else { return }
-//        
-//        // Example: processing buffers (replace with real buffers in a real application)
-//        let inputBuffer = AVAudioPCMBuffer(pcmFormat: inputFormat, frameCapacity: 1024)!
-//        let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: 1024)!
-//        
-//        var error: NSError? = nil
-//        converter.convert(to: outputBuffer, error: &error) { inNumPackets, outStatus in
-//            // Provide input audio data to the converter
-//            outStatus.pointee = .haveData
-//            return inputBuffer
-//        }
-//        
-//        if let error = error {
-//            print("Error during audio conversion: \(error)")
-//        } else {
-//            print("Successfully converted audio buffer")
-//        }
-//    }
     
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
