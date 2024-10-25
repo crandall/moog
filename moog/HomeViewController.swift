@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
         thereScopeButton.isHidden = false
         waveformButton.isHidden = false
         multiviewButton.isHidden = false
-        testButton.isHidden = true
+        testButton.isHidden = false
         
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {

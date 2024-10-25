@@ -21,14 +21,14 @@ struct ThereScopeData3 {
 }
 
 struct ThereScopeView3: View {
-    @State private var selectedWave: WaveConductor.WaveType = .sine
-    @StateObject private var waveConductor = WaveConductor()
+    @State private var selectedWave: WaveType = .sine
+    @StateObject private var waveConductor = WaveConductor1()
     @StateObject private var noiseConductor = NoiseConductor1()
 
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            
+
             // HStack for the buttons, with padding just below the navigation bar
             HStack {
                 Button(action: {
@@ -77,7 +77,7 @@ struct ThereScopeView3: View {
 
                 Button(action: {
                     selectedWave = .noise
-//                    waveConductor.setupOscillator(waveform: .sawtooth)
+                    waveConductor.setupOscillator(waveform: .sawtooth)
                 }) {
                     Text("Noise")
                         .padding()
@@ -136,6 +136,7 @@ struct ThereScopeView3: View {
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
         }
         .onAppear {
+            waveConductor.gatherData()
             waveConductor.start()
             noiseConductor.start()
         }
@@ -152,6 +153,8 @@ class WaveConductor1: ObservableObject {
     var tracker: PitchTap!
     var oscillator: Oscillator!
     var silentNode: Fader!
+    var audioConverter: AVAudioConverter?  // AVAudioConverter for sample rate conversion
+
     
     @Published var pitch: AUValue = 0.0  // Detected pitch
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
@@ -161,14 +164,62 @@ class WaveConductor1: ObservableObject {
         case sine, square, triangle, sawtooth
     }
     
+
     init() {
+        // Audio Session Setup
         guard let input = engine.input else {
             fatalError("Microphone input not available")
         }
+        
         mic = input
         
         // Set default waveform as sine and configure oscillator
         setupOscillator(waveform: .sine)
+
+
+        if #available(iOS 17, *) {
+            print("ios17")
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                
+                // Set the category and activate the session
+                try audioSession.setCategory(.playAndRecord, mode: .default)
+                try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+                try audioSession.setActive(true)
+                
+                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+                
+                // Safely unwrap the input format
+                if let inputFormat = mic.avAudioNode.inputFormat(forBus: 0) as AVAudioFormat?,
+                   let outputFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: inputFormat.channelCount) as AVAudioFormat?
+                {
+                    // Set up AVAudioConverter for sample rate conversion
+                    audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
+                    mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
+                        guard let strongSelf = self else { return }
+                        strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
+                    }
+                    
+                } else {
+                    print("Failed to get valid input audio format")
+                }
+                
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        } else {
+            print("ios16")
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("Error setting up audio session: \(error)")
+            }
+        }
+        
+        guard let input = engine.input else {
+            fatalError("Microphone input not available")
+        }
         
         // Start pitch detection
         tracker = PitchTap(mic) { pitch, amp in
@@ -181,16 +232,40 @@ class WaveConductor1: ObservableObject {
         tracker.start()
     }
     
+    // This method is called every time a new audio buffer is captured from the microphone
+    func processAudioBuffer(buffer: AVAudioPCMBuffer, inputFormat: AVAudioFormat, outputFormat: AVAudioFormat) {
+        guard let converter = audioConverter else { return }
+        
+        let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: buffer.frameCapacity)!
+        
+        var error: NSError? = nil
+        converter.convert(to: outputBuffer, error: &error) { inNumPackets, outStatus in
+            // Provide input audio data to the converter
+            outStatus.pointee = .haveData
+            return buffer
+        }
+        
+        if let error = error {
+            print("Error during audio conversion: \(error)")
+        } else {
+            // Successfully converted the buffer, you can now use `outputBuffer`
+            print("Successfully converted audio buffer")
+            // Handle outputBuffer (e.g., send it to audio output, save to file, etc.)
+        }
+    }
+    
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
         // Stop the current oscillator if it exists
-        if oscillator != nil {
-            oscillator.stop()
-            oscillator.avAudioNode.removeTap(onBus: 0)
+        if let osc = oscillator {
+            if engine.avEngine.isRunning {
+                osc.avAudioNode.removeTap(onBus: 0)  // Ensure engine is running before removing taps
+            }
+            osc.stop()
         }
         
         // Choose the waveform based on the selected type
-        var selectedWaveform: AudioKit.Table
+        let selectedWaveform: AudioKit.Table
         switch waveform {
         case .sine:
             selectedWaveform = AudioKit.Table(.sine)
@@ -208,6 +283,8 @@ class WaveConductor1: ObservableObject {
         
         // Recreate the silent node to mute output
         silentNode = Fader(oscillator, gain: 0.0)
+        
+        // Set silentNode as the engine's output directly
         engine.output = silentNode
         
         // Attach a tap to capture the waveform data for visualization
@@ -222,15 +299,128 @@ class WaveConductor1: ObservableObject {
             
             DispatchQueue.main.async {
                 self.waveData = data  // Update the waveform data
+                
+                if let d1 = self.waveData[0] as Float?{
+                    print("tap:\(d1)")
+                }
             }
         }
-        
+
         oscillator.start()
     }
     
     func updateWave() {
         oscillator.frequency = self.pitch
         oscillator.amplitude = self.amplitude
+    }
+    
+    func gatherData(){
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            // Set the category and activate the session
+//            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+//            try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+//            try audioSession.setActive(true)
+            
+            print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+            
+            // Check input node availability
+            guard let inputNode = engine.input else {
+                print("Error: Microphone input not available.")
+                return
+            }
+            
+            // Get input format
+            let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+            print("Input Format: \(inputFormat)")
+            
+            // Check if output node is available
+            if let outputNode = engine.output {
+                let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+                print("Output Format: \(outputFormat)")
+                
+                // Check for sample rate mismatch
+                if inputFormat.sampleRate != outputFormat.sampleRate {
+                    print("Sample rate mismatch. Adjusting output sample rate.")
+                    
+                    // Set preferred output sample rate to match the input format
+//                    try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+//                    try audioSession.setActive(true)
+                    
+                    // Log the preferred output format
+                    print("Adjusted hardware output format to: \(outputFormat)")
+                } else {
+                    print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                }
+            } else {
+                print("Error: Output node not available.")
+            }
+            
+        } catch {
+            print("Error starting the audio engine: \(error)")
+        }
+
+    }
+
+    func start1() {
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            // Set the category and activate the session
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+            try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+            try audioSession.setActive(true)
+            
+            print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+            
+            // Check input node availability
+            guard let inputNode = engine.input else {
+                print("Error: Microphone input not available.")
+                return
+            }
+            
+            // Get input format
+            let inputFormat = inputNode.avAudioNode.inputFormat(forBus: 0)
+            print("Input Format: \(inputFormat)")
+            
+            // Check if output node is available
+            if let outputNode = engine.output {
+                let outputFormat = outputNode.avAudioNode.outputFormat(forBus: 0)
+                print("Output Format: \(outputFormat)")
+                
+                // Check for sample rate mismatch
+                if inputFormat.sampleRate != outputFormat.sampleRate {
+                    print("Sample rate mismatch. Adjusting output sample rate.")
+                    
+                    // Set preferred output sample rate to match the input format
+                    try audioSession.setPreferredSampleRate(inputFormat.sampleRate)
+                    try audioSession.setActive(true)
+                    
+                    // Log the preferred output format
+                    print("Adjusted hardware output format to: \(outputFormat)")
+                } else {
+                    print("Sample rates match. Input and Output are both \(inputFormat.sampleRate) Hz.")
+                }
+            } else {
+                print("Error: Output node not available.")
+            }
+            
+            // Check if the engine is already running
+            if engine.avEngine.isRunning {
+                print("Warning: Audio engine is already running.")
+            }
+            
+            // Attempt to start the engine after checks
+            try engine.start()
+            print("Audio engine started successfully.")
+            
+            oscillator.start()
+            print("Oscillator started successfully.")
+            
+        } catch {
+            print("Error starting the audio engine: \(error)")
+        }
     }
     
     func start() {
@@ -261,6 +451,8 @@ struct WavePlot1: View {
             Path { path in
                 let height = geometry.size.height
                 let width = geometry.size.width
+                
+                print("\(width):\(height)")
                 
                 // Calculate step size based on widthScale
                 let step = max((width / CGFloat(max(1, waveData.count))) * widthScale, minWidthScale)

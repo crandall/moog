@@ -45,7 +45,6 @@ class MultiConductor: ObservableObject, HasAudioEngine {
         guard let input = engine.input else { fatalError() }
         
         guard let device = engine.inputDevice else { fatalError() }
-        
         initialDevice = device
         
         mic = input
