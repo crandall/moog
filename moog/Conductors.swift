@@ -34,11 +34,6 @@ class WaveConductor: ObservableObject {
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
     @Published var waveData: [Float] = []  // Wave data for plotting
     
-//    enum WaveType {
-//        case sine, square, triangle, sawtooth
-//    }
-    
-    
     init() {
         // Audio Session Setup
         guard let input = engine.input else {
@@ -178,9 +173,6 @@ class WaveConductor: ObservableObject {
             
             DispatchQueue.main.async {
                 self.waveData = data  // Update the waveform data
-//                if let d1 = self.waveData[0] as Float?{
-//                    print("tap:\(d1)")
-//                }
             }
         }
         

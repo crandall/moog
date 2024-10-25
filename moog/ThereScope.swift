@@ -21,11 +21,6 @@ struct ThereScopeData {
     var amplitude: Float = 0.0
 }
 
-//enum WaveType {
-//    case sine, square, triangle, sawtooth, noise
-//}
-
-
 struct ThereScopeView: View {
     @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
@@ -104,6 +99,7 @@ struct ThereScopeView: View {
                 .padding(.top, 20)   // Padding between the buttons and the plot
                 .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
+                .clipped()
             }else{
                 WavePlot(
                     waveData: waveConductor.waveData,
@@ -116,6 +112,7 @@ struct ThereScopeView: View {
                 .padding(.top, 20)   // Padding between the buttons and the plot
                 .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
+                .clipped()
             }
             
             Spacer()  // Spacer between the plot and text to push text to bottom
