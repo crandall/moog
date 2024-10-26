@@ -92,7 +92,7 @@ class WaveConductor: ObservableObject {
         } else {
             print("ios16")
             do {
-//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .)
                 try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
                 try AVAudioSession.sharedInstance().setActive(true)
                 
