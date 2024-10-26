@@ -93,14 +93,11 @@ struct TestView: View {
                                strokeColor: Color.plotColor,
                                isNormalized: false,
                                scaleFactor: 10.0)
-                
-                
-                
                 .padding(.top, 20)   // Padding between the buttons and the plot
                 .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
                 .clipped()
-            }else{
+            } else {
                 WavePlot(
                     waveData: waveConductor.waveData,
                     amplitudeScale: 2.0,  // Adjust as needed
@@ -146,13 +143,54 @@ struct TestView: View {
         .onAppear {
             waveConductor.start()
             noiseConductor.start()
+            observeRouteChanges()  // Start observing audio route changes
         }
         .onDisappear {
             waveConductor.stop()
             noiseConductor.stop()
+            NotificationCenter.default.removeObserver(self)  // Clean up observer
+        }
+    }
+    
+    // Function to start observing audio route changes
+    func observeRouteChanges() {
+        NotificationCenter.default.addObserver(forName: AVAudioSession.routeChangeNotification,
+                                               object: nil, queue: .main) { notification in
+            handleRouteChange(notification: notification)
+        }
+    }
+    
+    // Function to handle the route change notification
+    func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
+            return
+        }
+        
+        // Log the reason for the route change
+        print("Audio route changed: \(reason)")
+        
+        // Re-check available inputs
+        let audioSession = AVAudioSession.sharedInstance()
+        if let availableInputs = audioSession.availableInputs {
+            for input in availableInputs {
+                print("Available input: \(input.portName) - \(input.portType.rawValue)")
+                
+                // Optionally re-select a preferred input like a headset mic
+                if input.portType == .headsetMic {
+                    do {
+                        try audioSession.setPreferredInput(input)
+                        print("Headset microphone re-selected after route change.")
+                    } catch {
+                        print("Failed to select headset mic: \(error.localizedDescription)")
+                    }
+                }
+            }
         }
     }
 }
+
 
 class RawOutputModel2: ObservableObject {
     @Environment(\.isPreview) var isPreview

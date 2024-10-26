@@ -18,6 +18,8 @@ import AVFAudio
 struct ThereScopeDevicePicker: View {
     @State var device: Device
     
+    
+    
     var body: some View {
         Picker("Input: \(device.deviceID)", selection: $device) {
             ForEach(getDevices(), id: \.self) {

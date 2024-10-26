@@ -59,6 +59,16 @@ class WaveConductor: ObservableObject {
                 try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
                 try audioSession.setActive(true)
                 
+                // Specify the preferred input if necessary (optional)
+                if let availableInputs = audioSession.availableInputs {
+                    for input in availableInputs {
+                        if input.portType == .headsetMic {  // Check for headphone mic input
+                            try audioSession.setPreferredInput(input)
+                            break
+                        }
+                    }
+                }
+                
                 print("Audio Session Sample Rate: \(audioSession.sampleRate)")
                 
                 // Safely unwrap the input format
@@ -82,8 +92,19 @@ class WaveConductor: ObservableObject {
         } else {
             print("ios16")
             do {
-                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
                 try AVAudioSession.sharedInstance().setActive(true)
+                
+                if let availableInputs = AVAudioSession.sharedInstance().availableInputs {
+                    for input in availableInputs {
+                        if input.portType == .headsetMic {  // Check for headphone mic input
+                            try AVAudioSession.sharedInstance().setPreferredInput(input)
+                            break
+                        }
+                    }
+                }
+
             } catch {
                 print("Error setting up audio session: \(error)")
             }
@@ -197,6 +218,7 @@ class WaveConductor: ObservableObject {
         engine.stop()
         oscillator.stop()
     }
+    
 }
 
 class NoiseConductor: ObservableObject, HasAudioEngine {
