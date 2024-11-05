@@ -98,7 +98,7 @@ class WaveConductor: ObservableObject {
                 
                 if let availableInputs = AVAudioSession.sharedInstance().availableInputs {
                     for input in availableInputs {
-                        if input.portType == .headsetMic {  // Check for headphone mic input
+                        if input.portType == .headphones {  // Check for headphone mic input
                             try AVAudioSession.sharedInstance().setPreferredInput(input)
                             break
                         }

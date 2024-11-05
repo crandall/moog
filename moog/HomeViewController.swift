@@ -30,7 +30,11 @@ class HomeViewController: UIViewController {
         waveformButton.setTitle("Waveform (demo only)", for: .normal)
         multiviewButton.setTitle("MultiView (demo only)", for: .normal)
 
-        thereScopeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        thereScopeButton.layer.cornerRadius = 5
+        thereScopeButton.layer.borderWidth = 1
+        thereScopeButton.layer.borderColor = UIColor.black.cgColor
+        
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
 
@@ -38,9 +42,9 @@ class HomeViewController: UIViewController {
         buildLabel.textColor = .black
 
         thereScopeButton.isHidden = false
-        waveformButton.isHidden = false
-        multiviewButton.isHidden = false
-        testButton.isHidden = false
+        waveformButton.isHidden = true
+        multiviewButton.isHidden = true
+        testButton.isHidden = true
         
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
