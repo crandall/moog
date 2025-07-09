@@ -48,67 +48,70 @@ class WaveConductor: ObservableObject {
         // Set default waveform as sine and configure oscillator
         setupOscillator(waveform: .sine)
         
-        
-        if #available(iOS 17, *) {
-            print("ios17")
-            do {
-                let audioSession = AVAudioSession.sharedInstance()
-                
-                // Set the category and activate the session
-                try audioSession.setCategory(.playAndRecord, mode: .default)
-                try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
-                try audioSession.setActive(true)
-                
-                // Specify the preferred input if necessary (optional)
-                if let availableInputs = audioSession.availableInputs {
-                    for input in availableInputs {
-                        if input.portType == .headsetMic {  // Check for headphone mic input
-                            try audioSession.setPreferredInput(input)
-                            break
-                        }
-                    }
-                }
-                
-                print("Audio Session Sample Rate: \(audioSession.sampleRate)")
-                
-                // Safely unwrap the input format
-                if let inputFormat = mic.avAudioNode.inputFormat(forBus: 0) as AVAudioFormat?,
-                   let outputFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: inputFormat.channelCount) as AVAudioFormat?
-                {
-                    // Set up AVAudioConverter for sample rate conversion
-                    audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
-                    mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
-                        guard let strongSelf = self else { return }
-                        strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
-                    }
-                    
-                } else {
-                    print("Failed to get valid input audio format")
-                }
-                
-            } catch {
-                print("Error setting up audio session: \(error)")
-            }
-        } else {
-            print("ios16")
-            do {
-//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .)
-                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
-                try AVAudioSession.sharedInstance().setActive(true)
-                
-                if let availableInputs = AVAudioSession.sharedInstance().availableInputs {
-                    for input in availableInputs {
-                        if input.portType == .headphones {  // Check for headphone mic input
-                            try AVAudioSession.sharedInstance().setPreferredInput(input)
-                            break
-                        }
-                    }
-                }
 
-            } catch {
-                print("Error setting up audio session: \(error)")
+        // this caused the os16 and below to not work - I'll leave in the commented code below, but it works on Bob's iPad 16
+//        if #available(iOS 17, *) {
+//        if true {
+//            print("ios17")
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            // Set the category and activate the session
+            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setPreferredSampleRate(48000.0)  // Set input sample rate
+            try audioSession.setActive(true)
+            
+            // Specify the preferred input if necessary (optional)
+            if let availableInputs = audioSession.availableInputs {
+                for input in availableInputs {
+                    if input.portType == .headsetMic {  // Check for headphone mic input
+                        try audioSession.setPreferredInput(input)
+                        break
+                    }
+                }
             }
+            
+            print("Audio Session Sample Rate: \(audioSession.sampleRate)")
+            
+            // Safely unwrap the input format
+            if let inputFormat = mic.avAudioNode.inputFormat(forBus: 0) as AVAudioFormat?,
+               let outputFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: inputFormat.channelCount) as AVAudioFormat?
+            {
+                // Set up AVAudioConverter for sample rate conversion
+                audioConverter = AVAudioConverter(from: inputFormat, to: outputFormat)
+                mic.avAudioNode.installTap(onBus: 0, bufferSize: 1024, format: inputFormat) { [weak self] (buffer, when) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.processAudioBuffer(buffer: buffer, inputFormat: inputFormat, outputFormat: outputFormat)
+                }
+                
+            } else {
+                print("Failed to get valid input audio format")
+            }
+            
+        } catch {
+            print("Error setting up audio session: \(error)")
         }
+//        }
+//        else {
+//            print("ios16")
+//            do {
+////                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .)
+//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
+//                try AVAudioSession.sharedInstance().setActive(true)
+//                
+//                if let availableInputs = AVAudioSession.sharedInstance().availableInputs {
+//                    for input in availableInputs {
+//                        if input.portType == .headphones {  // Check for headphone mic input
+//                            try AVAudioSession.sharedInstance().setPreferredInput(input)
+//                            break
+//                        }
+//                    }
+//                }
+//
+//            } catch {
+//                print("Error setting up audio session: \(error)")
+//            }
+//        }
         
         guard let input = engine.input else {
             fatalError("Microphone input not available")
