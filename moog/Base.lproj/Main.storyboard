@@ -33,9 +33,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-yV-sbi">
-                                <rect key="frame" x="674" y="493" width="300" height="450"/>
+                                <rect key="frame" x="602" y="493.5" width="300" height="450"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
                                         <rect key="frame" x="59.5" y="50" width="181.5" height="50"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -101,14 +101,14 @@
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
-                            <constraint firstItem="mNS-nd-imI" firstAttribute="trailing" secondItem="JNe-yV-sbi" secondAttribute="trailing" constant="50" id="YSY-TV-V8P"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="Xn9-xY-VuH"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="bottom" secondItem="edz-iN-HUA" secondAttribute="bottom" constant="20" id="hve-ao-Hug"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
                             <constraint firstItem="edz-iN-HUA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="mip-pA-Jlw"/>
+                            <constraint firstItem="JNe-yV-sbi" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="40" id="owg-7A-boF"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
-                            <constraint firstItem="JNe-yV-sbi" firstAttribute="centerY" secondItem="mNS-nd-imI" secondAttribute="centerY" id="txR-8A-Z9h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>
