@@ -96,7 +96,6 @@ struct ThereScopeView: View {
                 RawOutputView1(noiseConductor.tappableNodeB,
                                strokeColor: Color.plotColor,
                                isNormalized: false,
-//                               scaleFactor: noiseAmplitudeScale
                                scaleFactor: (amplitudeScale / maxAmplitudeScale) * noiseAmplitudeDefaultScale
                 )
                 
