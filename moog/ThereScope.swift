@@ -25,7 +25,10 @@ struct ThereScopeView: View {
     @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
-    @State private var amplitudeScale: CGFloat = 2.0    //2.0
+    @State private var amplitudeScale: CGFloat = 2.0
+    @State private var minAmplitudeScale: CGFloat = 0.1
+    @State private var maxAmplitudeScale: CGFloat = 3.0
+    @State private var noiseAmplitudeDefaultScale: CGFloat = 10.0
 
     var body: some View {
         VStack {
@@ -93,7 +96,9 @@ struct ThereScopeView: View {
                 RawOutputView1(noiseConductor.tappableNodeB,
                                strokeColor: Color.plotColor,
                                isNormalized: false,
-                               scaleFactor: 10.0)
+//                               scaleFactor: noiseAmplitudeScale
+                               scaleFactor: (amplitudeScale / maxAmplitudeScale) * noiseAmplitudeDefaultScale
+                )
                 
                 
                 
@@ -152,7 +157,7 @@ struct ThereScopeView: View {
                 // Slider aligned at the top right
                 VStack(alignment: .center, spacing: 4) {
                     HStack(spacing: 8) {
-                        Slider(value: $amplitudeScale, in: 0.1...3.001, step: 0.1)
+                        Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale, step: 0.1)
                             .frame(width: UIScreen.main.bounds.width * 0.25)
                         
                         Text("\(amplitudeScale, specifier: "%.1f")")
