@@ -123,7 +123,11 @@ struct ThereScopeView: View {
                 // Frequency & Amplitude Labels
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Frequency/Pitch:")
+                        .font(.body)
+                        .foregroundColor(.primary)
                     Text("Amplitude:")
+                        .font(.body)
+                        .foregroundColor(.primary)
                 }
                 .frame(width: 150, alignment: .leading)
                 
@@ -146,9 +150,18 @@ struct ThereScopeView: View {
                 }
                 
                 // Slider aligned at the top right
-                Slider(value: $amplitudeScale, in: 0.1...5.0, step: 0.1)
-                    .frame(width: 150)
+                VStack(alignment: .center, spacing: 4) {
+                    HStack(spacing: 8) {
+                        Slider(value: $amplitudeScale, in: 0.1...3.0, step: 0.1)
+                            .frame(width: UIScreen.main.bounds.width * 0.25)
+                        
+                        Text("\(amplitudeScale, specifier: "%.1f")")
+                            .font(.body)
+                            .foregroundColor(.primary)
+                    }
                     .alignmentGuide(.top) { d in d[.top] }
+                }
+
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
