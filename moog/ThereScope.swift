@@ -152,7 +152,7 @@ struct ThereScopeView: View {
                 // Slider aligned at the top right
                 VStack(alignment: .center, spacing: 4) {
                     HStack(spacing: 8) {
-                        Slider(value: $amplitudeScale, in: 0.1...3.0, step: 0.1)
+                        Slider(value: $amplitudeScale, in: 0.1...3.001, step: 0.1)
                             .frame(width: UIScreen.main.bounds.width * 0.25)
                         
                         Text("\(amplitudeScale, specifier: "%.1f")")
