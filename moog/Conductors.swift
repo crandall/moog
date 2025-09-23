@@ -37,7 +37,7 @@ class WaveConductor: ObservableObject {
     init() {
         // Audio Session Setup
         guard let input = engine.input else {
-            fatalError("Microphone input not available")
+            fatalError("input not available")
         }
         
         guard let device = engine.inputDevice else { fatalError() }
@@ -49,10 +49,6 @@ class WaveConductor: ObservableObject {
         setupOscillator(waveform: .sine)
         
 
-        // this caused the os16 and below to not work - I'll leave in the commented code below, but it works on Bob's iPad 16
-//        if #available(iOS 17, *) {
-//        if true {
-//            print("ios17")
         do {
             let audioSession = AVAudioSession.sharedInstance()
             
@@ -91,27 +87,6 @@ class WaveConductor: ObservableObject {
         } catch {
             print("Error setting up audio session: \(error)")
         }
-//        }
-//        else {
-//            print("ios16")
-//            do {
-////                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .)
-//                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth])
-//                try AVAudioSession.sharedInstance().setActive(true)
-//                
-//                if let availableInputs = AVAudioSession.sharedInstance().availableInputs {
-//                    for input in availableInputs {
-//                        if input.portType == .headphones {  // Check for headphone mic input
-//                            try AVAudioSession.sharedInstance().setPreferredInput(input)
-//                            break
-//                        }
-//                    }
-//                }
-//
-//            } catch {
-//                print("Error setting up audio session: \(error)")
-//            }
-//        }
         
         guard let input = engine.input else {
             fatalError("Microphone input not available")
