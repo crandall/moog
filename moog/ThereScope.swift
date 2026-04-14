@@ -26,7 +26,7 @@ struct ThereScopeView: View {
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
     @State private var amplitudeScale: CGFloat = 1.5
-    @State private var minAmplitudeScale: CGFloat = 0.1
+    @State private var minAmplitudeScale: CGFloat = 0.5 // 0.1
     @State private var maxAmplitudeScale: CGFloat = 3.0
     @State private var noiseAmplitudeDefaultScale: CGFloat = 10.0
 
