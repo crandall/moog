@@ -25,11 +25,28 @@ struct ThereScopeView: View {
     @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
-
+//    @State private var amplitudeScale: CGFloat = 1.5  // this defaults to 4.6
+    @State private var amplitudeScale: CGFloat = 4.0 / 3.0  // default to 4.0
+    @State private var minAmplitudeScale: CGFloat = 0.5
+    @State private var maxAmplitudeScale: CGFloat = 3.0
+    @State private var noiseAmplitudeDefaultScale: CGFloat = 10.0
+    
+    private var amplitudeDisplayValue: Double {
+        let minValue = Double(minAmplitudeScale)
+        let maxValue = Double(maxAmplitudeScale)
+        let currentValue = Double(amplitudeScale)
+        
+        guard maxValue > minValue else { return 1.0 }
+        
+        let normalized = (currentValue - minValue) / (maxValue - minValue)
+        let mappedValue = 1.0 + normalized * 9.0
+        return (mappedValue * 10).rounded() / 10
+    }
+    
     var body: some View {
         VStack {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-
+            
             // HStack for the buttons, with padding just below the navigation bar
             HStack {
                 Button(action: {
@@ -92,7 +109,8 @@ struct ThereScopeView: View {
                 RawOutputView1(noiseConductor.tappableNodeB,
                                strokeColor: Color.plotColor,
                                isNormalized: false,
-                               scaleFactor: 10.0)
+                               scaleFactor: (amplitudeScale / maxAmplitudeScale) * noiseAmplitudeDefaultScale
+                )
                 
                 
                 
@@ -103,7 +121,7 @@ struct ThereScopeView: View {
             }else{
                 WavePlot(
                     waveData: waveConductor.waveData,
-                    amplitudeScale: 2.0,  // Adjust as needed
+                    amplitudeScale: amplitudeScale,  // Adjust as needed
                     widthScale: 0.25,      // Adjust as needed
                     minAmplitudeThreshold: 0.01,
                     minAmplitudeScale: 0.1,
@@ -113,34 +131,72 @@ struct ThereScopeView: View {
                 .padding(.bottom, 20)   // Padding between the buttons and the plot
                 .background(Color.black)
                 .clipped()
+                
             }
             
             Spacer()  // Spacer between the plot and text to push text to bottom
             
-            // Text output showing frequency, amplitude, and centered device picker
             HStack(alignment: .top) {
-                // Fixed width column for Frequency and Amplitude values to prevent layout shift
+                // Frequency & Amplitude Labels
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Frequency/Pitch:")
+                        .font(.body)
+                        .foregroundColor(.primary)
                     Text("Amplitude:")
+                        .font(.body)
+                        .foregroundColor(.primary)
                 }
-                .frame(width: 150, alignment: .leading)  // Fixed width to prevent shifting
+                .frame(width: 150, alignment: .leading)
                 
+                // Frequency & Amplitude Values
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("\(waveConductor.pitch, specifier: "%.1f") Hz")  // Display the detected pitch
-                    Text("\(waveConductor.amplitude, specifier: "%.2f")") // Display the detected amplitude
+                    Text("\(waveConductor.pitch, specifier: "%.1f") Hz")
+                    Text("\(waveConductor.amplitude, specifier: "%.2f")")
                 }
-                .frame(width: 100, alignment: .leading)  // Fixed width to prevent shifting
+                .frame(width: 100, alignment: .leading)
                 
-                // Spacer to create flexible space between text and centered picker
+                // Spacer between text and picker
                 Spacer()
                 
-                // Centered Device Picker
-                ThereScopeDevicePicker(device: waveConductor.initialDevice)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                // Centered Picker using a ZStack trick
+                ZStack {
+                    HStack { Spacer() }
+                        .frame(maxWidth: .infinity)
+                    
+                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
+                }
+                
+                // Slider aligned at the top right
+                VStack(alignment: .center, spacing: 4) {
+                    HStack(spacing: 8) {
+                        
+//                        Slider(
+//                            value: $amplitudeScale,
+//                            in: minAmplitudeScale...maxAmplitudeScale,
+//                            step: (maxAmplitudeScale - minAmplitudeScale) / 9
+//                        )
+//                        .frame(width: UIScreen.main.bounds.width * 0.25)
+//                        
+//                        Text("\(amplitudeDisplayValue)")
+//                            .font(.body)
+//                            .foregroundColor(.primary)
+                        
+                        Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
+                            .frame(width: UIScreen.main.bounds.width * 0.25)
+                        
+                        Text("\(amplitudeDisplayValue, specifier: "%.1f")")
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .monospacedDigit()
+                        
+                        
+                    }
+                    .alignmentGuide(.top) { d in d[.top] }
+                }
+                
             }
-            .padding(.horizontal, 20)  // Optional padding for horizontal alignment
-            .padding(.bottom, 20)  // 20px space between the text and the bottom of the view
+            .padding(.horizontal, 20)
+            .padding(.bottom, 20)
             
         }
         .onAppear {
