@@ -12,8 +12,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var foundationLogoIV : UIImageView!
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
+    @IBOutlet weak var sineOnlyButton: UIButton!
     @IBOutlet weak var waveformButton: UIButton!
-    @IBOutlet weak var multiviewButton: UIButton!
+//    @IBOutlet weak var multiviewButton: UIButton!
     @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
@@ -28,22 +29,29 @@ class HomeViewController: UIViewController {
     func configureViews(){
         thereScopeButton.setTitle("ThereScope", for: .normal)
         waveformButton.setTitle("Waveform (demo only)", for: .normal)
-        multiviewButton.setTitle("MultiView (demo only)", for: .normal)
+        sineOnlyButton.setTitle("Sine Wave Only", for: .normal)
 
         thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
         thereScopeButton.layer.borderColor = UIColor.black.cgColor
         
+        sineOnlyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        sineOnlyButton.layer.cornerRadius = 5
+        sineOnlyButton.layer.borderWidth = 1
+        sineOnlyButton.layer.borderColor = UIColor.black.cgColor
+
+        
         waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        multiviewButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
 
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
 
         thereScopeButton.isHidden = false
+        sineOnlyButton.isHidden = false
+
         waveformButton.isHidden = true
-        multiviewButton.isHidden = true
         testButton.isHidden = true
         
         // get the build number:
@@ -61,6 +69,15 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func onSineOnly(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .sineOnly
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
 
     @IBAction func onWaveform(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -54,7 +54,7 @@
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="onMultiview" destination="C5f-Hc-w1x" eventType="touchUpInside" id="2Fn-yK-uGs"/>
+                                            <action selector="onSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="pxB-wF-V4t"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-s8-fCq">
@@ -115,8 +115,8 @@
                     <connections>
                         <outlet property="buildLabel" destination="edz-iN-HUA" id="fb9-HS-MbP"/>
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
-                        <outlet property="multiviewButton" destination="hrf-LC-yKP" id="Z8D-Ci-0vh"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
+                        <outlet property="sineOnlyButton" destination="hrf-LC-yKP" id="Eby-Ao-72C"/>
                         <outlet property="testButton" destination="1R6-0r-Yyt" id="UYw-5s-aWh"/>
                         <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
                         <outlet property="waveformButton" destination="ABt-s8-fCq" id="b44-0h-t8I"/>
