@@ -26,89 +26,51 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundSchoolLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQO-Vg-VSj">
                                 <rect key="frame" x="438" y="524.5" width="300" height="180"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
+                                <rect key="frame" x="746" y="401.5" width="182" height="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ThereScope">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
+                                <rect key="frame" x="755" y="491.5" width="164" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sine/Noise">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="pxB-wF-V4t"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
                                 <rect key="frame" x="391" y="993" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-yV-sbi">
-                                <rect key="frame" x="778" y="351.5" width="300" height="450"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
-                                        <rect key="frame" x="59" y="50" width="182" height="50"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="ThereScope">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                        <rect key="frame" x="42" y="150" width="216" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="For Demo Only">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="onSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="pxB-wF-V4t"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-s8-fCq">
-                                        <rect key="frame" x="73" y="250" width="154" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Waveform">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="onWaveform" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xt8-N8-Tea"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-0r-Yyt">
-                                        <rect key="frame" x="111" y="350" width="78" height="50"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Test">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="onTest" destination="C5f-Hc-w1x" eventType="touchUpInside" id="D1j-8X-0sT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="0UG-ud-xGJ"/>
-                                    <constraint firstItem="1R6-0r-Yyt" firstAttribute="centerX" secondItem="ABt-s8-fCq" secondAttribute="centerX" id="1Ox-wu-GED"/>
-                                    <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="JNe-yV-sbi" secondAttribute="top" constant="50" id="1r0-Py-o9F"/>
-                                    <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="50" id="IfY-zH-GHr"/>
-                                    <constraint firstItem="ABt-s8-fCq" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="Nus-Kc-5xC"/>
-                                    <constraint firstAttribute="width" constant="300" id="UJe-Ck-e9Y"/>
-                                    <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="JNe-yV-sbi" secondAttribute="centerX" id="Ugs-QI-nj0"/>
-                                    <constraint firstAttribute="bottom" secondItem="1R6-0r-Yyt" secondAttribute="bottom" constant="50" id="iqE-2Z-uCW"/>
-                                    <constraint firstItem="1R6-0r-Yyt" firstAttribute="top" secondItem="ABt-s8-fCq" secondAttribute="bottom" constant="50" id="raF-ga-L4F"/>
-                                    <constraint firstItem="ABt-s8-fCq" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="50" id="wnF-bN-6Fo"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="40" id="8QU-TM-2OS"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="N6F-Bx-KMk"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="Xn9-xY-VuH"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="bottom" secondItem="edz-iN-HUA" secondAttribute="bottom" constant="20" id="hve-ao-Hug"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
                             <constraint firstItem="edz-iN-HUA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="mip-pA-Jlw"/>
-                            <constraint firstItem="JNe-yV-sbi" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="40" id="owg-7A-boF"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="8" symbolic="YES" id="otZ-iY-I6f"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="spk-pS-yhg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>
@@ -117,9 +79,7 @@
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
                         <outlet property="sineOnlyButton" destination="hrf-LC-yKP" id="Eby-Ao-72C"/>
-                        <outlet property="testButton" destination="1R6-0r-Yyt" id="UYw-5s-aWh"/>
                         <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
-                        <outlet property="waveformButton" destination="ABt-s8-fCq" id="b44-0h-t8I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNm-o8-g9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

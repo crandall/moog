@@ -13,9 +13,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
-    @IBOutlet weak var waveformButton: UIButton!
+//    @IBOutlet weak var waveformButton: UIButton!
 //    @IBOutlet weak var multiviewButton: UIButton!
-    @IBOutlet weak var testButton: UIButton!
+//    @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
     
@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
     private
     func configureViews(){
         thereScopeButton.setTitle("ThereScope", for: .normal)
-        waveformButton.setTitle("Waveform (demo only)", for: .normal)
-        sineOnlyButton.setTitle("Sine Wave Only", for: .normal)
+//        waveformButton.setTitle("Waveform (demo only)", for: .normal)
+        sineOnlyButton.setTitle("Sine/Noise", for: .normal)
 
         thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         thereScopeButton.layer.cornerRadius = 5
@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
 
         
-        waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+//        waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
 
         buildLabel.font = UIFont.systemFont(ofSize: 15)
@@ -51,8 +51,8 @@ class HomeViewController: UIViewController {
         thereScopeButton.isHidden = false
         sineOnlyButton.isHidden = false
 
-        waveformButton.isHidden = true
-        testButton.isHidden = true
+//        waveformButton.isHidden = true
+//        testButton.isHidden = true
         
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
