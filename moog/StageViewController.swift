@@ -12,6 +12,7 @@ import SwiftUI
 
 enum DemoType {
     case thereScope
+    case sineOnly
     case waveform
     case multiview
     case oscillator
@@ -37,7 +38,11 @@ class StageViewController: UIViewController {
         switch demoType {
         case .thereScope:
             navbarTitle = "ThereScope"
-            audioKitView = AnyView(ThereScopeView())
+//            audioKitView = AnyView(ThereScopeView())
+            audioKitView = AnyView(SineOnlyView(sineOnly: false))
+        case .sineOnly:
+            navbarTitle = "ThereScope"
+            audioKitView = AnyView(SineOnlyView(sineOnly: true))
         case .waveform:
             navbarTitle = "Waveforms"
             audioKitView = AnyView(WaveformView())
@@ -59,12 +64,9 @@ class StageViewController: UIViewController {
         }
 
         self.navigationItem.title = navbarTitle
-//        self.navigationController?.navigationBar.tintColor = .blue
         self.view.backgroundColor = UIColor.clear
 
-
         let hostingController = UIHostingController(rootView: audioKitView)
-
         
         // Add the SwiftUI view as a child view controller
         addChild(hostingController)
