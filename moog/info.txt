@@ -1,0 +1,14 @@
+
+
+Work flow:
+
+git checkout develop
+git pull --ff-only
+git checkout -b feature/new-feature
+
+then when done:
+
+git checkout develop
+git pull --ff-only
+git merge feature/new-feature
+git push origin develop
