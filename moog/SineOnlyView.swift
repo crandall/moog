@@ -51,19 +51,20 @@ struct SineOnlyView: View {
             Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
             
             // HStack for the buttons, with padding just below the navigation bar
-            if !sineOnly {
-                HStack {
-                    Button(action: {
-                        selectedWave = .sine
-                        waveConductor.setupOscillator(waveform: .sine)
-                    }) {
-                        Text("Sine")
-                            .padding()
-                            .background(selectedWave == .sine ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    
+            HStack {
+                Button(action: {
+                    selectedWave = .sine
+                    waveConductor.setupOscillator(waveform: .sine)
+                }) {
+                    Text("Sine")
+                        .padding()
+                        .background(selectedWave == .sine ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+
+                // sineOnly shows sine and noise only:
+                if !sineOnly{
                     Button(action: {
                         selectedWave = .square
                         waveConductor.setupOscillator(waveform: .square)
@@ -96,18 +97,18 @@ struct SineOnlyView: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
-                    Button(action: {
-                        selectedWave = .noise
-                    }) {
-                        Text("Noise")
-                            .padding()
-                            .background(selectedWave == .noise ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
                 }
-                .padding(.bottom, 20)  // Space between buttons and plot
+                Button(action: {
+                    selectedWave = .noise
+                }) {
+                    Text("Noise")
+                        .padding()
+                        .background(selectedWave == .noise ? Color.blue : Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
+            .padding(.bottom, 20)  // Space between buttons and plot
             
             // Display the waveform plot
             if selectedWave == .noise {
