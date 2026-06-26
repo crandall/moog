@@ -23,7 +23,7 @@ struct SineOnlyData {
 
 struct SineOnlyView: View {
     let sineOnly: Bool
-
+    
     @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
@@ -48,66 +48,22 @@ struct SineOnlyView: View {
     var body: some View {
         
         VStack {
-            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
             
             // HStack for the buttons, with padding just below the navigation bar
+            //            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
+            
             HStack {
-                Button(action: {
-                    selectedWave = .sine
-                    waveConductor.setupOscillator(waveform: .sine)
-                }) {
-                    Text("Sine")
-                        .padding()
-                        .background(selectedWave == .sine ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
+                waveButton("Sine", wave: .sine)
+                
+                if !sineOnly {
+                    waveButton("Square", wave: .square)
+                    waveButton("Triangle", wave: .triangle)
+                    waveButton("Sawtooth", wave: .sawtooth)
                 }
-
-                // sineOnly shows sine and noise only:
-                if !sineOnly{
-                    Button(action: {
-                        selectedWave = .square
-                        waveConductor.setupOscillator(waveform: .square)
-                    }) {
-                        Text("Square")
-                            .padding()
-                            .background(selectedWave == .square ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    
-                    Button(action: {
-                        selectedWave = .triangle
-                        waveConductor.setupOscillator(waveform: .triangle)
-                    }) {
-                        Text("Triangle")
-                            .padding()
-                            .background(selectedWave == .triangle ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    
-                    Button(action: {
-                        selectedWave = .sawtooth
-                        waveConductor.setupOscillator(waveform: .sawtooth)
-                    }) {
-                        Text("Sawtooth")
-                            .padding()
-                            .background(selectedWave == .sawtooth ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                }
-                Button(action: {
-                    selectedWave = .noise
-                }) {
-                    Text("Noise")
-                        .padding()
-                        .background(selectedWave == .noise ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                }
+                
+                waveButton("Noise", wave: .noise)
             }
+            
             .padding(.bottom, 20)  // Space between buttons and plot
             
             // Display the waveform plot
@@ -175,18 +131,6 @@ struct SineOnlyView: View {
                 // Slider aligned at the top right
                 VStack(alignment: .center, spacing: 4) {
                     HStack(spacing: 8) {
-                        
-                        //                        Slider(
-                        //                            value: $amplitudeScale,
-                        //                            in: minAmplitudeScale...maxAmplitudeScale,
-                        //                            step: (maxAmplitudeScale - minAmplitudeScale) / 9
-                        //                        )
-                        //                        .frame(width: UIScreen.main.bounds.width * 0.25)
-                        //
-                        //                        Text("\(amplitudeDisplayValue)")
-                        //                            .font(.body)
-                        //                            .foregroundColor(.primary)
-                        
                         Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
                             .frame(width: UIScreen.main.bounds.width * 0.25)
                         
@@ -208,7 +152,7 @@ struct SineOnlyView: View {
         .onAppear {
             waveConductor.start()
             noiseConductor.start()
-
+            
             print("sineOnly = \(sineOnly)")
         }
         .onDisappear {
@@ -216,7 +160,33 @@ struct SineOnlyView: View {
             noiseConductor.stop()
         }
     }
+
+    enum WaveTypex {
+        case sine, square, triangle, sawtooth, noise
+    }
+
+    private func waveButton(_ title: String, wave: WaveType) -> some View {
+        Button(action: {
+            selectedWave = wave
+            
+            switch wave {
+            case .noise:
+                break   // Noise doesn't use the oscillator
+            default:
+                waveConductor.setupOscillator(waveform: wave)
+            }
+        }) {
+            Text(title)
+                .frame(height: 40)
+                .frame(width: 100)
+                .padding(.horizontal, 12)
+                .background(selectedWave == wave ? Color.blue : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+        }
+    }
 }
+
 
 //struct WavePlot: View {
 //    var waveData: [Float]  // Triangle wave data to plot
