@@ -64,7 +64,7 @@ struct SineOnlyView: View {
                 waveButton("Noise", wave: .noise)
             }
             
-            .padding(.bottom, 20)  // Space between buttons and plot
+            .padding(.bottom, 10)  // Space between buttons and plot
             
             // Display the waveform plot
             if selectedWave == .noise {
