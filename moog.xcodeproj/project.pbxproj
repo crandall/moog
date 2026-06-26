@@ -26,7 +26,7 @@
 		E78B9B092AE0B02700788C07 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B082AE0B02700788C07 /* Keyboard */; };
 		E78B9B0C2AE0B05400788C07 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */; };
 		E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */; };
-		E78F59202FEDC2C000F88654 /* SineOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F591F2FEDC2C000F88654 /* SineOnlyView.swift */; };
+		E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F591F2FEDC2C000F88654 /* TherescopeView.swift */; };
 		E78F59222FEDEA4000F88654 /* info.txt in Resources */ = {isa = PBXBuildFile; fileRef = E78F59212FEDEA3400F88654 /* info.txt */; };
 		E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E72B06EEA800C9495E /* Tuner.swift */; };
 		E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA752B179B41006D8344 /* Waveform.swift */; };
@@ -56,7 +56,7 @@
 		E78B9AF62AE0AEF100788C07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
 		E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E78F591F2FEDC2C000F88654 /* SineOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SineOnlyView.swift; sourceTree = "<group>"; };
+		E78F591F2FEDC2C000F88654 /* TherescopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherescopeView.swift; sourceTree = "<group>"; };
 		E78F59212FEDEA3400F88654 /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		E79FC8E72B06EEA800C9495E /* Tuner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		E7A1CA752B179B41006D8344 /* Waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
@@ -116,6 +116,7 @@
 				E78B9AF62AE0AEF100788C07 /* Info.plist */,
 				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
 				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
+				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
 				E7A1CA792B17A106006D8344 /* ThereScope.swift */,
 				E7A1CA752B179B41006D8344 /* Waveform.swift */,
 				E72D0FD82B095C560081B5EE /* Multi.swift */,
@@ -128,7 +129,6 @@
 				E754551F2C9A19B700EF4616 /* Test2.swift */,
 				E7795E5F2CCC503C00F34C00 /* Conductors.swift */,
 				E7795E612CCC515500F34C00 /* DevicePicker.swift */,
-				E78F591F2FEDC2C000F88654 /* SineOnlyView.swift */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
-				E78F59202FEDC2C000F88654 /* SineOnlyView.swift in Sources */,
+				E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
 				E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */,
 				E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */,

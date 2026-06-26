@@ -39,10 +39,10 @@ class StageViewController: UIViewController {
         case .thereScope:
             navbarTitle = "ThereScope"
 //            audioKitView = AnyView(ThereScopeView())
-            audioKitView = AnyView(SineOnlyView(sineOnly: false))
+            audioKitView = AnyView(TherescopeView(sineOnly: false))
         case .sineOnly:
             navbarTitle = "ThereScope"
-            audioKitView = AnyView(SineOnlyView(sineOnly: true))
+            audioKitView = AnyView(TherescopeView(sineOnly: true))
         case .waveform:
             navbarTitle = "Waveforms"
             audioKitView = AnyView(WaveformView())

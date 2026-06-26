@@ -16,12 +16,13 @@ import AVFAudio
 
 
 // Data Model for Scope
-struct SineOnlyData {
+struct TherescopeData {
     var pitch: Float = 0.0
     var amplitude: Float = 0.0
 }
 
-struct SineOnlyView: View {
+
+struct TherescopeView: View {
     let sineOnly: Bool
     
     @State private var selectedWave: WaveType = .sine
