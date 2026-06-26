@@ -1,5 +1,5 @@
 //
-//  SineOnlyView.swift
+//  TherescopeView.swift
 //  moog
 //
 //  Created by Mike Crandall on 6/25/26.
