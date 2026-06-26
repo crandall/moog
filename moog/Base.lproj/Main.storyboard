@@ -34,7 +34,7 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="pxB-wF-V4t"/>
+                                    <action selector="onSineOnly:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="9dz-g6-IQK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
@@ -45,7 +45,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
+                                    <action selector="onThereScope:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="zTw-KJ-MIp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">

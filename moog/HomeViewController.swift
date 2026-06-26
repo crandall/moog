@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated:Bool){
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,9 +67,6 @@ class HomeViewController: UIViewController {
         thereScopeButton.isHidden = false
         sineOnlyButton.isHidden = false
 
-//        waveformButton.isHidden = true
-//        testButton.isHidden = true
-        
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
             buildLabel.text = "(build: \(buildNumber))"
@@ -77,7 +75,7 @@ class HomeViewController: UIViewController {
 
     }
     
-    @IBAction func onThereScope(){
+    @IBAction func onThereScope(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .thereScope
@@ -85,7 +83,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onSineOnly(){
+    @IBAction func onSineOnly(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .sineOnly
