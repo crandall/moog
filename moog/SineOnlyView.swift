@@ -120,19 +120,11 @@ struct SineOnlyView: View {
                 // Spacer between text and picker
                 Spacer()
                 
-                // Centered Picker using a ZStack trick
+                // Centered slider using a ZStack trick
                 ZStack {
-                    HStack { Spacer() }
-                        .frame(maxWidth: .infinity)
-                    
-                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
-                }
-                
-                // Slider aligned at the top right
-                VStack(alignment: .center, spacing: 4) {
                     HStack(spacing: 8) {
                         Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
-                            .frame(width: UIScreen.main.bounds.width * 0.25)
+                            .frame(width: UIScreen.main.bounds.width * 0.20)
                         
                         Text("\(amplitudeDisplayValue, specifier: "%.1f")")
                             .font(.body)
@@ -143,6 +135,15 @@ struct SineOnlyView: View {
                     }
                     .alignmentGuide(.top) { d in d[.top] }
                 }
+                
+                // picker aligned at the top right
+                VStack(alignment: .listRowSeparatorTrailing, spacing: 4) {
+                    HStack { Spacer() }
+                        .frame(maxWidth: .infinity)
+                    
+                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
+                }
+
                 
             }
             .padding(.horizontal, 20)
