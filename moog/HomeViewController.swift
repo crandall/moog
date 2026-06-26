@@ -112,8 +112,6 @@ class HomeViewController: UIViewController {
         }
     }
 
-
-
     @IBAction func onOscillator(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
