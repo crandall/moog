@@ -24,6 +24,11 @@ class HomeViewController: UIViewController {
 
         self.configureViews()
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
+
 
     private
     func configureViews(){

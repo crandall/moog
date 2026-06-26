@@ -50,9 +50,9 @@ struct TherescopeView: View {
         
         VStack {
             
-            // HStack for the buttons, with padding just below the navigation bar
-            //            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            
+//             HStack for the buttons, with padding just below the navigation bar
+            Spacer().frame(height: 20)  // Hardcoded space below the navigation bar
+
             HStack(spacing: 20) {
                 waveButton("Sine", wave: .sine)
                 
