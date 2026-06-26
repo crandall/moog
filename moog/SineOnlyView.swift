@@ -159,54 +159,56 @@ struct SineOnlyView: View {
             
             switch wave {
             case .noise:
-                break   // Noise doesn't use the oscillator
+                break
             default:
                 waveConductor.setupOscillator(waveform: wave)
             }
         }) {
             Text(title)
-                .frame(height: 40)
-                .frame(width: 100)
-                .padding(.horizontal, 12)
-                .background(selectedWave == wave ? Color.blue : Color.gray)
-                .foregroundColor(.white)
+                .frame(width: 100, height: 40)
+                .background(selectedWave == wave ? Color.blue : Color.white)
+                .foregroundColor(selectedWave == wave ? .white : .black)
                 .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.black, lineWidth: 1)
+                )
         }
     }
 }
 
 
-//struct WavePlot: View {
-//    var waveData: [Float]  // Triangle wave data to plot
-//    var amplitudeScale: CGFloat    // Dynamically adjust height based on volume
-//    var widthScale: CGFloat        // Dynamically adjust width based on pitch
-//    var minAmplitudeThreshold: CGFloat = 0.00 // Threshold to flatten wave at low volume
-//    var minAmplitudeScale: CGFloat = 0.0      // Minimum wave height
-//    var minWidthScale: CGFloat = 0.0      // Minimum wave width
-//    
-//    var body: some View {
-//        GeometryReader { geometry in
-//            Path { path in
-//                let height = geometry.size.height
-//                let width = geometry.size.width
-//                
-//                // Calculate step size based on widthScale
-//                let step = max((width / CGFloat(max(1, waveData.count))) * widthScale, minWidthScale)
-//                
-//                // Start drawing from the middle of the view
-//                path.move(to: CGPoint(x: 0, y: height / 2))
-//                
-//                // Plot triangle wave - linearly interpolate between peaks
-//                for i in 0..<waveData.count {
-//                    let x = CGFloat(i) * step
-//                    
-//                    // Scale the amplitude of the wave using effectiveAmplitudeScale
-//                    let y = (height / 2) - CGFloat(waveData[i]) * (height / 2) * amplitudeScale
-//                    
-//                    path.addLine(to: CGPoint(x: x, y: y))
-//                }
-//            }
-//            .stroke(Color.plotColor, lineWidth: 5)
-//        }
-//    }
-//}
+struct WavePlot: View {
+    var waveData: [Float]  // Triangle wave data to plot
+    var amplitudeScale: CGFloat    // Dynamically adjust height based on volume
+    var widthScale: CGFloat        // Dynamically adjust width based on pitch
+    var minAmplitudeThreshold: CGFloat = 0.00 // Threshold to flatten wave at low volume
+    var minAmplitudeScale: CGFloat = 0.0      // Minimum wave height
+    var minWidthScale: CGFloat = 0.0      // Minimum wave width
+    
+    var body: some View {
+        GeometryReader { geometry in
+            Path { path in
+                let height = geometry.size.height
+                let width = geometry.size.width
+                
+                // Calculate step size based on widthScale
+                let step = max((width / CGFloat(max(1, waveData.count))) * widthScale, minWidthScale)
+                
+                // Start drawing from the middle of the view
+                path.move(to: CGPoint(x: 0, y: height / 2))
+                
+                // Plot triangle wave - linearly interpolate between peaks
+                for i in 0..<waveData.count {
+                    let x = CGFloat(i) * step
+                    
+                    // Scale the amplitude of the wave using effectiveAmplitudeScale
+                    let y = (height / 2) - CGFloat(waveData[i]) * (height / 2) * amplitudeScale
+                    
+                    path.addLine(to: CGPoint(x: x, y: y))
+                }
+            }
+            .stroke(Color.plotColor, lineWidth: 5)
+        }
+    }
+}
