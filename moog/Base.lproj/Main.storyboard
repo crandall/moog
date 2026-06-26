@@ -26,19 +26,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundSchoolLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQO-Vg-VSj">
                                 <rect key="frame" x="438" y="524.5" width="300" height="180"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
-                                <rect key="frame" x="746" y="401.5" width="182" height="50"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="ThereScope">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                <rect key="frame" x="755" y="491.5" width="164" height="50"/>
+                                <rect key="frame" x="798" y="401.5" width="164" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sine/Noise">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -48,8 +37,19 @@
                                     <action selector="onSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="pxB-wF-V4t"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
-                                <rect key="frame" x="391" y="993" width="42" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
+                                <rect key="frame" x="789" y="491.5" width="182" height="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ThereScope">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onThereScope" destination="C5f-Hc-w1x" eventType="touchUpInside" id="Xg8-bK-pC9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
+                                <rect key="frame" x="688" y="967" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,19 +58,19 @@
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hrf-LC-yKP" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="40" id="8QU-TM-2OS"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="2xR-6E-KnS"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="40" id="Ck8-2d-0Ge"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="N6F-Bx-KMk"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
+                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="cGT-pA-ieI"/>
+                            <constraint firstItem="hrf-LC-yKP" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="60" id="dcE-4r-Gre"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="bottom" secondItem="edz-iN-HUA" secondAttribute="bottom" constant="20" id="hve-ao-Hug"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
                             <constraint firstItem="edz-iN-HUA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="mip-pA-Jlw"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="8" symbolic="YES" id="otZ-iY-I6f"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
-                            <constraint firstItem="hrf-LC-yKP" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="spk-pS-yhg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6d-aQ-Lco"/>

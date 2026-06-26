@@ -27,9 +27,8 @@ class HomeViewController: UIViewController {
 
     private
     func configureViews(){
+        sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
-//        waveformButton.setTitle("Waveform (demo only)", for: .normal)
-        sineOnlyButton.setTitle("Sine/Noise", for: .normal)
 
         thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         thereScopeButton.layer.cornerRadius = 5
