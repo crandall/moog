@@ -99,52 +99,39 @@ struct SineOnlyView: View {
             Spacer()  // Spacer between the plot and text to push text to bottom
             
             HStack(alignment: .top) {
-                // Frequency & Amplitude Labels
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Frequency/Pitch:")
-                        .font(.body)
-                        .foregroundColor(.primary)
-                    Text("Amplitude:")
-                        .font(.body)
-                        .foregroundColor(.primary)
-                }
-                .frame(width: 150, alignment: .leading)
                 
-                // Frequency & Amplitude Values
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(waveConductor.pitch, specifier: "%.1f") Hz")
-                    Text("\(waveConductor.amplitude, specifier: "%.2f")")
+                // LEFT: Frequency / Amplitude
+                HStack(alignment: .top, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Frequency/Pitch:")
+                        Text("Amplitude:")
+                    }
+                    .frame(width: 150, alignment: .leading)
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("\(waveConductor.pitch, specifier: "%.1f") Hz")
+                        Text("\(waveConductor.amplitude, specifier: "%.2f")")
+                    }
+                    .frame(width: 100, alignment: .leading)
                 }
-                .frame(width: 100, alignment: .leading)
                 
-                // Spacer between text and picker
                 Spacer()
                 
-                // Centered slider using a ZStack trick
-                ZStack {
-                    HStack(spacing: 8) {
-                        Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
-                            .frame(width: UIScreen.main.bounds.width * 0.20)
-                        
-                        Text("\(amplitudeDisplayValue, specifier: "%.1f")")
-                            .font(.body)
-                            .foregroundColor(.primary)
-                            .monospacedDigit()
-                        
-                        
-                    }
-                    .alignmentGuide(.top) { d in d[.top] }
-                }
-                
-                // picker aligned at the top right
-                VStack(alignment: .listRowSeparatorTrailing, spacing: 4) {
-                    HStack { Spacer() }
-                        .frame(maxWidth: .infinity)
+                // CENTER: Slider
+                HStack(alignment: .top, spacing: 8) {
+                    Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
+                        .frame(width: UIScreen.main.bounds.width * 0.20)
                     
-                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
+                    Text("\(amplitudeDisplayValue, specifier: "%.1f")")
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .monospacedDigit()
                 }
-
                 
+                Spacer()
+                
+                // RIGHT: Picker
+                ThereScopeDevicePicker(device: waveConductor.initialDevice)
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
