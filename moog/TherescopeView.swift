@@ -50,9 +50,9 @@ struct TherescopeView: View {
         
         VStack {
             
-            // HStack for the buttons, with padding just below the navigation bar
-            //            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
-            
+//             HStack for the buttons, with padding just below the navigation bar
+            Spacer().frame(height: 20)  // Hardcoded space below the navigation bar
+
             HStack(spacing: 20) {
                 waveButton("Sine", wave: .sine)
                 
@@ -140,6 +140,8 @@ struct TherescopeView: View {
             .padding(.bottom, 20)
             
         }
+        .modifier(IgnoreSafeAreaOnPhone())
+
         .onAppear {
             waveConductor.start()
             noiseConductor.start()
@@ -180,6 +182,15 @@ struct TherescopeView: View {
     }
 }
 
+struct IgnoreSafeAreaOnPhone: ViewModifier {
+    func body(content: Content) -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            content.ignoresSafeArea(.container, edges: .horizontal)
+        } else {
+            content
+        }
+    }
+}
 
 struct WavePlot: View {
     var waveData: [Float]  // Triangle wave data to plot

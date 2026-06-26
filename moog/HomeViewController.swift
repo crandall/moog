@@ -13,17 +13,31 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
-//    @IBOutlet weak var waveformButton: UIButton!
-//    @IBOutlet weak var multiviewButton: UIButton!
-//    @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         self.configureViews()
     }
+    
+    override func viewWillAppear(_ animated:Bool){
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
+
 
     private
     func configureViews(){
@@ -41,7 +55,6 @@ class HomeViewController: UIViewController {
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
 
         
-//        waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
 
         buildLabel.font = UIFont.systemFont(ofSize: 15)
@@ -50,9 +63,6 @@ class HomeViewController: UIViewController {
         thereScopeButton.isHidden = false
         sineOnlyButton.isHidden = false
 
-//        waveformButton.isHidden = true
-//        testButton.isHidden = true
-        
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
             buildLabel.text = "(build: \(buildNumber))"
@@ -61,7 +71,7 @@ class HomeViewController: UIViewController {
 
     }
     
-    @IBAction func onThereScope(){
+    @IBAction func onThereScope(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .thereScope
@@ -69,7 +79,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onSineOnly(){
+    @IBAction func onSineOnly(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
             vc.demoType = .sineOnly

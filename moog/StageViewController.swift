@@ -29,7 +29,23 @@ class StageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.tintColor = .black
+//        self.navigationController?.navigationBar.tintColor = .black
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBlue
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        
+        navigationController?.navigationBar.tintColor = .white   // Back button & bar button items
+
 
         var navbarTitle = ""
         var audioKitView: AnyView?
@@ -81,6 +97,10 @@ class StageViewController: UIViewController {
         
         hostingController.didMove(toParent: self)
         
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        true
     }
     
     @IBAction func onBack(){
