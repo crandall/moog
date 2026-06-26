@@ -53,7 +53,7 @@ struct TherescopeView: View {
             // HStack for the buttons, with padding just below the navigation bar
             //            Spacer().frame(height: 10)  // Hardcoded space below the navigation bar
             
-            HStack {
+            HStack(spacing: 20) {
                 waveButton("Sine", wave: .sine)
                 
                 if !sineOnly {
@@ -166,7 +166,7 @@ struct TherescopeView: View {
             }
         }) {
             Text(title)
-                .frame(width: 100, height: 40)
+                .frame(width: 100, height: 30)
                 .background(selectedWave == wave ? Color.blue : Color.white)
                 .foregroundColor(selectedWave == wave ? .white : .black)
                 .cornerRadius(8)
