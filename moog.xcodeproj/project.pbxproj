@@ -31,7 +31,6 @@
 		E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79FC8E72B06EEA800C9495E /* Tuner.swift */; };
 		E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA752B179B41006D8344 /* Waveform.swift */; };
 		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
-		E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA792B17A106006D8344 /* ThereScope.swift */; };
 		E7B1C2222C2244530003EAB5 /* InputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1C2212C2244530003EAB5 /* InputDevice.swift */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
@@ -61,7 +60,6 @@
 		E79FC8E72B06EEA800C9495E /* Tuner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		E7A1CA752B179B41006D8344 /* Waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
 		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E7A1CA792B17A106006D8344 /* ThereScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereScope.swift; sourceTree = "<group>"; };
 		E7B1C2212C2244530003EAB5 /* InputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDevice.swift; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
 				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
 				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
-				E7A1CA792B17A106006D8344 /* ThereScope.swift */,
 				E7A1CA752B179B41006D8344 /* Waveform.swift */,
 				E72D0FD82B095C560081B5EE /* Multi.swift */,
 				E7A1CA772B179F6A006D8344 /* Extensions.swift */,
@@ -238,7 +235,6 @@
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
 				E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
-				E7A1CA7A2B17A106006D8344 /* ThereScope.swift in Sources */,
 				E79FC8E82B06EEA800C9495E /* Tuner.swift in Sources */,
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
 				E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */,
