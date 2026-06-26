@@ -120,13 +120,15 @@ struct TherescopeView: View {
                 
                 // CENTER: Slider
                 HStack(alignment: .top, spacing: 8) {
-                    Slider(value: $amplitudeScale, in: minAmplitudeScale...maxAmplitudeScale)
-                        .frame(width: UIScreen.main.bounds.width * 0.20)
-                    
-                    Text("\(amplitudeDisplayValue, specifier: "%.1f")")
-                        .font(.body)
-                        .foregroundColor(.primary)
-                        .monospacedDigit()
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Amplitude Scale: \(amplitudeDisplayValue, specifier: "%.1f")")
+                            .monospacedDigit()
+
+                        Slider(value: $amplitudeScale,
+                               in: minAmplitudeScale...maxAmplitudeScale)
+                        
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.20, alignment: .leading)
                 }
                 
                 Spacer()
