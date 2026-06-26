@@ -222,7 +222,7 @@ class WaveConductor: ObservableObject {
 }
 
 class NoiseConductor: ObservableObject, HasAudioEngine {
-    @Published var data = ThereScopeData()
+    @Published var data = TherescopeData()
     @Published var gain: AUValue = 1.0
     
     let engine = AudioEngine()
