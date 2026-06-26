@@ -13,9 +13,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
-//    @IBOutlet weak var waveformButton: UIButton!
-//    @IBOutlet weak var multiviewButton: UIButton!
-//    @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
     
@@ -58,7 +55,6 @@ class HomeViewController: UIViewController {
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
 
         
-//        waveformButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
 
         buildLabel.font = UIFont.systemFont(ofSize: 15)
