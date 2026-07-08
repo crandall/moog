@@ -127,14 +127,7 @@ class WaveConductor: ObservableObject {
             }
         }
         tracker.start()
-//        tracker = PitchTap(mic) { pitch, amp in
-//            DispatchQueue.main.async {
-//                self.pitch = pitch[0]  // Detected pitch (frequency)
-//                self.amplitude = amp[0]  // Detected amplitude
-//                self.updateWave()
-//            }
-//        }
-//        tracker.start()
+
     }
     
     // This method is called every time a new audio buffer is captured from the microphone
