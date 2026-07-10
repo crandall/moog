@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
+    @IBOutlet weak var popupButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
     
@@ -43,25 +44,27 @@ class HomeViewController: UIViewController {
     func configureViews(){
         sineOnlyButton.setTitle("Sine/Signal only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
+        popupButton.setTitle("Popup", for: .normal)
 
-        thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
         thereScopeButton.layer.borderColor = UIColor.black.cgColor
         
-        sineOnlyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         sineOnlyButton.layer.cornerRadius = 5
         sineOnlyButton.layer.borderWidth = 1
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
-
         
-        sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        popupButton.layer.cornerRadius = 5
+        popupButton.layer.borderWidth = 1
+        popupButton.layer.borderColor = UIColor.black.cgColor
+
 
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
 
         thereScopeButton.isHidden = false
         sineOnlyButton.isHidden = false
+        popupButton.isHidden = false
 
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -86,6 +89,15 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @IBAction func onPopup(_ sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+            vc.demoType = .test
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
 
 
     @IBAction func onWaveform(){
