@@ -12,7 +12,7 @@ class SettingsPopupView: UIView {
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var closeButton: UIButton!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
