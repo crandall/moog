@@ -62,7 +62,9 @@ class SettingsPopupView: UIView {
         contentView.clipsToBounds = true
     }
     
+    var onClose: (() -> Void)?
     @IBAction func onClose(_ sender: UIButton) {
-        print("onClose")
+        print("SettingsPopupView.onClose")
+        onClose?()
     }
 }

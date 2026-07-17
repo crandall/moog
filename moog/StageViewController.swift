@@ -115,7 +115,7 @@ class StageViewController: UIViewController {
         
         hostingController.didMove(toParent: self)
         
-//        configureSettingsButton()
+        configureSettingsButton()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -172,7 +172,12 @@ class StageViewController: UIViewController {
         guard settingsPopupView == nil else {
             return
         }
-        
+
+        popup.onClose = { [weak self] in
+            print("StageViewController.onClose")
+            self?.hideSettingsPopup()
+        }
+
         /*
          Transparent view that captures taps outside the popup.
          It sits above the SwiftUI content and below the popup.
