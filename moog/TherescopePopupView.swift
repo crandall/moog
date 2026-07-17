@@ -154,10 +154,6 @@ struct TherescopePopupView: View {
         }
     }
     
-    enum WaveTypex {
-        case sine, square, triangle, sawtooth, noise
-    }
-    
     private func waveButton(_ title: String, wave: WaveType) -> some View {
         Button(action: {
             selectedWave = wave
@@ -169,15 +165,33 @@ struct TherescopePopupView: View {
                 waveConductor.setupOscillator(waveform: wave)
             }
         }) {
-            Text(title)
-                .frame(width: 100, height: 30)
-                .background(selectedWave == wave ? Color.blue : Color.white)
-                .foregroundColor(selectedWave == wave ? .white : .black)
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1)
-                )
+            HStack(spacing: 8) {
+                Text(title)
+                
+                Image(imageName(for: wave))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 24)
+            }
+            .padding(.horizontal, 8)
+            .frame(height: 30)
+            .background(selectedWave == wave ? Color.blue : Color.white)
+            .foregroundColor(selectedWave == wave ? .white : .black)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.black, lineWidth: 1)
+            )
+        }
+    }
+    
+    private func imageName(for wave: WaveType) -> String {
+        switch wave {
+        case .sine:     return "sineWave"
+        case .square:   return "squareWave"
+        case .triangle: return "triangleWave"
+        case .sawtooth: return "sawtoothWave"
+        case .noise:    return "noiseWave"
         }
     }
 }

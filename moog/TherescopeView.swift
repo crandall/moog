@@ -177,7 +177,6 @@ struct TherescopeView: View {
                     .scaledToFit()
                     .frame(width: 60, height: 24)
             }
-//            .padding(.horizontal, 12)
             .padding(.horizontal, 8)
             .frame(height: 30)
             .background(selectedWave == wave ? Color.blue : Color.white)
