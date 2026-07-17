@@ -169,16 +169,34 @@ struct TherescopeView: View {
                 waveConductor.setupOscillator(waveform: wave)
             }
         }) {
-            Text(title)
-                .frame(width: 100, height: 30)
-                .background(selectedWave == wave ? Color.blue : Color.white)
-                .foregroundColor(selectedWave == wave ? .white : .black)
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1)
-                )
+            HStack(spacing: 8) {
+                Text(title)
+                
+                Image(systemName: "waveform")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 16)
+            }
+            .padding(.horizontal, 12)
+            .frame(height: 30)
+            .background(selectedWave == wave ? Color.blue : Color.white)
+            .foregroundColor(selectedWave == wave ? .white : .black)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.black, lineWidth: 1)
+            )
         }
+    }
+    private func imageName(for wave: WaveType) -> String {
+        return "rectangle.and.pencil.and.ellipsis"
+//        switch wave {
+//        case .sine:     return "sineIcon"
+//        case .square:   return "squareIcon"
+//        case .triangle: return "triangleIcon"
+//        case .sawtooth: return "sawIcon"
+//        case .noise:    return "noiseIcon"
+//        }
     }
 }
 
