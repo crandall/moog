@@ -172,12 +172,13 @@ struct TherescopeView: View {
             HStack(spacing: 8) {
                 Text(title)
                 
-                Image(systemName: "waveform")
+                Image(imageName(for: wave))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 60, height: 16)
+                    .frame(width: 60, height: 24)
             }
-            .padding(.horizontal, 12)
+//            .padding(.horizontal, 12)
+            .padding(.horizontal, 8)
             .frame(height: 30)
             .background(selectedWave == wave ? Color.blue : Color.white)
             .foregroundColor(selectedWave == wave ? .white : .black)
@@ -188,15 +189,15 @@ struct TherescopeView: View {
             )
         }
     }
+    
     private func imageName(for wave: WaveType) -> String {
-        return "rectangle.and.pencil.and.ellipsis"
-//        switch wave {
-//        case .sine:     return "sineIcon"
-//        case .square:   return "squareIcon"
-//        case .triangle: return "triangleIcon"
-//        case .sawtooth: return "sawIcon"
-//        case .noise:    return "noiseIcon"
-//        }
+        switch wave {
+        case .sine:     return "sineWave"
+        case .square:   return "squareWave"
+        case .triangle: return "triangleWave"
+        case .sawtooth: return "sawtoothWave"
+        case .noise:    return "noiseWave"
+        }
     }
 }
 
