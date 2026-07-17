@@ -62,7 +62,7 @@ struct TherescopeView: View {
                     waveButton("Sawtooth", wave: .sawtooth)
                 }
                 
-                waveButton("Signal", wave: .noise)
+                waveButton("Noise", wave: .noise)
             }
             
             .padding(.bottom, 10)  // Space between buttons and plot

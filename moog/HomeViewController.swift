@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
 
     private
     func configureViews(){
-        sineOnlyButton.setTitle("Sine/Signal only", for: .normal)
+        sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
         popupButton.setTitle("Popup", for: .normal)
 
