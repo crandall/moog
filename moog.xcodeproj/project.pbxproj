@@ -13,7 +13,6 @@
 		E7511942300AACD10066D363 /* SettingsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7511941300AACD10066D363 /* SettingsPopupView.swift */; };
 		E7511944300AACEC0066D363 /* SettingsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7511943300AACEC0066D363 /* SettingsPopupView.xib */; };
 		E75455202C9A19B700EF4616 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E754551F2C9A19B700EF4616 /* Test2.swift */; };
-		E7685C21300177D9004FB8D8 /* TherescopePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7685C20300177D9004FB8D8 /* TherescopePopupView.swift */; };
 		E7795E602CCC503C00F34C00 /* Conductors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E5F2CCC503C00F34C00 /* Conductors.swift */; };
 		E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E612CCC515500F34C00 /* DevicePicker.swift */; };
 		E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */; };
@@ -47,7 +46,6 @@
 		E7511941300AACD10066D363 /* SettingsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopupView.swift; sourceTree = "<group>"; };
 		E7511943300AACEC0066D363 /* SettingsPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsPopupView.xib; sourceTree = "<group>"; };
 		E754551F2C9A19B700EF4616 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
-		E7685C20300177D9004FB8D8 /* TherescopePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherescopePopupView.swift; sourceTree = "<group>"; };
 		E7795E5F2CCC503C00F34C00 /* Conductors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conductors.swift; sourceTree = "<group>"; };
 		E7795E612CCC515500F34C00 /* DevicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePicker.swift; sourceTree = "<group>"; };
 		E7795E632CCC623500F34C00 /* moog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = moog.entitlements; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
 				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
 				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
-				E7685C20300177D9004FB8D8 /* TherescopePopupView.swift */,
 				E7A1CA752B179B41006D8344 /* Waveform.swift */,
 				E72D0FD82B095C560081B5EE /* Multi.swift */,
 				E7A1CA772B179F6A006D8344 /* Extensions.swift */,
@@ -252,7 +249,6 @@
 				E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */,
 				E75455202C9A19B700EF4616 /* Test2.swift in Sources */,
 				E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */,
-				E7685C21300177D9004FB8D8 /* TherescopePopupView.swift in Sources */,
 				E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,

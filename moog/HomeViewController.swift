@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
-    @IBOutlet weak var popupButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
 
     
@@ -44,7 +43,6 @@ class HomeViewController: UIViewController {
     func configureViews(){
         sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
-        popupButton.setTitle("Popup", for: .normal)
 
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
@@ -54,17 +52,11 @@ class HomeViewController: UIViewController {
         sineOnlyButton.layer.borderWidth = 1
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
         
-        popupButton.layer.cornerRadius = 5
-        popupButton.layer.borderWidth = 1
-        popupButton.layer.borderColor = UIColor.black.cgColor
-
-
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
 
         thereScopeButton.isHidden = false
         sineOnlyButton.isHidden = false
-        popupButton.isHidden = false
 
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -90,16 +82,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onPopup(_ sender: UIButton){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .test
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-
-
-
     @IBAction func onWaveform(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {

@@ -49,27 +49,12 @@
                                     <action selector="onThereScope:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="zTw-KJ-MIp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-be-D7K">
-                                <rect key="frame" x="826.5" y="581.5" width="107.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Popup">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onPopup:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="qlq-wo-m01"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
                                 <rect key="frame" x="688" y="967" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="waveform" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TBE-OO-NLb">
-                                <rect key="frame" x="62" y="58" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,9 +62,7 @@
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="2xR-6E-KnS"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="40" id="Ck8-2d-0Ge"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="bottom" secondItem="zcj-be-D7K" secondAttribute="top" constant="-40" id="Got-Yu-5gA"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
-                            <constraint firstItem="zcj-be-D7K" firstAttribute="centerX" secondItem="d1q-5o-2wA" secondAttribute="centerX" id="Prf-uj-hdE"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
                             <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="cGT-pA-ieI"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="60" id="dcE-4r-Gre"/>
@@ -95,7 +78,6 @@
                     <connections>
                         <outlet property="buildLabel" destination="edz-iN-HUA" id="fb9-HS-MbP"/>
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
-                        <outlet property="popupButton" destination="zcj-be-D7K" id="elc-Gj-C2D"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
                         <outlet property="sineOnlyButton" destination="hrf-LC-yKP" id="Eby-Ao-72C"/>
                         <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
@@ -171,7 +153,6 @@
     <resources>
         <image name="bobMoogLogo" width="817" height="410"/>
         <image name="soundSchoolLogo" width="480" height="480"/>
-        <image name="waveform" catalog="system" width="125" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -67,10 +67,7 @@ class StageViewController: UIViewController {
             break
             
         case .test:
-            navbarTitle = "Popup"
-            audioKitView = AnyView(
-                TherescopePopupView(sineOnly: false)
-            )
+            break
             
         case .tuner:
             navbarTitle = "InputDeviceDemo"
@@ -115,7 +112,7 @@ class StageViewController: UIViewController {
         
         hostingController.didMove(toParent: self)
         
-        configureSettingsButton()
+//        configureSettingsButton()
     }
     
     override var prefersStatusBarHidden: Bool {
