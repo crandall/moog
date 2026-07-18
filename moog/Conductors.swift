@@ -34,6 +34,11 @@ class WaveConductor: ObservableObject {
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
     @Published var waveData: [Float] = []  // Wave data for plotting
     
+    var periodMilliseconds: Double {
+        guard pitch > 0 else { return 0 }
+        return 1000.0 / Double(pitch)
+    }
+    
     
     // this init() is new and was created when the tracker was changed to output the proper values...
     // it potentially could mess up the issues with the different device OS types, if so, go back to the old init at the bottom of this file,

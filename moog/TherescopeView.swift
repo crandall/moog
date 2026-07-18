@@ -47,98 +47,105 @@ struct TherescopeView: View {
     }
     
     var body: some View {
-        
-        VStack {
+        ZStack(alignment: .topTrailing) {
             
-//             HStack for the buttons, with padding just below the navigation bar
-            Spacer().frame(height: 20)  // Hardcoded space below the navigation bar
-
-            HStack(spacing: 20) {
-                waveButton("Sine", wave: .sine)
+            VStack {
                 
-                if !sineOnly {
-                    waveButton("Square", wave: .square)
-                    waveButton("Triangle", wave: .triangle)
-                    waveButton("Sawtooth", wave: .sawtooth)
-                }
+                Spacer().frame(height: 20)  // Hardcoded space below the navigation bar
                 
-                waveButton("Noise", wave: .noise)
-            }
-            
-            .padding(.bottom, 10)  // Space between buttons and plot
-            
-            // Display the waveform plot
-            if selectedWave == .noise {
-                RawOutputView1(noiseConductor.tappableNodeB,
-                               strokeColor: Color.plotColor,
-                               isNormalized: false,
-                               scaleFactor: (amplitudeScale / maxAmplitudeScale) * noiseAmplitudeDefaultScale
-                )
-                
-                
-                
-                .padding(.top, 20)   // Padding between the buttons and the plot
-                .padding(.bottom, 20)   // Padding between the buttons and the plot
-                .background(Color.black)
-                .clipped()
-            }else{
-                WavePlot(
-                    waveData: waveConductor.waveData,
-                    amplitudeScale: amplitudeScale,  // Adjust as needed
-                    widthScale: 0.25,      // Adjust as needed
-                    minAmplitudeThreshold: 0.01,
-                    minAmplitudeScale: 0.1,
-                    minWidthScale: 0.5
-                )
-                .padding(.top, 20)   // Padding between the buttons and the plot
-                .padding(.bottom, 20)   // Padding between the buttons and the plot
-                .background(Color.black)
-                .clipped()
-                
-            }
-            
-            Spacer()  // Spacer between the plot and text to push text to bottom
-            
-            HStack(alignment: .top) {
-                
-                // LEFT: Frequency / Amplitude
-                HStack(alignment: .top, spacing: 8) {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Frequency/Pitch:")
-                        Text("Amplitude:")
-                    }
-                    .frame(width: 150, alignment: .leading)
+                // HStack for the buttons, with padding just below the navigation bar
+                HStack(spacing: 20) {
+                    waveButton("Sine", wave: .sine)
                     
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("\(waveConductor.pitch, specifier: "%.1f") Hz")
-                        Text("\(waveConductor.amplitude, specifier: "%.2f")")
+                    if !sineOnly {
+                        waveButton("Square", wave: .square)
+                        waveButton("Triangle", wave: .triangle)
+                        waveButton("Sawtooth", wave: .sawtooth)
                     }
-                    .frame(width: 100, alignment: .leading)
+                    
+                    waveButton("Noise", wave: .noise)
                 }
                 
-                Spacer()
+                .padding(.bottom, 10)  // Space between buttons and plot
                 
-                // CENTER: Slider
-                HStack(alignment: .top, spacing: 8) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Amplitude Scale: \(amplitudeDisplayValue, specifier: "%.1f")")
-                            .monospacedDigit()
-
-                        Slider(value: $amplitudeScale,
-                               in: minAmplitudeScale...maxAmplitudeScale)
+                // Display the waveform plot
+                if selectedWave == .noise {
+                    RawOutputView1(noiseConductor.tappableNodeB,
+                                   strokeColor: Color.plotColor,
+                                   isNormalized: false,
+                                   scaleFactor: (amplitudeScale / maxAmplitudeScale) * noiseAmplitudeDefaultScale
+                    )
+                    
+                    
+                    
+                    .padding(.top, 20)   // Padding between the buttons and the plot
+                    .padding(.bottom, 20)   // Padding between the buttons and the plot
+                    .background(Color.black)
+                    .clipped()
+                }else{
+                    WavePlot(
+                        waveData: waveConductor.waveData,
+                        amplitudeScale: amplitudeScale,  // Adjust as needed
+                        widthScale: 0.25,      // Adjust as needed
+                        minAmplitudeThreshold: 0.01,
+                        minAmplitudeScale: 0.1,
+                        minWidthScale: 0.5
+                    )
+                    .padding(.top, 20)   // Padding between the buttons and the plot
+                    .padding(.bottom, 20)   // Padding between the buttons and the plot
+                    .background(Color.black)
+                    .clipped()
+                    
+                }
+                
+                Spacer()  // Spacer between the plot and text to push text to bottom
+                
+                HStack(alignment: .top) {
+                    
+                    // LEFT: Frequency / Amplitude
+                    HStack(alignment: .top, spacing: 8) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Frequency/Pitch:")
+                            Text("Amplitude:")
+                        }
+                        .frame(width: 150, alignment: .leading)
                         
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("\(waveConductor.pitch, specifier: "%.1f") Hz")
+                            Text("\(waveConductor.amplitude, specifier: "%.2f")")
+                        }
+                        .frame(width: 100, alignment: .leading)
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.20, alignment: .leading)
+                    
+                    Spacer()
+                    
+                    // CENTER: Slider
+                    HStack(alignment: .top, spacing: 8) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Amplitude Scale: \(amplitudeDisplayValue, specifier: "%.1f")")
+                                .monospacedDigit()
+                            
+                            Slider(value: $amplitudeScale,
+                                   in: minAmplitudeScale...maxAmplitudeScale)
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.20, alignment: .leading)
+                    }
+                    
+                    Spacer()
+                    
+                    // RIGHT: Picker
+                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
                 }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
                 
-                Spacer()
-                
-                // RIGHT: Picker
-                ThereScopeDevicePicker(device: waveConductor.initialDevice)
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
             
+            // Drawn on top of everything in the VStack
+            informationOverlay
+                .padding(.top, 100)
+                .padding(.trailing, 30)
         }
         .modifier(IgnoreSafeAreaOnPhone())
 
@@ -156,6 +163,26 @@ struct TherescopeView: View {
 
     enum WaveTypex {
         case sine, square, triangle, sawtooth, noise
+    }
+    
+    private var informationOverlay: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Wave Information")
+                .font(.headline)
+            
+            Text("Frequency: \(waveConductor.pitch, specifier: "%7.1f") Hz")
+                .monospacedDigit()
+            
+            Text("Amplitude: \(waveConductor.amplitude, specifier: "%6.2f")")
+                .monospacedDigit()
+        }
+        .frame(width: 220, alignment: .leading)
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.green.opacity(0.5))
+        )
+        .foregroundStyle(.white)
     }
 
     private func waveButton(_ title: String, wave: WaveType) -> some View {

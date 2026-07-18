@@ -23,7 +23,7 @@ enum DemoType {
 class StageViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     var demoType: DemoType?
     let popup = SettingsPopupView()
     
@@ -112,7 +112,7 @@ class StageViewController: UIViewController {
         
         hostingController.didMove(toParent: self)
         
-//        configureSettingsButton()
+        configureSettingsButton()
     }
     
     override var prefersStatusBarHidden: Bool {
