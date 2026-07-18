@@ -41,22 +41,17 @@ class HomeViewController: UIViewController {
 
     private
     func configureViews(){
-        sineOnlyButton.setTitle("Sine/Signal only", for: .normal)
+        sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
 
-        thereScopeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
         thereScopeButton.layer.borderColor = UIColor.black.cgColor
         
-        sineOnlyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         sineOnlyButton.layer.cornerRadius = 5
         sineOnlyButton.layer.borderWidth = 1
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
-
         
-        sineOnlyButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
 
@@ -86,8 +81,7 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
-
+    
     @IBAction func onWaveform(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
