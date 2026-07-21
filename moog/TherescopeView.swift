@@ -172,9 +172,26 @@ struct TherescopeView: View {
             
             Text("Frequency: \(waveConductor.pitch, specifier: "%7.1f") Hz")
                 .monospacedDigit()
-            
+
+            Text("Period: \(waveConductor.periodMilliseconds, specifier: "%6.2f") ms")
+                .monospacedDigit()
+
+            Text("Note: \(waveConductor.detectedNoteName)")
+                .monospacedDigit()
+
             Text("Amplitude: \(waveConductor.amplitude, specifier: "%6.2f")")
                 .monospacedDigit()
+            
+            Text("Peak-to-peak: \(waveConductor.wavelengthMeters, specifier: "%6.1f")")
+                .monospacedDigit()
+
+            Text("Sample rate: 44,100 Hz")
+                .monospacedDigit()
+
+            Text("Samples per Cycle: \(waveConductor.samplesPerCycle, specifier: "%6.1f") ")
+                .monospacedDigit()
+
+            
         }
         .frame(width: 220, alignment: .leading)
         .padding(12)
@@ -184,7 +201,7 @@ struct TherescopeView: View {
         )
         .foregroundStyle(.white)
     }
-
+    
     private func waveButton(_ title: String, wave: WaveType) -> some View {
         Button(action: {
             selectedWave = wave

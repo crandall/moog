@@ -39,6 +39,38 @@ class WaveConductor: ObservableObject {
         return 1000.0 / Double(pitch)
     }
     
+    var samplesPerCycle: Double {
+        let sampleRate = AVAudioSession.sharedInstance().sampleRate
+        
+        guard pitch > 0, sampleRate > 0 else {
+            return 0
+        }
+        
+        return sampleRate / Double(pitch)
+    }
+    
+    var wavelengthMeters: Double {
+        guard pitch > 0 else { return 0 }
+        return 343.0 / Double(pitch)
+    }
+    
+    var detectedNoteName: String {
+        guard pitch > 0 else { return "--" }
+        
+        let midiNote =
+        Int(round(69.0 + 12.0 * log2(Double(pitch) / 440.0)))
+        
+        let names = [
+            "C", "C♯", "D", "D♯", "E", "F",
+            "F♯", "G", "G♯", "A", "A♯", "B"
+        ]
+        
+        let noteIndex = ((midiNote % 12) + 12) % 12
+        let octave = midiNote / 12 - 1
+        
+        return "\(names[noteIndex])\(octave)"
+    }
+    
     
     // this init() is new and was created when the tracker was changed to output the proper values...
     // it potentially could mess up the issues with the different device OS types, if so, go back to the old init at the bottom of this file,
