@@ -66,5 +66,13 @@ class DataPopupView: UIView {
         print("DataPopupView.onClose")
         onClose?()
     }
+    
+    func updateDataPopup(dataStr:String?){
+        guard let dataStr = dataStr else {
+            return
+        }
+        self.dataLabel.text = dataStr
+    }
+
 
 }

@@ -46,14 +46,20 @@ class StageViewController: UIViewController {
         case .thereScope:
             navbarTitle = "ThereScope"
             audioKitView = AnyView(
-                TherescopeView(sineOnly: false)
+//                TherescopeView(sineOnly: false)
+                TherescopeView(
+                    sineOnly: false,
+                    updateDataPopup: { [weak self] dataString in
+                        self?.dataPopup.updateDataPopup(dataStr: dataString)
+                    }
+                )
             )
             
         case .sineOnly:
             navbarTitle = "ThereScope"
-            audioKitView = AnyView(
-                TherescopeView(sineOnly: true)
-            )
+//            audioKitView = AnyView(
+//                TherescopeView(sineOnly: true)
+//            )
             
         case .waveform:
             navbarTitle = "Waveforms"
@@ -221,26 +227,21 @@ class StageViewController: UIViewController {
         
         dataPopupDismissView = dismissView
         
-        dataPopup.translatesAutoresizingMaskIntoConstraints = false
+        dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        
+        let x: CGFloat = 100
+        let y: CGFloat = 80
+        let width: CGFloat = 240
+        let height: CGFloat = 320
+        
+        dataPopup.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: height
+        )
         
         view.addSubview(dataPopup)
-        
-        NSLayoutConstraint.activate([
-            dataPopup.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 8
-            ),
-            dataPopup.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -12
-            ),
-            dataPopup.widthAnchor.constraint(
-                equalToConstant: 200
-            ),
-            dataPopup.heightAnchor.constraint(
-                equalToConstant: 300
-            )
-        ])
         
         /*
          Resolve Auto Layout before applying the animation so the
@@ -302,7 +303,7 @@ class StageViewController: UIViewController {
             
         } completion: { [weak self] _ in
             popup.removeFromSuperview()
-            self?.popupDismissView?.removeFromSuperview()
+            self?.dataPopupDismissView?.removeFromSuperview()
             
             self?.dataPopupView = nil
             self?.dataPopupDismissView = nil

@@ -25,6 +25,8 @@ struct TherescopeData {
 struct TherescopeView: View {
     let sineOnly: Bool
     
+    let updateDataPopup: (String) -> Void
+
     @State private var selectedWave: WaveType = .sine
     @StateObject private var waveConductor = WaveConductor()
     @StateObject private var noiseConductor = NoiseConductor()
@@ -33,6 +35,7 @@ struct TherescopeView: View {
     @State private var maxAmplitudeScale: CGFloat = 3.0
     @State private var noiseAmplitudeDefaultScale: CGFloat = 10.0
     
+    @State private var popupTimer: Timer?
     
     private var amplitudeDisplayValue: Double {
         let minValue = Double(minAmplitudeScale)
@@ -153,8 +156,12 @@ struct TherescopeView: View {
             waveConductor.start()
             noiseConductor.start()
             
-            print("sineOnly = \(sineOnly)")
+            popupTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                updateDataPopup(dataPopupString)
+            }
         }
+            
+            
         .onDisappear {
             waveConductor.stop()
             noiseConductor.stop()
@@ -163,6 +170,18 @@ struct TherescopeView: View {
 
     enum WaveTypex {
         case sine, square, triangle, sawtooth, noise
+    }
+    
+    private var dataPopupString: String {
+    """
+    Waveform: \(waveConductor.waveformName)
+    Frequency: \(String(format: "%.1f", waveConductor.pitch)) Hz
+    Period: \(String(format: "%.2f", waveConductor.periodMilliseconds)) ms
+    Note: \(waveConductor.detectedNoteName)
+    Amplitude: \(String(format: "%.3f", waveConductor.amplitude))
+    Wavelength: \(String(format: "%.2f", waveConductor.wavelengthMeters)) m
+    Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
+    """
     }
     
     private var informationOverlay: some View {
