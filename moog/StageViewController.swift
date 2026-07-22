@@ -194,67 +194,42 @@ class StageViewController: UIViewController {
         }
         
         /*
-         Transparent view that captures taps outside the popup.
-         It sits above the SwiftUI content and below the popup.
+         The previous dismissal animation leaves a transform on this
+         reusable popup instance. Clear it before setting its frame.
          */
-//        let dismissView = UIView()
-//        dismissView.backgroundColor = .clear
-//        dismissView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        let tapGesture = UITapGestureRecognizer(
-//            target: self,
-//            action: #selector(dataDismissViewTapped)
-//        )
-//        
-//        dismissView.addGestureRecognizer(tapGesture)
-//        
-//        view.addSubview(dismissView)
-//        
-//        NSLayoutConstraint.activate([
-//            dismissView.topAnchor.constraint(
-//                equalTo: view.topAnchor
-//            ),
-//            dismissView.bottomAnchor.constraint(
-//                equalTo: view.bottomAnchor
-//            ),
-//            dismissView.leadingAnchor.constraint(
-//                equalTo: view.leadingAnchor
-//            ),
-//            dismissView.trailingAnchor.constraint(
-//                equalTo: view.trailingAnchor
-//            )
-//        ])
-//        
-//        dataPopupDismissView = dismissView
+        dataPopup.transform = .identity
+        dataPopup.alpha = 1
         
         dataPopup.translatesAutoresizingMaskIntoConstraints = true
         
+        dataPopup.setNeedsLayout()
+        dataPopup.layoutIfNeeded()
+        
+        let width: CGFloat = 240
+        
+        let fittingSize = dataPopup.systemLayoutSizeFitting(
+            CGSize(
+                width: width,
+                height: UIView.layoutFittingCompressedSize.height
+            ),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
         let x: CGFloat = 100
         let y: CGFloat = 80
-        let width: CGFloat = 240
-        let height: CGFloat = 320
         
         dataPopup.frame = CGRect(
             x: x,
             y: y,
             width: width,
-            height: height
+            height: fittingSize.height
         )
         
         view.addSubview(dataPopup)
         
-        /*
-         Resolve Auto Layout before applying the animation so the
-         transform works from the popup's final location.
-         */
-        view.layoutIfNeeded()
-        
         dataPopup.alpha = 0
         
-        /*
-         Since the popup is constrained to the right edge, this makes
-         it appear to open downward and toward the left.
-         */
         dataPopup.transform = CGAffineTransform(
             translationX: 40,
             y: -20
@@ -277,7 +252,7 @@ class StageViewController: UIViewController {
             self.dataPopup.transform = .identity
         }
     }
-    
+
     private func hideDataPopup() {
         guard let popup = dataPopupView else {
             return
@@ -305,11 +280,14 @@ class StageViewController: UIViewController {
             popup.removeFromSuperview()
             self?.dataPopupDismissView?.removeFromSuperview()
             
+            // Restore the reusable view to its normal state.
+            popup.transform = .identity
+            popup.alpha = 1
+            
             self?.dataPopupView = nil
             self?.dataPopupDismissView = nil
         }
     }
-    
     @objc private func dataDismissViewTapped() {
         hideDataPopup()
     }

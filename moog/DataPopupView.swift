@@ -59,6 +59,7 @@ class DataPopupView: UIView {
         contentView.layer.cornerRadius = 12
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
+        
     }
     
     var onClose: (() -> Void)?
