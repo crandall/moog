@@ -12,6 +12,8 @@
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
 		E7511942300AACD10066D363 /* SettingsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7511941300AACD10066D363 /* SettingsPopupView.swift */; };
 		E7511944300AACEC0066D363 /* SettingsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7511943300AACEC0066D363 /* SettingsPopupView.xib */; };
+		E75450AF30104C4000416680 /* DataPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75450AE30104C4000416680 /* DataPopupView.swift */; };
+		E75450B130104CEC00416680 /* DataPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75450B030104CEC00416680 /* DataPopupView.xib */; };
 		E75455202C9A19B700EF4616 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E754551F2C9A19B700EF4616 /* Test2.swift */; };
 		E7795E602CCC503C00F34C00 /* Conductors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E5F2CCC503C00F34C00 /* Conductors.swift */; };
 		E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E612CCC515500F34C00 /* DevicePicker.swift */; };
@@ -45,6 +47,8 @@
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
 		E7511941300AACD10066D363 /* SettingsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopupView.swift; sourceTree = "<group>"; };
 		E7511943300AACEC0066D363 /* SettingsPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsPopupView.xib; sourceTree = "<group>"; };
+		E75450AE30104C4000416680 /* DataPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPopupView.swift; sourceTree = "<group>"; };
+		E75450B030104CEC00416680 /* DataPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataPopupView.xib; sourceTree = "<group>"; };
 		E754551F2C9A19B700EF4616 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
 		E7795E5F2CCC503C00F34C00 /* Conductors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conductors.swift; sourceTree = "<group>"; };
 		E7795E612CCC515500F34C00 /* DevicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePicker.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				E7795E612CCC515500F34C00 /* DevicePicker.swift */,
 				E7511941300AACD10066D363 /* SettingsPopupView.swift */,
 				E7511943300AACEC0066D363 /* SettingsPopupView.xib */,
+				E75450AE30104C4000416680 /* DataPopupView.swift */,
+				E75450B030104CEC00416680 /* DataPopupView.xib */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 				E7511944300AACEC0066D363 /* SettingsPopupView.xib in Resources */,
 				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
 				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
+				E75450B130104CEC00416680 /* DataPopupView.xib in Resources */,
 				E78F59222FEDEA4000F88654 /* info.txt in Resources */,
 				E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */,
 			);
@@ -249,6 +256,7 @@
 				E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */,
 				E75455202C9A19B700EF4616 /* Test2.swift in Sources */,
 				E7A1CA762B179B41006D8344 /* Waveform.swift in Sources */,
+				E75450AF30104C4000416680 /* DataPopupView.swift in Sources */,
 				E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
 				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
