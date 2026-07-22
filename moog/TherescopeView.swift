@@ -170,30 +170,47 @@ struct TherescopeView: View {
             Text("Wave Information")
                 .font(.headline)
             
+            Text("Waveform: \(waveConductor.waveformName)")
+                .monospacedDigit()
+            
             Text("Frequency: \(waveConductor.pitch, specifier: "%7.1f") Hz")
                 .monospacedDigit()
-
+            
             Text("Period: \(waveConductor.periodMilliseconds, specifier: "%6.2f") ms")
                 .monospacedDigit()
-
+            
             Text("Note: \(waveConductor.detectedNoteName)")
                 .monospacedDigit()
-
-            Text("Amplitude: \(waveConductor.amplitude, specifier: "%6.2f")")
-                .monospacedDigit()
             
-            Text("Peak-to-peak: \(waveConductor.wavelengthMeters, specifier: "%6.1f")")
-                .monospacedDigit()
-
-            Text("Sample rate: 44,100 Hz")
-                .monospacedDigit()
-
-            Text("Samples per Cycle: \(waveConductor.samplesPerCycle, specifier: "%6.1f") ")
+            Text("Amplitude: \(waveConductor.amplitude, specifier: "%6.3f")")
                 .monospacedDigit()
 
             
+//            Text("Tuning: \(waveConductor.centsFromNearestNote, specifier: "%+5.1f") cents")
+//                .monospacedDigit()
+            
+//            Text("Peak: \(waveConductor.peakAmplitude, specifier: "%6.3f")")
+//                .monospacedDigit()
+//            
+//            Text("Peak-Peak: \(waveConductor.peakToPeakAmplitude, specifier: "%6.3f")")
+//                .monospacedDigit()
+//            
+//            Text("RMS: \(waveConductor.rmsAmplitude, specifier: "%6.3f")")
+//                .monospacedDigit()
+//            
+//            Text("Level: \(waveConductor.decibels, specifier: "%6.1f") dBFS")
+//                .monospacedDigit()
+//            
+//            Text("Sample Rate: \(waveConductor.sampleRate, specifier: "%.0f") Hz")
+//                .monospacedDigit()
+//            
+//            Text("Samples/Cycle: \(waveConductor.samplesPerCycle, specifier: "%6.1f")")
+//                .monospacedDigit()
+//            
+//            Text("Wavelength: \(waveConductor.wavelengthMeters, specifier: "%6.2f") m")
+//                .monospacedDigit()
         }
-        .frame(width: 220, alignment: .leading)
+        .frame(width: 240, alignment: .leading)
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 10)
@@ -201,7 +218,6 @@ struct TherescopeView: View {
         )
         .foregroundStyle(.white)
     }
-    
     private func waveButton(_ title: String, wave: WaveType) -> some View {
         Button(action: {
             selectedWave = wave

@@ -34,42 +34,11 @@ class WaveConductor: ObservableObject {
     @Published var amplitude: AUValue = 0.0  // Detected amplitude
     @Published var waveData: [Float] = []  // Wave data for plotting
     
-    var periodMilliseconds: Double {
-        guard pitch > 0 else { return 0 }
-        return 1000.0 / Double(pitch)
-    }
-    
-    var samplesPerCycle: Double {
-        let sampleRate = AVAudioSession.sharedInstance().sampleRate
-        
-        guard pitch > 0, sampleRate > 0 else {
-            return 0
-        }
-        
-        return sampleRate / Double(pitch)
-    }
-    
-    var wavelengthMeters: Double {
-        guard pitch > 0 else { return 0 }
-        return 343.0 / Double(pitch)
-    }
-    
-    var detectedNoteName: String {
-        guard pitch > 0 else { return "--" }
-        
-        let midiNote =
-        Int(round(69.0 + 12.0 * log2(Double(pitch) / 440.0)))
-        
-        let names = [
-            "C", "C♯", "D", "D♯", "E", "F",
-            "F♯", "G", "G♯", "A", "A♯", "B"
-        ]
-        
-        let noteIndex = ((midiNote % 12) + 12) % 12
-        let octave = midiNote / 12 - 1
-        
-        return "\(names[noteIndex])\(octave)"
-    }
+    @Published var waveformName = "Sine"
+    @Published var peakAmplitude: Float = 0
+    @Published var peakToPeakAmplitude: Float = 0
+    @Published var rmsAmplitude: Float = 0
+    @Published var decibels: Float = -100
     
     
     // this init() is new and was created when the tracker was changed to output the proper values...
@@ -191,6 +160,20 @@ class WaveConductor: ObservableObject {
     
     // Function to configure and replace the oscillator
     func setupOscillator(waveform: WaveType) {
+        
+        switch waveform {
+        case .sine:
+            waveformName = "Sine"
+        case .square:
+            waveformName = "Square"
+        case .triangle:
+            waveformName = "Triangle"
+        case .sawtooth:
+            waveformName = "Sawtooth"
+        case .noise:
+            waveformName = "Noise"
+        }
+        
         // Stop the current oscillator if it exists
         if let osc = oscillator {
             if engine.avEngine.isRunning {
@@ -260,6 +243,60 @@ class WaveConductor: ObservableObject {
         engine.stop()
         oscillator.stop()
     }
+    
+    // MARK: -- data vars:
+    
+    var sampleRate: Double {
+        AVAudioSession.sharedInstance().sampleRate
+    }
+    
+    var periodMilliseconds: Double {
+        guard pitch > 0 else { return 0 }
+        return 1000.0 / Double(pitch)
+    }
+    
+    var samplesPerCycle: Double {
+        let sampleRate = AVAudioSession.sharedInstance().sampleRate
+        
+        guard pitch > 0, sampleRate > 0 else {
+            return 0
+        }
+        
+        return sampleRate / Double(pitch)
+    }
+    
+    var wavelengthMeters: Double {
+        guard pitch > 0 else { return 0 }
+        return 343.0 / Double(pitch)
+    }
+    
+    var detectedNoteName: String {
+        guard pitch > 0 else { return "--" }
+        
+        let midiNote =
+        Int(round(69.0 + 12.0 * log2(Double(pitch) / 440.0)))
+        
+        let names = [
+            "C", "C♯", "D", "D♯", "E", "F",
+            "F♯", "G", "G♯", "A", "A♯", "B"
+        ]
+        
+        let noteIndex = ((midiNote % 12) + 12) % 12
+        let octave = midiNote / 12 - 1
+        
+        return "\(names[noteIndex])\(octave)"
+    }
+    
+    var centsFromNearestNote: Double {
+        
+        guard pitch > 0 else { return 0 }
+        
+        let midi =
+        69.0 + 12.0 * log2(Double(pitch) / 440.0)
+        
+        return (midi - round(midi)) * 100.0
+    }
+
     
 }
 
