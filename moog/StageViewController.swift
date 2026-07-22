@@ -197,35 +197,35 @@ class StageViewController: UIViewController {
          Transparent view that captures taps outside the popup.
          It sits above the SwiftUI content and below the popup.
          */
-        let dismissView = UIView()
-        dismissView.backgroundColor = .clear
-        dismissView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dataDismissViewTapped)
-        )
-        
-        dismissView.addGestureRecognizer(tapGesture)
-        
-        view.addSubview(dismissView)
-        
-        NSLayoutConstraint.activate([
-            dismissView.topAnchor.constraint(
-                equalTo: view.topAnchor
-            ),
-            dismissView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor
-            ),
-            dismissView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor
-            ),
-            dismissView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor
-            )
-        ])
-        
-        dataPopupDismissView = dismissView
+//        let dismissView = UIView()
+//        dismissView.backgroundColor = .clear
+//        dismissView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        let tapGesture = UITapGestureRecognizer(
+//            target: self,
+//            action: #selector(dataDismissViewTapped)
+//        )
+//        
+//        dismissView.addGestureRecognizer(tapGesture)
+//        
+//        view.addSubview(dismissView)
+//        
+//        NSLayoutConstraint.activate([
+//            dismissView.topAnchor.constraint(
+//                equalTo: view.topAnchor
+//            ),
+//            dismissView.bottomAnchor.constraint(
+//                equalTo: view.bottomAnchor
+//            ),
+//            dismissView.leadingAnchor.constraint(
+//                equalTo: view.leadingAnchor
+//            ),
+//            dismissView.trailingAnchor.constraint(
+//                equalTo: view.trailingAnchor
+//            )
+//        ])
+//        
+//        dataPopupDismissView = dismissView
         
         dataPopup.translatesAutoresizingMaskIntoConstraints = true
         
