@@ -57,9 +57,14 @@ class StageViewController: UIViewController {
             
         case .sineOnly:
             navbarTitle = "ThereScope"
-//            audioKitView = AnyView(
-//                TherescopeView(sineOnly: true)
-//            )
+            audioKitView = AnyView(
+                TherescopeView(
+                    sineOnly: false,
+                    updateDataPopup: { [weak self] dataString in
+                        self?.dataPopup.updateDataPopup(dataStr: dataString)
+                    }
+                )
+            )
             
         case .waveform:
             navbarTitle = "Waveforms"

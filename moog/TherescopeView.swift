@@ -223,17 +223,18 @@ struct TherescopeView: View {
 //            Text("Sample Rate: \(waveConductor.sampleRate, specifier: "%.0f") Hz")
 //                .monospacedDigit()
 //            
-//            Text("Samples/Cycle: \(waveConductor.samplesPerCycle, specifier: "%6.1f")")
-//                .monospacedDigit()
-//            
-//            Text("Wavelength: \(waveConductor.wavelengthMeters, specifier: "%6.2f") m")
-//                .monospacedDigit()
+            Text("Wavelength: \(String(format: "%.2f", waveConductor.wavelengthMeters)) m")
+                .monospacedDigit()
+
+            Text("Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))")
+                .monospacedDigit()
+            
         }
         .frame(width: 240, alignment: .leading)
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.green.opacity(0.5))
+                .fill(Color.clear.opacity(0.5))
         )
         .foregroundStyle(.white)
     }
