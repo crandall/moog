@@ -23,16 +23,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
+                                <rect key="frame" x="438" y="309.5" width="500" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="OrH-iX-nuX"/>
+                                    <constraint firstAttribute="height" constant="400" id="RWJ-93-mh5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UTc-2w-G0U" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="FwW-Y5-k43"/>
                             <constraint firstItem="ShF-hl-0p5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="57" id="iOK-fi-VG5"/>
+                            <constraint firstItem="UTc-2w-G0U" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="jFN-mN-lKG"/>
                             <constraint firstItem="ShF-hl-0p5" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="rdT-gb-8Nz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="titleLabel" destination="ShF-hl-0p5" id="ovC-UU-2ac"/>
+                        <outlet property="wavePlotContainerView" destination="UTc-2w-G0U" id="DR2-yR-uVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
