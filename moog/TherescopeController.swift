@@ -5,80 +5,118 @@
 //  Created by Mike Crandall on 7/23/26.
 //
 
+
 import UIKit
 import SwiftUI
 
-// Bridges WaveConductor's published values into the existing WavePlot.
-private struct HostedWavePlot: View {
-    @ObservedObject var waveConductor: WaveConductor
+// MARK: - SwiftUI plot state
+
+private final class HostedPlotState: ObservableObject {
+    @Published var selectedWave: WaveType = .sine
+    @Published var amplitudeScale: CGFloat = 4.0 / 3.0
     
-    var body: some View {
-        WavePlot(
-            waveData: waveConductor.waveData,
-            amplitudeScale: 0.8,
-            widthScale: 0.25,
-            minAmplitudeThreshold: 0.01,
-            minAmplitudeScale: 0.1,
-            minWidthScale: 0.5
-        )
-        .background(Color.black)
-        .clipped()
+    let minAmplitudeScale: CGFloat = 0.5
+    let maxAmplitudeScale: CGFloat = 3.0
+    let noiseAmplitudeDefaultScale: CGFloat = 10.0
+    
+    var noiseScaleFactor: CGFloat {
+        guard maxAmplitudeScale > 0 else {
+            return noiseAmplitudeDefaultScale
+        }
+        
+        return (amplitudeScale / maxAmplitudeScale)
+        * noiseAmplitudeDefaultScale
     }
 }
 
-private struct HostedNoisePlot: View {
+
+// MARK: - Single hosted SwiftUI plot
+
+private struct HostedTherescopePlot: View {
+    @ObservedObject var plotState: HostedPlotState
+    @ObservedObject var waveConductor: WaveConductor
     @ObservedObject var noiseConductor: NoiseConductor
     
-    var amplitudeScale: CGFloat
-    
     var body: some View {
-        RawOutputView1(
-            noiseConductor.tappableNodeB,
-            strokeColor: Color.plotColor,
-            isNormalized: false,
-            scaleFactor: amplitudeScale
-        )
+        Group {
+            if plotState.selectedWave == .noise {
+                RawOutputView1(
+                    noiseConductor.tappableNodeB,
+                    strokeColor: Color.plotColor,
+                    isNormalized: false,
+                    scaleFactor: plotState.noiseScaleFactor
+                )
+            } else {
+                WavePlot(
+                    waveData: waveConductor.waveData,
+                    amplitudeScale: plotState.amplitudeScale,
+                    widthScale: 0.25,
+                    minAmplitudeThreshold: 0.01,
+                    minAmplitudeScale: 0.1,
+                    minWidthScale: 0.5
+                )
+            }
+        }
         .background(Color.black)
         .clipped()
     }
 }
 
+
+// MARK: - TherescopeController
 
 final class TherescopeController: UIViewController {
     
-    @IBOutlet private weak var wavePlotContainerView: UIView!
-
-    @IBOutlet weak var waveformButtonStack: UIStackView!
-    @IBOutlet weak var sineButton: UIButton!
-    @IBOutlet weak var squareButton: UIButton!
-    @IBOutlet weak var triangleButton: UIButton!
-    @IBOutlet weak var sawtoothButton: UIButton!
-    @IBOutlet weak var noiseButton: UIButton!
-    @IBOutlet weak var amplitudeSlider: UISlider!
-
-    private let waveConductor = WaveConductor()
-    private var wavePlotHostingController: UIHostingController<HostedWavePlot>?
+    // MARK: Outlets
     
+    @IBOutlet private weak var wavePlotContainerView: UIView!
+    
+    @IBOutlet private weak var waveformButtonStack: UIStackView!
+    
+    @IBOutlet private weak var sineButton: UIButton!
+    @IBOutlet private weak var squareButton: UIButton!
+    @IBOutlet private weak var triangleButton: UIButton!
+    @IBOutlet private weak var sawtoothButton: UIButton!
+    @IBOutlet private weak var noiseButton: UIButton!
+    
+    @IBOutlet private weak var amplitudeSlider: UISlider!
+    
+    
+    // MARK: Conductors
+    
+    private let waveConductor = WaveConductor()
     private let noiseConductor = NoiseConductor()
-    private var noiseHostingController: UIHostingController<HostedNoisePlot>?
+    
+    
+    // MARK: Hosted SwiftUI view
+    
+    private let plotState = HostedPlotState()
+    
+    private var plotHostingController:
+    UIHostingController<HostedTherescopePlot>?
+    
+    
+    // MARK: Wave selection
     
     private var selectedWave: WaveType = .sine {
         didSet {
             guard selectedWave != oldValue else {
                 return
             }
+            
             selectedWaveDidChange()
         }
     }
     
+    
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.configureViews()
-        embedWavePlot()
-        embedNoisePlot()
+        
+        configureViews()
+        embedPlot()
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -94,15 +132,16 @@ final class TherescopeController: UIViewController {
         noiseConductor.stop()
     }
     
-    func configureViews() {
-        
+    
+    // MARK: View configuration
+    
+    private func configureViews() {
         wavePlotContainerView.layer.cornerRadius = 40
+        wavePlotContainerView.clipsToBounds = true
         
         waveformButtonStack.backgroundColor = .clear
         
-        // the buttons:
         for definition in waveButtons {
-            
             let button = definition.button
             
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -113,23 +152,43 @@ final class TherescopeController: UIViewController {
             button.setTitle(definition.title, for: .normal)
         }
         
+        configureAmplitudeSlider()
         updateButtons(selectedWave)
     }
     
-    private func embedWavePlot() {
-        let wavePlot = HostedWavePlot(
-            waveConductor: waveConductor
+    private func configureAmplitudeSlider() {
+        amplitudeSlider.minimumValue =
+        Float(plotState.minAmplitudeScale)
+        
+        amplitudeSlider.maximumValue =
+        Float(plotState.maxAmplitudeScale)
+        
+        amplitudeSlider.value =
+        Float(plotState.amplitudeScale)
+    }
+    
+    
+    // MARK: Embed SwiftUI plot
+    
+    private func embedPlot() {
+        let hostedPlot = HostedTherescopePlot(
+            plotState: plotState,
+            waveConductor: waveConductor,
+            noiseConductor: noiseConductor
         )
         
         let hostingController = UIHostingController(
-            rootView: wavePlot
+            rootView: hostedPlot
         )
         
-        wavePlotHostingController = hostingController
+        plotHostingController = hostingController
         
         addChild(hostingController)
         
-        let hostedView = hostingController.view!
+        guard let hostedView = hostingController.view else {
+            return
+        }
+        
         hostedView.translatesAutoresizingMaskIntoConstraints = false
         hostedView.backgroundColor = .black
         
@@ -139,12 +198,15 @@ final class TherescopeController: UIViewController {
             hostedView.topAnchor.constraint(
                 equalTo: wavePlotContainerView.topAnchor
             ),
+            
             hostedView.bottomAnchor.constraint(
                 equalTo: wavePlotContainerView.bottomAnchor
             ),
+            
             hostedView.leadingAnchor.constraint(
                 equalTo: wavePlotContainerView.leadingAnchor
             ),
+            
             hostedView.trailingAnchor.constraint(
                 equalTo: wavePlotContainerView.trailingAnchor
             )
@@ -152,58 +214,52 @@ final class TherescopeController: UIViewController {
         
         hostingController.didMove(toParent: self)
     }
-  
-    private func embedNoisePlot() {
-        
-        let noiseView = HostedNoisePlot(
-            noiseConductor: noiseConductor,
-            amplitudeScale: 10.0
-        )
-        
-        let hosting = UIHostingController(rootView: noiseView)
-        
-        noiseHostingController = hosting
-        
-        addChild(hosting)
-        
-        let v = hosting.view!
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = .black
-        v.isHidden = true          // initially hidden
-        
-        wavePlotContainerView.addSubview(v)
-        
-        NSLayoutConstraint.activate([
-            v.topAnchor.constraint(equalTo: wavePlotContainerView.topAnchor),
-            v.bottomAnchor.constraint(equalTo: wavePlotContainerView.bottomAnchor),
-            v.leadingAnchor.constraint(equalTo: wavePlotContainerView.leadingAnchor),
-            v.trailingAnchor.constraint(equalTo: wavePlotContainerView.trailingAnchor)
-        ])
-        
-        hosting.didMove(toParent: self)
-    }
     
     
-    // MARK: -- buttonData
-    struct WaveButtonDefinition {
+    // MARK: Button data
+    
+    private struct WaveButtonDefinition {
         let button: UIButton
         let waveType: WaveType
         let title: String
     }
     
     private lazy var waveButtons: [WaveButtonDefinition] = [
-        .init(button: sineButton,      waveType: .sine,      title: "Sine"),
-        .init(button: squareButton,    waveType: .square,    title: "Square"),
-        .init(button: triangleButton,  waveType: .triangle,  title: "Triangle"),
-        .init(button: sawtoothButton,  waveType: .sawtooth,  title: "Sawtooth"),
-        .init(button: noiseButton,     waveType: .noise,     title: "Noise")
+        .init(
+            button: sineButton,
+            waveType: .sine,
+            title: "Sine"
+        ),
+        
+            .init(
+                button: squareButton,
+                waveType: .square,
+                title: "Square"
+            ),
+        
+            .init(
+                button: triangleButton,
+                waveType: .triangle,
+                title: "Triangle"
+            ),
+        
+            .init(
+                button: sawtoothButton,
+                waveType: .sawtooth,
+                title: "Sawtooth"
+            ),
+        
+            .init(
+                button: noiseButton,
+                waveType: .noise,
+                title: "Noise"
+            )
     ]
     
-    func updateButtons(_ selectedWave: WaveType) {
-        
+    private func updateButtons(_ selectedWave: WaveType) {
         for definition in waveButtons {
-            
-            let isSelected = definition.waveType == selectedWave
+            let isSelected =
+            definition.waveType == selectedWave
             
             definition.button.setTitleColor(
                 isSelected ? .white : .black,
@@ -214,69 +270,64 @@ final class TherescopeController: UIViewController {
             isSelected ? .systemBlue : .white
         }
     }
-
-    @IBAction func onSine(){
+    
+    
+    // MARK: Wave button actions
+    
+    @IBAction private func onSine() {
         selectedWave = .sine
-        self.updateButtons(selectedWave)
     }
     
-    @IBAction func onSquare(){
+    @IBAction private func onSquare() {
         selectedWave = .square
-        self.updateButtons(selectedWave)
-    }
-
-    @IBAction func onTriangle(){
-        selectedWave = .triangle
-        self.updateButtons(selectedWave)
-    }
-
-    @IBAction func onSawtooth(){
-        selectedWave = .sawtooth
-        self.updateButtons(selectedWave)
-    }
-
-    @IBAction func onNoise(){
-        selectedWave = .noise
-        self.updateButtons(selectedWave)
     }
     
-    // MARK: -- wave change should change the WavePlot
-
+    @IBAction private func onTriangle() {
+        selectedWave = .triangle
+    }
+    
+    @IBAction private func onSawtooth() {
+        selectedWave = .sawtooth
+    }
+    
+    @IBAction private func onNoise() {
+        selectedWave = .noise
+    }
+    
+    
+    // MARK: Wave selection change
+    
     private func selectedWaveDidChange() {
-        
         updateButtons(selectedWave)
         
-        let showingNoise = selectedWave == .noise
+        // This causes HostedTherescopePlot to switch between
+        // WavePlot and RawOutputView1.
+        plotState.selectedWave = selectedWave
         
-        wavePlotHostingController?.view.isHidden = showingNoise
-        noiseHostingController?.view.isHidden = !showingNoise
-        
-        if !showingNoise {
-            waveConductor.setupOscillator(waveform: selectedWave)
+        switch selectedWave {
+        case .noise:
+            // RawOutputView1 uses noiseConductor.
+            break
+            
+        case .sine, .square, .triangle, .sawtooth:
+            waveConductor.setupOscillator(
+                waveform: selectedWave
+            )
         }
     }
     
-//    private func selectedWaveDidChange() {
-//        updateButtons(selectedWave)
-//        
-//        switch selectedWave {
-//        case .noise:
-//            // Noise handling will be added separately.
-//            break
-//            
-//        case .sine, .square, .triangle, .sawtooth:
-//            waveConductor.setupOscillator(
-//                waveform: selectedWave
-//            )
-//        }
-//    }
     
-    // MARK: -- slider
+    // MARK: Amplitude slider
     
-    @IBAction func amplitudeSliderChanged(_ sender: UISlider) {
-        let value = sender.value
+    @IBAction private func amplitudeSliderChanged(
+        _ sender: UISlider
+    ) {
+        plotState.amplitudeScale =
+        CGFloat(sender.value)
         
-        print("Amplitude scale = \(value)")
+        print(
+            "Amplitude scale = \(plotState.amplitudeScale)"
+        )
     }
-    
 }
+
