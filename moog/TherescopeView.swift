@@ -146,9 +146,10 @@ struct TherescopeView: View {
             }
             
             // Drawn on top of everything in the VStack
-            informationOverlay
-                .padding(.top, 100)
-                .padding(.trailing, 30)
+//            informationOverlay
+//                .padding(.top, 100)
+//                .padding(.trailing, 30)
+
         }
         .modifier(IgnoreSafeAreaOnPhone())
 

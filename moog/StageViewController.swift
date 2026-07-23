@@ -221,8 +221,8 @@ class StageViewController: UIViewController {
             verticalFittingPriority: .fittingSizeLevel
         )
         
-        let x: CGFloat = 100
-        let y: CGFloat = 80
+        let x: CGFloat = 20
+        let y: CGFloat = 140
         
         dataPopup.frame = CGRect(
             x: x,

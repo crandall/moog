@@ -60,6 +60,9 @@ class SettingsPopupView: UIView {
         contentView.layer.cornerRadius = 12
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
+        
+        self.titleLabel.text = "Settings"
+        self.closeButton.isHidden = true
     }
     
     var onClose: (() -> Void)?

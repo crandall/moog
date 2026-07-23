@@ -60,6 +60,10 @@ class DataPopupView: UIView {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
+        self.dataLabel.textColor = .white
+        self.contentView.backgroundColor = .black
+        self.closeButton.isHidden = true
+        
     }
     
     var onClose: (() -> Void)?
