@@ -90,8 +90,8 @@ final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var wavePlotContainerView: UIView!
     
-    @IBOutlet private weak var waveformButtonStack: UIStackView!
-    
+    @IBOutlet private weak var containerButtonStackView: UIStackView!
+    @IBOutlet private weak var innerButtonStackView: UIStackView!
     @IBOutlet private weak var sineButton: UIButton!
     @IBOutlet private weak var squareButton: UIButton!
     @IBOutlet private weak var triangleButton: UIButton!
@@ -184,7 +184,8 @@ final class TherescopeController: UIViewController {
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
         
-        waveformButtonStack.backgroundColor = .clear
+        containerButtonStackView.backgroundColor = .separator
+        innerButtonStackView.backgroundColor = .clear
         
         for definition in waveButtons {
             let button = definition.button
