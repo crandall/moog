@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-JG-X12">
-                                <rect key="frame" x="100" y="52" width="1176" height="80"/>
+                                <rect key="frame" x="100" y="32" width="1176" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ept-WF-wcH">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="80"/>
@@ -92,11 +92,11 @@
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="172" width="1096" height="715"/>
+                                <rect key="frame" x="140" y="152" width="1096" height="735"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
-                                <rect key="frame" x="588" y="913" width="200" height="34"/>
+                                <rect key="frame" x="588" y="953" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="pji-yG-KH4"/>
                                 </constraints>
@@ -114,8 +114,8 @@
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" constant="40" id="JID-pR-1uo"/>
                             <constraint firstItem="bqL-JG-X12" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="JLJ-ib-Wmn"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" constant="40" id="gpV-Ot-ck8"/>
-                            <constraint firstItem="bqL-JG-X12" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="hWr-xu-vvt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" id="gpV-Ot-ck8"/>
+                            <constraint firstItem="bqL-JG-X12" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hWr-xu-vvt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTc-2w-G0U" secondAttribute="trailing" constant="140" id="krs-BQ-4os"/>
                         </constraints>
                     </view>
