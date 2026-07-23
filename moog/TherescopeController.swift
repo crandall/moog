@@ -26,6 +26,23 @@ private struct HostedWavePlot: View {
     }
 }
 
+private struct HostedNoisePlot: View {
+    @ObservedObject var noiseConductor: NoiseConductor
+    
+    var amplitudeScale: CGFloat
+    
+    var body: some View {
+        RawOutputView1(
+            noiseConductor.tappableNodeB,
+            strokeColor: Color.plotColor,
+            isNormalized: false,
+            scaleFactor: amplitudeScale
+        )
+        .background(Color.black)
+        .clipped()
+    }
+}
+
 
 final class TherescopeController: UIViewController {
     
@@ -40,9 +57,10 @@ final class TherescopeController: UIViewController {
     @IBOutlet weak var amplitudeSlider: UISlider!
 
     private let waveConductor = WaveConductor()
+    private var wavePlotHostingController: UIHostingController<HostedWavePlot>?
     
-    private var wavePlotHostingController:
-    UIHostingController<HostedWavePlot>?
+    private let noiseConductor = NoiseConductor()
+    private var noiseHostingController: UIHostingController<HostedNoisePlot>?
     
     private var selectedWave: WaveType = .sine {
         didSet {
@@ -58,6 +76,7 @@ final class TherescopeController: UIViewController {
 
         self.configureViews()
         embedWavePlot()
+        embedNoisePlot()
     }
     
     
@@ -65,12 +84,14 @@ final class TherescopeController: UIViewController {
         super.viewDidAppear(animated)
         
         waveConductor.start()
+        noiseConductor.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         waveConductor.stop()
+        noiseConductor.stop()
     }
     
     func configureViews() {
@@ -132,6 +153,37 @@ final class TherescopeController: UIViewController {
         hostingController.didMove(toParent: self)
     }
   
+    private func embedNoisePlot() {
+        
+        let noiseView = HostedNoisePlot(
+            noiseConductor: noiseConductor,
+            amplitudeScale: 10.0
+        )
+        
+        let hosting = UIHostingController(rootView: noiseView)
+        
+        noiseHostingController = hosting
+        
+        addChild(hosting)
+        
+        let v = hosting.view!
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .black
+        v.isHidden = true          // initially hidden
+        
+        wavePlotContainerView.addSubview(v)
+        
+        NSLayoutConstraint.activate([
+            v.topAnchor.constraint(equalTo: wavePlotContainerView.topAnchor),
+            v.bottomAnchor.constraint(equalTo: wavePlotContainerView.bottomAnchor),
+            v.leadingAnchor.constraint(equalTo: wavePlotContainerView.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo: wavePlotContainerView.trailingAnchor)
+        ])
+        
+        hosting.didMove(toParent: self)
+    }
+    
+    
     // MARK: -- buttonData
     struct WaveButtonDefinition {
         let button: UIButton
@@ -189,21 +241,35 @@ final class TherescopeController: UIViewController {
     }
     
     // MARK: -- wave change should change the WavePlot
-    
+
     private func selectedWaveDidChange() {
+        
         updateButtons(selectedWave)
         
-        switch selectedWave {
-        case .noise:
-            // Noise handling will be added separately.
-            break
-            
-        case .sine, .square, .triangle, .sawtooth:
-            waveConductor.setupOscillator(
-                waveform: selectedWave
-            )
+        let showingNoise = selectedWave == .noise
+        
+        wavePlotHostingController?.view.isHidden = showingNoise
+        noiseHostingController?.view.isHidden = !showingNoise
+        
+        if !showingNoise {
+            waveConductor.setupOscillator(waveform: selectedWave)
         }
     }
+    
+//    private func selectedWaveDidChange() {
+//        updateButtons(selectedWave)
+//        
+//        switch selectedWave {
+//        case .noise:
+//            // Noise handling will be added separately.
+//            break
+//            
+//        case .sine, .square, .triangle, .sawtooth:
+//            waveConductor.setupOscillator(
+//                waveform: selectedWave
+//            )
+//        }
+//    }
     
     // MARK: -- slider
     
