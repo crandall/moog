@@ -26,21 +26,33 @@ private struct HostedWavePlot: View {
     }
 }
 
+
 final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var wavePlotContainerView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
+
+    @IBOutlet weak var waveformButtonStack: UIStackView!
+    @IBOutlet weak var sineButton: UIButton!
+    @IBOutlet weak var squareButton: UIButton!
+    @IBOutlet weak var triangleButton: UIButton!
+    @IBOutlet weak var sawtoothButton: UIButton!
+    @IBOutlet weak var noiseButton: UIButton!
+    var buttonsA: [UIButton] = []
+
     private let waveConductor = WaveConductor()
     
     private var wavePlotHostingController:
     UIHostingController<HostedWavePlot>?
     
+    private var selectedWave: WaveType = .sine
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.configureViews()
         embedWavePlot()
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,6 +64,26 @@ final class TherescopeController: UIViewController {
         super.viewWillDisappear(animated)
         
         waveConductor.stop()
+    }
+    
+    func configureViews() {
+        
+        waveformButtonStack.backgroundColor = .clear
+        
+        // the buttons:
+        for definition in waveButtons {
+            
+            let button = definition.button
+            
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            button.layer.cornerRadius = 5
+            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.borderWidth = 1
+            
+            button.setTitle(definition.title, for: .normal)
+        }
+        
+        updateButtons(selectedWave)
     }
     
     private func embedWavePlot() {
@@ -90,4 +122,62 @@ final class TherescopeController: UIViewController {
         
         hostingController.didMove(toParent: self)
     }
+  
+    // MARK: -- buttonData
+    struct WaveButtonDefinition {
+        let button: UIButton
+        let waveType: WaveType
+        let title: String
+    }
+    
+    private lazy var waveButtons: [WaveButtonDefinition] = [
+        .init(button: sineButton,      waveType: .sine,      title: "Sine"),
+        .init(button: squareButton,    waveType: .square,    title: "Square"),
+        .init(button: triangleButton,  waveType: .triangle,  title: "Triangle"),
+        .init(button: sawtoothButton,  waveType: .sawtooth,  title: "Sawtooth"),
+        .init(button: noiseButton,     waveType: .noise,     title: "Noise")
+    ]
+    
+    func updateButtons(_ selectedWave: WaveType) {
+        
+        for definition in waveButtons {
+            
+            let isSelected = definition.waveType == selectedWave
+            
+            definition.button.setTitleColor(
+                isSelected ? .white : .black,
+                for: .normal
+            )
+            
+            definition.button.backgroundColor =
+            isSelected ? .systemBlue : .white
+        }
+    }
+
+    @IBAction func onSine(){
+        selectedWave = .sine
+        self.updateButtons(selectedWave)
+    }
+    
+    @IBAction func onSquare(){
+        selectedWave = .square
+        self.updateButtons(selectedWave)
+    }
+
+    @IBAction func onTriangle(){
+        selectedWave = .triangle
+        self.updateButtons(selectedWave)
+    }
+
+    @IBAction func onSawtooth(){
+        selectedWave = .sawtooth
+        self.updateButtons(selectedWave)
+    }
+
+    @IBAction func onNoise(){
+        selectedWave = .noise
+        self.updateButtons(selectedWave)
+    }
+
+    
 }
