@@ -44,7 +44,15 @@ final class TherescopeController: UIViewController {
     private var wavePlotHostingController:
     UIHostingController<HostedWavePlot>?
     
-    private var selectedWave: WaveType = .sine
+    private var selectedWave: WaveType = .sine {
+        didSet {
+            guard selectedWave != oldValue else {
+                return
+            }
+            
+            selectedWaveDidChange()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,6 +186,22 @@ final class TherescopeController: UIViewController {
         selectedWave = .noise
         self.updateButtons(selectedWave)
     }
-
+    
+    // MARK: -- wave change should change the WavePlot
+    
+    private func selectedWaveDidChange() {
+        updateButtons(selectedWave)
+        
+        switch selectedWave {
+        case .noise:
+            // Noise handling will be added separately.
+            break
+            
+        case .sine, .square, .triangle, .sawtooth:
+            waveConductor.setupOscillator(
+                waveform: selectedWave
+            )
+        }
+    }
     
 }
