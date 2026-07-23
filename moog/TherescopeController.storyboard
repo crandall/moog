@@ -67,11 +67,11 @@
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="142" width="1096" height="645"/>
+                                <rect key="frame" x="140" y="142" width="1096" height="745"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
-                                <rect key="frame" x="588" y="879" width="200" height="34"/>
+                                <rect key="frame" x="588" y="913" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="pji-yG-KH4"/>
                                 </constraints>
@@ -86,11 +86,11 @@
                             <constraint firstItem="tPY-ob-0TS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="1K5-t1-SkQ"/>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="tPY-ob-0TS" secondAttribute="bottom" constant="40" id="AJB-UP-Nxi"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="200" id="BsZ-am-xmD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="100" id="BsZ-am-xmD"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
                             <constraint firstItem="tPY-ob-0TS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="WW2-In-Eyk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tPY-ob-0TS" secondAttribute="trailing" constant="140" id="egt-01-v9P"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" constant="74" id="gpV-Ot-ck8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" constant="40" id="gpV-Ot-ck8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTc-2w-G0U" secondAttribute="trailing" constant="140" id="krs-BQ-4os"/>
                         </constraints>
                     </view>
