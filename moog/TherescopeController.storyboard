@@ -92,7 +92,7 @@
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="152" width="1096" height="735"/>
+                                <rect key="frame" x="140" y="112" width="1096" height="815"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
@@ -109,9 +109,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="100" id="BsZ-am-xmD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="60" id="BsZ-am-xmD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bqL-JG-X12" secondAttribute="trailing" constant="100" id="Iy7-rU-d0W"/>
-                            <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" constant="40" id="JID-pR-1uo"/>
+                            <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" id="JID-pR-1uo"/>
                             <constraint firstItem="bqL-JG-X12" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="JLJ-ib-Wmn"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" id="gpV-Ot-ck8"/>

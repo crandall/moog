@@ -110,8 +110,7 @@ final class TherescopeController: UIViewController {
     
     // MARK: Hosted plot
     private let plotState = HostedPlotState()
-    private var plotHostingController:
-    UIHostingController<HostedTherescopePlot>?
+    private var plotHostingController: UIHostingController<HostedTherescopePlot>?
     
     
     // MARK: Selected wave
@@ -279,8 +278,7 @@ final class TherescopeController: UIViewController {
             noiseConductor: noiseConductor
         )
         
-        let hostingController =
-        UIHostingController(rootView: hostedPlot)
+        let hostingController = UIHostingController(rootView: hostedPlot)
         
         plotHostingController = hostingController
         
@@ -291,8 +289,7 @@ final class TherescopeController: UIViewController {
             return
         }
         
-        hostedView.translatesAutoresizingMaskIntoConstraints =
-        false
+        hostedView.translatesAutoresizingMaskIntoConstraints = false
         
         hostedView.backgroundColor = .black
         
