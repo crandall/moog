@@ -129,6 +129,8 @@ final class TherescopeController: UIViewController {
     private var settingsPopupView: SettingsPopupView?
     private var popupDismissView: UIView?
     
+    private var popupTimer: Timer?
+
     let dataPopup = DataPopupView()
     private var dataPopupView: DataPopupView?
     private var dataPopupDismissView: UIView?
@@ -143,11 +145,28 @@ final class TherescopeController: UIViewController {
         embedPlot()
     }
     
+    private var dataPopupString: String {
+    """
+    Waveform: \(waveConductor.waveformName)
+    Frequency: \(String(format: "%.1f", waveConductor.pitch)) Hz
+    Period: \(String(format: "%.2f", waveConductor.periodMilliseconds)) ms
+    Note: \(waveConductor.detectedNoteName)
+    Amplitude: \(String(format: "%.3f", waveConductor.amplitude))
+    Wavelength: \(String(format: "%.2f", waveConductor.wavelengthMeters)) m
+    Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
+    """
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         waveConductor.start()
         noiseConductor.start()
+        
+        popupTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
+        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,6 +174,7 @@ final class TherescopeController: UIViewController {
         
         waveConductor.stop()
         noiseConductor.stop()
+        popupTimer?.invalidate()
     }
     
     
