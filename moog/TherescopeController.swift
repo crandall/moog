@@ -37,7 +37,7 @@ final class TherescopeController: UIViewController {
     @IBOutlet weak var triangleButton: UIButton!
     @IBOutlet weak var sawtoothButton: UIButton!
     @IBOutlet weak var noiseButton: UIButton!
-    var buttonsA: [UIButton] = []
+    @IBOutlet weak var amplitudeSlider: UISlider!
 
     private let waveConductor = WaveConductor()
     
@@ -49,7 +49,6 @@ final class TherescopeController: UIViewController {
             guard selectedWave != oldValue else {
                 return
             }
-            
             selectedWaveDidChange()
         }
     }
@@ -75,6 +74,8 @@ final class TherescopeController: UIViewController {
     }
     
     func configureViews() {
+        
+        wavePlotContainerView.layer.cornerRadius = 40
         
         waveformButtonStack.backgroundColor = .clear
         
@@ -202,6 +203,14 @@ final class TherescopeController: UIViewController {
                 waveform: selectedWave
             )
         }
+    }
+    
+    // MARK: -- slider
+    
+    @IBAction func amplitudeSliderChanged(_ sender: UISlider) {
+        let value = sender.value
+        
+        print("Amplitude scale = \(value)")
     }
     
 }
