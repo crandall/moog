@@ -10,6 +10,8 @@
 		E72D0FD92B095C560081B5EE /* Multi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D0FD82B095C560081B5EE /* Multi.swift */; };
 		E7347E192AE8AA4800FB729B /* DynamicOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */; };
 		E7347E222AE8AED100FB729B /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7347E212AE8AED100FB729B /* SporthAudioKit */; };
+		E74DD1CC3012860D00A33A1B /* TherescopeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DD1CB3012860D00A33A1B /* TherescopeController.swift */; };
+		E74DD1CE3012862600A33A1B /* TherescopeController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74DD1CD3012862600A33A1B /* TherescopeController.storyboard */; };
 		E7511942300AACD10066D363 /* SettingsPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7511941300AACD10066D363 /* SettingsPopupView.swift */; };
 		E7511944300AACEC0066D363 /* SettingsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7511943300AACEC0066D363 /* SettingsPopupView.xib */; };
 		E75455202C9A19B700EF4616 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E754551F2C9A19B700EF4616 /* Test2.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		E72D0FD82B095C560081B5EE /* Multi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multi.swift; sourceTree = "<group>"; };
 		E7347E182AE8AA4800FB729B /* DynamicOscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicOscillator.swift; sourceTree = "<group>"; };
+		E74DD1CB3012860D00A33A1B /* TherescopeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherescopeController.swift; sourceTree = "<group>"; };
+		E74DD1CD3012862600A33A1B /* TherescopeController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TherescopeController.storyboard; sourceTree = "<group>"; };
 		E7511941300AACD10066D363 /* SettingsPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopupView.swift; sourceTree = "<group>"; };
 		E7511943300AACEC0066D363 /* SettingsPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsPopupView.xib; sourceTree = "<group>"; };
 		E754551F2C9A19B700EF4616 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				E7795E612CCC515500F34C00 /* DevicePicker.swift */,
 				E7511941300AACD10066D363 /* SettingsPopupView.swift */,
 				E7511943300AACEC0066D363 /* SettingsPopupView.xib */,
+				E74DD1CB3012860D00A33A1B /* TherescopeController.swift */,
+				E74DD1CD3012862600A33A1B /* TherescopeController.storyboard */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
 				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
 				E78F59222FEDEA4000F88654 /* info.txt in Resources */,
+				E74DD1CE3012862600A33A1B /* TherescopeController.storyboard in Resources */,
 				E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +244,7 @@
 			files = (
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
 				E72D0FD92B095C560081B5EE /* Multi.swift in Sources */,
+				E74DD1CC3012860D00A33A1B /* TherescopeController.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,

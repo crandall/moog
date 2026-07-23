@@ -13,8 +13,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
+    @IBOutlet weak var swiftButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class HomeViewController: UIViewController {
     func configureViews(){
         sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
+        swiftButton.setTitle("Swift", for: .normal)
 
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
@@ -51,6 +53,12 @@ class HomeViewController: UIViewController {
         sineOnlyButton.layer.cornerRadius = 5
         sineOnlyButton.layer.borderWidth = 1
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
+        
+        swiftButton.layer.cornerRadius = 5
+        swiftButton.layer.borderWidth = 1
+        swiftButton.layer.borderColor = UIColor.black.cgColor
+        swiftButton.setTitleColor(.black, for: .normal)
+
         
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
@@ -62,8 +70,13 @@ class HomeViewController: UIViewController {
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
             buildLabel.text = "(build: \(buildNumber))"
         }
-
-
+    }
+    
+    @IBAction func onSwift(_ sender: UIButton){
+        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func onThereScope(_ sender: UIButton){
