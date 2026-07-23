@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
     @IBOutlet weak var swiftButton: UIButton!
+    @IBOutlet weak var swiftSineOnlyButton: UIButton!
     @IBOutlet weak var buildLabel: UILabel!
     
     
@@ -44,7 +45,9 @@ class HomeViewController: UIViewController {
     func configureViews(){
         sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
-        swiftButton.setTitle("Swift", for: .normal)
+
+        swiftButton.setTitle("Therescope Swift", for: .normal)
+        swiftSineOnlyButton.setTitle("Therescope Sine OnlySwift", for: .normal)
 
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
@@ -58,6 +61,11 @@ class HomeViewController: UIViewController {
         swiftButton.layer.borderWidth = 1
         swiftButton.layer.borderColor = UIColor.black.cgColor
         swiftButton.setTitleColor(.black, for: .normal)
+
+        swiftSineOnlyButton.layer.cornerRadius = 5
+        swiftSineOnlyButton.layer.borderWidth = 1
+        swiftSineOnlyButton.layer.borderColor = UIColor.black.cgColor
+        swiftSineOnlyButton.setTitleColor(.black, for: .normal)
 
         
         buildLabel.font = UIFont.systemFont(ofSize: 15)
@@ -75,10 +83,19 @@ class HomeViewController: UIViewController {
     @IBAction func onSwift(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
+            vc.isSineOnly = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
+
+    @IBAction func onSwiftSineOnly(_ sender: UIButton){
+        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
+            vc.isSineOnly = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
     @IBAction func onThereScope(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {

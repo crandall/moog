@@ -100,6 +100,8 @@ final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
+    var isSineOnly = false
+    
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
@@ -184,6 +186,13 @@ final class TherescopeController: UIViewController {
         
         configureAmplitudeSlider()
         updateButtons(selectedWave)
+        
+        if isSineOnly {
+            self.triangleButton.isHidden = true
+            self.squareButton.isHidden = true
+            self.sawtoothButton.isHidden = true
+        }
+        
     }
     
     // MARK: - Navigation bar
