@@ -23,12 +23,16 @@ enum DemoType {
 class StageViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     var demoType: DemoType?
     let popup = SettingsPopupView()
-    
     private var settingsPopupView: SettingsPopupView?
     private var popupDismissView: UIView?
+    
+    let dataPopup = DataPopupView()
+    private var dataPopupView: DataPopupView?
+    private var dataPopupDismissView: UIView?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +46,24 @@ class StageViewController: UIViewController {
         case .thereScope:
             navbarTitle = "ThereScope"
             audioKitView = AnyView(
-                TherescopeView(sineOnly: false)
+//                TherescopeView(sineOnly: false)
+                TherescopeView(
+                    sineOnly: false,
+                    updateDataPopup: { [weak self] dataString in
+                        self?.dataPopup.updateDataPopup(dataStr: dataString)
+                    }
+                )
             )
             
         case .sineOnly:
             navbarTitle = "ThereScope"
             audioKitView = AnyView(
-                TherescopeView(sineOnly: true)
+                TherescopeView(
+                    sineOnly: false,
+                    updateDataPopup: { [weak self] dataString in
+                        self?.dataPopup.updateDataPopup(dataStr: dataString)
+                    }
+                )
             )
             
         case .waveform:
@@ -112,7 +127,7 @@ class StageViewController: UIViewController {
         
         hostingController.didMove(toParent: self)
         
-//        configureSettingsButton()
+        configureSettingsButton()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -152,8 +167,137 @@ class StageViewController: UIViewController {
             action: #selector(settingsButtonPressed)
         )
         
-        navigationItem.rightBarButtonItem = settingsButton
+        let dataButton = UIBarButtonItem(
+            image: UIImage(systemName: "gearshape"),
+            style: .plain,
+            target: self,
+            action: #selector(onData)
+        )
+
+        
+        navigationItem.rightBarButtonItems = [dataButton,settingsButton]
     }
+    
+    // MARK: - data popup
+
+    @objc private func onData() {
+        if dataPopupView == nil {
+            showDataPopup()
+        } else {
+            hideDataPopup()
+        }
+    }
+    
+    private func showDataPopup() {
+        guard dataPopupView == nil else {
+            return
+        }
+        
+        dataPopup.onClose = { [weak self] in
+            print("StageViewController.onClose")
+            self?.hideDataPopup()
+        }
+        
+        /*
+         The previous dismissal animation leaves a transform on this
+         reusable popup instance. Clear it before setting its frame.
+         */
+        dataPopup.transform = .identity
+        dataPopup.alpha = 1
+        
+        dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        
+        dataPopup.setNeedsLayout()
+        dataPopup.layoutIfNeeded()
+        
+        let width: CGFloat = 240
+        
+        let fittingSize = dataPopup.systemLayoutSizeFitting(
+            CGSize(
+                width: width,
+                height: UIView.layoutFittingCompressedSize.height
+            ),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        let x: CGFloat = 20
+        let y: CGFloat = 140
+        
+        dataPopup.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: fittingSize.height
+        )
+        
+        view.addSubview(dataPopup)
+        
+        dataPopup.alpha = 0
+        
+        dataPopup.transform = CGAffineTransform(
+            translationX: 40,
+            y: -20
+        ).scaledBy(
+            x: 0.75,
+            y: 0.75
+        )
+        
+        dataPopupView = dataPopup
+        
+        UIView.animate(
+            withDuration: 0.22,
+            delay: 0,
+            options: [
+                .curveEaseOut,
+                .beginFromCurrentState
+            ]
+        ) {
+            self.dataPopup.alpha = 1
+            self.dataPopup.transform = .identity
+        }
+    }
+
+    private func hideDataPopup() {
+        guard let popup = dataPopupView else {
+            return
+        }
+        
+        UIView.animate(
+            withDuration: 0.18,
+            delay: 0,
+            options: [
+                .curveEaseIn,
+                .beginFromCurrentState
+            ]
+        ) {
+            popup.alpha = 0
+            
+            popup.transform = CGAffineTransform(
+                translationX: 40,
+                y: -20
+            ).scaledBy(
+                x: 0.75,
+                y: 0.75
+            )
+            
+        } completion: { [weak self] _ in
+            popup.removeFromSuperview()
+            self?.dataPopupDismissView?.removeFromSuperview()
+            
+            // Restore the reusable view to its normal state.
+            popup.transform = .identity
+            popup.alpha = 1
+            
+            self?.dataPopupView = nil
+            self?.dataPopupDismissView = nil
+        }
+    }
+    @objc private func dataDismissViewTapped() {
+        hideDataPopup()
+    }
+
+
     
     // MARK: - Settings popup
     

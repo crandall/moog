@@ -1,16 +1,15 @@
 //
-//  SettingsPopupView.swift
+//  DataPopupView.swift
 //  moog
 //
-//  Created by Mike Crandall on 7/17/26.
+//  Created by Mike Crandall on 7/21/26.
 //
 
 import UIKit
 
-class SettingsPopupView: UIView {
-    
+class DataPopupView: UIView {
     @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dataLabel: UILabel!
     @IBOutlet private weak var closeButton: UIButton!
     
     override init(frame: CGRect) {
@@ -27,7 +26,7 @@ class SettingsPopupView: UIView {
         print("commonInit")
         
         Bundle.main.loadNibNamed(
-            "SettingsPopupView",
+            "DataPopupView",
             owner: self,
             options: nil
         )
@@ -61,13 +60,24 @@ class SettingsPopupView: UIView {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
-        self.titleLabel.text = "Settings"
+        self.dataLabel.textColor = .white
+        self.contentView.backgroundColor = .black
         self.closeButton.isHidden = true
+        
     }
     
     var onClose: (() -> Void)?
     @IBAction func onClose(_ sender: UIButton) {
-        print("SettingsPopupView.onClose")
+        print("DataPopupView.onClose")
         onClose?()
     }
+    
+    func updateDataPopup(dataStr:String?){
+        guard let dataStr = dataStr else {
+            return
+        }
+        self.dataLabel.text = dataStr
+    }
+
+
 }
