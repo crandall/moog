@@ -654,6 +654,7 @@ final class TherescopeController: UIViewController {
         view.layoutIfNeeded()
         
         popup.alpha = 0
+        popup.prepareForDisplay()
         
         /*
          Since the popup is constrained to the right edge, this makes

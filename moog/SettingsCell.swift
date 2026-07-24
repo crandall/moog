@@ -14,6 +14,8 @@ class SettingsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.titleLabel.font = UIFont.systemFont(ofSize: 20)
+        self.titleLabel.textColor = .black
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

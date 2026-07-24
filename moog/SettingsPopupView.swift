@@ -7,12 +7,55 @@
 
 import UIKit
 
+enum SettingsType: String, CaseIterable {    case sineOnly
+    case displayData
+    
+    var key: String {
+        switch self {
+        case .sineOnly:
+            return "sineOnly"
+        case .displayData:
+            return "showData"
+        }
+    }
+    
+    var defaultValue: Bool {
+        switch self {
+        case .sineOnly:
+            return false
+            
+        case .displayData:
+            return false
+        }
+    }
+    
+    static func type(for section: Int) -> SettingsType {
+        allCases[section]
+    }
+    
+    var headerTitle: String {
+        switch self {
+        case .sineOnly:
+            return "SineOnly"
+            
+        case .displayData:
+            return "Display Data"
+        }
+    }
+}
+
+
 class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var closeButton: UIButton!
+    
+    var onClose: (() -> Void)?
+    var currSineOnly: Bool = false
+    var currDisplayData: Bool = false
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +65,13 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+    }
+    
+    func prepareForDisplay() {
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
+        print("prepareForDisplay")
+        tableView.reloadData()
     }
     
     private func commonInit() {
@@ -67,9 +117,9 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let nib = UINib(nibName: "SettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingsCell")
+        
     }
     
-    var onClose: (() -> Void)?
     @IBAction func onClose(_ sender: UIButton) {
         print("SettingsPopupView.onClose")
         onClose?()
@@ -77,24 +127,6 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: -- tableView
     
-    enum SettingsType: CaseIterable {
-        case waveform
-        case displayData
-        
-        static func type(for section: Int) -> SettingsType {
-            allCases[section]
-        }
-        
-        var headerTitle: String {
-            switch self {
-            case .waveform:
-                return "Waveform"
-                
-            case .displayData:
-                return "Display Data"
-            }
-        }
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return SettingsType.allCases.count
@@ -102,7 +134,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch SettingsType.allCases[section] {
-        case .waveform:
+        case .sineOnly:
             return 2
         case .displayData:
             return 1
@@ -115,7 +147,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let label = UILabel()
         label.text = settingType.headerTitle
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .boldSystemFont(ofSize: 24)
         label.textColor = .label
         
         let view = UIView()
@@ -144,9 +176,17 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let setting = SettingsType.type(for: indexPath.section)
         switch setting {
-        case .waveform:
+        case .sineOnly:
             let str = indexPath.row == 0 ? "Sine/Noise only" : "All Waveforms"
             cell.titleLabel.text = str
+  
+            if indexPath.row == 0 {
+                cell.accessoryType = currSineOnly == true ? .checkmark : .none
+            } else if indexPath.row == 1 {
+                cell.accessoryType = currSineOnly == true ? .none : .checkmark
+            }
+
+            
         case .displayData:
             let str = "Show/Hide data"
             cell.titleLabel.text = str
@@ -155,8 +195,26 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func handleSineOnly(isSineOnly:Bool?){
+        guard let isSineOnly = isSineOnly else { return }
+        SettingsDefaults.setSetting(isSineOnly, for: .sineOnly)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("Selected row \(indexPath.row)")
+        
+        let setting = SettingsType.type(for: indexPath.section)
+        switch setting {
+        case .sineOnly:
+            handleSineOnly(isSineOnly: indexPath.row == 0)
+            self.currSineOnly = indexPath.row == 0 ? true : false
+        case .displayData:
+            let str = "Show/Hide data"
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
