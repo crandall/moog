@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated:Bool){
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,7 +79,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onSwift(_ sender: UIButton){
+    @IBAction func onSwift(){
         let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
             vc.isSineOnly = false
@@ -88,7 +87,7 @@ class HomeViewController: UIViewController {
         }
     }
 
-    @IBAction func onSwiftSineOnly(_ sender: UIButton){
+    @IBAction func onSwiftSineOnly(){
         let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
             vc.isSineOnly = true

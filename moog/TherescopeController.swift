@@ -138,9 +138,11 @@ final class TherescopeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+
         configureViews()
         configureNavigationBar()
-        configurePopupButtons()
+//        configurePopupButtons()
         embedPlot()
     }
     
