@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="closeButton" destination="eou-yt-2th" id="h5z-e3-kdF"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="loU-CC-rgy"/>
+                <outlet property="tableView" destination="WOw-m6-yWl" id="Y7M-HU-4KT"/>
                 <outlet property="titleLabel" destination="Kao-A9-hXx" id="EGX-DR-EGw"/>
             </connections>
         </placeholder>
@@ -22,28 +23,40 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kao-A9-hXx">
-                    <rect key="frame" x="175.66666666666666" y="128" width="42" height="21"/>
+                    <rect key="frame" x="175.66666666666666" y="118" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th">
-                    <rect key="frame" x="159" y="189" width="75" height="575"/>
+                    <rect key="frame" x="314" y="117.99999999999999" width="75" height="34.333333333333329"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                     <connections>
                         <action selector="onClose:" destination="-1" eventType="touchUpInside" id="WJz-wj-xzI"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WOw-m6-yWl">
+                    <rect key="frame" x="2" y="147" width="389" height="635"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="5ny-TK-MMd"/>
+                        <outlet property="delegate" destination="-1" id="xDn-YW-uhr"/>
+                    </connections>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Kao-A9-hXx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="IDE-9o-mw6"/>
-                <constraint firstItem="eou-yt-2th" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" constant="40" id="YZK-az-CC4"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eou-yt-2th" secondAttribute="bottom" constant="20" id="et4-Fz-a6c"/>
-                <constraint firstItem="eou-yt-2th" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="h57-AK-3qs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WOw-m6-yWl" secondAttribute="bottom" constant="2" id="CfS-Cb-ZBu"/>
+                <constraint firstItem="Kao-A9-hXx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="IDE-9o-mw6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="eou-yt-2th" secondAttribute="top" id="WLj-Tu-1WU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WOw-m6-yWl" secondAttribute="trailing" constant="2" id="Xue-tW-tk3"/>
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ioy-AX-hd8"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="width" secondItem="Kao-A9-hXx" secondAttribute="width" multiplier="1.78571" id="nVg-nV-ffM"/>
+                <constraint firstItem="WOw-m6-yWl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="q7y-Wv-Hkk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eou-yt-2th" secondAttribute="trailing" constant="4" id="qBq-ek-J8Y"/>
+                <constraint firstItem="WOw-m6-yWl" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" constant="8" symbolic="YES" id="t3q-tl-r4n"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

@@ -142,7 +142,7 @@ final class TherescopeController: UIViewController {
 
         configureViews()
         configureNavigationBar()
-//        configurePopupButtons()
+        configurePopupButtons()
         embedPlot()
     }
     
@@ -640,10 +640,10 @@ final class TherescopeController: UIViewController {
                 constant: -12
             ),
             popup.widthAnchor.constraint(
-                equalToConstant: 200
+                equalToConstant: 400
             ),
             popup.heightAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: 600
             )
         ])
         

@@ -32,6 +32,8 @@
 		E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F591F2FEDC2C000F88654 /* TherescopeView.swift */; };
 		E78F59222FEDEA4000F88654 /* info.txt in Resources */ = {isa = PBXBuildFile; fileRef = E78F59212FEDEA3400F88654 /* info.txt */; };
 		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
+		E7A4A9BA30140CFD00564F3A /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4A9B830140CFD00564F3A /* SettingsCell.swift */; };
+		E7A4A9BB30140CFD00564F3A /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7A4A9B930140CFD00564F3A /* SettingsCell.xib */; };
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
@@ -61,6 +63,8 @@
 		E78F591F2FEDC2C000F88654 /* TherescopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherescopeView.swift; sourceTree = "<group>"; };
 		E78F59212FEDEA3400F88654 /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E7A4A9B830140CFD00564F3A /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		E7A4A9B930140CFD00564F3A /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
@@ -131,6 +135,8 @@
 				E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */,
 				E7FB6C592AE0B2530064EB8E /* Cookbook */,
 				E74DD1CF3012CEDA00A33A1B /* UnusedTestCode */,
+				E7A4A9B830140CFD00564F3A /* SettingsCell.swift */,
+				E7A4A9B930140CFD00564F3A /* SettingsCell.xib */,
 			);
 			path = moog;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			files = (
 				E7511944300AACEC0066D363 /* SettingsPopupView.xib in Resources */,
 				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
+				E7A4A9BB30140CFD00564F3A /* SettingsCell.xib in Resources */,
 				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
 				E75450B130104CEC00416680 /* DataPopupView.xib in Resources */,
 				E78F59222FEDEA4000F88654 /* info.txt in Resources */,
@@ -239,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A4A9BA30140CFD00564F3A /* SettingsCell.swift in Sources */,
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
 				E74DD1CC3012860D00A33A1B /* TherescopeController.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
