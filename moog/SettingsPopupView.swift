@@ -113,7 +113,8 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
-        self.titleLabel.text = "Settings"
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        self.titleLabel.text = "Therescope Settings"
         self.closeButton.isHidden = true
         
         let nib = UINib(nibName: "SettingsCell", bundle: nil)
