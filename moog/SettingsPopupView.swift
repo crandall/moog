@@ -53,6 +53,8 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet private weak var closeButton: UIButton!
     
     var onClose: (() -> Void)?
+    var onSineOnly: ((_ newValue: Bool?) -> Void)?
+    var onDisplayData: ((_ newValue: Bool?) -> Void)?
     var currSineOnly: Bool = false
     var currDisplayData: Bool = false
 
@@ -172,6 +174,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
+        cell.selectionStyle = .none
         
         let setting = SettingsType.type(for: indexPath.section)
         switch setting {
@@ -188,7 +191,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
 
             
         case .displayData:
-            let str = "Show/Hide data"
+            let str = "Show Waveform Data"
             cell.accessoryType = .none
             cell.titleLabel.text = str
             cell.configureSwitch(isVisible: true, currValue: currDisplayData)
@@ -202,16 +205,17 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     func handleDataDisplaySwitch(value:Bool?){
         guard let value = value else { return }
         SettingsDefaults.setSetting(value, for: .displayData)
+        self.onDisplayData?(value)
     }
     
     func handleSineOnly(isSineOnly:Bool?){
         guard let isSineOnly = isSineOnly else { return }
         SettingsDefaults.setSetting(isSineOnly, for: .sineOnly)
+        self.onSineOnly?(isSineOnly)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected row \(indexPath.row)")
         
         let setting = SettingsType.type(for: indexPath.section)
         switch setting {
@@ -219,7 +223,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
             handleSineOnly(isSineOnly: indexPath.row == 0)
             self.currSineOnly = indexPath.row == 0 ? true : false
         case .displayData:
-            let str = "Show/Hide data"
+            let str = "Show Waveform Data"
         }
         
         DispatchQueue.main.async {

@@ -592,6 +592,17 @@ final class TherescopeController: UIViewController {
             self?.hideSettingsPopup()
         }
         
+        popup.onDisplayData = { [weak self] newValue in
+            guard let newValue = newValue else { return }
+            print("StageViewController.onDisplayData:\(newValue)")
+        }
+        
+        popup.onSineOnly = { [weak self] newValue in
+            guard let newValue = newValue else { return }
+            print("StageViewController.onSineOnly:\(newValue)")
+        }
+
+        
         /*
          Transparent view that captures taps outside the popup.
          It sits above the SwiftUI content and below the popup.
