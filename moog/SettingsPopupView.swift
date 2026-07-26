@@ -113,7 +113,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         self.titleLabel.text = "Therescope Settings"
         self.closeButton.isHidden = true
         
