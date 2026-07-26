@@ -70,7 +70,6 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     func prepareForDisplay() {
         currSineOnly = SettingsDefaults.setting(for: .sineOnly)
         currDisplayData = SettingsDefaults.setting(for: .displayData)
-        print("prepareForDisplay")
         tableView.reloadData()
     }
     
@@ -179,7 +178,8 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         case .sineOnly:
             let str = indexPath.row == 0 ? "Sine/Noise only" : "All Waveforms"
             cell.titleLabel.text = str
-  
+            cell.configureSwitch(isVisible: false, currValue: false)
+
             if indexPath.row == 0 {
                 cell.accessoryType = currSineOnly == true ? .checkmark : .none
             } else if indexPath.row == 1 {
@@ -189,10 +189,19 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
             
         case .displayData:
             let str = "Show/Hide data"
+            cell.accessoryType = .none
             cell.titleLabel.text = str
+            cell.configureSwitch(isVisible: true, currValue: currDisplayData)
+            cell.onSwitchChanged = { [weak self] newValue in
+                self?.handleDataDisplaySwitch(value: newValue)
+            }
         }
-        
         return cell
+    }
+    
+    func handleDataDisplaySwitch(value:Bool?){
+        guard let value = value else { return }
+        SettingsDefaults.setSetting(value, for: .displayData)
     }
     
     func handleSineOnly(isSineOnly:Bool?){
