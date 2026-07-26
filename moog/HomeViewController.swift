@@ -83,7 +83,7 @@ class HomeViewController: UIViewController {
     @IBAction func onSwift(){
         let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
-            vc.isSineOnly = false
+            vc.currSineOnly = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
     @IBAction func onSwiftSineOnly(){
         let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
-            vc.isSineOnly = true
+            vc.currSineOnly = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

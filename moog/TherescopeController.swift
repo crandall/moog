@@ -100,8 +100,9 @@ final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
-    var isSineOnly = false
-    
+    var currSineOnly: Bool = false
+    var currDisplayData: Bool = false
+
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
@@ -139,6 +140,8 @@ final class TherescopeController: UIViewController {
         super.viewDidLoad()
         
 //        navigationController?.setNavigationBarHidden(true, animated: false)
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
 
         configureViews()
         configureNavigationBar()
@@ -157,6 +160,13 @@ final class TherescopeController: UIViewController {
     Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
     """
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
+    }
+
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -209,10 +219,20 @@ final class TherescopeController: UIViewController {
         configureAmplitudeSlider()
         updateButtons(selectedWave)
         
-        if isSineOnly {
+        if currSineOnly {
             self.triangleButton.isHidden = true
             self.squareButton.isHidden = true
             self.sawtoothButton.isHidden = true
+        }else{
+            self.triangleButton.isHidden = false
+            self.squareButton.isHidden = false
+            self.sawtoothButton.isHidden = false
+        }
+        
+        if currDisplayData {
+            self.showDataPopup()
+        }else{
+            self.hideDataPopup()
         }
         
     }
@@ -246,15 +266,15 @@ final class TherescopeController: UIViewController {
             action: #selector(settingsButtonPressed)
         )
         
-        let dataButton = UIBarButtonItem(
-            image: UIImage(systemName: "gearshape"),
-            style: .plain,
-            target: self,
-            action: #selector(onData)
-        )
+//        let dataButton = UIBarButtonItem(
+//            image: UIImage(systemName: "gearshape"),
+//            style: .plain,
+//            target: self,
+//            action: #selector(onData)
+//        )
         
         
-        navigationItem.rightBarButtonItems = [dataButton,settingsButton]
+        navigationItem.rightBarButtonItem = settingsButton
     }
 
     private func configureAmplitudeSlider() {
@@ -453,14 +473,6 @@ final class TherescopeController: UIViewController {
     
     // MARK: - data popup
     
-    @objc private func onData() {
-        if dataPopupView == nil {
-            showDataPopup()
-        } else {
-            hideDataPopup()
-        }
-    }
-    
     private func showDataPopup() {
         guard dataPopupView == nil else {
             return
@@ -595,11 +607,28 @@ final class TherescopeController: UIViewController {
         popup.onDisplayData = { [weak self] newValue in
             guard let newValue = newValue else { return }
             print("StageViewController.onDisplayData:\(newValue)")
+
+            self?.currDisplayData = newValue
+            if newValue == true {
+                self?.showDataPopup()
+            }else{
+                self?.hideDataPopup()
+            }
         }
         
         popup.onSineOnly = { [weak self] newValue in
             guard let newValue = newValue else { return }
             print("StageViewController.onSineOnly:\(newValue)")
+
+            self?.currSineOnly = newValue
+            self?.configureViews()
+
+            if newValue == true {
+                if self?.selectedWave != .sine || self?.selectedWave != .noise {
+                    self?.onSine()
+                }
+            }
+            
         }
 
         
