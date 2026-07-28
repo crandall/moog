@@ -680,10 +680,10 @@ final class TherescopeController: UIViewController {
                 constant: -12
             ),
             popup.widthAnchor.constraint(
-                equalToConstant: 400
+                equalToConstant: 300
             ),
             popup.heightAnchor.constraint(
-                equalToConstant: 600
+                equalToConstant: 400
             )
         ])
         

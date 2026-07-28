@@ -113,7 +113,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         self.titleLabel.text = "Therescope Settings"
         self.closeButton.isHidden = true
         
@@ -149,7 +149,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let label = UILabel()
         label.text = settingType.headerTitle
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .label
         
         let view = UIView()
@@ -158,7 +158,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             label.topAnchor.constraint(equalTo: view.topAnchor, constant: 6),
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -6)
@@ -167,10 +167,15 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         return view
     }
     
-    func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
-        return 32
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 32
+//    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
