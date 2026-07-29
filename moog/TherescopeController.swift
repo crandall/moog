@@ -139,7 +139,7 @@ final class TherescopeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         currSineOnly = SettingsDefaults.setting(for: .sineOnly)
         currDisplayData = SettingsDefaults.setting(for: .displayData)
 
@@ -165,6 +165,7 @@ final class TherescopeController: UIViewController {
         super.viewWillAppear(animated)
         currSineOnly = SettingsDefaults.setting(for: .sineOnly)
         currDisplayData = SettingsDefaults.setting(for: .displayData)
+        
     }
 
 
