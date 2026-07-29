@@ -178,14 +178,13 @@ final class TherescopeController: UIViewController {
             self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
         }
         
-        self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
         if currDisplayData {
             self.showDataPopup()
         }else{
             self.hideDataPopup()
         }
 
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -236,12 +235,6 @@ final class TherescopeController: UIViewController {
             self.squareButton.isHidden = false
             self.sawtoothButton.isHidden = false
         }
-        
-//        if currDisplayData {
-//            self.showDataPopup()
-//        }else{
-//            self.hideDataPopup()
-//        }
         
     }
     
@@ -487,23 +480,39 @@ final class TherescopeController: UIViewController {
         }
         
         dataPopup.onClose = { [weak self] in
-            print("StageViewController.onClose")
             self?.hideDataPopup()
         }
         
-        /*
-         The previous dismissal animation leaves a transform on this
-         reusable popup instance. Clear it before setting its frame.
-         */
+        // for now, it is on the plot - make items clear:
+        dataPopup.configureWithClear(textColor: .white)
+        
+        let width: CGFloat = 240
+        let f = self.wavePlotContainerView.frame
+        let x: CGFloat = f.minX // 20
+        let y: CGFloat = f.minY // 140
+        
         dataPopup.transform = .identity
         dataPopup.alpha = 1
-        
         dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        
+        // Update the label before calculating the required height.
+        dataPopup.updateDataPopup(dataStr: dataPopupString)
+        
+        /*
+         Give the popup its real width before layout. Otherwise its multiline
+         label may calculate its intrinsic height using an old or undefined width.
+         */
+        dataPopup.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: 1
+        )
+        
+        view.addSubview(dataPopup)
         
         dataPopup.setNeedsLayout()
         dataPopup.layoutIfNeeded()
-        
-        let width: CGFloat = 240
         
         let fittingSize = dataPopup.systemLayoutSizeFitting(
             CGSize(
@@ -514,9 +523,6 @@ final class TherescopeController: UIViewController {
             verticalFittingPriority: .fittingSizeLevel
         )
         
-        let x: CGFloat = 20
-        let y: CGFloat = 140
-        
         dataPopup.frame = CGRect(
             x: x,
             y: y,
@@ -524,10 +530,9 @@ final class TherescopeController: UIViewController {
             height: fittingSize.height
         )
         
-        view.addSubview(dataPopup)
+        dataPopup.layoutIfNeeded()
         
         dataPopup.alpha = 0
-        
         dataPopup.transform = CGAffineTransform(
             translationX: 40,
             y: -20
