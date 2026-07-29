@@ -24,48 +24,24 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-LC-yKP">
-                                <rect key="frame" x="798" y="401.5" width="164" height="50"/>
+                                <rect key="frame" x="798" y="401.5" width="178" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Therescope">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onThereScope:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="PSg-DL-SOs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29h-vd-Y4l">
+                                <rect key="frame" x="805" y="491.5" width="164" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sine/Noise">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onSineOnly:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="9dz-g6-IQK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-5o-2wA">
-                                <rect key="frame" x="789" y="491.5" width="182" height="50"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="ThereScope">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onThereScope:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="zTw-KJ-MIp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krT-p6-wuA">
-                                <rect key="frame" x="828" y="581.5" width="104.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Swiftx">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onSwift" destination="C5f-Hc-w1x" eventType="touchUpInside" id="30z-Zq-uCc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOl-DQ-2nU">
-                                <rect key="frame" x="825" y="664" width="110" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="onSwiftSineOnly" destination="C5f-Hc-w1x" eventType="touchUpInside" id="t8Y-eU-09p"/>
+                                    <action selector="onSineOnly:" destination="C5f-Hc-w1x" eventType="touchUpInside" id="3Ru-9S-FgU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-iN-HUA">
@@ -80,23 +56,20 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mNS-nd-imI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="centerY" id="2xR-6E-KnS"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="40" id="Ck8-2d-0Ge"/>
+                            <constraint firstItem="29h-vd-Y4l" firstAttribute="top" secondItem="hrf-LC-yKP" secondAttribute="bottom" constant="40" id="7AS-gK-E4a"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="height" secondItem="mNS-nd-imI" secondAttribute="height" multiplier="0.2" id="DaS-rm-CtN"/>
-                            <constraint firstItem="DOl-DQ-2nU" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="Dwl-dX-Vi0"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="centerX" secondItem="49O-pB-D4o" secondAttribute="centerX" id="JVo-bB-1Z0"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="height" secondItem="49O-pB-D4o" secondAttribute="height" id="TUk-tQ-ivs"/>
-                            <constraint firstItem="krT-p6-wuA" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="URG-zC-ye3"/>
-                            <constraint firstItem="krT-p6-wuA" firstAttribute="top" secondItem="d1q-5o-2wA" secondAttribute="bottom" constant="40" id="WbT-eJ-ydt"/>
-                            <constraint firstItem="d1q-5o-2wA" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="cGT-pA-ieI"/>
                             <constraint firstItem="hrf-LC-yKP" firstAttribute="leading" secondItem="49O-pB-D4o" secondAttribute="trailing" constant="60" id="dcE-4r-Gre"/>
                             <constraint firstItem="49O-pB-D4o" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" constant="-100" id="g8m-WE-eY3"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="centerY" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="20" id="hKd-OK-dnb"/>
                             <constraint firstItem="mNS-nd-imI" firstAttribute="bottom" secondItem="edz-iN-HUA" secondAttribute="bottom" constant="20" id="hve-ao-Hug"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="width" secondItem="49O-pB-D4o" secondAttribute="width" id="iFE-ec-N6b"/>
-                            <constraint firstItem="DOl-DQ-2nU" firstAttribute="top" secondItem="krT-p6-wuA" secondAttribute="bottom" constant="32.5" id="jNL-NE-1GS"/>
                             <constraint firstItem="edz-iN-HUA" firstAttribute="centerX" secondItem="mNS-nd-imI" secondAttribute="centerX" id="mip-pA-Jlw"/>
+                            <constraint firstItem="29h-vd-Y4l" firstAttribute="centerX" secondItem="hrf-LC-yKP" secondAttribute="centerX" id="nps-Rt-Ne3"/>
                             <constraint firstItem="bQO-Vg-VSj" firstAttribute="top" secondItem="49O-pB-D4o" secondAttribute="bottom" constant="8" symbolic="YES" id="so1-dt-eXg"/>
                         </constraints>
                     </view>
@@ -105,10 +78,8 @@
                         <outlet property="buildLabel" destination="edz-iN-HUA" id="fb9-HS-MbP"/>
                         <outlet property="foundationLogoIV" destination="49O-pB-D4o" id="JVc-l4-4be"/>
                         <outlet property="schoolLogoIV" destination="bQO-Vg-VSj" id="5dn-W8-8cA"/>
-                        <outlet property="sineOnlyButton" destination="hrf-LC-yKP" id="W3U-CO-mqv"/>
-                        <outlet property="swiftButton" destination="krT-p6-wuA" id="hGO-Ee-uiK"/>
-                        <outlet property="swiftSineOnlyButton" destination="DOl-DQ-2nU" id="vE9-Qe-T1Z"/>
-                        <outlet property="thereScopeButton" destination="d1q-5o-2wA" id="XGg-bJ-BIg"/>
+                        <outlet property="sineOnlyButton" destination="29h-vd-Y4l" id="JcG-zD-JXZ"/>
+                        <outlet property="thereScopeButton" destination="hrf-LC-yKP" id="tr7-hm-o6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNm-o8-g9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -120,6 +120,10 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         let nib = UINib(nibName: "SettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingsCell")
         
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
     }
     
     @IBAction func onClose(_ sender: UIButton) {
@@ -167,14 +171,9 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         return view
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 32
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.1
 //    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
-    }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

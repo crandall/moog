@@ -13,8 +13,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schoolLogoIV : UIImageView!
     @IBOutlet weak var thereScopeButton: UIButton!
     @IBOutlet weak var sineOnlyButton: UIButton!
-    @IBOutlet weak var swiftButton: UIButton!
-    @IBOutlet weak var swiftSineOnlyButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+
     @IBOutlet weak var buildLabel: UILabel!
     
     
@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated:Bool){
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        self.onSwift()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,36 +42,20 @@ class HomeViewController: UIViewController {
 
     private
     func configureViews(){
-        sineOnlyButton.setTitle("Sine/Noise only", for: .normal)
         thereScopeButton.setTitle("ThereScope", for: .normal)
-
-        swiftButton.setTitle("Therescope Swift", for: .normal)
-        swiftSineOnlyButton.setTitle("Therescope Sine OnlySwift", for: .normal)
-
+        thereScopeButton.setTitleColor(.black, for: .normal)
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
         thereScopeButton.layer.borderColor = UIColor.black.cgColor
         
+        sineOnlyButton.setTitle("Sine/Noise", for: .normal)
+        sineOnlyButton.setTitleColor(.black, for: .normal)
         sineOnlyButton.layer.cornerRadius = 5
         sineOnlyButton.layer.borderWidth = 1
         sineOnlyButton.layer.borderColor = UIColor.black.cgColor
         
-        swiftButton.layer.cornerRadius = 5
-        swiftButton.layer.borderWidth = 1
-        swiftButton.layer.borderColor = UIColor.black.cgColor
-        swiftButton.setTitleColor(.black, for: .normal)
-
-        swiftSineOnlyButton.layer.cornerRadius = 5
-        swiftSineOnlyButton.layer.borderWidth = 1
-        swiftSineOnlyButton.layer.borderColor = UIColor.black.cgColor
-        swiftSineOnlyButton.setTitleColor(.black, for: .normal)
-
-        
         buildLabel.font = UIFont.systemFont(ofSize: 15)
         buildLabel.textColor = .black
-
-        thereScopeButton.isHidden = false
-        sineOnlyButton.isHidden = false
 
         // get the build number:
         if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -80,70 +63,81 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onSwift(){
-        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
-            vc.currSineOnly = false
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-
-    @IBAction func onSwiftSineOnly(){
-        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
-            vc.currSineOnly = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-
     @IBAction func onThereScope(_ sender: UIButton){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .thereScope
+        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+        SettingsDefaults.setSetting(false, for: .sineOnly)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @IBAction func onSineOnly(_ sender: UIButton){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .sineOnly
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @IBAction func onWaveform(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .waveform
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @IBAction func onMultiview(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .multiview
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    @IBAction func onTest(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .test
+        SettingsDefaults.setSetting(true, for: .sineOnly)
+        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
-    @IBAction func onOscillator(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
-            vc.demoType = .oscillator
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+
     
+//    @IBAction func onSwift(){
+//        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
+//            vc.currSineOnly = false
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//
+//    @IBAction func onSwiftSineOnly(){
+//        let storyboard = UIStoryboard(name: "TherescopeController", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "TherescopeController") as? TherescopeController {
+//            vc.currSineOnly = true
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//
+//    
+//    @IBAction func onSineOnly(_ sender: UIButton){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .sineOnly
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//    
+//    @IBAction func onWaveform(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .waveform
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//    
+//    @IBAction func onMultiview(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .multiview
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//    
+//    @IBAction func onTest(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .test
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//
+//    @IBAction func onOscillator(){
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
+//            vc.demoType = .oscillator
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//    
 //    @IBAction func onDynamic(){
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        if let vc = storyboard.instantiateViewController(withIdentifier: "StageViewController") as? StageViewController {
