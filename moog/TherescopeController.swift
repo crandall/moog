@@ -177,6 +177,13 @@ final class TherescopeController: UIViewController {
         popupTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
         }
+        
+        if currDisplayData {
+            self.showDataPopup()
+        }else{
+            self.hideDataPopup()
+        }
+
 
     }
     
@@ -229,11 +236,11 @@ final class TherescopeController: UIViewController {
             self.sawtoothButton.isHidden = false
         }
         
-        if currDisplayData {
-            self.showDataPopup()
-        }else{
-            self.hideDataPopup()
-        }
+//        if currDisplayData {
+//            self.showDataPopup()
+//        }else{
+//            self.hideDataPopup()
+//        }
         
     }
     
