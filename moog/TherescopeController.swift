@@ -178,6 +178,7 @@ final class TherescopeController: UIViewController {
             self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
         }
         
+        self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
         if currDisplayData {
             self.showDataPopup()
         }else{
