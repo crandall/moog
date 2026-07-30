@@ -19,6 +19,8 @@ class SettingsCell: UITableViewCell {
         // Initialization code
         self.titleLabel.font = settingsCellFont
         self.titleLabel.textColor = .black
+        self.displayDataSwitch.onTintColor = .systemBlue
+//        self.displayDataSwitch.layer.cornerRadius = self.displayDataSwitch.frame.height / 2
     }
     
     override func prepareForReuse(){

@@ -40,7 +40,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th" userLabel="closeButton">
-                    <rect key="frame" x="163" y="403" width="67" height="385"/>
+                    <rect key="frame" x="98.333333333333329" y="403" width="196.33333333333337" height="373"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <buttonConfiguration key="configuration" style="plain" title="Close"/>
                     <connections>
@@ -54,11 +54,12 @@
                 <constraint firstItem="eou-yt-2th" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="AQC-wq-Lmb"/>
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="IDE-9o-mw6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WOw-m6-yWl" secondAttribute="trailing" constant="2" id="Xue-tW-tk3"/>
-                <constraint firstItem="eou-yt-2th" firstAttribute="top" secondItem="WOw-m6-yWl" secondAttribute="bottom" constant="8" symbolic="YES" id="Ycd-6k-X7z"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="top" secondItem="WOw-m6-yWl" secondAttribute="bottom" constant="8" id="Ycd-6k-X7z"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.5" id="od3-LT-XdN"/>
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="pqG-A1-cBP"/>
                 <constraint firstItem="WOw-m6-yWl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="q7y-Wv-Hkk"/>
                 <constraint firstItem="WOw-m6-yWl" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" constant="8" id="t3q-tl-r4n"/>
-                <constraint firstItem="eou-yt-2th" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="4" id="yqL-AP-auH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eou-yt-2th" secondAttribute="bottom" constant="8" id="yqL-AP-auH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

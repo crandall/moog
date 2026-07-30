@@ -119,11 +119,14 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         self.titleLabel.font = settingsTitleFont
         self.titleLabel.text = "Settings"
-//        self.closeButton.isHidden = true
         
         let nib = UINib(nibName: "SettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingsCell")
-        
+
+        closeButton.layer.cornerRadius = 5
+        closeButton.layer.borderWidth = 1
+        closeButton.layer.borderColor = UIColor.black.cgColor
+
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -184,6 +187,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
         cell.selectionStyle = .none
+        cell.tintColor = .black
         
         let setting = SettingsType.type(for: indexPath.section)
         switch setting {
