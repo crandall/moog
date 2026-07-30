@@ -123,6 +123,8 @@
 				E74DD1CD3012862600A33A1B /* TherescopeController.storyboard */,
 				E7511941300AACD10066D363 /* SettingsPopupView.swift */,
 				E7511943300AACEC0066D363 /* SettingsPopupView.xib */,
+				E7A4A9B830140CFD00564F3A /* SettingsCell.swift */,
+				E7A4A9B930140CFD00564F3A /* SettingsCell.xib */,
 				E75450AE30104C4000416680 /* DataPopupView.swift */,
 				E75450B030104CEC00416680 /* DataPopupView.xib */,
 				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
@@ -137,8 +139,6 @@
 				E78B9AF32AE0AEF100788C07 /* LaunchScreen.storyboard */,
 				E7FB6C592AE0B2530064EB8E /* Cookbook */,
 				E74DD1CF3012CEDA00A33A1B /* UnusedTestCode */,
-				E7A4A9B830140CFD00564F3A /* SettingsCell.swift */,
-				E7A4A9B930140CFD00564F3A /* SettingsCell.xib */,
 				E7E2CD7A3014185D00587387 /* Utilities.swift */,
 			);
 			path = moog;

@@ -39,11 +39,15 @@ enum SettingsType: String, CaseIterable {    case sineOnly
             return "SineOnly"
             
         case .displayData:
-            return "Display Data"
+            return "Waveform Data"
         }
     }
 }
 
+
+let settingsTitleFont = UIFont.boldSystemFont(ofSize: 20)
+let settingsSectionFont = UIFont.systemFont(ofSize: 18)
+let settingsCellFont = UIFont.systemFont(ofSize: 16)
 
 class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
@@ -113,9 +117,9 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        self.titleLabel.text = "Therescope Settings"
-        self.closeButton.isHidden = true
+        self.titleLabel.font = settingsTitleFont
+        self.titleLabel.text = "Settings"
+//        self.closeButton.isHidden = true
         
         let nib = UINib(nibName: "SettingsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SettingsCell")
@@ -153,7 +157,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let label = UILabel()
         label.text = settingType.headerTitle
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = settingsSectionFont
         label.textColor = .label
         
         let view = UIView()
@@ -196,7 +200,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
 
             
         case .displayData:
-            let str = "Show Waveform Data"
+            let str = "Display"
             cell.accessoryType = .none
             cell.titleLabel.text = str
             cell.configureSwitch(isVisible: true, currValue: currDisplayData)

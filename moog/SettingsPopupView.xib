@@ -22,22 +22,22 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kao-A9-hXx">
-                    <rect key="frame" x="175.66666666666666" y="126" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kao-A9-hXx" userLabel="titleLabel">
+                    <rect key="frame" x="10" y="126" width="41.333333333333336" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th" userLabel="closeButton">
-                    <rect key="frame" x="314" y="117.99999999999999" width="75" height="34.333333333333329"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th" userLabel="closeButton">
+                    <rect key="frame" x="338.66666666666669" y="117.99999999999999" width="46.333333333333314" height="34.333333333333329"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="onClose:" destination="-1" eventType="touchUpInside" id="WJz-wj-xzI"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WOw-m6-yWl">
-                    <rect key="frame" x="2" y="147" width="389" height="635"/>
+                    <rect key="frame" x="2" y="155" width="389" height="627"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5ny-TK-MMd"/>
@@ -52,11 +52,10 @@
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="IDE-9o-mw6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="eou-yt-2th" secondAttribute="top" id="WLj-Tu-1WU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WOw-m6-yWl" secondAttribute="trailing" constant="2" id="Xue-tW-tk3"/>
-                <constraint firstItem="Kao-A9-hXx" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ioy-AX-hd8"/>
-                <constraint firstItem="eou-yt-2th" firstAttribute="width" secondItem="Kao-A9-hXx" secondAttribute="width" multiplier="1.78571" id="nVg-nV-ffM"/>
+                <constraint firstItem="Kao-A9-hXx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="pqG-A1-cBP"/>
                 <constraint firstItem="WOw-m6-yWl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="q7y-Wv-Hkk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eou-yt-2th" secondAttribute="trailing" constant="4" id="qBq-ek-J8Y"/>
-                <constraint firstItem="WOw-m6-yWl" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" id="t3q-tl-r4n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eou-yt-2th" secondAttribute="trailing" constant="8" id="qBq-ek-J8Y"/>
+                <constraint firstItem="WOw-m6-yWl" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" constant="8" id="t3q-tl-r4n"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

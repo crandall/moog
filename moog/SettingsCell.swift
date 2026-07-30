@@ -17,7 +17,7 @@ class SettingsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.titleLabel.font = UIFont.systemFont(ofSize: 18)
+        self.titleLabel.font = settingsCellFont
         self.titleLabel.textColor = .black
     }
     
