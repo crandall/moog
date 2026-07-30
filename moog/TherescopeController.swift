@@ -98,6 +98,10 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var sawtoothButton: UIButton!
     @IBOutlet private weak var noiseButton: UIButton!
     
+    @IBOutlet private weak var topContainerView: UIView!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var settingsButton: UIButton!
+    
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
     var currSineOnly: Bool = false
@@ -139,26 +143,16 @@ final class TherescopeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         currSineOnly = SettingsDefaults.setting(for: .sineOnly)
         currDisplayData = SettingsDefaults.setting(for: .displayData)
 
         configureViews()
-        configureNavigationBar()
-        configurePopupButtons()
         embedPlot()
     }
     
-    private var dataPopupString: String {
-    """
-    Waveform: \(waveConductor.waveformName)
-    Frequency: \(String(format: "%.1f", waveConductor.pitch)) Hz
-    Period: \(String(format: "%.2f", waveConductor.periodMilliseconds)) ms
-    Note: \(waveConductor.detectedNoteName)
-    Amplitude: \(String(format: "%.3f", waveConductor.amplitude))
-    Wavelength: \(String(format: "%.2f", waveConductor.wavelengthMeters)) m
-    Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
-    """
+    override var prefersStatusBarHidden: Bool {
+        true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -196,10 +190,25 @@ final class TherescopeController: UIViewController {
         popupTimer?.invalidate()
     }
     
+    private var dataPopupString: String {
+    """
+    Waveform: \(waveConductor.waveformName)
+    Frequency: \(String(format: "%.1f", waveConductor.pitch)) Hz
+    Period: \(String(format: "%.2f", waveConductor.periodMilliseconds)) ms
+    Note: \(waveConductor.detectedNoteName)
+    Amplitude: \(String(format: "%.3f", waveConductor.amplitude))
+    Wavelength: \(String(format: "%.2f", waveConductor.wavelengthMeters)) m
+    Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
+    """
+    }
     
-    // MARK: View configuration
+    
+    // MARK: -- View configuration
     
     private func configureViews() {
+        
+        topContainerView.backgroundColor = .systemBlue
+        
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
         
@@ -239,46 +248,8 @@ final class TherescopeController: UIViewController {
         
     }
     
-    // MARK: - Navigation bar
+    // MARK: - slider
     
-    private func configureNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBlue
-        
-        appearance.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
-        
-        appearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
-        
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    private func configurePopupButtons() {
-        let settingsButton = UIBarButtonItem(
-            image: UIImage(systemName: "gearshape"),
-            style: .plain,
-            target: self,
-            action: #selector(settingsButtonPressed)
-        )
-        
-//        let dataButton = UIBarButtonItem(
-//            image: UIImage(systemName: "gearshape"),
-//            style: .plain,
-//            target: self,
-//            action: #selector(onData)
-//        )
-        
-        
-        navigationItem.rightBarButtonItem = settingsButton
-    }
-
     private func configureAmplitudeSlider() {
         amplitudeSlider.minimumValue =
         Float(plotState.minAmplitudeScale)
@@ -293,7 +264,7 @@ final class TherescopeController: UIViewController {
     }
     
     
-    // MARK: Embed SwiftUI plot
+    // MARK: -- Embed SwiftUI plot
     
     private func embedPlot() {
         let hostedPlot = HostedTherescopePlot(
@@ -401,6 +372,14 @@ final class TherescopeController: UIViewController {
     
     // MARK: Wave button actions
     
+    @IBAction func onBack(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func onSettings(){
+        self.settingsButtonPressed()
+    }
+
     @IBAction private func onSine() {
         selectedWave = .sine
     }
@@ -686,19 +665,16 @@ final class TherescopeController: UIViewController {
         
         NSLayoutConstraint.activate([
             popup.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 8
+                equalTo: settingsButton.bottomAnchor,
+                constant: 0
             ),
             popup.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -40
+                equalTo: settingsButton.leadingAnchor,
+                constant: 0
             ),
             popup.widthAnchor.constraint(
                 equalToConstant: 200
             ),
-//            popup.heightAnchor.constraint(
-//                equalToConstant: 400
-//            )
         ])
         
         /*
