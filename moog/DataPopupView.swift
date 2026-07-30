@@ -10,7 +10,7 @@ import UIKit
 class DataPopupView: UIView {
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var dataLabel: UILabel!
-    @IBOutlet private weak var closeButton: UIButton!
+//    @IBOutlet private weak var closeButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +62,7 @@ class DataPopupView: UIView {
         
         self.dataLabel.textColor = .white
         self.contentView.backgroundColor = .black
-        self.closeButton.isHidden = true
+//        self.closeButton.isHidden = true
         
     }
     
@@ -70,6 +70,14 @@ class DataPopupView: UIView {
     @IBAction func onClose(_ sender: UIButton) {
         print("DataPopupView.onClose")
         onClose?()
+    }
+    
+    func configureWithClear(textColor:UIColor?){
+        self.dataLabel.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
+        
+        guard let textColor = textColor as UIColor? else { return }
+        self.dataLabel.textColor = textColor
     }
     
     func updateDataPopup(dataStr:String?){

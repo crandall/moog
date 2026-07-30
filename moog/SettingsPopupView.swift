@@ -7,11 +7,61 @@
 
 import UIKit
 
-class SettingsPopupView: UIView {
+enum SettingsType: String, CaseIterable {    case sineOnly
+    case displayData
+    
+    var key: String {
+        switch self {
+        case .sineOnly:
+            return "sineOnly"
+        case .displayData:
+            return "showData"
+        }
+    }
+    
+    var defaultValue: Bool {
+        switch self {
+        case .sineOnly:
+            return false
+            
+        case .displayData:
+            return false
+        }
+    }
+    
+    static func type(for section: Int) -> SettingsType {
+        allCases[section]
+    }
+    
+    var headerTitle: String {
+        switch self {
+        case .sineOnly:
+            return "SineOnly"
+            
+        case .displayData:
+            return "Waveform Data"
+        }
+    }
+}
+
+
+let settingsTitleFont = UIFont.boldSystemFont(ofSize: 20)
+let settingsSectionFont = UIFont.systemFont(ofSize: 18)
+let settingsCellFont = UIFont.systemFont(ofSize: 16)
+
+class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var closeButton: UIButton!
+    
+    var onClose: (() -> Void)?
+    var onSineOnly: ((_ newValue: Bool?) -> Void)?
+    var onDisplayData: ((_ newValue: Bool?) -> Void)?
+    var currSineOnly: Bool = false
+    var currDisplayData: Bool = false
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +71,12 @@ class SettingsPopupView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+    }
+    
+    func prepareForDisplay() {
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
+        tableView.reloadData()
     }
     
     private func commonInit() {
@@ -61,13 +117,130 @@ class SettingsPopupView: UIView {
         contentView.layer.cornerCurve = .continuous
         contentView.clipsToBounds = true
         
+        self.titleLabel.font = settingsTitleFont
         self.titleLabel.text = "Settings"
-        self.closeButton.isHidden = true
+        
+        let nib = UINib(nibName: "SettingsCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "SettingsCell")
+
+        closeButton.layer.cornerRadius = 5
+        closeButton.layer.borderWidth = 1
+        closeButton.layer.borderColor = UIColor.black.cgColor
+
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
     }
     
-    var onClose: (() -> Void)?
     @IBAction func onClose(_ sender: UIButton) {
         print("SettingsPopupView.onClose")
         onClose?()
+    }
+    
+    // MARK: -- tableView
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SettingsType.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch SettingsType.allCases[section] {
+        case .sineOnly:
+            return 2
+        case .displayData:
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let settingType = SettingsType.type(for: section)
+        
+        let label = UILabel()
+        label.text = settingType.headerTitle
+        label.font = settingsSectionFont
+        label.textColor = .label
+        
+        let view = UIView()
+        view.backgroundColor = .systemGroupedBackground
+        view.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 6),
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -6)
+        ])
+        
+        return view
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.1
+//    }
+
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
+        cell.selectionStyle = .none
+        cell.tintColor = .black
+        
+        let setting = SettingsType.type(for: indexPath.section)
+        switch setting {
+        case .sineOnly:
+            let str = indexPath.row == 0 ? "Sine/Noise only" : "All Waveforms"
+            cell.titleLabel.text = str
+            cell.configureSwitch(isVisible: false, currValue: false)
+
+            if indexPath.row == 0 {
+                cell.accessoryType = currSineOnly == true ? .checkmark : .none
+            } else if indexPath.row == 1 {
+                cell.accessoryType = currSineOnly == true ? .none : .checkmark
+            }
+
+            
+        case .displayData:
+            let str = "Display"
+            cell.accessoryType = .none
+            cell.titleLabel.text = str
+            cell.configureSwitch(isVisible: true, currValue: currDisplayData)
+            cell.onSwitchChanged = { [weak self] newValue in
+                self?.handleDataDisplaySwitch(value: newValue)
+            }
+        }
+        return cell
+    }
+    
+    func handleDataDisplaySwitch(value:Bool?){
+        guard let value = value else { return }
+        SettingsDefaults.setSetting(value, for: .displayData)
+        self.onDisplayData?(value)
+    }
+    
+    func handleSineOnly(isSineOnly:Bool?){
+        guard let isSineOnly = isSineOnly else { return }
+        SettingsDefaults.setSetting(isSineOnly, for: .sineOnly)
+        self.onSineOnly?(isSineOnly)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let setting = SettingsType.type(for: indexPath.section)
+        switch setting {
+        case .sineOnly:
+            handleSineOnly(isSineOnly: indexPath.row == 0)
+            self.currSineOnly = indexPath.row == 0 ? true : false
+        case .displayData:
+            let str = "Show Waveform Data"
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

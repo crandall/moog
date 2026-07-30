@@ -1,3 +1,7 @@
+next:
+displayDataPopup first time showing when is on is wrong size.
+make displayDataPopup movable
+
 
 
 Work flow:

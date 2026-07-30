@@ -98,10 +98,15 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var sawtoothButton: UIButton!
     @IBOutlet private weak var noiseButton: UIButton!
     
+    @IBOutlet private weak var topContainerView: UIView!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var settingsButton: UIButton!
+    
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
-    var isSineOnly = false
-    
+    var currSineOnly: Bool = false
+    var currDisplayData: Bool = false
+
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
@@ -138,12 +143,51 @@ final class TherescopeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
 
         configureViews()
-        configureNavigationBar()
-//        configurePopupButtons()
         embedPlot()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
+        currDisplayData = SettingsDefaults.setting(for: .displayData)
+        
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        waveConductor.start()
+        noiseConductor.start()
+        
+        popupTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
+        }
+        
+        if currDisplayData {
+            self.showDataPopup()
+        }else{
+            self.hideDataPopup()
+        }
+
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        waveConductor.stop()
+        noiseConductor.stop()
+        popupTimer?.invalidate()
     }
     
     private var dataPopupString: String {
@@ -157,31 +201,14 @@ final class TherescopeController: UIViewController {
     Samples/Cycle: \(String(format: "%.1f", waveConductor.samplesPerCycle))
     """
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        waveConductor.start()
-        noiseConductor.start()
-        
-        popupTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            self.dataPopup.updateDataPopup(dataStr: self.dataPopupString)
-        }
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        waveConductor.stop()
-        noiseConductor.stop()
-        popupTimer?.invalidate()
-    }
     
     
-    // MARK: View configuration
+    // MARK: -- View configuration
     
     private func configureViews() {
+        
+        topContainerView.backgroundColor = .systemBlue
+        
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
         
@@ -209,54 +236,20 @@ final class TherescopeController: UIViewController {
         configureAmplitudeSlider()
         updateButtons(selectedWave)
         
-        if isSineOnly {
+        if currSineOnly {
             self.triangleButton.isHidden = true
             self.squareButton.isHidden = true
             self.sawtoothButton.isHidden = true
+        }else{
+            self.triangleButton.isHidden = false
+            self.squareButton.isHidden = false
+            self.sawtoothButton.isHidden = false
         }
         
     }
     
-    // MARK: - Navigation bar
+    // MARK: - slider
     
-    private func configureNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBlue
-        
-        appearance.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
-        
-        appearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
-        
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    private func configurePopupButtons() {
-        let settingsButton = UIBarButtonItem(
-            image: UIImage(systemName: "gearshape"),
-            style: .plain,
-            target: self,
-            action: #selector(settingsButtonPressed)
-        )
-        
-        let dataButton = UIBarButtonItem(
-            image: UIImage(systemName: "gearshape"),
-            style: .plain,
-            target: self,
-            action: #selector(onData)
-        )
-        
-        
-        navigationItem.rightBarButtonItems = [dataButton,settingsButton]
-    }
-
     private func configureAmplitudeSlider() {
         amplitudeSlider.minimumValue =
         Float(plotState.minAmplitudeScale)
@@ -271,7 +264,7 @@ final class TherescopeController: UIViewController {
     }
     
     
-    // MARK: Embed SwiftUI plot
+    // MARK: -- Embed SwiftUI plot
     
     private func embedPlot() {
         let hostedPlot = HostedTherescopePlot(
@@ -379,6 +372,14 @@ final class TherescopeController: UIViewController {
     
     // MARK: Wave button actions
     
+    @IBAction func onBack(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func onSettings(){
+        self.settingsButtonPressed()
+    }
+
     @IBAction private func onSine() {
         selectedWave = .sine
     }
@@ -453,37 +454,45 @@ final class TherescopeController: UIViewController {
     
     // MARK: - data popup
     
-    @objc private func onData() {
-        if dataPopupView == nil {
-            showDataPopup()
-        } else {
-            hideDataPopup()
-        }
-    }
-    
     private func showDataPopup() {
         guard dataPopupView == nil else {
             return
         }
         
         dataPopup.onClose = { [weak self] in
-            print("StageViewController.onClose")
             self?.hideDataPopup()
         }
         
-        /*
-         The previous dismissal animation leaves a transform on this
-         reusable popup instance. Clear it before setting its frame.
-         */
+        // for now, it is on the plot - make items clear:
+        dataPopup.configureWithClear(textColor: .white)
+        
+        let width: CGFloat = 240
+        let f = self.wavePlotContainerView.frame
+        let x: CGFloat = f.minX // 20
+        let y: CGFloat = f.minY // 140
+        
         dataPopup.transform = .identity
         dataPopup.alpha = 1
-        
         dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        
+        // Update the label before calculating the required height.
+        dataPopup.updateDataPopup(dataStr: dataPopupString)
+        
+        /*
+         Give the popup its real width before layout. Otherwise its multiline
+         label may calculate its intrinsic height using an old or undefined width.
+         */
+        dataPopup.frame = CGRect(
+            x: x,
+            y: y,
+            width: width,
+            height: 1
+        )
+        
+        view.addSubview(dataPopup)
         
         dataPopup.setNeedsLayout()
         dataPopup.layoutIfNeeded()
-        
-        let width: CGFloat = 240
         
         let fittingSize = dataPopup.systemLayoutSizeFitting(
             CGSize(
@@ -494,9 +503,6 @@ final class TherescopeController: UIViewController {
             verticalFittingPriority: .fittingSizeLevel
         )
         
-        let x: CGFloat = 20
-        let y: CGFloat = 140
-        
         dataPopup.frame = CGRect(
             x: x,
             y: y,
@@ -504,10 +510,9 @@ final class TherescopeController: UIViewController {
             height: fittingSize.height
         )
         
-        view.addSubview(dataPopup)
+        dataPopup.layoutIfNeeded()
         
         dataPopup.alpha = 0
-        
         dataPopup.transform = CGAffineTransform(
             translationX: 40,
             y: -20
@@ -592,6 +597,34 @@ final class TherescopeController: UIViewController {
             self?.hideSettingsPopup()
         }
         
+        popup.onDisplayData = { [weak self] newValue in
+            guard let newValue = newValue else { return }
+            print("StageViewController.onDisplayData:\(newValue)")
+
+            self?.currDisplayData = newValue
+            if newValue == true {
+                self?.showDataPopup()
+            }else{
+                self?.hideDataPopup()
+            }
+        }
+        
+        popup.onSineOnly = { [weak self] newValue in
+            guard let newValue = newValue else { return }
+            print("StageViewController.onSineOnly:\(newValue)")
+
+            self?.currSineOnly = newValue
+            self?.configureViews()
+
+            if newValue == true {
+                if self?.selectedWave != .sine || self?.selectedWave != .noise {
+                    self?.onSine()
+                }
+            }
+            
+        }
+
+        
         /*
          Transparent view that captures taps outside the popup.
          It sits above the SwiftUI content and below the popup.
@@ -632,19 +665,16 @@ final class TherescopeController: UIViewController {
         
         NSLayoutConstraint.activate([
             popup.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: 8
+                equalTo: settingsButton.bottomAnchor,
+                constant: 0
             ),
             popup.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -12
+                equalTo: settingsButton.leadingAnchor,
+                constant: 0
             ),
             popup.widthAnchor.constraint(
                 equalToConstant: 200
             ),
-            popup.heightAnchor.constraint(
-                equalToConstant: 300
-            )
         ])
         
         /*
@@ -654,6 +684,7 @@ final class TherescopeController: UIViewController {
         view.layoutIfNeeded()
         
         popup.alpha = 0
+        popup.prepareForDisplay()
         
         /*
          Since the popup is constrained to the right edge, this makes

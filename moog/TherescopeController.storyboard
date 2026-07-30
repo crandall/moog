@@ -17,8 +17,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="1376" height="1032"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmx-5o-8pE">
+                                <rect key="frame" x="0.0" y="32" width="1376" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AzR-Wc-hS8">
+                                        <rect key="frame" x="20" y="13" width="40" height="34"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onBack" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pIx-Ez-5d7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdv-fg-l9j">
+                                        <rect key="frame" x="1305" y="13" width="51" height="34"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onSettings" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BXn-tr-6kN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="MVX-cN-Sof"/>
+                                    <constraint firstAttribute="trailing" secondItem="gdv-fg-l9j" secondAttribute="trailing" constant="20" symbolic="YES" id="RXy-kt-4wr"/>
+                                    <constraint firstItem="AzR-Wc-hS8" firstAttribute="centerY" secondItem="zmx-5o-8pE" secondAttribute="centerY" id="YBz-hL-MWS"/>
+                                    <constraint firstItem="AzR-Wc-hS8" firstAttribute="leading" secondItem="zmx-5o-8pE" secondAttribute="leading" constant="20" symbolic="YES" id="bUm-9H-5He"/>
+                                    <constraint firstItem="gdv-fg-l9j" firstAttribute="centerY" secondItem="zmx-5o-8pE" secondAttribute="centerY" id="tN5-48-EZq"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-JG-X12">
-                                <rect key="frame" x="100" y="32" width="1176" height="80"/>
+                                <rect key="frame" x="100" y="94" width="1176" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ept-WF-wcH">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="80"/>
@@ -92,7 +124,7 @@
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="112" width="1096" height="815"/>
+                                <rect key="frame" x="140" y="174" width="1096" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
@@ -113,20 +145,26 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bqL-JG-X12" secondAttribute="trailing" constant="100" id="Iy7-rU-d0W"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" id="JID-pR-1uo"/>
                             <constraint firstItem="bqL-JG-X12" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="JLJ-ib-Wmn"/>
+                            <constraint firstItem="zmx-5o-8pE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KHs-xi-i36"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
+                            <constraint firstItem="zmx-5o-8pE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Stl-6y-b63"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zmx-5o-8pE" secondAttribute="trailing" id="cfm-vd-O9L"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" id="gpV-Ot-ck8"/>
-                            <constraint firstItem="bqL-JG-X12" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hWr-xu-vvt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTc-2w-G0U" secondAttribute="trailing" constant="140" id="krs-BQ-4os"/>
+                            <constraint firstItem="bqL-JG-X12" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="2" id="meW-Ex-5V7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="amplitudeSlider" destination="9oJ-IB-hFU" id="OYS-T1-uNl"/>
+                        <outlet property="backButton" destination="AzR-Wc-hS8" id="a5D-cx-m5b"/>
                         <outlet property="containerButtonStackView" destination="bqL-JG-X12" id="IQR-AH-Oq3"/>
                         <outlet property="innerButtonStackView" destination="tPY-ob-0TS" id="yzV-Y6-jBV"/>
                         <outlet property="noiseButton" destination="2Py-zi-3nf" id="Gix-m0-NcT"/>
                         <outlet property="sawtoothButton" destination="7jm-2f-d4L" id="jB5-LX-Wlr"/>
+                        <outlet property="settingsButton" destination="gdv-fg-l9j" id="aGQ-GR-tKb"/>
                         <outlet property="sineButton" destination="Qxx-a3-ogz" id="gvD-a8-egj"/>
                         <outlet property="squareButton" destination="gIu-Oe-rXa" id="cUI-rg-osD"/>
+                        <outlet property="topContainerView" destination="zmx-5o-8pE" id="2I2-nr-0Ex"/>
                         <outlet property="triangleButton" destination="O33-Kl-K31" id="oXn-Ie-PUA"/>
                         <outlet property="wavePlotContainerView" destination="UTc-2w-G0U" id="DR2-yR-uVZ"/>
                     </connections>
@@ -137,11 +175,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
