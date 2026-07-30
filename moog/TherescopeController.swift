@@ -208,7 +208,7 @@ final class TherescopeController: UIViewController {
     @IBOutlet weak var testButton: IconTitleButton!
     @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
         print("onWaveform")
-        testButton.isSelected = true
+        testButton.isSelected = !testButton.isSelected
     }
     
     private func configureViews() {

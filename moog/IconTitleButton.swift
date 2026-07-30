@@ -17,6 +17,14 @@ class IconTitleButton: UIControl {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    let controlColor = UIColor(
+        red: 30/255.0,
+        green: 90/255.0,
+        blue: 155/255.0,
+        alpha: 1.0
+    )
+    let controlFont = UIFont(name: "DINCondensed-Bold", size: 30)
+    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
@@ -57,21 +65,25 @@ class IconTitleButton: UIControl {
     
     private func configureAppearance() {
         
-        imageContainerView.layer.cornerRadius = 8
+        imageContainerView.layer.cornerRadius = 12
         imageContainerView.layer.borderWidth = 1
-        imageContainerView.layer.borderColor =
-        UIColor.white.cgColor
+        imageContainerView.layer.borderColor = UIColor.black.cgColor
         
-        imageContainerView.clipsToBounds = true
-        
-        imageView.tintColor = .white
+        imageContainerView.clipsToBounds = false
+        imageContainerView.layer.masksToBounds = false
+        imageContainerView.layer.shadowColor = UIColor.black.cgColor
+        imageContainerView.layer.shadowOpacity = 0.25
+        imageContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageContainerView.layer.shadowRadius = 4
+
         imageView.contentMode = .scaleAspectFit
-        
+
         titleLabel.textAlignment = .center
-        titleLabel.font = .systemFont(ofSize: 14)
-        titleLabel.textColor = .systemBlue
-        
+        titleLabel.font = controlFont
+        titleLabel.textColor = controlColor
         accessibilityTraits = .button
+        
+        self.isSelected = false
     }
     
     // MARK: - Public API
@@ -127,8 +139,7 @@ class IconTitleButton: UIControl {
     override var isSelected: Bool {
         
         didSet {
-//            imageContainerView.backgroundColor = isSelected ? tintColor.withAlphaComponent(0.25) : .clear
-            imageContainerView.backgroundColor = isSelected ? tintColor.withAlphaComponent(0.25) : .clear
+            imageContainerView.backgroundColor = isSelected ? controlColor : .white
         }
     }
 }
