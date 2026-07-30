@@ -49,6 +49,17 @@
                                     <constraint firstItem="gdv-fg-l9j" firstAttribute="centerY" secondItem="zmx-5o-8pE" secondAttribute="centerY" id="tN5-48-EZq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-ZA-4ZN" userLabel="iconTitleButton" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                <rect key="frame" x="10" y="102" width="90" height="150"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="122-UF-dsd"/>
+                                    <constraint firstAttribute="height" constant="150" id="5BD-nY-COA"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="waveformButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5Xy-1I-NBd"/>
+                                </connections>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-JG-X12">
                                 <rect key="frame" x="100" y="94" width="1176" height="80"/>
                                 <subviews>
@@ -141,11 +152,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
+                            <constraint firstItem="q8P-ZA-4ZN" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="10" id="7cs-RE-4aA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="60" id="BsZ-am-xmD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bqL-JG-X12" secondAttribute="trailing" constant="100" id="Iy7-rU-d0W"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" id="JID-pR-1uo"/>
                             <constraint firstItem="bqL-JG-X12" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="JLJ-ib-Wmn"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KHs-xi-i36"/>
+                            <constraint firstItem="q8P-ZA-4ZN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="PDx-6H-2JJ"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Stl-6y-b63"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zmx-5o-8pE" secondAttribute="trailing" id="cfm-vd-O9L"/>
@@ -164,6 +177,7 @@
                         <outlet property="settingsButton" destination="gdv-fg-l9j" id="aGQ-GR-tKb"/>
                         <outlet property="sineButton" destination="Qxx-a3-ogz" id="gvD-a8-egj"/>
                         <outlet property="squareButton" destination="gIu-Oe-rXa" id="cUI-rg-osD"/>
+                        <outlet property="testButton" destination="q8P-ZA-4ZN" id="SOb-on-a9s"/>
                         <outlet property="topContainerView" destination="zmx-5o-8pE" id="2I2-nr-0Ex"/>
                         <outlet property="triangleButton" destination="O33-Kl-K31" id="oXn-Ie-PUA"/>
                         <outlet property="wavePlotContainerView" destination="UTc-2w-G0U" id="DR2-yR-uVZ"/>
@@ -182,6 +196,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

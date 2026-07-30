@@ -205,6 +205,12 @@ final class TherescopeController: UIViewController {
     
     // MARK: -- View configuration
     
+    @IBOutlet weak var testButton: IconTitleButton!
+    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
+        print("onWaveform")
+        testButton.isSelected = true
+    }
+    
     private func configureViews() {
         
         topContainerView.backgroundColor = .systemBlue
@@ -214,6 +220,7 @@ final class TherescopeController: UIViewController {
         
         containerButtonStackView.backgroundColor = .separator
         innerButtonStackView.backgroundColor = .clear
+        
         
         for definition in waveButtons {
             let button = definition.button
