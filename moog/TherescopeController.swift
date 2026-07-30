@@ -691,14 +691,14 @@ final class TherescopeController: UIViewController {
             ),
             popup.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -12
+                constant: -40
             ),
             popup.widthAnchor.constraint(
                 equalToConstant: 200
             ),
-            popup.heightAnchor.constraint(
-                equalToConstant: 400
-            )
+//            popup.heightAnchor.constraint(
+//                equalToConstant: 400
+//            )
         ])
         
         /*

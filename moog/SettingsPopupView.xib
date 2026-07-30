@@ -28,34 +28,37 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th" userLabel="closeButton">
-                    <rect key="frame" x="338.66666666666669" y="117.99999999999999" width="46.333333333333314" height="34.333333333333329"/>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <buttonConfiguration key="configuration" style="plain"/>
-                    <connections>
-                        <action selector="onClose:" destination="-1" eventType="touchUpInside" id="WJz-wj-xzI"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WOw-m6-yWl">
-                    <rect key="frame" x="2" y="155" width="389" height="627"/>
+                    <rect key="frame" x="2" y="155" width="389" height="240"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="srK-Qp-vvL"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5ny-TK-MMd"/>
                         <outlet property="delegate" destination="-1" id="xDn-YW-uhr"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eou-yt-2th" userLabel="closeButton">
+                    <rect key="frame" x="163" y="403" width="67" height="385"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                    <connections>
+                        <action selector="onClose:" destination="-1" eventType="touchUpInside" id="WJz-wj-xzI"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WOw-m6-yWl" secondAttribute="bottom" constant="2" id="CfS-Cb-ZBu"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="AQC-wq-Lmb"/>
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="IDE-9o-mw6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="eou-yt-2th" secondAttribute="top" id="WLj-Tu-1WU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WOw-m6-yWl" secondAttribute="trailing" constant="2" id="Xue-tW-tk3"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="top" secondItem="WOw-m6-yWl" secondAttribute="bottom" constant="8" symbolic="YES" id="Ycd-6k-X7z"/>
                 <constraint firstItem="Kao-A9-hXx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="pqG-A1-cBP"/>
                 <constraint firstItem="WOw-m6-yWl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="q7y-Wv-Hkk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eou-yt-2th" secondAttribute="trailing" constant="8" id="qBq-ek-J8Y"/>
                 <constraint firstItem="WOw-m6-yWl" firstAttribute="top" secondItem="Kao-A9-hXx" secondAttribute="bottom" constant="8" id="t3q-tl-r4n"/>
+                <constraint firstItem="eou-yt-2th" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="4" id="yqL-AP-auH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
