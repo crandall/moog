@@ -142,11 +142,11 @@
                                 <rect key="frame" x="100" y="827" width="1176" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B05-Gw-rh1">
-                                        <rect key="frame" x="0.0" y="0.0" width="488" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-bm-1en">
-                                        <rect key="frame" x="488" y="0.0" width="200" height="150"/>
+                                        <rect key="frame" x="323" y="0.0" width="530" height="150"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3O-by-PEa" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="150"/>
@@ -162,17 +162,47 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cg-Fq-j0W" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="0.0" width="90" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onSquare1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yjN-U7-Gpg"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-gu-gnW" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="220" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onTriangle1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VHd-QD-hN6"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-fy-zva" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="330" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onSawtooth1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C6d-E4-xhA"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-t2-7xf" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="440" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onNoise1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kGS-YE-opn"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstItem="8cg-Fq-j0W" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="2es-pI-0eE"/>
+                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="IyR-O0-mxG"/>
+                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="LYA-PW-ZR2"/>
+                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="SVd-jQ-3ER"/>
+                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="WxQ-Ld-rAA"/>
                                             <constraint firstAttribute="height" constant="150" id="e8d-A5-OZc"/>
+                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="grN-7M-l8n"/>
+                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="ihL-Ok-QIs"/>
                                             <constraint firstItem="8cg-Fq-j0W" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="ouq-eL-5D0"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-Hl-ai2">
-                                        <rect key="frame" x="688" y="0.0" width="488" height="150"/>
+                                        <rect key="frame" x="853" y="0.0" width="323" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -219,7 +249,9 @@
                         <outlet property="containerButtonStackView" destination="bqL-JG-X12" id="IQR-AH-Oq3"/>
                         <outlet property="innerButtonStackView" destination="tPY-ob-0TS" id="yzV-Y6-jBV"/>
                         <outlet property="noiseButton" destination="2Py-zi-3nf" id="Gix-m0-NcT"/>
+                        <outlet property="noiseButton1" destination="0ag-t2-7xf" id="Xut-LL-Pyp"/>
                         <outlet property="sawtoothButton" destination="7jm-2f-d4L" id="jB5-LX-Wlr"/>
+                        <outlet property="sawtoothButton1" destination="Dz5-fy-zva" id="NEh-Um-3NU"/>
                         <outlet property="settingsButton" destination="gdv-fg-l9j" id="aGQ-GR-tKb"/>
                         <outlet property="sineButton" destination="Qxx-a3-ogz" id="gvD-a8-egj"/>
                         <outlet property="sineButton1" destination="y3O-by-PEa" id="7at-KV-Tbd"/>
@@ -228,6 +260,7 @@
                         <outlet property="testButton" destination="q8P-ZA-4ZN" id="SOb-on-a9s"/>
                         <outlet property="topContainerView" destination="zmx-5o-8pE" id="2I2-nr-0Ex"/>
                         <outlet property="triangleButton" destination="O33-Kl-K31" id="oXn-Ie-PUA"/>
+                        <outlet property="triangleButton1" destination="YrL-gu-gnW" id="mlO-vO-9sU"/>
                         <outlet property="wavePlotContainerView" destination="UTc-2w-G0U" id="DR2-yR-uVZ"/>
                     </connections>
                 </viewController>
