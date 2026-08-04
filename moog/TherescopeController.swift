@@ -103,6 +103,44 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var settingsButton: UIButton!
     
     @IBOutlet private weak var amplitudeSlider: UISlider!
+
+
+    @IBOutlet private weak var containerButtonStackView1: UIStackView!
+    @IBOutlet private weak var innerButtonStackView1: UIStackView!
+    @IBOutlet private weak var sineButton1: IconTitleButton!
+    @IBOutlet private weak var squareButton1: IconTitleButton!
+    @IBOutlet private weak var triangleButton1: IconTitleButton!
+    @IBOutlet private weak var sawtoothButton1: IconTitleButton!
+    @IBOutlet private weak var noiseButton1: IconTitleButton!
+
+    @IBAction func onSine1(_ sender: IconTitleButton) {
+        print("onSine1")
+        testButton.isSelected = !testButton.isSelected
+    }
+    @IBAction func onSquare1(_ sender: IconTitleButton) {
+        print("onSquare1")
+        testButton.isSelected = !testButton.isSelected
+    }
+    @IBAction func onTriangle1(_ sender: IconTitleButton) {
+        print("onTriangle1")
+        testButton.isSelected = !testButton.isSelected
+    }
+    @IBAction func onSawtooth1(_ sender: IconTitleButton) {
+        print("onSawtooth1")
+        testButton.isSelected = !testButton.isSelected
+    }
+    @IBAction func onNoise1(_ sender: IconTitleButton) {
+        print("onNoise1")
+        testButton.isSelected = !testButton.isSelected
+    }
+
+    @IBOutlet weak var titleButtonStack: UIStackView!
+    @IBOutlet weak var testButton: IconTitleButton!
+    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
+        print("onWaveform")
+        testButton.isSelected = !testButton.isSelected
+    }
+
     
     var currSineOnly: Bool = false
     var currDisplayData: Bool = false
@@ -204,12 +242,7 @@ final class TherescopeController: UIViewController {
     
     
     // MARK: -- View configuration
-    
-    @IBOutlet weak var testButton: IconTitleButton!
-    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
-        print("onWaveform")
-        testButton.isSelected = !testButton.isSelected
-    }
+
     
     private func configureViews() {
         
