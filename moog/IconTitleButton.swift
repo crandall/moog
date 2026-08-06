@@ -14,8 +14,12 @@ class IconTitleButton: UIControl {
     @IBOutlet private weak var contentView: UIView!
     
     @IBOutlet weak var imageContainerView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var waveformImageView: UIImageView!
+    @IBOutlet weak var titleImageView: UIImageView!
+    
+    var waveType: WaveType?
     
     let controlColor = UIColor(
         red: 30/255.0,
@@ -65,22 +69,12 @@ class IconTitleButton: UIControl {
     
     private func configureAppearance() {
         
-        imageContainerView.layer.cornerRadius = 12
-        imageContainerView.layer.borderWidth = 1
-        imageContainerView.layer.borderColor = UIColor.black.cgColor
-        
-        imageContainerView.clipsToBounds = false
-        imageContainerView.layer.masksToBounds = false
-        imageContainerView.layer.shadowColor = UIColor.black.cgColor
-        imageContainerView.layer.shadowOpacity = 0.25
-        imageContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        imageContainerView.layer.shadowRadius = 4
+        self.contentView.backgroundColor = .clear
+        self.imageContainerView.backgroundColor = .clear
+        bgImageView.backgroundColor = .clear
+        waveformImageView.backgroundColor = .clear
+        titleImageView.backgroundColor = .clear
 
-        imageView.contentMode = .scaleAspectFit
-
-        titleLabel.textAlignment = .center
-        titleLabel.font = controlFont
-        titleLabel.textColor = controlColor
         accessibilityTraits = .button
         
         self.isSelected = false
@@ -93,8 +87,7 @@ class IconTitleButton: UIControl {
         title: String
     ) {
         
-        imageView.image = image
-        titleLabel.text = title
+        waveformImageView.image = image
     }
     
     func configure(
@@ -109,12 +102,14 @@ class IconTitleButton: UIControl {
             weight: weight
         )
         
-        imageView.image = UIImage(
+        waveformImageView.image = UIImage(
             systemName: systemImage,
             withConfiguration: config
         )
-        
-        titleLabel.text = title
+    }
+    
+    func setSelected(isSelected:Bool){
+        print("\(String(describing: waveType)):\(isSelected ? "selected" : "unselected")")
     }
     
     // MARK: - Highlight
@@ -126,10 +121,7 @@ class IconTitleButton: UIControl {
             UIView.animate(withDuration: 0.1) {
                 
                 self.alpha = self.isHighlighted ? 0.6 : 1.0
-                
-                self.transform = self.isHighlighted
-                ? CGAffineTransform(scaleX: 0.96, y: 0.96)
-                : .identity
+                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.96, y: 0.96) : .identity
             }
         }
     }

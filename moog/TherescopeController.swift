@@ -113,26 +113,6 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var sawtoothButton1: IconTitleButton!
     @IBOutlet private weak var noiseButton1: IconTitleButton!
 
-    @IBAction func onSine1(_ sender: IconTitleButton) {
-        print("onSine1")
-        testButton.isSelected = !testButton.isSelected
-    }
-    @IBAction func onSquare1(_ sender: IconTitleButton) {
-        print("onSquare1")
-        testButton.isSelected = !testButton.isSelected
-    }
-    @IBAction func onTriangle1(_ sender: IconTitleButton) {
-        print("onTriangle1")
-        testButton.isSelected = !testButton.isSelected
-    }
-    @IBAction func onSawtooth1(_ sender: IconTitleButton) {
-        print("onSawtooth1")
-        testButton.isSelected = !testButton.isSelected
-    }
-    @IBAction func onNoise1(_ sender: IconTitleButton) {
-        print("onNoise1")
-        testButton.isSelected = !testButton.isSelected
-    }
 
     @IBOutlet weak var titleButtonStack: UIStackView!
     @IBOutlet weak var testButton: IconTitleButton!
@@ -254,6 +234,18 @@ final class TherescopeController: UIViewController {
         containerButtonStackView.backgroundColor = .separator
         innerButtonStackView.backgroundColor = .clear
         
+        containerButtonStackView1.backgroundColor = .white
+        innerButtonStackView1.backgroundColor = .clear
+
+        containerButtonStackView1.layer.cornerRadius = 3
+        containerButtonStackView1.layer.borderColor = UIColor.black.cgColor
+        containerButtonStackView1.layer.borderWidth = 1
+
+        sineButton1.waveType = .sine
+        squareButton1.waveType = .square
+        triangleButton1.waveType = .triangle
+        sawtoothButton1.waveType = .sawtooth
+        noiseButton1.waveType = .noise
         
         for definition in waveButtons {
             let button = definition.button
@@ -440,6 +432,31 @@ final class TherescopeController: UIViewController {
         selectedWave = .noise
     }
     
+    @IBAction func onSine1(_ sender: IconTitleButton) {
+        print("onSine1")
+        selectedWave = .sine
+    }
+    
+    @IBAction func onSquare1(_ sender: IconTitleButton) {
+        print("onSquare1")
+        selectedWave = .square
+    }
+    
+    @IBAction func onTriangle1(_ sender: IconTitleButton) {
+        print("onTriangle1")
+        selectedWave = .triangle
+    }
+    
+    @IBAction func onSawtooth1(_ sender: IconTitleButton) {
+        print("onSawtooth1")
+        selectedWave = .sawtooth
+    }
+    
+    @IBAction func onNoise1(_ sender: IconTitleButton) {
+        print("onNoise1")
+        selectedWave = .noise
+    }
+
     
     // MARK: Wave selection
     
