@@ -114,12 +114,12 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var noiseButton1: IconTitleButton!
 
 
-    @IBOutlet weak var titleButtonStack: UIStackView!
-    @IBOutlet weak var testButton: IconTitleButton!
-    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
-        print("onWaveform")
-        testButton.isSelected = !testButton.isSelected
-    }
+//    @IBOutlet weak var titleButtonStack: UIStackView!
+//    @IBOutlet weak var testButton: IconTitleButton!
+//    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
+//        print("onWaveform")
+//        testButton.isSelected = !testButton.isSelected
+//    }
 
     
     var currSineOnly: Bool = false

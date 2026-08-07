@@ -49,19 +49,85 @@
                                     <constraint firstItem="gdv-fg-l9j" firstAttribute="centerY" secondItem="zmx-5o-8pE" secondAttribute="centerY" id="tN5-48-EZq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-ZA-4ZN" userLabel="iconTitleButton" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                <rect key="frame" x="10" y="102" width="90" height="150"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv9-eZ-Gnp">
+                                <rect key="frame" x="100" y="94" width="1176" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B05-Gw-rh1">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="150"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-bm-1en">
+                                        <rect key="frame" x="323" y="0.0" width="530" height="150"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3O-by-PEa" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="QJe-9T-F6c"/>
+                                                    <constraint firstAttribute="width" constant="90" id="uuH-J7-zB7"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="onSine1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JP3-R8-1NQ"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cg-Fq-j0W" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="110" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onSquare1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yjN-U7-Gpg"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-gu-gnW" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="220" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onTriangle1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VHd-QD-hN6"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-fy-zva" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="330" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onSawtooth1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C6d-E4-xhA"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-t2-7xf" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                                <rect key="frame" x="440" y="0.0" width="90" height="150"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <action selector="onNoise1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kGS-YE-opn"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <constraints>
+                                            <constraint firstItem="8cg-Fq-j0W" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="2es-pI-0eE"/>
+                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="IyR-O0-mxG"/>
+                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="LYA-PW-ZR2"/>
+                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="SVd-jQ-3ER"/>
+                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="WxQ-Ld-rAA"/>
+                                            <constraint firstAttribute="height" constant="150" id="e8d-A5-OZc"/>
+                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="grN-7M-l8n"/>
+                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="ihL-Ok-QIs"/>
+                                            <constraint firstItem="8cg-Fq-j0W" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="ouq-eL-5D0"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-Hl-ai2">
+                                        <rect key="frame" x="853" y="0.0" width="323" height="150"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="122-UF-dsd"/>
-                                    <constraint firstAttribute="height" constant="150" id="5BD-nY-COA"/>
+                                    <constraint firstItem="ZTw-Hl-ai2" firstAttribute="width" secondItem="B05-Gw-rh1" secondAttribute="width" id="dWK-4e-O6c"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="waveformButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5Xy-1I-NBd"/>
-                                </connections>
+                            </stackView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
+                                <rect key="frame" x="140" y="252" width="1096" height="675"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-JG-X12">
-                                <rect key="frame" x="100" y="94" width="1176" height="80"/>
+                                <rect key="frame" x="100" y="469.5" width="1176" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ept-WF-wcH">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="80"/>
@@ -134,83 +200,6 @@
                                     <constraint firstItem="fyN-KU-Yeb" firstAttribute="width" secondItem="Ept-WF-wcH" secondAttribute="width" id="Vy2-sp-0Rp"/>
                                 </constraints>
                             </stackView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="174" width="1096" height="753"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv9-eZ-Gnp">
-                                <rect key="frame" x="100" y="827" width="1176" height="150"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B05-Gw-rh1">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-bm-1en">
-                                        <rect key="frame" x="323" y="0.0" width="530" height="150"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3O-by-PEa" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="QJe-9T-F6c"/>
-                                                    <constraint firstAttribute="width" constant="90" id="uuH-J7-zB7"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="onSine1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JP3-R8-1NQ"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cg-Fq-j0W" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                                <rect key="frame" x="110" y="0.0" width="90" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <connections>
-                                                    <action selector="onSquare1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yjN-U7-Gpg"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-gu-gnW" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                                <rect key="frame" x="220" y="0.0" width="90" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <connections>
-                                                    <action selector="onTriangle1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VHd-QD-hN6"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-fy-zva" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                                <rect key="frame" x="330" y="0.0" width="90" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <connections>
-                                                    <action selector="onSawtooth1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C6d-E4-xhA"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-t2-7xf" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
-                                                <rect key="frame" x="440" y="0.0" width="90" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <connections>
-                                                    <action selector="onNoise1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kGS-YE-opn"/>
-                                                </connections>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
-                                        <constraints>
-                                            <constraint firstItem="8cg-Fq-j0W" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="2es-pI-0eE"/>
-                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="IyR-O0-mxG"/>
-                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="LYA-PW-ZR2"/>
-                                            <constraint firstItem="0ag-t2-7xf" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="SVd-jQ-3ER"/>
-                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="WxQ-Ld-rAA"/>
-                                            <constraint firstAttribute="height" constant="150" id="e8d-A5-OZc"/>
-                                            <constraint firstItem="Dz5-fy-zva" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="grN-7M-l8n"/>
-                                            <constraint firstItem="YrL-gu-gnW" firstAttribute="width" secondItem="y3O-by-PEa" secondAttribute="width" id="ihL-Ok-QIs"/>
-                                            <constraint firstItem="8cg-Fq-j0W" firstAttribute="height" secondItem="y3O-by-PEa" secondAttribute="height" id="ouq-eL-5D0"/>
-                                        </constraints>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-Hl-ai2">
-                                        <rect key="frame" x="853" y="0.0" width="323" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="ZTw-Hl-ai2" firstAttribute="width" secondItem="B05-Gw-rh1" secondAttribute="width" id="dWK-4e-O6c"/>
-                                </constraints>
-                            </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
                                 <rect key="frame" x="588" y="953" width="200" height="34"/>
                                 <constraints>
@@ -226,21 +215,19 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Kv9-eZ-Gnp" secondAttribute="trailing" constant="100" id="29i-sX-Kfr"/>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
-                            <constraint firstItem="q8P-ZA-4ZN" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="10" id="7cs-RE-4aA"/>
+                            <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="2" id="9Az-7b-mhp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="60" id="BsZ-am-xmD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bqL-JG-X12" secondAttribute="trailing" constant="100" id="Iy7-rU-d0W"/>
-                            <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="bqL-JG-X12" secondAttribute="bottom" id="JID-pR-1uo"/>
                             <constraint firstItem="bqL-JG-X12" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="JLJ-ib-Wmn"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KHs-xi-i36"/>
                             <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="Loh-KV-dRf"/>
-                            <constraint firstItem="q8P-ZA-4ZN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="PDx-6H-2JJ"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Stl-6y-b63"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Kv9-eZ-Gnp" secondAttribute="bottom" constant="10" id="WzW-d3-yFz"/>
+                            <constraint firstItem="bqL-JG-X12" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="Ywo-si-5MI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zmx-5o-8pE" secondAttribute="trailing" id="cfm-vd-O9L"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" id="gpV-Ot-ck8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTc-2w-G0U" secondAttribute="trailing" constant="140" id="krs-BQ-4os"/>
-                            <constraint firstItem="bqL-JG-X12" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="2" id="meW-Ex-5V7"/>
+                            <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="Kv9-eZ-Gnp" secondAttribute="bottom" constant="8" symbolic="YES" id="vxK-eZ-IU2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -259,7 +246,6 @@
                         <outlet property="sineButton1" destination="y3O-by-PEa" id="7at-KV-Tbd"/>
                         <outlet property="squareButton" destination="gIu-Oe-rXa" id="cUI-rg-osD"/>
                         <outlet property="squareButton1" destination="8cg-Fq-j0W" id="HkP-m4-guO"/>
-                        <outlet property="testButton" destination="q8P-ZA-4ZN" id="SOb-on-a9s"/>
                         <outlet property="topContainerView" destination="zmx-5o-8pE" id="2I2-nr-0Ex"/>
                         <outlet property="triangleButton" destination="O33-Kl-K31" id="oXn-Ie-PUA"/>
                         <outlet property="triangleButton1" destination="YrL-gu-gnW" id="mlO-vO-9sU"/>
@@ -279,9 +265,6 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
