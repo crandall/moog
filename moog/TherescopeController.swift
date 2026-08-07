@@ -217,10 +217,6 @@ final class TherescopeController: UIViewController {
         containerButtonStackView1.backgroundColor = .white
         innerButtonStackView1.backgroundColor = .clear
 
-//        containerButtonStackView1.layer.cornerRadius = 3
-//        containerButtonStackView1.layer.borderColor = UIColor.black.cgColor
-//        containerButtonStackView1.layer.borderWidth = 1
-
         sineButton1.waveType = .sine
         squareButton1.waveType = .square
         triangleButton1.waveType = .triangle
@@ -315,7 +311,8 @@ final class TherescopeController: UIViewController {
         self.settingsButtonPressed()
     }
 
-    func handleWaveformChange(waveType:WaveType){
+    func handleWaveformChange(waveType:WaveType?){
+        guard let waveType = waveType else { return }
         let buttons = [sineButton1,squareButton1,triangleButton1,sawtoothButton1,noiseButton1]
         for button in buttons {
             button?.setSelected(isSelected: (button?.waveType == waveType))
@@ -567,6 +564,8 @@ final class TherescopeController: UIViewController {
                         self?.onSine1(sineButton1)
                     }
                 }
+            }else{
+                self?.handleWaveformChange(waveType: self?.selectedWave)
             }
             
         }
