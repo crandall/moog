@@ -19,15 +19,13 @@ class IconTitleButton: UIControl {
     @IBOutlet weak var waveformImageView: UIImageView!
     @IBOutlet weak var titleImageView: UIImageView!
     
-    var waveType: WaveType?
+    var waveType: WaveType? {
+        didSet{
+            self.setText(waveType: self.waveType)
+            self.setSelected(isSelected: false)
+        }
+    }
     
-    let controlColor = UIColor(
-        red: 30/255.0,
-        green: 90/255.0,
-        blue: 155/255.0,
-        alpha: 1.0
-    )
-    let controlFont = UIFont(name: "DINCondensed-Bold", size: 30)
     
     // MARK: - Initialization
     
@@ -82,56 +80,55 @@ class IconTitleButton: UIControl {
     
     // MARK: - Public API
     
-    func configure(
-        image: UIImage?,
-        title: String
-    ) {
+    func setText(waveType:WaveType?){
+        guard let waveType = waveType else { return }
+        var waveImageStr = ""
+        switch waveType {
+        case .sine:
+            waveImageStr = "text_sine"
+        case .square:
+            waveImageStr = "text_square"
+        case .triangle:
+            waveImageStr = "text_triangle"
+        case .sawtooth:
+            waveImageStr = "text_saw"
+        case .noise:
+            waveImageStr = "text_noise"
+        }
         
-        waveformImageView.image = image
+        let image = UIImage(named: waveImageStr)
+        self.titleImageView.image = image
     }
-    
-    func configure(
-        systemImage: String,
-        title: String,
-        pointSize: CGFloat = 28,
-        weight: UIImage.SymbolWeight = .regular
-    ) {
+
+    func waveImage(waveType:WaveType?, isSelected:Bool)->UIImage?{
+        var waveImageStr = ""
+        switch waveType {
+        case .sine:
+            waveImageStr = isSelected ? "button_sine_active" : "button_sine"
+        case .square:
+            waveImageStr = isSelected ? "button_square_active" : "button_square"
+        case .triangle:
+            waveImageStr = isSelected ? "button_triangle_active" : "button_triangle"
+        case .sawtooth:
+            waveImageStr = isSelected ? "button_sawtooth_active" : "button_sawtooth"
+        case .noise:
+            waveImageStr = isSelected ? "button_noise_active" : "button_noise"
+        default:
+            return nil
+        }
         
-        let config = UIImage.SymbolConfiguration(
-            pointSize: pointSize,
-            weight: weight
-        )
-        
-        waveformImageView.image = UIImage(
-            systemName: systemImage,
-            withConfiguration: config
-        )
+        return UIImage(named: waveImageStr)
     }
     
     func setSelected(isSelected:Bool){
-        print("\(String(describing: waveType)):\(isSelected ? "selected" : "unselected")")
-    }
-    
-    // MARK: - Highlight
-    
-    override var isHighlighted: Bool {
+        let bgImageStr = isSelected ? "button_active" : "button_inactive"
+        let image = UIImage(named: bgImageStr)
+        bgImageView.image = image
         
-        didSet {
-            
-            UIView.animate(withDuration: 0.1) {
-                
-                self.alpha = self.isHighlighted ? 0.6 : 1.0
-                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.96, y: 0.96) : .identity
-            }
+        if let wfImage = self.waveImage(waveType: self.waveType, isSelected: isSelected) as UIImage? {
+            waveformImageView.image = wfImage
         }
-    }
-    
-    // MARK: - Selected
-    
-    override var isSelected: Bool {
         
-        didSet {
-            imageContainerView.backgroundColor = isSelected ? controlColor : .white
-        }
     }
+    
 }

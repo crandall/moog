@@ -177,7 +177,7 @@ final class TherescopeController: UIViewController {
         super.viewWillAppear(animated)
         currSineOnly = SettingsDefaults.setting(for: .sineOnly)
         currDisplayData = SettingsDefaults.setting(for: .displayData)
-        
+        self.handleWaveformChange(waveType: self.selectedWave)
     }
 
 
@@ -432,29 +432,41 @@ final class TherescopeController: UIViewController {
         selectedWave = .noise
     }
     
+    func handleWaveformChange(waveType:WaveType){
+        let buttons = [sineButton1,squareButton1,triangleButton1,sawtoothButton1,noiseButton1]
+        for button in buttons {
+            button?.setSelected(isSelected: (button?.waveType == waveType))
+        }
+    }
+    
     @IBAction func onSine1(_ sender: IconTitleButton) {
         print("onSine1")
         selectedWave = .sine
+        self.handleWaveformChange(waveType: .sine)
     }
     
     @IBAction func onSquare1(_ sender: IconTitleButton) {
         print("onSquare1")
         selectedWave = .square
+        self.handleWaveformChange(waveType: .square)
     }
     
     @IBAction func onTriangle1(_ sender: IconTitleButton) {
         print("onTriangle1")
         selectedWave = .triangle
+        self.handleWaveformChange(waveType: .triangle)
     }
     
     @IBAction func onSawtooth1(_ sender: IconTitleButton) {
         print("onSawtooth1")
         selectedWave = .sawtooth
+        self.handleWaveformChange(waveType: .sawtooth)
     }
     
     @IBAction func onNoise1(_ sender: IconTitleButton) {
         print("onNoise1")
         selectedWave = .noise
+        self.handleWaveformChange(waveType: .noise)
     }
 
     
