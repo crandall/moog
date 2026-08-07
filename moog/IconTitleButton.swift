@@ -67,8 +67,8 @@ class IconTitleButton: UIControl {
     
     private func configureAppearance() {
         
-        self.contentView.backgroundColor = .clear
-        self.imageContainerView.backgroundColor = .clear
+        self.contentView.backgroundColor = .orange
+        self.imageContainerView.backgroundColor = .lightGray
         bgImageView.backgroundColor = .clear
         waveformImageView.backgroundColor = .clear
         titleImageView.backgroundColor = .clear
