@@ -17,6 +17,8 @@
 		E7795E602CCC503C00F34C00 /* Conductors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E5F2CCC503C00F34C00 /* Conductors.swift */; };
 		E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7795E612CCC515500F34C00 /* DevicePicker.swift */; };
 		E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */; };
+		E783819D301BF0AE00F18A19 /* IconTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E783819C301BF0AE00F18A19 /* IconTitleButton.swift */; };
+		E78381A3301BF59400F18A19 /* IconTitleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78381A2301BF59400F18A19 /* IconTitleButton.xib */; };
 		E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */; };
 		E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */; };
 		E78B9AF02AE0AEF000788C07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78B9AEE2AE0AEF000788C07 /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 		E7795E612CCC515500F34C00 /* DevicePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePicker.swift; sourceTree = "<group>"; };
 		E7795E632CCC623500F34C00 /* moog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = moog.entitlements; sourceTree = "<group>"; };
 		E77C3BC02B5DD0A000E68103 /* RawOutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawOutputView.swift; sourceTree = "<group>"; };
+		E783819C301BF0AE00F18A19 /* IconTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleButton.swift; sourceTree = "<group>"; };
+		E78381A2301BF59400F18A19 /* IconTitleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconTitleButton.xib; sourceTree = "<group>"; };
 		E78B9AE52AE0AEF000788C07 /* moog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				E7A4A9B930140CFD00564F3A /* SettingsCell.xib */,
 				E75450AE30104C4000416680 /* DataPopupView.swift */,
 				E75450B030104CEC00416680 /* DataPopupView.xib */,
+				E783819C301BF0AE00F18A19 /* IconTitleButton.swift */,
+				E78381A2301BF59400F18A19 /* IconTitleButton.xib */,
 				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
 				E7795E5F2CCC503C00F34C00 /* Conductors.swift */,
 				E7A1CA772B179F6A006D8344 /* Extensions.swift */,
@@ -235,6 +241,7 @@
 				E78B9AF52AE0AEF100788C07 /* LaunchScreen.storyboard in Resources */,
 				E7A4A9BB30140CFD00564F3A /* SettingsCell.xib in Resources */,
 				E78B9AF22AE0AEF100788C07 /* Assets.xcassets in Resources */,
+				E78381A3301BF59400F18A19 /* IconTitleButton.xib in Resources */,
 				E75450B130104CEC00416680 /* DataPopupView.xib in Resources */,
 				E78F59222FEDEA4000F88654 /* info.txt in Resources */,
 				E74DD1CE3012862600A33A1B /* TherescopeController.storyboard in Resources */,
@@ -251,6 +258,7 @@
 			files = (
 				E7A4A9BA30140CFD00564F3A /* SettingsCell.swift in Sources */,
 				E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */,
+				E783819D301BF0AE00F18A19 /* IconTitleButton.swift in Sources */,
 				E74DD1CC3012860D00A33A1B /* TherescopeController.swift in Sources */,
 				E78B9AE92AE0AEF000788C07 /* AppDelegate.swift in Sources */,
 				E7E2CD7B3014185D00587387 /* Utilities.swift in Sources */,

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+            <connections>
+                <outlet property="bgImageView" destination="9ag-I0-ztt" id="X6D-6X-XeC"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="m1m-VH-cot"/>
+                <outlet property="imageContainerView" destination="r69-kI-O6C" id="Bps-ja-11h"/>
+                <outlet property="titleImageView" destination="Vfw-PU-GE7" id="Hoq-fw-c8d"/>
+                <outlet property="waveformImageView" destination="qVq-NJ-v0U" id="CqB-KQ-Zj1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="contentView">
+            <rect key="frame" x="0.0" y="0.0" width="117" height="322"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r69-kI-O6C" userLabel="imageContainerView">
+                    <rect key="frame" x="0.0" y="118" width="117" height="178"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_inactive" translatesAutoresizingMaskIntoConstraints="NO" id="9ag-I0-ztt" userLabel="bgImageView">
+                            <rect key="frame" x="0.0" y="0.0" width="117" height="178"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_sine" translatesAutoresizingMaskIntoConstraints="NO" id="qVq-NJ-v0U" userLabel="waveformImageView">
+                            <rect key="frame" x="10" y="2" width="97" height="174"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <constraints>
+                        <constraint firstItem="qVq-NJ-v0U" firstAttribute="top" secondItem="r69-kI-O6C" secondAttribute="top" constant="2" id="75Y-CR-3Rb"/>
+                        <constraint firstAttribute="trailing" secondItem="qVq-NJ-v0U" secondAttribute="trailing" constant="10" id="EKk-DY-2yV"/>
+                        <constraint firstItem="9ag-I0-ztt" firstAttribute="top" secondItem="r69-kI-O6C" secondAttribute="top" id="ILT-4v-NLL"/>
+                        <constraint firstAttribute="bottom" secondItem="9ag-I0-ztt" secondAttribute="bottom" id="Vhp-cy-LQV"/>
+                        <constraint firstItem="9ag-I0-ztt" firstAttribute="leading" secondItem="r69-kI-O6C" secondAttribute="leading" id="Wq6-m0-DMm"/>
+                        <constraint firstAttribute="trailing" secondItem="9ag-I0-ztt" secondAttribute="trailing" id="fd9-zJ-TL5"/>
+                        <constraint firstItem="qVq-NJ-v0U" firstAttribute="leading" secondItem="r69-kI-O6C" secondAttribute="leading" constant="10" id="yQb-N8-60v"/>
+                        <constraint firstAttribute="bottom" secondItem="qVq-NJ-v0U" secondAttribute="bottom" constant="2" id="zf8-Xd-2Pg"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_sine" translatesAutoresizingMaskIntoConstraints="NO" id="Vfw-PU-GE7" userLabel="titleImageView">
+                    <rect key="frame" x="0.0" y="266" width="117" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="9oM-26-cTz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemTealColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="r69-kI-O6C" secondAttribute="leading" id="5Mr-iG-FPJ"/>
+                <constraint firstItem="Vfw-PU-GE7" firstAttribute="top" secondItem="r69-kI-O6C" secondAttribute="bottom" constant="-30" id="7z7-Lt-7Ky"/>
+                <constraint firstItem="r69-kI-O6C" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="GgE-yO-O0a"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="r69-kI-O6C" secondAttribute="top" id="mYA-2W-ybV"/>
+                <constraint firstItem="Vfw-PU-GE7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="r5I-pT-btU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="Vfw-PU-GE7" secondAttribute="leading" id="sW9-2z-CD7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Vfw-PU-GE7" secondAttribute="bottom" constant="2" id="uUi-Ca-iEU"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="118.32061068702289" y="168.3098591549296"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="button_inactive" width="164" height="146.66667175292969"/>
+        <image name="button_sine" width="112" height="76"/>
+        <image name="text_sine" width="41.666667938232422" height="26.333333969116211"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
