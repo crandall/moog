@@ -90,20 +90,11 @@ final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var wavePlotContainerView: UIView!
     
-//    @IBOutlet private weak var containerButtonStackView: UIStackView!
-//    @IBOutlet private weak var innerButtonStackView: UIStackView!
-//    @IBOutlet private weak var sineButton: UIButton!
-//    @IBOutlet private weak var squareButton: UIButton!
-//    @IBOutlet private weak var triangleButton: UIButton!
-//    @IBOutlet private weak var sawtoothButton: UIButton!
-//    @IBOutlet private weak var noiseButton: UIButton!
-    
     @IBOutlet private weak var topContainerView: UIView!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var settingsButton: UIButton!
     
     @IBOutlet private weak var amplitudeSlider: UISlider!
-
 
     @IBOutlet private weak var containerButtonStackView1: UIStackView!
     @IBOutlet private weak var innerButtonStackView1: UIStackView!
@@ -114,14 +105,6 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var noiseButton1: IconTitleButton!
 
 
-//    @IBOutlet weak var titleButtonStack: UIStackView!
-//    @IBOutlet weak var testButton: IconTitleButton!
-//    @IBAction func waveformButtonTapped(_ sender: IconTitleButton) {
-//        print("onWaveform")
-//        testButton.isSelected = !testButton.isSelected
-//    }
-
-    
     var currSineOnly: Bool = false
     var currDisplayData: Bool = false
 
@@ -231,15 +214,12 @@ final class TherescopeController: UIViewController {
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
         
-//        containerButtonStackView.backgroundColor = .separator
-//        innerButtonStackView.backgroundColor = .clear
-        
         containerButtonStackView1.backgroundColor = .white
         innerButtonStackView1.backgroundColor = .clear
 
-        containerButtonStackView1.layer.cornerRadius = 3
-        containerButtonStackView1.layer.borderColor = UIColor.black.cgColor
-        containerButtonStackView1.layer.borderWidth = 1
+//        containerButtonStackView1.layer.cornerRadius = 3
+//        containerButtonStackView1.layer.borderColor = UIColor.black.cgColor
+//        containerButtonStackView1.layer.borderWidth = 1
 
         sineButton1.waveType = .sine
         squareButton1.waveType = .square
@@ -247,26 +227,7 @@ final class TherescopeController: UIViewController {
         sawtoothButton1.waveType = .sawtooth
         noiseButton1.waveType = .noise
         
-//        for definition in waveButtons {
-//            let button = definition.button
-//            
-//            button.titleLabel?.font =
-//            UIFont.systemFont(ofSize: 30)
-//            
-//            button.layer.cornerRadius = 5
-//            button.layer.borderColor =
-//            UIColor.black.cgColor
-//            
-//            button.layer.borderWidth = 1
-//            
-//            button.setTitle(
-//                definition.title,
-//                for: .normal
-//            )
-//        }
-        
         configureAmplitudeSlider()
-//        updateButtons(selectedWave)
         
         if currSineOnly {
             self.triangleButton1.isHidden = true
@@ -344,64 +305,6 @@ final class TherescopeController: UIViewController {
     }
     
     
-    // MARK: Button data
-    
-//    private struct WaveButtonDefinition {
-//        let button: UIButton
-//        let waveType: WaveType
-//        let title: String
-//    }
-//    
-//    private lazy var waveButtons: [WaveButtonDefinition] = [
-//        .init(
-//            button: sineButton,
-//            waveType: .sine,
-//            title: "Sine"
-//        ),
-//        
-//            .init(
-//                button: squareButton,
-//                waveType: .square,
-//                title: "Square"
-//            ),
-//        
-//            .init(
-//                button: triangleButton,
-//                waveType: .triangle,
-//                title: "Triangle"
-//            ),
-//        
-//            .init(
-//                button: sawtoothButton,
-//                waveType: .sawtooth,
-//                title: "Sawtooth"
-//            ),
-//        
-//            .init(
-//                button: noiseButton,
-//                waveType: .noise,
-//                title: "Noise"
-//            )
-//    ]
-//    
-//    private func updateButtons(
-//        _ selectedWave: WaveType
-//    ) {
-//        for definition in waveButtons {
-//            let isSelected =
-//            definition.waveType == selectedWave
-//            
-//            definition.button.setTitleColor(
-//                isSelected ? .white : .black,
-//                for: .normal
-//            )
-//            
-//            definition.button.backgroundColor =
-//            isSelected ? .systemBlue : .white
-//        }
-//    }
-    
-    
     // MARK: Wave button actions
     
     @IBAction func onBack(){
@@ -412,26 +315,6 @@ final class TherescopeController: UIViewController {
         self.settingsButtonPressed()
     }
 
-//    @IBAction private func onSine() {
-//        selectedWave = .sine
-//    }
-//    
-//    @IBAction private func onSquare() {
-//        selectedWave = .square
-//    }
-//    
-//    @IBAction private func onTriangle() {
-//        selectedWave = .triangle
-//    }
-//    
-//    @IBAction private func onSawtooth() {
-//        selectedWave = .sawtooth
-//    }
-//    
-//    @IBAction private func onNoise() {
-//        selectedWave = .noise
-//    }
-    
     func handleWaveformChange(waveType:WaveType){
         let buttons = [sineButton1,squareButton1,triangleButton1,sawtoothButton1,noiseButton1]
         for button in buttons {
@@ -440,31 +323,26 @@ final class TherescopeController: UIViewController {
     }
     
     @IBAction func onSine1(_ sender: IconTitleButton) {
-        print("onSine1")
         selectedWave = .sine
         self.handleWaveformChange(waveType: .sine)
     }
     
     @IBAction func onSquare1(_ sender: IconTitleButton) {
-        print("onSquare1")
         selectedWave = .square
         self.handleWaveformChange(waveType: .square)
     }
     
     @IBAction func onTriangle1(_ sender: IconTitleButton) {
-        print("onTriangle1")
         selectedWave = .triangle
         self.handleWaveformChange(waveType: .triangle)
     }
     
     @IBAction func onSawtooth1(_ sender: IconTitleButton) {
-        print("onSawtooth1")
         selectedWave = .sawtooth
         self.handleWaveformChange(waveType: .sawtooth)
     }
     
     @IBAction func onNoise1(_ sender: IconTitleButton) {
-        print("onNoise1")
         selectedWave = .noise
         self.handleWaveformChange(waveType: .noise)
     }
@@ -473,8 +351,6 @@ final class TherescopeController: UIViewController {
     // MARK: Wave selection
     
     private func selectedWaveDidChange() {
-//        updateButtons(selectedWave)
-        
         /*
          Changing this published property causes
          HostedTherescopePlot to switch between
