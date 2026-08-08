@@ -213,12 +213,14 @@ final class TherescopeController: UIViewController {
         self.view.backgroundColor = UIColor(red: 0.867, green: 0.867, blue: 0.867, alpha: 1.0)
         topContainerView.backgroundColor = .clear
         
-//        titleLabel.font = UIFont.systemFont(ofSize: 30)
         titleLabel.font = UIFont(name: "DINCondensed-Bold", size: 42)
         titleLabel.textColor = Color.therescopeBlue
+        titleLabel.backgroundColor = .clear
         titleLabel.text = "ThereScope"
         backButton.tintColor = Color.therescopeBlue
         settingsButton.tintColor = Color.therescopeBlue
+        
+        amplitudeSlider.minimumTrackTintColor = Color.therescopeBlue
         
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true

@@ -43,6 +43,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y5-af-8CJ">
                                         <rect key="frame" x="667.5" y="20" width="41.5" height="20.5"/>
+                                        <color key="backgroundColor" red="0.099110553780374977" green="0.27007200500556983" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -60,7 +61,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv9-eZ-Gnp">
-                                <rect key="frame" x="100" y="94" width="1176" height="150"/>
+                                <rect key="frame" x="100" y="72" width="1176" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B05-Gw-rh1">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="150"/>
@@ -133,7 +134,7 @@
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
-                                <rect key="frame" x="140" y="252" width="1096" height="675"/>
+                                <rect key="frame" x="140" y="230" width="1096" height="697"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
@@ -151,7 +152,7 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Kv9-eZ-Gnp" secondAttribute="trailing" constant="100" id="29i-sX-Kfr"/>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
-                            <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="2" id="9Az-7b-mhp"/>
+                            <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="-20" id="9Az-7b-mhp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="60" id="BsZ-am-xmD"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KHs-xi-i36"/>
                             <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="Loh-KV-dRf"/>
