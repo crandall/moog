@@ -210,16 +210,20 @@ final class TherescopeController: UIViewController {
     
     private func configureViews() {
         
-        topContainerView.backgroundColor = .systemBlue
+        self.view.backgroundColor = UIColor(red: 0.867, green: 0.867, blue: 0.867, alpha: 1.0)
+        topContainerView.backgroundColor = .clear
         
-        titleLabel.font = UIFont.systemFont(ofSize: 30)
-        titleLabel.textColor = .white
+//        titleLabel.font = UIFont.systemFont(ofSize: 30)
+        titleLabel.font = UIFont(name: "DINCondensed-Bold", size: 42)
+        titleLabel.textColor = Color.therescopeBlue
         titleLabel.text = "ThereScope"
+        backButton.tintColor = Color.therescopeBlue
+        settingsButton.tintColor = Color.therescopeBlue
         
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
         
-        containerButtonStackView1.backgroundColor = .white
+        containerButtonStackView1.backgroundColor = .clear
         innerButtonStackView1.backgroundColor = .clear
 
         sineButton1.waveType = .sine

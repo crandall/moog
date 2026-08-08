@@ -12,9 +12,7 @@ class IconTitleButton: UIControl {
     // MARK: - Outlets
     
     @IBOutlet private weak var contentView: UIView!
-    
     @IBOutlet weak var imageContainerView: UIView!
-    
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var waveformImageView: UIImageView!
     @IBOutlet weak var titleImageView: UIImageView!
