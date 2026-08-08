@@ -92,6 +92,7 @@ final class TherescopeController: UIViewController {
     
     @IBOutlet private weak var topContainerView: UIView!
     @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var settingsButton: UIButton!
     
     @IBOutlet private weak var amplitudeSlider: UISlider!
@@ -210,6 +211,10 @@ final class TherescopeController: UIViewController {
     private func configureViews() {
         
         topContainerView.backgroundColor = .systemBlue
+        
+        titleLabel.font = UIFont.systemFont(ofSize: 30)
+        titleLabel.textColor = .white
+        titleLabel.text = "ThereScope"
         
         wavePlotContainerView.layer.cornerRadius = 40
         wavePlotContainerView.clipsToBounds = true
@@ -575,35 +580,39 @@ final class TherescopeController: UIViewController {
          Transparent view that captures taps outside the popup.
          It sits above the SwiftUI content and below the popup.
          */
-        let dismissView = UIView()
-        dismissView.backgroundColor = .clear
-        dismissView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dismissViewTapped)
-        )
-        
-        dismissView.addGestureRecognizer(tapGesture)
-        
-        view.addSubview(dismissView)
-        
-        NSLayoutConstraint.activate([
-            dismissView.topAnchor.constraint(
-                equalTo: view.topAnchor
-            ),
-            dismissView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor
-            ),
-            dismissView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor
-            ),
-            dismissView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor
-            )
-        ])
-        
-        popupDismissView = dismissView
+//        let dismissView = UIView()
+//        dismissView.backgroundColor = .clear
+//        dismissView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        let tapGesture = UITapGestureRecognizer(
+//            target: self,
+//            action: #selector(dismissViewTapped)
+//        )
+//        
+//        dismissView.addGestureRecognizer(tapGesture)
+//        
+//        view.addSubview(dismissView)
+//        
+//        NSLayoutConstraint.activate([
+////            dismissView.topAnchor.constraint(
+////                equalTo: view.topAnchor
+////            ),
+//            dismissView.topAnchor.constraint(
+//                equalTo: containerButtonStackView1.bottomAnchor
+//            ),
+//            dismissView.bottomAnchor.constraint(
+//                equalTo: view.bottomAnchor
+//            ),
+//            dismissView.leadingAnchor.constraint(
+//                equalTo: view.leadingAnchor
+//            ),
+//            dismissView.trailingAnchor.constraint(
+//                equalTo: view.trailingAnchor
+//            )
+//        ])
+//        
+//        popupDismissView = dismissView
+//        popupDismissView?.backgroundColor = .gray
         
         popup.translatesAutoresizingMaskIntoConstraints = false
         

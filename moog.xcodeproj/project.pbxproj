@@ -31,7 +31,6 @@
 		E78B9B092AE0B02700788C07 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B082AE0B02700788C07 /* Keyboard */; };
 		E78B9B0C2AE0B05400788C07 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = E78B9B0B2AE0B05400788C07 /* SoundpipeAudioKit */; };
 		E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */; };
-		E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F591F2FEDC2C000F88654 /* TherescopeView.swift */; };
 		E78F59222FEDEA4000F88654 /* info.txt in Resources */ = {isa = PBXBuildFile; fileRef = E78F59212FEDEA3400F88654 /* info.txt */; };
 		E7A1CA782B179F6A006D8344 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1CA772B179F6A006D8344 /* Extensions.swift */; };
 		E7A4A9BA30140CFD00564F3A /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A4A9B830140CFD00564F3A /* SettingsCell.swift */; };
@@ -40,7 +39,6 @@
 		E7FB6C6C2AE0B5E90064EB8E /* CookbookKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */; };
 		E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */; };
 		E7FB6C6F2AE0B6BE0064EB8E /* ParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */; };
-		E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FB6C702AE0B7650064EB8E /* StageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +63,6 @@
 		E78B9AF62AE0AEF100788C07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
 		E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E78F591F2FEDC2C000F88654 /* TherescopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherescopeView.swift; sourceTree = "<group>"; };
 		E78F59212FEDEA3400F88654 /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		E7A1CA772B179F6A006D8344 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7A4A9B830140CFD00564F3A /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -74,7 +71,6 @@
 		E7FB6C6A2AE0B5E90064EB8E /* CookbookKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookbookKeyboard.swift; sourceTree = "<group>"; };
 		E7FB6C6B2AE0B5E90064EB8E /* NavigationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelpers.swift; sourceTree = "<group>"; };
 		E7FB6C6E2AE0B6BE0064EB8E /* ParameterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterRow.swift; path = "moog/CookbookCommon/Reusable Components/ParameterRow.swift"; sourceTree = SOURCE_ROOT; };
-		E7FB6C702AE0B7650064EB8E /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -122,7 +118,6 @@
 				E78B9AE82AE0AEF000788C07 /* AppDelegate.swift */,
 				E78B9AEA2AE0AEF000788C07 /* SceneDelegate.swift */,
 				E78EC18E2AE1F81B00BB26EC /* HomeViewController.swift */,
-				E7FB6C702AE0B7650064EB8E /* StageViewController.swift */,
 				E74DD1CB3012860D00A33A1B /* TherescopeController.swift */,
 				E74DD1CD3012862600A33A1B /* TherescopeController.storyboard */,
 				E7511941300AACD10066D363 /* SettingsPopupView.swift */,
@@ -133,7 +128,6 @@
 				E75450B030104CEC00416680 /* DataPopupView.xib */,
 				E783819C301BF0AE00F18A19 /* IconTitleButton.swift */,
 				E78381A2301BF59400F18A19 /* IconTitleButton.xib */,
-				E78F591F2FEDC2C000F88654 /* TherescopeView.swift */,
 				E7795E5F2CCC503C00F34C00 /* Conductors.swift */,
 				E7A1CA772B179F6A006D8344 /* Extensions.swift */,
 				E78B9AFF2AE0AF9900788C07 /* Oscillator.swift */,
@@ -264,7 +258,6 @@
 				E7E2CD7B3014185D00587387 /* Utilities.swift in Sources */,
 				E77C3BC12B5DD0A000E68103 /* RawOutputView.swift in Sources */,
 				E78B9AEB2AE0AEF000788C07 /* SceneDelegate.swift in Sources */,
-				E78F59202FEDC2C000F88654 /* TherescopeView.swift in Sources */,
 				E7511942300AACD10066D363 /* SettingsPopupView.swift in Sources */,
 				E7FB6C6D2AE0B5E90064EB8E /* NavigationHelpers.swift in Sources */,
 				E78EC18F2AE1F81B00BB26EC /* HomeViewController.swift in Sources */,
@@ -273,7 +266,6 @@
 				E75450AF30104C4000416680 /* DataPopupView.swift in Sources */,
 				E7795E622CCC515500F34C00 /* DevicePicker.swift in Sources */,
 				E78B9B002AE0AF9900788C07 /* Oscillator.swift in Sources */,
-				E7FB6C712AE0B7650064EB8E /* StageViewController.swift in Sources */,
 				E7795E602CCC503C00F34C00 /* Conductors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
