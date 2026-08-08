@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SettingsCell: UITableViewCell {
     
@@ -20,6 +21,7 @@ class SettingsCell: UITableViewCell {
         self.titleLabel.font = settingsCellFont
         self.titleLabel.textColor = .black
         self.displayDataSwitch.onTintColor = .systemBlue
+        displayDataSwitch.onTintColor = Color.therescopeBlue
 //        self.displayDataSwitch.layer.cornerRadius = self.displayDataSwitch.frame.height / 2
     }
     
