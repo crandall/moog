@@ -213,7 +213,7 @@ final class TherescopeController: UIViewController {
         self.view.backgroundColor = UIColor(red: 0.867, green: 0.867, blue: 0.867, alpha: 1.0)
         topContainerView.backgroundColor = .clear
         
-        titleLabel.font = UIFont(name: "DINCondensed-Bold", size: 42)
+        titleLabel.font = UIFont.therescopeFont(size: 42)  //UIFont(name: "DINCondensed-Bold", size: 42)
         titleLabel.textColor = Color.therescopeBlue
         titleLabel.backgroundColor = .clear
         titleLabel.text = "ThereScope"

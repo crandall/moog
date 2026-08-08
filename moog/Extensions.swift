@@ -26,3 +26,8 @@ extension Color {
 
 }
 
+extension UIFont {
+    static func therescopeFont(size:CGFloat)->UIFont?{
+        return UIFont(name: "DINCondensed-Bold", size: size)
+    }
+}
