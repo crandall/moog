@@ -217,8 +217,16 @@ final class TherescopeController: UIViewController {
         titleLabel.textColor = Color.therescopeBlue
         titleLabel.backgroundColor = .clear
         titleLabel.text = "ThereScope"
+
         backButton.tintColor = Color.therescopeBlue
+        var config = backButton.configuration
+        config?.baseForegroundColor = Color.therescopeBlue
+        backButton.configuration = config
+
         settingsButton.tintColor = Color.therescopeBlue
+        var config1 = settingsButton.configuration
+        config1?.baseForegroundColor = Color.therescopeBlue
+        settingsButton.configuration = config1
         
         amplitudeSlider.minimumTrackTintColor = Color.therescopeBlue
         
