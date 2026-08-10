@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 enum SettingsType: String, CaseIterable {    case sineOnly
     case displayData
@@ -126,6 +127,9 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         closeButton.layer.cornerRadius = 5
         closeButton.layer.borderWidth = 1
         closeButton.layer.borderColor = UIColor.black.cgColor
+        closeButton.backgroundColor = Color.therescopeBlue
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.tintColor = .white
 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -161,10 +165,10 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         let label = UILabel()
         label.text = settingType.headerTitle
         label.font = settingsSectionFont
-        label.textColor = .label
+        label.textColor = .white  //.label
         
         let view = UIView()
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = Color.therescopeBlue //  .systemGroupedBackground
         view.addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
