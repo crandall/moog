@@ -78,7 +78,7 @@ extension TherescopeController {
                     )
                 }
             }
-            .background(Color.black)
+            .background(Color.clear)
             .clipped()
         }
     }

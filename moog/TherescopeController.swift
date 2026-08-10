@@ -15,15 +15,11 @@ final class TherescopeController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet private weak var wavePlotContainerView: UIView!
-    
     @IBOutlet private weak var topContainerView: UIView!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var settingsButton: UIButton!
     
-    @IBOutlet private weak var amplitudeSlider: UISlider!
-
     @IBOutlet private weak var containerButtonStackView1: UIStackView!
     @IBOutlet private weak var innerButtonStackView1: UIStackView!
     @IBOutlet private weak var sineButton1: IconTitleButton!
@@ -32,10 +28,14 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var sawtoothButton1: IconTitleButton!
     @IBOutlet private weak var noiseButton1: IconTitleButton!
 
+    @IBOutlet private weak var wavePlotContainerView: UIView!
+    @IBOutlet weak var waveBGContainerView: UIView!
+    @IBOutlet weak var waveBGImageView: UIImageView!
 
+    @IBOutlet private weak var amplitudeSlider: UISlider!
+    
     var currSineOnly: Bool = false
     var currDisplayData: Bool = false
-
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
@@ -200,7 +200,7 @@ final class TherescopeController: UIViewController {
     
     
     // MARK: -- Embed SwiftUI plot
-    
+
     private func embedPlot() {
         let hostedPlot = HostedTherescopePlot(
             plotState: plotState,
@@ -221,10 +221,9 @@ final class TherescopeController: UIViewController {
         
         hostedView.translatesAutoresizingMaskIntoConstraints = false
         
-        hostedView.backgroundColor = .black
+        hostedView.backgroundColor = .clear
         
         wavePlotContainerView.addSubview(hostedView)
-        
         NSLayoutConstraint.activate([
             hostedView.topAnchor.constraint(
                 equalTo: wavePlotContainerView.topAnchor

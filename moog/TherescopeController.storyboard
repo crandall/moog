@@ -132,9 +132,32 @@
                                     <constraint firstItem="ZTw-Hl-ai2" firstAttribute="width" secondItem="B05-Gw-rh1" secondAttribute="width" id="dWK-4e-O6c"/>
                                 </constraints>
                             </stackView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
                                 <rect key="frame" x="140" y="230" width="1096" height="697"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KM8-yU-x2z">
+                                        <rect key="frame" x="-2" y="0.0" width="1100" height="697"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oscilloscope_bg" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-Jf-5WQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="1100" height="697"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2Ue-Jf-5WQ" firstAttribute="top" secondItem="KM8-yU-x2z" secondAttribute="top" id="7AT-HA-tid"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Ue-Jf-5WQ" secondAttribute="bottom" id="JnI-kO-NjU"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Ue-Jf-5WQ" secondAttribute="trailing" id="QbC-tc-G3r"/>
+                                            <constraint firstItem="2Ue-Jf-5WQ" firstAttribute="leading" secondItem="KM8-yU-x2z" secondAttribute="leading" id="vdt-u2-eZN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KM8-yU-x2z" secondAttribute="trailing" constant="-2" id="TYg-mQ-yTw"/>
+                                    <constraint firstItem="KM8-yU-x2z" firstAttribute="top" secondItem="UTc-2w-G0U" secondAttribute="top" id="cB3-5P-whp"/>
+                                    <constraint firstItem="KM8-yU-x2z" firstAttribute="leading" secondItem="UTc-2w-G0U" secondAttribute="leading" constant="-2" id="fUe-Lo-0rc"/>
+                                    <constraint firstAttribute="bottom" secondItem="KM8-yU-x2z" secondAttribute="bottom" id="txY-7z-rml"/>
+                                </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9oJ-IB-hFU">
                                 <rect key="frame" x="588" y="953" width="200" height="34"/>
@@ -176,6 +199,8 @@
                         <outlet property="titleLabel" destination="7y5-af-8CJ" id="AMD-Zo-Zhx"/>
                         <outlet property="topContainerView" destination="zmx-5o-8pE" id="2I2-nr-0Ex"/>
                         <outlet property="triangleButton1" destination="YrL-gu-gnW" id="mlO-vO-9sU"/>
+                        <outlet property="waveBGContainerView" destination="KM8-yU-x2z" id="0Lw-4Z-jL0"/>
+                        <outlet property="waveBGImageView" destination="2Ue-Jf-5WQ" id="y65-9W-A2z"/>
                         <outlet property="wavePlotContainerView" destination="UTc-2w-G0U" id="DR2-yR-uVZ"/>
                     </connections>
                 </viewController>
@@ -187,6 +212,7 @@
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="oscilloscope_bg" width="981" height="808"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
