@@ -134,10 +134,9 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG1-1w-txK">
                                 <rect key="frame" x="1168" y="47" width="200" height="200"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H7I-LF-96x"/>
-                                    <constraint firstAttribute="height" constant="200" id="KLz-Xf-2ZC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
@@ -193,6 +192,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zmx-5o-8pE" secondAttribute="trailing" id="cfm-vd-O9L"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9oJ-IB-hFU" secondAttribute="bottom" id="gpV-Ot-ck8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UTc-2w-G0U" secondAttribute="trailing" constant="140" id="krs-BQ-4os"/>
+                            <constraint firstItem="GG1-1w-txK" firstAttribute="height" secondItem="Kv9-eZ-Gnp" secondAttribute="height" multiplier="1.33333" id="txp-Ri-v1X"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="top" secondItem="Kv9-eZ-Gnp" secondAttribute="bottom" constant="8" symbolic="YES" id="vxK-eZ-IU2"/>
                         </constraints>
                     </view>
