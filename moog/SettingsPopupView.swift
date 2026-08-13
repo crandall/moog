@@ -8,7 +8,8 @@
 import UIKit
 import SwiftUI
 
-enum SettingsType: String, CaseIterable {    case sineOnly
+enum SettingsType: String, CaseIterable {
+    case sineOnly
     case displayData
     
     var key: String {
@@ -163,10 +164,14 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         let settingType = SettingsType.type(for: section)
         
         let label = UILabel()
-        label.text = settingType.headerTitle
         label.font = settingsSectionFont
         label.textColor = .white  //.label
+        label.text = settingType.headerTitle
         
+        if section == 0 {
+            label.text = currSineOnly ? "Sine/Noise Only" : "All Waveforms"
+        }
+
         let view = UIView()
         view.backgroundColor = Color.therescopeBlue //  .systemGroupedBackground
         view.addSubview(label)
@@ -196,7 +201,7 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         let setting = SettingsType.type(for: indexPath.section)
         switch setting {
         case .sineOnly:
-            let str = indexPath.row == 0 ? "Sine/Noise only" : "All Waveforms"
+            let str = indexPath.row == 0 ? "Sine/Noise Only" : "All Waveforms"
             cell.titleLabel.text = str
             cell.configureSwitch(isVisible: false, currValue: false)
 
