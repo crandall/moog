@@ -80,18 +80,18 @@
                                                     <action selector="onSine1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JP3-R8-1NQ"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cg-Fq-j0W" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-gu-gnW" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="0.0" width="90" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="onSquare1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yjN-U7-Gpg"/>
+                                                    <action selector="onTriangle1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VHd-QD-hN6"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-gu-gnW" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cg-Fq-j0W" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
                                                 <rect key="frame" x="220" y="0.0" width="90" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="onTriangle1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VHd-QD-hN6"/>
+                                                    <action selector="onSquare1:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yjN-U7-Gpg"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz5-fy-zva" customClass="IconTitleButton" customModule="moog" customModuleProvider="target">
