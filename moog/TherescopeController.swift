@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import AudioKit
 
 
 // MARK: - TherescopeController
@@ -250,12 +251,28 @@ final class TherescopeController: UIViewController {
         hostingController.didMove(toParent: self)
     }
 
-    // MARK: -- devicePicker
+    // MARK: -- Embed device picker
     
     private func embedDevicePicker() {
+        
+        let devices = AudioEngine.inputDevices.compactMap { $0 }
+        
+        guard !devices.isEmpty else {
+            print("No audio input devices available")
+            return
+        }
+        
+        guard let currentDevice = waveConductor.engine.inputDevice else {
+            print("No current audio input device")
+            return
+        }
+        
         let devicePicker = ThereScopeDevicePicker(
-            device: waveConductor.initialDevice
-        )
+            device: currentDevice,
+            devices: devices
+        ) { [weak self] device in
+            self?.setInputDevice(device)
+        }
         
         let hostingController =
         UIHostingController(rootView: devicePicker)
@@ -293,7 +310,22 @@ final class TherescopeController: UIViewController {
         
         hostingController.didMove(toParent: self)
     }
-    
+
+    private func setInputDevice(_ device: Device) {
+        do {
+            try AudioEngine.setInputDevice(device)
+            
+            print(
+                "Audio input changed to: \(device.deviceID)"
+            )
+            
+        } catch {
+            print(
+                "Error changing audio input device: \(error)"
+            )
+        }
+    }
+
     // MARK: -- Wave button actions
     
     @IBAction func onBack(){

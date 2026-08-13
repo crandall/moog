@@ -105,7 +105,7 @@ struct MultiView: View {
     var body: some View {
         VStack {
 
-            ThereScopeDevicePicker(device: conductor.initialDevice)
+//            ThereScopeDevicePicker(device: conductor.initialDevice)
 
             HStack {
                 VStack{

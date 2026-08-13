@@ -133,8 +133,8 @@ struct TestView: View {
                 Spacer()
                 
                 // Centered Device Picker
-                ThereScopeDevicePicker(device: waveConductor.initialDevice)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+//                ThereScopeDevicePicker(device: waveConductor.initialDevice)
+//                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding(.horizontal, 20)  // Optional padding for horizontal alignment
             .padding(.bottom, 20)  // 20px space between the text and the bottom of the view

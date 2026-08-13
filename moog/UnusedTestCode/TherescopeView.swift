@@ -138,7 +138,7 @@ struct TherescopeView: View {
                     Spacer()
                     
                     // RIGHT: Picker
-                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
+//                    ThereScopeDevicePicker(device: waveConductor.initialDevice)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
