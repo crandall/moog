@@ -66,6 +66,19 @@ class WaveConductor: ObservableObject {
                         }
                     }
                 }
+//                if let availableInputs = audioSession.availableInputs {
+//                    for input in availableInputs {
+//                        print("Input: \(input.portName) - \(input.portType.rawValue)")
+//                        
+//                        if input.portType == .headsetMic {
+//                            print("Selecting wired microphone: \(input.portName)")
+//                            try audioSession.setPreferredInput(input)
+//                            break
+//                        }
+//                    }
+//                }
+                
+                WaveConductor.printAudioInputs()
                 
                 print("Audio Session Sample Rate: \(audioSession.sampleRate)")
                 
@@ -134,6 +147,32 @@ class WaveConductor: ObservableObject {
         }
         tracker.start()
 
+    }
+    
+    static func printAudioInputs() {
+        let session = AVAudioSession.sharedInstance()
+        
+        print("----- AVAILABLE INPUTS -----")
+        
+        if let inputs = session.availableInputs {
+            for input in inputs {
+                print("Name: \(input.portName)")
+                print("Type: \(input.portType.rawValue)")
+                print("UID: \(input.uid)")
+                print("----------------------------")
+            }
+        } else {
+            print("No available inputs")
+        }
+        
+        print("----- CURRENT ROUTE -----")
+        
+        for input in session.currentRoute.inputs {
+            print("CURRENT INPUT:")
+            print("Name: \(input.portName)")
+            print("Type: \(input.portType.rawValue)")
+            print("UID: \(input.uid)")
+        }
     }
     
     // This method is called every time a new audio buffer is captured from the microphone
