@@ -33,7 +33,9 @@ final class TherescopeController: UIViewController {
     @IBOutlet weak var waveBGImageView: UIImageView!
 
     @IBOutlet private weak var amplitudeSlider: UISlider!
-    
+
+    @IBOutlet private weak var devicePickerContainerView: UIView!
+
     var currSineOnly: Bool = false
     var currDisplayData: Bool = false
     
@@ -45,7 +47,8 @@ final class TherescopeController: UIViewController {
     // MARK: Hosted plot
     private let plotState = HostedPlotState()
     private var plotHostingController: UIHostingController<HostedTherescopePlot>?
-    
+
+    private var devicePickerHostingController: UIHostingController<ThereScopeDevicePicker>?
     
     // MARK: Selected wave
     private var selectedWave: WaveType = .sine {
@@ -78,6 +81,8 @@ final class TherescopeController: UIViewController {
 
         configureViews()
         embedPlot()
+        embedDevicePicker()
+
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -244,9 +249,52 @@ final class TherescopeController: UIViewController {
         
         hostingController.didMove(toParent: self)
     }
+
+    // MARK: -- devicePicker
     
+    private func embedDevicePicker() {
+        let devicePicker = ThereScopeDevicePicker(
+            device: waveConductor.initialDevice
+        )
+        
+        let hostingController =
+        UIHostingController(rootView: devicePicker)
+        
+        devicePickerHostingController = hostingController
+        
+        addChild(hostingController)
+        
+        guard let hostedView = hostingController.view else {
+            return
+        }
+        
+        hostedView.translatesAutoresizingMaskIntoConstraints = false
+        hostedView.backgroundColor = .clear
+        
+        devicePickerContainerView.addSubview(hostedView)
+        
+        NSLayoutConstraint.activate([
+            hostedView.topAnchor.constraint(
+                equalTo: devicePickerContainerView.topAnchor
+            ),
+            
+            hostedView.bottomAnchor.constraint(
+                equalTo: devicePickerContainerView.bottomAnchor
+            ),
+            
+            hostedView.leadingAnchor.constraint(
+                equalTo: devicePickerContainerView.leadingAnchor
+            ),
+            
+            hostedView.trailingAnchor.constraint(
+                equalTo: devicePickerContainerView.trailingAnchor
+            )
+        ])
+        
+        hostingController.didMove(toParent: self)
+    }
     
-    // MARK: Wave button actions
+    // MARK: -- Wave button actions
     
     @IBAction func onBack(){
         self.navigationController?.popViewController(animated: true)

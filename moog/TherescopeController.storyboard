@@ -132,6 +132,14 @@
                                     <constraint firstItem="ZTw-Hl-ai2" firstAttribute="width" secondItem="B05-Gw-rh1" secondAttribute="width" id="dWK-4e-O6c"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG1-1w-txK">
+                                <rect key="frame" x="1168" y="47" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="H7I-LF-96x"/>
+                                    <constraint firstAttribute="height" constant="200" id="KLz-Xf-2ZC"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTc-2w-G0U">
                                 <rect key="frame" x="140" y="230" width="1096" height="697"/>
                                 <subviews>
@@ -173,9 +181,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Kv9-eZ-Gnp" secondAttribute="trailing" constant="100" id="29i-sX-Kfr"/>
+                            <constraint firstItem="GG1-1w-txK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-8" id="2Bd-bL-CTM"/>
                             <constraint firstItem="9oJ-IB-hFU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="4oR-Uk-WMO"/>
                             <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="top" secondItem="zmx-5o-8pE" secondAttribute="bottom" constant="-20" id="9Az-7b-mhp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="UTc-2w-G0U" secondAttribute="bottom" constant="60" id="BsZ-am-xmD"/>
+                            <constraint firstItem="GG1-1w-txK" firstAttribute="centerY" secondItem="Kv9-eZ-Gnp" secondAttribute="centerY" id="FyO-cG-9Zx"/>
                             <constraint firstItem="zmx-5o-8pE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KHs-xi-i36"/>
                             <constraint firstItem="Kv9-eZ-Gnp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="100" id="Loh-KV-dRf"/>
                             <constraint firstItem="UTc-2w-G0U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="140" id="Rrp-pu-LD9"/>
@@ -190,6 +200,7 @@
                         <outlet property="amplitudeSlider" destination="9oJ-IB-hFU" id="OYS-T1-uNl"/>
                         <outlet property="backButton" destination="AzR-Wc-hS8" id="a5D-cx-m5b"/>
                         <outlet property="containerButtonStackView1" destination="Kv9-eZ-Gnp" id="3HG-SS-M8Z"/>
+                        <outlet property="devicePickerContainerView" destination="GG1-1w-txK" id="MH3-3K-HVW"/>
                         <outlet property="innerButtonStackView1" destination="7wT-bm-1en" id="5bj-RA-WWz"/>
                         <outlet property="noiseButton1" destination="0ag-t2-7xf" id="Xut-LL-Pyp"/>
                         <outlet property="sawtoothButton1" destination="Dz5-fy-zva" id="NEh-Um-3NU"/>
