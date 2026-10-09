@@ -73,8 +73,6 @@ final class TherescopeController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
-        currDisplayData = SettingsDefaults.setting(for: .displayData)
 
         configureViews()
         embedPlot()
@@ -143,7 +141,7 @@ final class TherescopeController: UIViewController {
         titleLabel.font = UIFont.therescopeFont(size: 42)  //UIFont(name: "DINCondensed-Bold", size: 42)
         titleLabel.textColor = Color.therescopeBlue
         titleLabel.backgroundColor = .clear
-        titleLabel.text = "ThereScope"
+        titleLabel.text = "TheriScope Wave Display"
 
         backButton.tintColor = Color.therescopeBlue
         var config = backButton.configuration
@@ -351,32 +349,34 @@ final class TherescopeController: UIViewController {
         }
         
         // for now, it is on the plot - make items clear:
-        dataPopup.configureWithClear(textColor: .white)
+        dataPopup.configureWithTextColor(textColor: Color.therescopeBlue)
         
         let width: CGFloat = 240
-        let f = self.wavePlotContainerView.frame
-        let x: CGFloat = f.minX // 20
-        let y: CGFloat = f.minY // 140
+        let x: CGFloat = -40
+        let y: CGFloat = 0
         
-        dataPopup.transform = .identity
-        dataPopup.alpha = 1
-        dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        dataPopup.translatesAutoresizingMaskIntoConstraints = false
         
-        // Update the label before calculating the required height.
-        dataPopup.updateDataPopup(dataStr: dataPopupString)
-        
-        /*
-         Give the popup its real width before layout. Otherwise its multiline
-         label may calculate its intrinsic height using an old or undefined width.
-         */
-        dataPopup.frame = CGRect(
-            x: x,
-            y: y,
-            width: width,
-            height: 1
+        dataPopup.updateDataPopup(
+            dataStr: dataPopupString
         )
         
         view.addSubview(dataPopup)
+        view.sendSubviewToBack(dataPopup)
+        
+        NSLayoutConstraint.activate([
+            dataPopup.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: x
+            ),
+            dataPopup.topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: y
+            ),
+            dataPopup.widthAnchor.constraint(
+                equalToConstant: width
+            )
+        ])
         
         dataPopup.setNeedsLayout()
         dataPopup.layoutIfNeeded()
@@ -400,13 +400,6 @@ final class TherescopeController: UIViewController {
         dataPopup.layoutIfNeeded()
         
         dataPopup.alpha = 0
-        dataPopup.transform = CGAffineTransform(
-            translationX: 40,
-            y: -20
-        ).scaledBy(
-            x: 0.75,
-            y: 0.75
-        )
         
         dataPopupView = dataPopup
         
@@ -419,7 +412,6 @@ final class TherescopeController: UIViewController {
             ]
         ) {
             self.dataPopup.alpha = 1
-            self.dataPopup.transform = .identity
         }
     }
     
@@ -438,20 +430,20 @@ final class TherescopeController: UIViewController {
         ) {
             popup.alpha = 0
             
-            popup.transform = CGAffineTransform(
-                translationX: 40,
-                y: -20
-            ).scaledBy(
-                x: 0.75,
-                y: 0.75
-            )
+//            popup.transform = CGAffineTransform(
+//                translationX: 40,
+//                y: -20
+//            ).scaledBy(
+//                x: 0.75,
+//                y: 0.75
+//            )
             
         } completion: { [weak self] _ in
             popup.removeFromSuperview()
             self?.dataPopupDismissView?.removeFromSuperview()
             
             // Restore the reusable view to its normal state.
-            popup.transform = .identity
+//            popup.transform = .identity
             popup.alpha = 1
             
             self?.dataPopupView = nil
@@ -498,7 +490,6 @@ final class TherescopeController: UIViewController {
         
         popup.onSineOnly = { [weak self] newValue in
             guard let newValue = newValue else { return }
-            print("StageViewController.onSineOnly:\(newValue)")
 
             self?.currSineOnly = newValue
             self?.configureViews()
@@ -561,11 +552,11 @@ final class TherescopeController: UIViewController {
         NSLayoutConstraint.activate([
             popup.topAnchor.constraint(
                 equalTo: settingsButton.bottomAnchor,
-                constant: 0
+                constant: -10
             ),
             popup.trailingAnchor.constraint(
                 equalTo: settingsButton.leadingAnchor,
-                constant: 0
+                constant: 10
             ),
             popup.widthAnchor.constraint(
                 equalToConstant: 200
