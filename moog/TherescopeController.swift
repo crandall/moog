@@ -77,8 +77,6 @@ final class TherescopeController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        currSineOnly = SettingsDefaults.setting(for: .sineOnly)
-        currDisplayData = SettingsDefaults.setting(for: .displayData)
 
         configureViews()
         embedPlot()
@@ -356,10 +354,9 @@ final class TherescopeController: UIViewController {
         
         // for now, it is on the plot - make items clear:
         dataPopup.configureWithTextColor(textColor: Color.therescopeBlue)
-
         
         let width: CGFloat = 240
-        let x: CGFloat = 80
+        let x: CGFloat = -40
         let y: CGFloat = 0
         
         dataPopup.translatesAutoresizingMaskIntoConstraints = false
@@ -369,10 +366,11 @@ final class TherescopeController: UIViewController {
         )
         
         view.addSubview(dataPopup)
+        view.sendSubviewToBack(dataPopup)
         
         NSLayoutConstraint.activate([
-            dataPopup.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
+            dataPopup.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
                 constant: x
             ),
             dataPopup.topAnchor.constraint(
