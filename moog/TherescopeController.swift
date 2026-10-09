@@ -377,7 +377,6 @@ final class TherescopeController: UIViewController {
                 equalToConstant: width
             )
         ])
-//        view.addSubview(dataPopup)
         
         dataPopup.setNeedsLayout()
         dataPopup.layoutIfNeeded()
