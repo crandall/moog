@@ -400,13 +400,13 @@ final class TherescopeController: UIViewController {
         dataPopup.layoutIfNeeded()
         
         dataPopup.alpha = 0
-        dataPopup.transform = CGAffineTransform(
-            translationX: 40,
-            y: -20
-        ).scaledBy(
-            x: 0.75,
-            y: 0.75
-        )
+//        dataPopup.transform = CGAffineTransform(
+//            translationX: 40,
+//            y: -20
+//        ).scaledBy(
+//            x: 0.75,
+//            y: 0.75
+//        )
         
         dataPopupView = dataPopup
         
@@ -419,7 +419,7 @@ final class TherescopeController: UIViewController {
             ]
         ) {
             self.dataPopup.alpha = 1
-            self.dataPopup.transform = .identity
+//            self.dataPopup.transform = .identity
         }
     }
     
@@ -438,20 +438,20 @@ final class TherescopeController: UIViewController {
         ) {
             popup.alpha = 0
             
-            popup.transform = CGAffineTransform(
-                translationX: 40,
-                y: -20
-            ).scaledBy(
-                x: 0.75,
-                y: 0.75
-            )
+//            popup.transform = CGAffineTransform(
+//                translationX: 40,
+//                y: -20
+//            ).scaledBy(
+//                x: 0.75,
+//                y: 0.75
+//            )
             
         } completion: { [weak self] _ in
             popup.removeFromSuperview()
             self?.dataPopupDismissView?.removeFromSuperview()
             
             // Restore the reusable view to its normal state.
-            popup.transform = .identity
+//            popup.transform = .identity
             popup.alpha = 1
             
             self?.dataPopupView = nil
@@ -561,11 +561,11 @@ final class TherescopeController: UIViewController {
         NSLayoutConstraint.activate([
             popup.topAnchor.constraint(
                 equalTo: settingsButton.bottomAnchor,
-                constant: 0
+                constant: -10
             ),
             popup.trailingAnchor.constraint(
                 equalTo: settingsButton.leadingAnchor,
-                constant: 0
+                constant: 10
             ),
             popup.widthAnchor.constraint(
                 equalToConstant: 200
