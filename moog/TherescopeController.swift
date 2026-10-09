@@ -35,11 +35,7 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
     var currSineOnly: Bool = false
-    var currDisplayData: Bool = false {
-        didSet{
-            print("didSet:currDisplayData:\(currDisplayData)")
-        }
-    }
+    var currDisplayData: Bool = false
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
