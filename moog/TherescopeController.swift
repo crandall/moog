@@ -141,7 +141,7 @@ final class TherescopeController: UIViewController {
         titleLabel.font = UIFont.therescopeFont(size: 42)  //UIFont(name: "DINCondensed-Bold", size: 42)
         titleLabel.textColor = Color.therescopeBlue
         titleLabel.backgroundColor = .clear
-        titleLabel.text = "TheriScope"
+        titleLabel.text = "TheriScope Wave Display"
 
         backButton.tintColor = Color.therescopeBlue
         var config = backButton.configuration
