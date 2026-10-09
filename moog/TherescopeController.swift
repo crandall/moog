@@ -35,7 +35,11 @@ final class TherescopeController: UIViewController {
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
     var currSineOnly: Bool = false
-    var currDisplayData: Bool = false
+    var currDisplayData: Bool = false {
+        didSet{
+            print("didSet:currDisplayData:\(currDisplayData)")
+        }
+    }
     
     // MARK: Conductors
     private let waveConductor = WaveConductor()
@@ -351,34 +355,35 @@ final class TherescopeController: UIViewController {
         }
         
         // for now, it is on the plot - make items clear:
-//        dataPopup.configureWithClear(textColor: .white)
         dataPopup.configureWithTextColor(textColor: Color.therescopeBlue)
 
+        
         let width: CGFloat = 240
-//        let f = self.wavePlotContainerView.frame
-        let f = self.view.frame
-        let x: CGFloat = 80 //f.minX // 20
-        let y: CGFloat = f.minY // 140
+        let x: CGFloat = 80
+        let y: CGFloat = 0
         
-        dataPopup.transform = .identity
-        dataPopup.alpha = 1
-        dataPopup.translatesAutoresizingMaskIntoConstraints = true
+        dataPopup.translatesAutoresizingMaskIntoConstraints = false
         
-        // Update the label before calculating the required height.
-        dataPopup.updateDataPopup(dataStr: dataPopupString)
-        
-        /*
-         Give the popup its real width before layout. Otherwise its multiline
-         label may calculate its intrinsic height using an old or undefined width.
-         */
-        dataPopup.frame = CGRect(
-            x: x,
-            y: y,
-            width: width,
-            height: 1
+        dataPopup.updateDataPopup(
+            dataStr: dataPopupString
         )
         
         view.addSubview(dataPopup)
+        
+        NSLayoutConstraint.activate([
+            dataPopup.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: x
+            ),
+            dataPopup.topAnchor.constraint(
+                equalTo: view.topAnchor,
+                constant: y
+            ),
+            dataPopup.widthAnchor.constraint(
+                equalToConstant: width
+            )
+        ])
+//        view.addSubview(dataPopup)
         
         dataPopup.setNeedsLayout()
         dataPopup.layoutIfNeeded()
@@ -402,13 +407,6 @@ final class TherescopeController: UIViewController {
         dataPopup.layoutIfNeeded()
         
         dataPopup.alpha = 0
-//        dataPopup.transform = CGAffineTransform(
-//            translationX: 40,
-//            y: -20
-//        ).scaledBy(
-//            x: 0.75,
-//            y: 0.75
-//        )
         
         dataPopupView = dataPopup
         
@@ -421,7 +419,6 @@ final class TherescopeController: UIViewController {
             ]
         ) {
             self.dataPopup.alpha = 1
-//            self.dataPopup.transform = .identity
         }
     }
     
@@ -500,7 +497,6 @@ final class TherescopeController: UIViewController {
         
         popup.onSineOnly = { [weak self] newValue in
             guard let newValue = newValue else { return }
-            print("StageViewController.onSineOnly:\(newValue)")
 
             self?.currSineOnly = newValue
             self?.configureViews()
