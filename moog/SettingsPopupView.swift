@@ -224,8 +224,11 @@ class SettingsPopupView: UIView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func handleDataDisplaySwitch(value:Bool?){
+    func handleDataDisplaySwitch(value: Bool?) {
         guard let value = value else { return }
+        
+        self.currDisplayData = value
+        
         SettingsDefaults.setSetting(value, for: .displayData)
         self.onDisplayData?(value)
     }
