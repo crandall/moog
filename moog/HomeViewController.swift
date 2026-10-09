@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
 
     private
     func configureViews(){
-        thereScopeButton.setTitle("ThereScope", for: .normal)
+        thereScopeButton.setTitle("TheriScope", for: .normal)
         thereScopeButton.setTitleColor(.black, for: .normal)
         thereScopeButton.layer.cornerRadius = 5
         thereScopeButton.layer.borderWidth = 1
