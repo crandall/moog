@@ -143,7 +143,7 @@ final class TherescopeController: UIViewController {
         titleLabel.font = UIFont.therescopeFont(size: 42)  //UIFont(name: "DINCondensed-Bold", size: 42)
         titleLabel.textColor = Color.therescopeBlue
         titleLabel.backgroundColor = .clear
-        titleLabel.text = "ThereScope"
+        titleLabel.text = "TheriScope"
 
         backButton.tintColor = Color.therescopeBlue
         var config = backButton.configuration
@@ -351,11 +351,13 @@ final class TherescopeController: UIViewController {
         }
         
         // for now, it is on the plot - make items clear:
-        dataPopup.configureWithClear(textColor: .white)
-        
+//        dataPopup.configureWithClear(textColor: .white)
+        dataPopup.configureWithTextColor(textColor: Color.therescopeBlue)
+
         let width: CGFloat = 240
-        let f = self.wavePlotContainerView.frame
-        let x: CGFloat = f.minX // 20
+//        let f = self.wavePlotContainerView.frame
+        let f = self.view.frame
+        let x: CGFloat = 80 //f.minX // 20
         let y: CGFloat = f.minY // 140
         
         dataPopup.transform = .identity

@@ -72,7 +72,7 @@ class DataPopupView: UIView {
         onClose?()
     }
     
-    func configureWithClear(textColor:UIColor?){
+    func configureWithTextColor(textColor:UIColor?){
         self.dataLabel.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         
