@@ -34,7 +34,12 @@ final class TherescopeController: UIViewController {
 
     @IBOutlet private weak var amplitudeSlider: UISlider!
     
-    var currSineOnly: Bool = false
+    var currSineOnly: Bool = false {
+        didSet{
+            self.updateWaveformButtons()
+        }
+    }
+    
     var currDisplayData: Bool = false
     
     // MARK: Conductors
@@ -169,6 +174,9 @@ final class TherescopeController: UIViewController {
         
         configureAmplitudeSlider()
         
+    }
+    
+    func updateWaveformButtons(){
         if currSineOnly {
             self.triangleButton1.isHidden = true
             self.squareButton1.isHidden = true
@@ -178,7 +186,6 @@ final class TherescopeController: UIViewController {
             self.squareButton1.isHidden = false
             self.sawtoothButton1.isHidden = false
         }
-        
     }
     
     // MARK: - slider
@@ -492,7 +499,6 @@ final class TherescopeController: UIViewController {
             guard let newValue = newValue else { return }
 
             self?.currSineOnly = newValue
-            self?.configureViews()
 
             if newValue == true {
                 if self?.selectedWave != .sine || self?.selectedWave != .noise {
