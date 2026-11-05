@@ -16,3 +16,6 @@ git checkout develop
 git pull --ff-only
 git merge feature/new-feature
 git push origin develop
+
+sine/noise button doesn't work
+'
